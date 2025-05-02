@@ -1,8 +1,8 @@
 import type {Meta, StoryObj} from '@storybook/web-components';
-import './sh-input';
+import './sh-input.ts';
 
 const meta = {
-    title: 'Components/atoms/Input',
+    title: 'Components/atoms/input/sh-input',
     component: 'sh-input',
     tags: ['autodocs'],
     argTypes: {

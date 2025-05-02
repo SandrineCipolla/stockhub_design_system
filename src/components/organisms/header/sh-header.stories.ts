@@ -1,8 +1,8 @@
-import './sh-header';
+import './sh-header.ts';
 import {Meta, StoryObj} from "@storybook/web-components";
 
 const meta: Meta = {
-    title: 'Components/organisms/ShHeader',
+    title: 'Components/organisms/header/sh-header',
     component: 'sh-header',
     tags: ['autodocs'],
     argTypes: {

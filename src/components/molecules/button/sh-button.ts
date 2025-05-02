@@ -11,7 +11,7 @@ export class ShButton extends LitElement {
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 12px 16px;
+            padding: 10px 14px;
             font-size: 1rem;
             border: none;
             cursor: pointer;
@@ -75,7 +75,10 @@ export class ShButton extends LitElement {
                     aria-label="${this.text || this.icon}"
             >
                 ${this.showIcon ? html`<sh-icon name="${this.icon}"></sh-icon>` : ''}
-                ${this.showText && this.shape !== 'circle' ? html`<span>${this.text}</span>` : ''}
+                ${this.showText && this.shape !== 'circle' 
+                        ? html`<span>${this.text}</span>` 
+                        // ? html`<sh-text type="paragraph" tag="p" content="${this.text}" color="${this.textColor}"></sh-text>`
+                        : ''}
             </button>
         `;
     }

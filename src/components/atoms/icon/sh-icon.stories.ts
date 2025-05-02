@@ -1,10 +1,10 @@
 import {html} from 'lit';
 import {Meta, StoryObj} from '@storybook/web-components';
-import './sh-icon';
+import './sh-icon.ts';
 
 //métadonnées
 const meta: Meta = {
-    title: 'Components/atoms/Icon',
+    title: 'Components/atoms/icon/sh-icon',
     component: 'sh-icon',
 };
 

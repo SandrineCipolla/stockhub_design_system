@@ -1,7 +1,7 @@
 import {css, html, LitElement} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import '../atoms/sh-input.ts';
-import {icons} from '../../icons/icons.ts'
+import '../../atoms/input/sh-input.ts';
+import {icons} from '../../../icons/icons.ts'
 
 
 @customElement('sh-quantity-input')

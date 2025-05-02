@@ -1,9 +1,9 @@
-import './sh-logo';
+import './sh-logo.ts';
 import {Meta, StoryObj} from "@storybook/web-components";
 import {html} from "lit";
 
 const meta:Meta = {
-    title: 'Components/atoms/ShLogo',
+    title: 'Components/atoms/logo/sh-logo',
     component: 'sh-logo',
     tags: ['autodocs'],
     argTypes:{
@@ -22,7 +22,7 @@ type Story = StoryObj;
 
 export const Logo:Story = {
     args: {
-        size:'48px'
+        size:'72px'
     },
     render:(args) => html`
         <sh-logo style="--logo-size: ${args.size};"></sh-logo>

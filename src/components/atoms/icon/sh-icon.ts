@@ -1,13 +1,13 @@
 import {css, LitElement} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import {IconName, icons} from "../../icons/icons.ts";
+import {IconName, icons} from "../../../icons/icons.ts";
 
 @customElement('sh-icon')
 export class ShIcon extends LitElement {
 
     static styles = css`
         :host {
-            display: inline-block;
+            //display: inline-block;
             width: 1.5rem;
             height: 1.5rem;
         }

@@ -2,7 +2,7 @@ import {Meta, StoryObj} from '@storybook/web-components';
 import './sh-text.ts';
 
 const meta :Meta = {
-    title: 'Components/atoms/ShText',
+    title: 'Components/atoms/text/sh-text',
     component: 'sh-text',
     parameters: {
         layout: 'centered',

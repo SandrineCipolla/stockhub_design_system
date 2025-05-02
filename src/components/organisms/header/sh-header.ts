@@ -1,7 +1,7 @@
 import {css, html, LitElement} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
-import '../molecules/sh-button.ts';
-import '../atoms/sh-logo.ts';
+import '../../molecules/button/sh-button.ts';
+import '../../atoms/logo/sh-logo.ts';
 
 @customElement('sh-header')
 export class ShHeader extends LitElement {

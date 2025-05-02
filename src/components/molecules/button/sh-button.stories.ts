@@ -2,7 +2,7 @@ import type {Meta, StoryObj} from '@storybook/web-components';
 import './sh-button.ts';
 
 const meta: Meta = {
-    title: 'Components/molecules/ShButton',
+    title: 'Components/molecules/button/sh-button',
     component: 'sh-button',
     parameters: {
         layout: 'centered',

@@ -1,29 +1,60 @@
 {
-  "name": "stockhub_design_system",
+  "name": "@stockhub/design-system",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Design system for StockHub application",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:lib": "rollup -c",
     "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepublishOnly": "npm run build:lib",
+    "tokens:generate": "tsx src/tokens/generate-css.ts",
+    "tokens:watch": "chokidar 'src/tokens/tokens.json' -c 'npm run tokens:generate'",
+    "build:all": "npm run tokens:generate && npm run build-storybook",
+    "setup:dark": "npm run tokens:generate && echo '🌙 Dark mode configuré par défaut!'"
   },
-  "keywords": [],
-  "author": "",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "keywords": [
+    "design-system",
+    "web-components",
+    "lit",
+    "stockhub",
+    "ui-components"
+  ],
+  "author": "Sandrine Cipolla",
   "license": "ISC",
-  "description": "",
+  "peerDependencies": {
+    "lit": "^2.8.0"
+  },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-typescript": "^11.0.0",
     "@storybook/addon-essentials": "^8.6.12",
     "@storybook/blocks": "^8.6.12",
     "@storybook/test": "^8.6.12",
     "@storybook/web-components": "^8.6.12",
     "@storybook/web-components-vite": "^8.6.12",
+    "@types/node": "^24.0.3",
+    "rollup": "^4.0.0",
     "storybook": "^8.6.12",
     "typescript": "^5.8.3",
-    "vite": "^6.3.2"
+    "vite": "^6.3.2",
+    "tsx": "^4.0.0",
+    "chokidar-cli": "^3.0.0"
   },
   "dependencies": {
     "lit": "^2.8.0"

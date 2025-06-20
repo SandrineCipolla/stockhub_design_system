@@ -1,4 +1,5 @@
 import type {Preview} from "@storybook/web-components"
+import 'lit/polyfill-support.js'; // recommandé
 // ✅ IMPORT CRITIQUE - Vérifiez que ce chemin est correct
 import "../src/tokens/design-tokens.css"
 

@@ -15,19 +15,39 @@ Ce guide vous aide à démarrer avec le projet de migration StockHub V2 → Desi
 1. [README principal](../README.md) - Vue d'ensemble du Design System
 2. [Documentation Index](./README.md) - Navigation dans la documentation
 3. [Plan de Migration](./planning/MIGRATION-PLAN.md) - Comprendre la stratégie globale
+4. [Organisation Storybook](./STORYBOOK-ORGANIZATION.md) - Structure du menu et navigation
 
 ### 2. Vous allez développer ?
 
 **Suivre ces étapes** :
 1. Lire [MIGRATION-PLAN.md](./planning/MIGRATION-PLAN.md) - Comprendre le contexte
 2. Consulter [COMPONENT-SPECIFICATIONS.md](./planning/COMPONENT-SPECIFICATIONS.md) - API des composants
-3. Ouvrir [SPRINT-1-CHECKLIST.md](./planning/SPRINT-1-CHECKLIST.md) - Guide opérationnel
-4. Commencer à coder !
+3. Comprendre [STORYBOOK-ORGANIZATION.md](./STORYBOOK-ORGANIZATION.md) - Nomenclature des stories
+4. Ouvrir [SPRINT-1-CHECKLIST.md](./planning/SPRINT-1-CHECKLIST.md) - Guide opérationnel
+5. Commencer à coder !
 
 ### 3. Vous intégrez dans React ?
 
 **Lire** :
 - [REACT-INTEGRATION-GUIDE.md](./REACT-INTEGRATION-GUIDE.md) - Guide complet d'intégration
+
+---
+
+## 🎨 Navigation Storybook
+
+Le menu Storybook est organisé pour respecter exactement la structure des dossiers :
+
+```
+📖 Introduction (Stories d'exemple)
+📦 Components
+   ├── 🔹 Atoms (Badge, Icon, Input, Logo, Text)
+   ├── 🔸 Molecules (Button, Card, QuantityInput, StatusBadge)  
+   └── 🔷 Organisms (Header)
+```
+
+**Démarrer Storybook** : `npm run storybook`
+
+**Voir les détails** : [STORYBOOK-ORGANIZATION.md](./STORYBOOK-ORGANIZATION.md)
 
 ---
 

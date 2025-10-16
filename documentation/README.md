@@ -9,6 +9,45 @@ Bienvenue dans la documentation du Design System StockHub.
 
 ## 📚 Index de la Documentation
 
+### 🎨 Organisation Storybook
+
+#### Structure du Menu
+L'organisation du menu Storybook respecte exactement la hiérarchie des dossiers dans `src/` :
+
+```
+📖 Introduction
+   ├── Button Example
+   ├── Header Example
+   └── Page Example
+
+🎨 Design Tokens
+
+🎨 Icons
+
+📦 Components
+   ├── 🔹 Atoms
+   │   ├── Badge
+   │   ├── Icon
+   │   ├── Input (+ Test)
+   │   ├── Logo
+   │   └── Text
+   ├── 🔸 Molecules
+   │   ├── Button
+   │   ├── Card
+   │   ├── QuantityInput
+   │   └── StatusBadge
+   └── 🔷 Organisms
+       └── Header
+```
+
+#### Nomenclature des Titres
+- **Atomes** : `Components/Atoms/[NomComposant]`
+- **Molécules** : `Components/Molecules/[NomComposant]`
+- **Organismes** : `Components/Organisms/[NomComposant]`
+- **Exemples** : `Introduction/[NomStory] Example`
+
+---
+
 ### 📋 Planning & Stratégie
 
 #### [MIGRATION-PLAN.md](./planning/MIGRATION-PLAN.md)

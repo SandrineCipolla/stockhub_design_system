@@ -1,10 +1,30 @@
 import type {Preview} from "@storybook/web-components"
-import 'lit/polyfill-support.js'; // recommandé
-// ✅ IMPORT CRITIQUE - Vérifiez que ce chemin est correct
+import 'lit/polyfill-support.js' // recommandé
+// ⭐️ IMPORTANT: S'assurer que ce chemin est correct
 import "../src/tokens/design-tokens.css"
+
+// ⭐️ IMPORTANT: Importer aussi les composants principaux pour s'assurer qu'ils sont chargés
+import "../src/components/atoms/icon/sh-icon.ts"
+import "../src/components/molecules/button/sh-button.ts"
 
 const preview: Preview = {
     parameters: {
+        // Configuration de l'ordre des sections dans le menu
+        options: {
+            storySort: {
+                order: [
+                    'Introduction', // Pour les stories génériques
+                    'Design Tokens',
+                    'Icons',
+                    'Components',
+                    ['Atoms', ['Badge', 'Icon', 'Input', 'Logo', 'Text'],
+                     'Molecules', ['Button', 'Card', 'QuantityInput', 'StatusBadge'],
+                     'Organisms', ['Header']],
+                    '*', // Autres sections à la fin
+                ],
+                method: 'alphabetical',
+            },
+        },
         backgrounds: {
             default: "stockhub-dark",
             values: [
@@ -17,6 +37,13 @@ const preview: Preview = {
                     value: "linear-gradient(to br, #f8fafc, #f0ebff)",
                 },
             ],
+        },
+        actions: { argTypesRegex: "^on[A-Z].*" },
+        controls: {
+            matchers: {
+                color: /(background|color)$/i,
+                date: /Date$/,
+            },
         },
     },
     globalTypes: {
@@ -36,7 +63,7 @@ const preview: Preview = {
         (story, context) => {
             const theme = context.globals.theme || "dark"
 
-            // ✅ SOLUTION : Injecter les variables CSS dans le document
+            // ⭐️ IMPORTANT: Injecter les variables CSS dans le document
             const style = document.createElement("style")
             style.textContent = `
         :root {

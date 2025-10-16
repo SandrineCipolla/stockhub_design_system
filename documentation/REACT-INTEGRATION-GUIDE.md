@@ -1,9 +1,26 @@
 # Guide d'Intégration React
 
-**Version** : 1.0
+**Version** : 1.1
 **Date** : 16 Octobre 2025
+**Dernière mise à jour** : Session 1 - Migration Lucide
 
 Ce guide explique comment utiliser les Web Components du Design System StockHub dans une application React.
+
+## 🆕 Nouveautés Version 1.1
+
+### Migration vers Lucide Icons
+- ✅ **Icônes Lucide** : Le Design System utilise désormais Lucide (1000+ icônes)
+- ✅ **Compatibilité totale** avec StockHub V2 (qui utilise lucide-react)
+- ✅ **Même API** : Utilisez les mêmes noms d'icônes en PascalCase
+
+### Nouveaux Composants
+- ✅ **`sh-badge`** : Badge coloré pour statuts et labels
+- ✅ **`sh-card`** : Conteneur de contenu avec effets glassmorphism
+- ✅ **`sh-status-badge`** : Badge spécialisé pour statuts de stock avec indicateur animé
+
+### Composants Améliorés
+- ✅ **`sh-button`** : Variant ghost, état loading, support iconBefore/iconAfter
+- ✅ **`sh-icon`** : Migration complète vers Lucide
 
 ---
 
@@ -88,8 +105,17 @@ declare namespace JSX {
     };
 
     'sh-icon': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-      name: string;
-      size?: string | number;
+      name: string; // Nom d'icône Lucide en PascalCase (ex: "Package", "TrendingUp")
+      size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+      color?: 'inherit' | 'primary' | 'success' | 'warning' | 'danger' | 'muted';
+      clickable?: boolean;
+      spin?: boolean;
+    };
+
+    'sh-status-badge': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+      status: 'in-stock' | 'low-stock' | 'out-of-stock' | 'restock-needed';
+      showIndicator?: boolean;
+      label?: string;
     };
 
     'sh-metric-card': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
@@ -131,21 +157,36 @@ import React from 'react';
 function MyComponent() {
   return (
     <div>
-      {/* Button */}
-      <sh-button variant="primary" size="lg">
-        Click Me
+      {/* Button avec icône (Lucide) */}
+      <sh-button variant="primary" size="lg" iconBefore="Plus">
+        Add Item
+      </sh-button>
+
+      {/* Button ghost */}
+      <sh-button variant="ghost" iconBefore="Edit">
+        Edit
+      </sh-button>
+
+      {/* Button loading */}
+      <sh-button loading variant="primary">
+        Saving...
       </sh-button>
 
       {/* Badge */}
-      <sh-badge variant="success" pill>
+      <sh-badge variant="success" size="md" pill>
         In Stock
       </sh-badge>
 
-      {/* Icon */}
-      <sh-icon name="home" size="24"></sh-icon>
+      {/* Status Badge avec indicateur */}
+      <sh-status-badge status="low-stock" showIndicator></sh-status-badge>
 
-      {/* Card */}
-      <sh-card hover>
+      {/* Icon Lucide (⚡ NOUVELLE VERSION) */}
+      <sh-icon name="Package" size="lg" color="primary"></sh-icon>
+      <sh-icon name="TrendingUp" size="md" color="success"></sh-icon>
+      <sh-icon name="RefreshCw" size="md" spin></sh-icon>
+
+      {/* Card avec effets */}
+      <sh-card hover clickable padding="md">
         <h3>Card Title</h3>
         <p>Card content goes here</p>
       </sh-card>
@@ -153,6 +194,29 @@ function MyComponent() {
   );
 }
 ```
+
+### ⚠️ Migration Icônes vers Lucide
+
+**BREAKING CHANGE** : Les noms d'icônes ont changé de kebab-case vers PascalCase.
+
+```tsx
+// ❌ AVANT (v1.0 - système custom)
+<sh-icon name="home" size="24"></sh-icon>
+<sh-icon name="trending-up" size="24"></sh-icon>
+
+// ✅ MAINTENANT (v1.1 - Lucide)
+<sh-icon name="Home" size="md"></sh-icon>
+<sh-icon name="TrendingUp" size="md"></sh-icon>
+```
+
+**Liste des icônes principales** :
+- Actions: `Plus`, `Edit`, `Trash2`, `Eye`, `Download`, `Upload`
+- Navigation: `Home`, `Settings`, `Menu`, `ChevronRight`, `ArrowUpRight`
+- Statut: `AlertTriangle`, `CheckCircle`, `XCircle`, `Info`
+- Business: `Package`, `TrendingUp`, `BarChart`, `Calendar`, `MapPin`
+- UI: `Search`, `Filter`, `MoreVertical`, `Bell`, `User`, `Sun`, `Moon`
+
+[Voir toutes les icônes Lucide](https://lucide.dev/icons/)
 
 ### Composants avec Slots
 

@@ -2,7 +2,7 @@ import {Meta, StoryObj} from '@storybook/web-components';
 import './sh-text.ts';
 
 const meta :Meta = {
-    title: 'Components/atoms/text/sh-text',
+    title: 'Components/Atoms/Text',
     component: 'sh-text',
     parameters: {
         layout: 'centered',
@@ -42,4 +42,5 @@ export const Text: Story = {
         tag:'h1',
         color: '#6200ea',
     },
+    render: (args) => `<sh-text type="${args.type}" content="${args.content}" tag="${args.tag}" style="color: ${args.color};"></sh-text>`,
 };

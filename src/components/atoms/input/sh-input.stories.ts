@@ -2,7 +2,7 @@ import type {Meta, StoryObj} from "@storybook/web-components"
 import "./sh-input.ts"
 
 const meta = {
-    title: "StockHub/Atoms/Input",
+    title: "Components/Atoms/Input",
     component: "sh-input",
     tags: ["autodocs"],
     parameters: {
@@ -176,7 +176,3 @@ export const States: Story = {
 //         </div>
 //     `,
 // }
-
-
-
-

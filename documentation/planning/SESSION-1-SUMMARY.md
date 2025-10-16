@@ -63,6 +63,33 @@
 ### 📤 Exports
 - ✅ Tous les nouveaux composants exportés dans `src/index.ts`
 
+### 🎨 sh-icon (Migration Lucide)
+- ✅ Migration du système d'icônes custom vers **Lucide** (compatible StockHub V2)
+- ✅ Installation package `lucide` (version vanilla pour Web Components)
+- ✅ Réécriture `sh-icon.ts` pour utiliser Lucide dynamiquement
+- ✅ Mise à jour des noms d'icônes en PascalCase (Package, TrendingUp, Edit, etc.)
+- ✅ Mise à jour de toutes les stories (sh-icon, sh-button) avec nouveaux noms
+- ✅ Export type `IconName` depuis sh-icon.ts pour TypeScript
+- ✅ Utilisation `unsafeHTML` pour injecter SVG depuis lucide
+
+**Fichiers modifiés:**
+- `src/components/atoms/icon/sh-icon.ts`
+- `src/components/atoms/icon/sh-icon.stories.ts`
+- `src/components/molecules/button/sh-button.stories.ts`
+- `package.json` (ajout lucide)
+
+**Ancien système:**
+```typescript
+import { stockHubIcons } from '../../../icons/stockhub-icones.ts';
+name="package" // kebab-case
+```
+
+**Nouveau système:**
+```typescript
+import { icons } from 'lucide';
+name="Package" // PascalCase (compatible lucide-react de StockHub V2)
+```
+
 ---
 
 ## 🐛 Issues Résolues
@@ -104,12 +131,13 @@
 | Métrique | Valeur |
 |----------|--------|
 | **Composants créés** | 3 (sh-badge, sh-status-badge, sh-card) |
-| **Composants améliorés** | 1 (sh-button) |
+| **Composants améliorés** | 2 (sh-button, sh-icon) |
 | **Stories créées** | 25+ |
-| **Fichiers modifiés** | ~20 |
+| **Fichiers modifiés** | ~25 |
+| **Migrations techniques** | 1 (système d'icônes → Lucide) |
 | **Temps debugging Storybook** | ~1h30 |
-| **Temps développement** | ~1h30 |
-| **Total** | ~3h |
+| **Temps développement** | ~2h |
+| **Total** | ~3h30 |
 
 ---
 
@@ -126,14 +154,17 @@
 ### Modifiés
 - `src/components/molecules/button/sh-button.ts`
 - `src/components/molecules/button/sh-button.stories.ts`
-- `src/components/atoms/icon/sh-icon.stories.ts`
+- `src/components/atoms/icon/sh-icon.ts` (migration Lucide)
+- `src/components/atoms/icon/sh-icon.stories.ts` (noms icônes PascalCase)
 - `src/components/atoms/logo/sh-logo.stories.ts`
 - `src/components/atoms/text/sh-text.stories.ts`
 - `src/components/molecules/quantity-input/sh-quantity-input.stories.ts`
 - `src/components/organisms/header/sh-header.stories.ts`
 - `.storybook/preview.ts`
 - `src/index.ts`
+- `package.json` (ajout lucide)
 - `documentation/planning/SPRINT-1-CHECKLIST.md`
+- `documentation/planning/SESSION-1-SUMMARY.md` (ajout migration lucide)
 
 ---
 
@@ -150,7 +181,7 @@
 ### ⏭️ À Améliorer (Session 2)
 - **Atoms/Logo**: Couleur blanche invisible sur fond clair
 - **Atoms/Text**: Fonctionne mais basique
-- **Atoms/Icon**: Stories simplifiées (sans .map())
+- **Atoms/Icon**: ✅ Migré vers Lucide (compatible StockHub V2)
 - **Organisms/Header**: Fonctionne mais à mettre à jour selon StockHub V2
 
 ---
@@ -203,11 +234,13 @@
 3. **Event Handlers**: Ne pas utiliser inline TypeScript dans template strings
 4. **Documentation**: Tenir CHECKLIST à jour en temps réel = gain de temps
 5. **Debugging**: Examiner composants qui fonctionnent (sh-input) = solution rapide
+6. **Compatibilité StockHub V2**: Utiliser Lucide (vanilla) pour aligner avec lucide-react
+7. **Nommage des icônes**: Lucide utilise PascalCase (Package, TrendingUp) vs kebab-case (package, trending-up)
 
 ---
 
 ## 🎉 Conclusion Session 1
 
-Session productive avec **4 composants** créés/améliorés et tous fonctionnels dans Storybook. Debugging approfondi a permis de résoudre incompatibilités entre Lit et Storybook. Base solide établie pour Sprint 1 et sessions suivantes.
+Session productive avec **5 composants** créés/améliorés et tous fonctionnels dans Storybook. Debugging approfondi a permis de résoudre incompatibilités entre Lit et Storybook. Migration réussie vers Lucide pour une **compatibilité totale avec StockHub V2**. Base solide établie pour Sprint 1 et sessions suivantes.
 
 **Prochaine session**: Commit, build, et début sh-metric-card 🚀

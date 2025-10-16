@@ -1,21 +1,20 @@
-import {css, LitElement} from "lit"
-import {customElement, property} from "lit/decorators.js"
-import {type StockHubIconName, stockHubIcons} from "../../../icons/stockhub-icones.ts"
+import { css, html, LitElement, unsafeCSS } from "lit"
+import { customElement, property } from "lit/decorators.js"
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import { icons } from 'lucide';
+
+// Export all lucide icon names as a type
+export type IconName = keyof typeof icons;
 
 @customElement("sh-icon")
 export class ShIcon extends LitElement {
     static styles = css`
         :host {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 1.5rem;
             height: 1.5rem;
-
-            ///* ✅ Variables pour les tailles */
-            //--icon-size-xs: 1rem;
-            //--icon-size-sm: 1.25rem;
-            //--icon-size-md: 1.5rem;
-            //--icon-size-lg: 2rem;
-            //--icon-size-xl: 2.5rem;
         }
 
         /* ✅ Tailles d'icônes */
@@ -47,8 +46,11 @@ export class ShIcon extends LitElement {
         svg {
             width: 100%;
             height: 100%;
-            fill: currentColor;
             stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
             transition: all 150ms ease;
         }
 
@@ -71,23 +73,23 @@ export class ShIcon extends LitElement {
 
         /* ✅ Couleurs thématiques */
         :host([color="primary"]) svg {
-            color: #8b5cf6;
+            color: var(--color-primary-600, #8b5cf6);
         }
 
         :host([color="success"]) svg {
-            color: #22c55e;
+            color: var(--color-success-600, #22c55e);
         }
 
         :host([color="warning"]) svg {
-            color: #f59e0b;
+            color: var(--color-warning-600, #f59e0b);
         }
 
         :host([color="danger"]) svg {
-            color: #ef4444;
+            color: var(--color-danger-600, #ef4444);
         }
 
         :host([color="muted"]) svg {
-            color: #64748b;
+            color: var(--color-neutral-500, #64748b);
         }
 
         /* ✅ Animation de rotation */
@@ -100,17 +102,23 @@ export class ShIcon extends LitElement {
             to { transform: rotate(360deg); }
         }
     `
-    @property() name: StockHubIconName = "default"
+
+    @property() name: IconName = "CircleHelp"
     @property() size: "xs" | "sm" | "md" | "lg" | "xl" = "md"
     @property() color: "primary" | "success" | "warning" | "danger" | "muted" | "inherit" = "inherit"
     @property({ type: Boolean }) clickable = false
     @property({ type: Boolean }) spin = false
 
-    createRenderRoot() {
-        return this; // Important pour Storybook ! Permet l’affichage direct
+    private getIconSVG(): string {
+        const iconData = icons[this.name];
+        if (!iconData) {
+            console.warn(`Icon "${this.name}" not found in lucide icons`);
+            return icons.CircleHelp;
+        }
+        return iconData;
     }
 
     render() {
-        return stockHubIcons[this.name] ?? stockHubIcons.default
+        return html`${unsafeHTML(this.getIconSVG())}`;
     }
 }

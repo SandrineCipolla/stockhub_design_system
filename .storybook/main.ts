@@ -6,8 +6,9 @@ const config: StorybookConfig = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
-    "@storybook/addon-a11y", // ← AJOUTER pour l'accessibilité
-    "@storybook/addon-design-tokens", // ← AJOUTER pour les tokens (optionnel)
+    "@storybook/addon-a11y"
+    // Retirez cette ligne si l'addon n'est pas installé
+    // "@storybook/addon-design-tokens"
   ],
   framework: {
     name: "@storybook/web-components-vite",
@@ -15,7 +16,9 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: "tag",
-  },
+  }
+  // Retirez cette ligne si les répertoires n'existent pas
+  // staticDirs: ['../public', '../src/assets'],
 }
 
 export default config

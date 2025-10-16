@@ -1,12 +1,12 @@
-import { fn } from '@storybook/test';
+import {fn} from '@storybook/test';
 
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type {Meta, StoryObj} from '@storybook/web-components';
 
-import type { HeaderProps } from './Header';
-import { Header } from './Header';
+import type {HeaderProps} from './Header';
+import {Header} from './Header';
 
 const meta = {
-  title: 'Example/Header',
+  title: 'Introduction/Header Example',
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   render: (args: HeaderProps) => Header(args),

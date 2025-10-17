@@ -1,26 +1,55 @@
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import '../../../components/atoms/icon/sh-icon.ts';
 
-export type StockStatus = 'in-stock' | 'low-stock' | 'out-of-stock' | 'restock-needed';
+// 5 Stock statuses aligned with StockHub V2
+export type StockStatus = 'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked';
 
 interface StatusConfig {
   label: string;
-  variant: 'success' | 'warning' | 'danger' | 'info';
-  pulse: boolean;
+  icon: string; // Lucide icon name in PascalCase
+  variant: 'success' | 'warning' | 'danger' | 'default' | 'info';
+  animate: boolean; // pulse animation for critical states
 }
 
 const STATUS_CONFIG: Record<StockStatus, StatusConfig> = {
-  'in-stock': { label: 'En stock', variant: 'success', pulse: true },
-  'low-stock': { label: 'Stock faible', variant: 'warning', pulse: true },
-  'out-of-stock': { label: 'Rupture', variant: 'danger', pulse: false },
-  'restock-needed': { label: 'À réapprovisionner', variant: 'info', pulse: true },
+  'optimal': {
+    label: 'Optimal',
+    icon: 'CheckCircle',
+    variant: 'success',
+    animate: false
+  },
+  'low': {
+    label: 'Low',
+    icon: 'AlertCircle',
+    variant: 'warning',
+    animate: false
+  },
+  'critical': {
+    label: 'Critical',
+    icon: 'AlertTriangle',
+    variant: 'danger',
+    animate: true // pulse animation
+  },
+  'out-of-stock': {
+    label: 'Out of Stock',
+    icon: 'XCircle',
+    variant: 'default', // gray
+    animate: true // pulse animation
+  },
+  'overstocked': {
+    label: 'Overstocked',
+    icon: 'TrendingUp',
+    variant: 'info', // blue
+    animate: false
+  }
 };
 
 @customElement('sh-status-badge')
 export class ShStatusBadge extends LitElement {
-  @property({ type: String }) status: StockStatus = 'in-stock';
-  @property({ type: Boolean }) showIndicator = true;
-  @property({ type: String }) label?: string;
+  @property({ type: String }) status: StockStatus = 'optimal';
+  @property({ type: String }) size: 'sm' | 'md' | 'lg' = 'md';
+  @property({ type: String }) label?: string; // optional override
 
   static styles = css`
     :host {
@@ -30,25 +59,49 @@ export class ShStatusBadge extends LitElement {
     .status-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.375rem 0.75rem;
-      font-size: var(--font-fontSize-sm);
-      font-weight: var(--font-fontWeight-medium);
-      border-radius: 9999px;
+      font-weight: 500; /* font-medium */
+      border-radius: 9999px; /* rounded-full */
+      border: 1px solid;
       line-height: 1;
       white-space: nowrap;
+      transition: all 200ms ease;
     }
 
-    /* Indicator (dot) */
-    .indicator {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
+    /* Sizes - Aligned with StockHub V2 StatusBadge */
+    .sm {
+      padding: 0.125rem 0.5rem; /* py-0.5 px-2 */
+      font-size: 0.75rem; /* text-xs */
+      gap: 0.25rem; /* gap-1 */
     }
 
-    .pulse {
-      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    .md {
+      padding: 0.25rem 0.75rem; /* py-1 px-3 */
+      font-size: 0.75rem; /* text-xs */
+      gap: 0.375rem; /* gap-1.5 */
+    }
+
+    .lg {
+      padding: 0.375rem 1rem; /* py-1.5 px-4 */
+      font-size: 0.875rem; /* text-sm */
+      gap: 0.5rem; /* gap-2 */
+    }
+
+    /* Icon sizing based on badge size */
+    .sm sh-icon {
+      --icon-size: 0.75rem; /* 12px (w-3 h-3) */
+    }
+
+    .md sh-icon {
+      --icon-size: 1rem; /* 16px (w-4 h-4) */
+    }
+
+    .lg sh-icon {
+      --icon-size: 1.25rem; /* 20px (w-5 h-5) */
+    }
+
+    /* Pulse animation for critical states */
+    .animate-pulse {
+      animation: pulse 2s ease-in-out infinite;
     }
 
     @keyframes pulse {
@@ -60,78 +113,84 @@ export class ShStatusBadge extends LitElement {
       }
     }
 
-    /* Variants - Light mode */
+    /* ============================================ */
+    /* SUCCESS variant - Emerald / Optimal */
+    /* ============================================ */
     .success {
-      background: var(--color-success-100);
-      color: var(--color-success-800);
+      background: #d1fae5; /* bg-emerald-100 */
+      color: #047857; /* text-emerald-700 */
+      border-color: #6ee7b7; /* border-emerald-300 */
     }
 
-    .success .indicator {
-      background: var(--color-success-600);
-    }
-
-    .warning {
-      background: var(--color-warning-100);
-      color: var(--color-warning-800);
-    }
-
-    .warning .indicator {
-      background: var(--color-warning-600);
-    }
-
-    .danger {
-      background: var(--color-danger-100);
-      color: var(--color-danger-800);
-    }
-
-    .danger .indicator {
-      background: var(--color-danger-600);
-    }
-
-    .info {
-      background: #dbeafe;
-      color: #1e40af;
-    }
-
-    .info .indicator {
-      background: #3b82f6;
-    }
-
-    /* Dark mode */
     :host([data-theme="dark"]) .success {
-      background: var(--color-success-900);
-      color: var(--color-success-200);
+      background: rgba(16, 185, 129, 0.2); /* bg-emerald-500/20 */
+      color: #34d399; /* text-emerald-400 */
+      border-color: rgba(16, 185, 129, 0.3); /* border-emerald-500/30 */
     }
 
-    :host([data-theme="dark"]) .success .indicator {
-      background: var(--color-success-400);
+    /* ============================================ */
+    /* WARNING variant - Amber / Low Stock */
+    /* ============================================ */
+    .warning {
+      background: #fef3c7; /* bg-amber-100 */
+      color: #b45309; /* text-amber-700 */
+      border-color: #fcd34d; /* border-amber-300 */
     }
 
     :host([data-theme="dark"]) .warning {
-      background: var(--color-warning-900);
-      color: var(--color-warning-200);
+      background: rgba(245, 158, 11, 0.2); /* bg-amber-500/20 */
+      color: #fbbf24; /* text-amber-400 */
+      border-color: rgba(245, 158, 11, 0.3); /* border-amber-500/30 */
     }
 
-    :host([data-theme="dark"]) .warning .indicator {
-      background: var(--color-warning-400);
+    /* ============================================ */
+    /* DANGER variant - Red / Critical */
+    /* ============================================ */
+    .danger {
+      background: #fee2e2; /* bg-red-100 */
+      color: #b91c1c; /* text-red-700 */
+      border-color: #fca5a5; /* border-red-300 */
     }
 
     :host([data-theme="dark"]) .danger {
-      background: var(--color-danger-900);
-      color: var(--color-danger-200);
+      background: rgba(239, 68, 68, 0.2); /* bg-red-500/20 */
+      color: #f87171; /* text-red-400 */
+      border-color: rgba(239, 68, 68, 0.3); /* border-red-500/30 */
     }
 
-    :host([data-theme="dark"]) .danger .indicator {
-      background: var(--color-danger-400);
+    /* ============================================ */
+    /* DEFAULT variant - Gray / Out of Stock */
+    /* ============================================ */
+    .default {
+      background: #f3f4f6; /* bg-gray-100 */
+      color: #374151; /* text-gray-700 */
+      border-color: #d1d5db; /* border-gray-300 */
+    }
+
+    :host([data-theme="dark"]) .default {
+      background: rgba(107, 114, 128, 0.2); /* bg-gray-500/20 */
+      color: #9ca3af; /* text-gray-400 */
+      border-color: rgba(107, 114, 128, 0.3); /* border-gray-500/30 */
+    }
+
+    /* ============================================ */
+    /* INFO variant - Blue / Overstocked */
+    /* ============================================ */
+    .info {
+      background: #dbeafe; /* bg-blue-100 */
+      color: #1d4ed8; /* text-blue-700 */
+      border-color: #93c5fd; /* border-blue-300 */
     }
 
     :host([data-theme="dark"]) .info {
-      background: #1e3a8a;
-      color: #bfdbfe;
+      background: rgba(59, 130, 246, 0.2); /* bg-blue-500/20 */
+      color: #60a5fa; /* text-blue-400 */
+      border-color: rgba(59, 130, 246, 0.3); /* border-blue-500/30 */
     }
 
-    :host([data-theme="dark"]) .info .indicator {
-      background: #60a5fa;
+    /* Accessibility */
+    .status-badge {
+      role: status;
     }
   `;
 
@@ -140,10 +199,16 @@ export class ShStatusBadge extends LitElement {
     const displayLabel = this.label || config.label;
 
     return html`
-      <span class="status-badge ${config.variant}">
-        ${this.showIndicator
-          ? html`<span class="indicator ${config.pulse ? 'pulse' : ''}"></span>`
-          : ''}
+      <span
+        class="status-badge ${config.variant} ${this.size} ${config.animate ? 'animate-pulse' : ''}"
+        role="status"
+        aria-label="Status: ${displayLabel}"
+      >
+        <sh-icon
+          name="${config.icon}"
+          size="${this.size}"
+          style="width: var(--icon-size); height: var(--icon-size);"
+        ></sh-icon>
         <span>${displayLabel}</span>
       </span>
     `;

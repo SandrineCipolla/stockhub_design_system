@@ -124,6 +124,60 @@ name="Package" // PascalCase (compatible lucide-react de StockHub V2)
 **Solution**:
 - ✅ Ajouté fonction `render()` explicite pour tous les composants utilisant uniquement `args`
 
+### 4. Icônes Lucide ne s'affichaient pas (Session 2)
+**Problème**: Après migration vers Lucide, les icônes n'apparaissaient pas dans Storybook. Des cases vides avec le nom de l'icône s'affichaient à la place.
+
+**Causes identifiées**:
+1. **Noms d'icônes en kebab-case** au lieu de PascalCase Lucide
+   - `name="check"` au lieu de `name="Check"`
+   - `name="alert-triangle"` au lieu de `name="AlertTriangle"`
+2. **Utilisation de `createElement` de Lucide** qui nécessite l'objet `document` du DOM
+   - `createElement()` est conçu pour manipulation DOM directe
+   - Pas optimal pour Web Components avec Shadow DOM
+   - Erreur: `Failed to resolve module specifier 'lucide'` dans le navigateur
+
+**Solutions appliquées**:
+1. ✅ **Correction des noms d'icônes** dans tous les fichiers .stories.ts:
+   - `sh-badge.stories.ts`: check → Check, alert-triangle → AlertTriangle, x → X, info → Info, bell → Bell
+   - `sh-card.stories.ts`: folder → Folder, shopping-cart → ShoppingCart, users → Users, trending-up → TrendingUp
+   - `sh-input.stories.ts`: Aucune icône utilisée
+
+2. ✅ **Réécriture de `sh-icon.ts`** pour construire le SVG manuellement:
+   ```typescript
+   // AVANT (ne fonctionnait pas)
+   import { icons, createElement } from 'lucide';
+   const svg = createElement({
+     tag: 'svg',
+     attrs: {...},
+     children: iconData
+   });
+   return svg.outerHTML;
+
+   // APRÈS (fonctionne)
+   import * as lucideIcons from 'lucide';
+
+   private buildSVGFromIconData(iconData: any[]): string {
+     let pathsHTML = '';
+     for (const [tag, attrs] of iconData) {
+       const attrsString = Object.entries(attrs)
+         .map(([key, value]) => `${key}="${value}"`)
+         .join(' ');
+       pathsHTML += `<${tag} ${attrsString}/>`;
+     }
+     return `<svg xmlns="http://www.w3.org/2000/svg" ...>${pathsHTML}</svg>`;
+   }
+   ```
+
+**Résultat**:
+- ✅ Toutes les icônes s'affichent correctement dans Storybook
+- ✅ Compatibilité totale avec lucide-react de StockHub V2
+- ✅ Performance optimale (pas de manipulation DOM, juste génération de string)
+
+**Fichiers corrigés**:
+- `src/components/atoms/icon/sh-icon.ts` (méthode buildSVGFromIconData)
+- `src/components/atoms/badge/sh-badge.stories.ts` (noms icônes)
+- `src/components/molecules/card/sh-card.stories.ts` (noms icônes)
+
 ---
 
 ## 📊 Métriques

@@ -84,16 +84,16 @@ export const WithIcons: Story = {
   render: () => `
     <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
       <sh-badge variant="success">
-        <sh-icon name="check"></sh-icon> Completed
+        <sh-icon name="Check"></sh-icon> Completed
       </sh-badge>
       <sh-badge variant="warning">
-        <sh-icon name="alert-triangle"></sh-icon> Warning
+        <sh-icon name="AlertTriangle"></sh-icon> Warning
       </sh-badge>
       <sh-badge variant="danger">
-        <sh-icon name="x"></sh-icon> Error
+        <sh-icon name="X"></sh-icon> Error
       </sh-badge>
       <sh-badge variant="info">
-        <sh-icon name="info"></sh-icon> Info
+        <sh-icon name="Info"></sh-icon> Info
       </sh-badge>
     </div>
   `,
@@ -137,7 +137,7 @@ export const UsageExamples: Story = {
       <div>
         <h4 style="margin: 0 0 0.5rem 0;">Notification Badge</h4>
         <div style="display: inline-block; position: relative;">
-          <sh-button variant="ghost" iconBefore="bell">Notifications</sh-button>
+          <sh-button variant="ghost" iconBefore="Bell">Notifications</sh-button>
           <span style="position: absolute; top: -8px; right: -8px;">
             <sh-badge variant="danger" size="sm" pill>5</sh-badge>
           </span>

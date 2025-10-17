@@ -303,6 +303,11 @@ Après validation Sprint 1 :
 - ⏭️ **À faire**: Logo ne s'affiche pas (couleur blanche sur fond clair)
 - ⏭️ **À faire**: Header et Logo à mettre à jour selon StockHub V2
 
+## 🐛 Issues Identifiées Session 2
+
+- ✅ **Résolu**: Noms d'icônes en kebab-case → Corrigés en PascalCase (Check, AlertTriangle, X, Info, Bell, Folder, ShoppingCart, Users, TrendingUp)
+- ✅ **Résolu**: Icônes Lucide ne s'affichaient pas → Réécriture de `buildSVGFromIconData` pour construire SVG manuellement au lieu d'utiliser `createElement()`
+
 ---
 
 **Date de début** : 16/10/2025

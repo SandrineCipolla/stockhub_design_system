@@ -1,10 +1,10 @@
-import { css, html, LitElement, unsafeCSS } from "lit"
+import { css, html, LitElement } from "lit"
 import { customElement, property } from "lit/decorators.js"
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { icons } from 'lucide';
+import * as lucideIcons from 'lucide';
 
-// Export all lucide icon names as a type
-export type IconName = keyof typeof icons;
+// Export type for icon names
+export type IconName = keyof typeof lucideIcons;
 
 @customElement("sh-icon")
 export class ShIcon extends LitElement {
@@ -103,19 +103,47 @@ export class ShIcon extends LitElement {
         }
     `
 
-    @property() name: IconName = "CircleHelp"
+    @property() name: string = "CircleHelp"
     @property() size: "xs" | "sm" | "md" | "lg" | "xl" = "md"
     @property() color: "primary" | "success" | "warning" | "danger" | "muted" | "inherit" = "inherit"
     @property({ type: Boolean }) clickable = false
     @property({ type: Boolean }) spin = false
 
-    private getIconSVG(): string {
-        const iconData = icons[this.name];
-        if (!iconData) {
-            console.warn(`Icon "${this.name}" not found in lucide icons`);
-            return icons.CircleHelp;
+    private buildSVGFromIconData(iconData: any[]): string {
+        // Construire manuellement le SVG à partir des données d'icône
+        let pathsHTML = '';
+
+        for (const [tag, attrs] of iconData) {
+            const attrsString = Object.entries(attrs)
+                .map(([key, value]) => `${key}="${value}"`)
+                .join(' ');
+            pathsHTML += `<${tag} ${attrsString}/>`;
         }
-        return iconData;
+
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${pathsHTML}</svg>`;
+    }
+
+    private getIconSVG(): string {
+        try {
+            // Accéder aux icônes via lucideIcons.icons ou directement via les exports nommés
+            const iconsObj = (lucideIcons as any).icons || lucideIcons;
+            const iconData = iconsObj[this.name];
+
+            if (!iconData) {
+                console.warn(`Icon "${this.name}" not found in lucide icons, using CircleHelp`);
+                const fallbackData = iconsObj.CircleHelp || iconsObj['CircleHelp'];
+                if (fallbackData) {
+                    return this.buildSVGFromIconData(fallbackData);
+                }
+                // SVG de fallback hardcodé
+                return '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>';
+            }
+
+            return this.buildSVGFromIconData(iconData);
+        } catch (error) {
+            console.error('Error loading icon:', error, lucideIcons);
+            return '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>';
+        }
     }
 
     render() {

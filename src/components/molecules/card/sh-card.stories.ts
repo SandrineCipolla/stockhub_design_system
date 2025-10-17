@@ -98,7 +98,7 @@ export const Clickable: Story = {
       style="width: 250px;"
     >
       <div style="text-align: center;">
-        <sh-icon name="folder" style="font-size: 3rem; color: var(--color-primary-600);"></sh-icon>
+        <sh-icon name="Folder" style="font-size: 3rem; color: var(--color-primary-600);"></sh-icon>
         <h3 style="margin: 0.5rem 0;">Click Me</h3>
         <p style="margin: 0; font-size: 0.875rem; color: #6b7280;">
           This card is interactive (click to see effect)
@@ -157,7 +157,7 @@ export const ProductCard: Story = {
         <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary-600);">
           $29.99
         </span>
-        <sh-button variant="primary" size="sm" iconBefore="shopping-cart">Add</sh-button>
+        <sh-button variant="primary" size="sm" iconBefore="ShoppingCart">Add</sh-button>
       </div>
     </sh-card>
   `,
@@ -170,7 +170,7 @@ export const StatsCard: Story = {
       <sh-card hover style="width: 200px;">
         <div style="display: flex; align-items: center; gap: 1rem;">
           <div style="padding: 0.75rem; background: rgba(139, 92, 246, 0.1); border-radius: 12px;">
-            <sh-icon name="users" style="font-size: 1.5rem; color: var(--color-primary-600);"></sh-icon>
+            <sh-icon name="Users" style="font-size: 1.5rem; color: var(--color-primary-600);"></sh-icon>
           </div>
           <div>
             <div style="font-size: 0.75rem; color: #6b7280; text-transform: uppercase;">Users</div>
@@ -182,7 +182,7 @@ export const StatsCard: Story = {
       <sh-card hover style="width: 200px;">
         <div style="display: flex; align-items: center; gap: 1rem;">
           <div style="padding: 0.75rem; background: rgba(34, 197, 94, 0.1); border-radius: 12px;">
-            <sh-icon name="trending-up" style="font-size: 1.5rem; color: var(--color-success-600);"></sh-icon>
+            <sh-icon name="TrendingUp" style="font-size: 1.5rem; color: var(--color-success-600);"></sh-icon>
           </div>
           <div>
             <div style="font-size: 0.75rem; color: #6b7280; text-transform: uppercase;">Revenue</div>

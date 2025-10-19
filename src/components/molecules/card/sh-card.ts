@@ -1,5 +1,5 @@
-import { css, html, LitElement } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import {css, html, LitElement} from 'lit';
+import {customElement, property} from 'lit/decorators.js';
 
 /**
  * Card component with glassmorphism effect, customizable padding, and interactive states.
@@ -23,27 +23,6 @@ import { customElement, property } from 'lit/decorators.js';
  */
 @customElement('sh-card')
 export class ShCard extends LitElement {
-  /**
-   * Enable hover effects
-   * @type {boolean}
-   * @default true
-   */
-  @property({ type: Boolean }) hover = true;
-
-  /**
-   * Make card clickable
-   * @type {boolean}
-   * @default false
-   */
-  @property({ type: Boolean }) clickable = false;
-
-  /**
-   * Padding size
-   * @type {'none' | 'sm' | 'md' | 'lg'}
-   * @default 'md'
-   */
-  @property({ type: String }) padding: 'none' | 'sm' | 'md' | 'lg' = 'md';
-
   static styles = css`
     :host {
       display: block;
@@ -124,6 +103,24 @@ export class ShCard extends LitElement {
       margin-top: var(--component-card-gap);
     }
   `;
+  /**
+   * Enable hover effects
+   * @type {boolean}
+   * @default true
+   */
+  @property({ type: Boolean }) hover = true;
+  /**
+   * Make card clickable
+   * @type {boolean}
+   * @default false
+   */
+  @property({ type: Boolean }) clickable = false;
+  /**
+   * Padding size
+   * @type {'none' | 'sm' | 'md' | 'lg'}
+   * @default 'md'
+   */
+  @property({ type: String }) padding: 'none' | 'sm' | 'md' | 'lg' = 'md';
 
   render() {
     return html`
@@ -133,7 +130,7 @@ export class ShCard extends LitElement {
         tabindex="${this.clickable ? '0' : undefined}"
         @click="${this._handleClick}"
         @keydown="${this._handleKeyDown}"
-      >
+q page      >
         <slot name="header"></slot>
         <slot></slot>
         <slot name="footer"></slot>

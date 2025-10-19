@@ -69,6 +69,11 @@ const preview: Preview = {
         (story, context) => {
             const theme = context.globals.theme || "dark"
 
+            // ⭐️ SYNC: Override args.theme with global theme toggle
+            if (context.args && 'theme' in context.args) {
+                context.args.theme = theme
+            }
+
             // ⭐️ IMPORTANT: Injecter les variables CSS dans le document
             const style = document.createElement("style")
             style.textContent = `

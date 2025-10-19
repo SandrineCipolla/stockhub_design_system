@@ -443,7 +443,86 @@ npm run test
 
 ## 🌙 Thèmes
 
-Le Design System supporte les thèmes dark/light via CSS custom properties.
+Le Design System supporte les thèmes dark/light via CSS custom properties avec synchronisation globale dans Storybook.
+
+### Système de Thème Global (Storybook)
+
+Le thème est géré de manière centralisée via un **decorator global** dans `.storybook/preview.ts` :
+
+**Fonctionnalités** :
+- 🎨 **Toggle global** : Bouton dans la toolbar Storybook (icône pinceau)
+- 🔄 **Synchronisation automatique** : Le thème s'applique à tous les composants via `data-theme`
+- 🎭 **Backgrounds adaptatifs** : Dégradés dynamiques selon le thème sélectionné
+- ✨ **CSS Variables** : Injection automatique des variables de couleur selon le thème
+
+**Configuration** (`.storybook/preview.ts`) :
+```typescript
+globalTypes: {
+  theme: {
+    defaultValue: "dark",
+    toolbar: {
+      title: "Theme",
+      icon: "paintbrush",
+      items: [
+        { value: "light", icon: "sun", title: "Light" },
+        { value: "dark", icon: "moon", title: "Dark" },
+      ],
+    },
+  },
+}
+```
+
+**Le decorator applique automatiquement** :
+1. Synchronise `context.args.theme` avec le toggle global
+2. Applique `data-theme` à tous les composants `sh-*`
+3. Injecte les CSS variables globales selon le thème
+4. Applique un background dégradé adaptatif
+
+### Utilisation dans les Stories
+
+Toutes les stories utilisent maintenant `args.theme` pour tester les deux thèmes :
+
+```typescript
+export const MyStory: Story = {
+  args: {
+    theme: 'dark',  // Valeur par défaut
+  },
+  render: (args) => `
+    <div style="background: ${args.theme === 'dark'
+      ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)'
+      : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'};
+      padding: 2rem;">
+      <sh-button variant="primary" data-theme="${args.theme}">
+        Button
+      </sh-button>
+    </div>
+  `,
+};
+```
+
+### Utilisation dans les Composants
+
+Les composants supportent le thème via l'attribut `data-theme` :
+
+```typescript
+// Dans un composant Lit
+@property({ type: String, reflect: true, attribute: 'data-theme' })
+theme: 'light' | 'dark' = 'dark';
+
+static styles = css`
+  :host {
+    --text-color: #1e293b;  /* Light */
+  }
+
+  :host([data-theme="dark"]) {
+    --text-color: #f1f5f9;  /* Dark */
+  }
+
+  p {
+    color: var(--text-color);
+  }
+`;
+```
 
 ### Configuration Dark Mode par Défaut
 ```bash
@@ -453,9 +532,20 @@ npm run setup:dark
 ### Utilisation Manuelle
 ```html
 <html data-theme="dark">
-  <sh-button>Dark Button</sh-button>
+  <sh-button data-theme="dark">Dark Button</sh-button>
+  <sh-text data-theme="dark" content="Dark text"></sh-text>
 </html>
 ```
+
+### Composants avec Support Thème Complet
+
+- ✅ `sh-text` - Couleurs adaptatives selon le thème
+- ✅ `sh-icon` - Couleurs héritées du parent
+- ✅ `sh-button` - Tous les variants supportent les deux thèmes
+- ✅ `sh-badge` - Couleurs adaptatives
+- ✅ `sh-input` - Bordures et backgrounds adaptatifs
+- ✅ `sh-status-badge` - Support complet du thème
+- ✅ `sh-quantity-input` - Input et bouton sync adaptés au thème
 
 ## 🔗 Liens Utiles
 
@@ -485,7 +575,16 @@ StockHubV2/Front_End/stockHub_V2_front/documentation/planning/
 - ✅ Résolution problèmes affichage Storybook
 - ✅ Documentation complète
 
-### 🔄 Session 2 (À venir)
+### ✅ Session 2 (Complétée - 2h)
+- ✅ **Système de thème global** dans Storybook (toggle light/dark)
+- ✅ **sh-text** amélioré avec support thème complet
+- ✅ **35+ stories** mises à jour avec support thème
+- ✅ **sh-quantity-input** migré vers Lucide (RefreshCw icon)
+- ✅ Decorator global pour synchronisation automatique
+- ✅ Backgrounds adaptatifs dans toutes les stories
+- ✅ Documentation CHANGELOG et README mise à jour
+
+### 🔄 Session 3 (À venir)
 - [ ] Build & tests
 - [ ] Créer `sh-metric-card`
 - [ ] Créer `sh-stock-item-card`
@@ -534,7 +633,7 @@ ISC - Sandrine Cipolla
 
 ---
 
-**Version** : 1.1.0
-**Dernière mise à jour** : 16 Octobre 2025
+**Version** : 1.2.0
+**Dernière mise à jour** : 19 Octobre 2025
 **Statut** : En développement actif
-**Nouveautés** : Migration Lucide, sh-badge, sh-card, sh-status-badge, sh-button amélioré
+**Nouveautés** : Support thème global, sh-text amélioré, sh-quantity-input migré vers Lucide, 35+ stories avec toggle light/dark

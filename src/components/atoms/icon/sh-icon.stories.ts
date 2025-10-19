@@ -91,228 +91,169 @@ export const Default: Story = {
 
 // Toutes les icônes StockHub principales
 export const AllIcons: Story = {
-    render: () => `
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 16px; padding: 16px; background: #1e293b; border-radius: 12px;">
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="Package" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">Package</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="TrendingUp" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">TrendingUp</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="AlertTriangle" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">AlertTriangle</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="Plus" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">Plus</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="Search" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">Search</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="BarChart" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">BarChart</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="Eye" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">Eye</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="Edit" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">Edit</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="Trash2" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">Trash2</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="Bell" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">Bell</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="User" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">User</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="Home" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">Home</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="Settings" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">Settings</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="Download" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">Download</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="RefreshCw" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">RefreshCw</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="Filter" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">Filter</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="MoreVertical" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">MoreVertical</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="ChevronRight" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">ChevronRight</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="ArrowUpRight" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">ArrowUpRight</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="ArrowDownRight" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">ArrowDownRight</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="Minus" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">Minus</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="Calendar" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">Calendar</span>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: #334155; border-radius: 8px; color: #f8fafc;">
-          <sh-icon name="MapPin" size="lg" color="primary"></sh-icon>
-          <span style="font-size: 12px; text-align: center; color: #cbd5e1;">MapPin</span>
-        </div>
+    args: {
+        theme: "dark",
+    },
+    render: (args) => {
+        const icons = ["Package", "TrendingUp", "AlertTriangle", "Plus", "Search", "BarChart", "Eye", "Edit", "Trash2", "Bell", "User", "Home", "Settings", "Download", "RefreshCw", "Filter", "MoreVertical", "ChevronRight", "ArrowUpRight", "ArrowDownRight", "Minus", "Calendar", "MapPin"];
+        return `
+    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 400px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 16px; padding: 16px; background: ${args.theme === 'dark' ? '#1e293b' : '#ffffff'}; border-radius: 12px;">
+        ${icons.map(icon => `
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: ${args.theme === 'dark' ? '#334155' : '#f1f5f9'}; border-radius: 8px; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};">
+          <sh-icon name="${icon}" size="lg" color="primary" data-theme="${args.theme}"></sh-icon>
+          <span style="font-size: 12px; text-align: center; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">${icon}</span>
+        </div>`).join('')}
     </div>
-  `,
+    </div>
+  `;
+    }
 }
 
 // Tailles
 export const Sizes: Story = {
-    render: () => `
-    <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: #1e293b; border-radius: 12px;">
-      <div style="text-align: center; color: #f8fafc;">
-        <sh-icon name="Package" size="xs" color="primary"></sh-icon>
-        <p style="margin: 8px 0 0 0; font-size: 12px; color: #cbd5e1;">XS</p>
+    args: {
+        theme: "dark",
+    },
+    render: (args) => `
+    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
+    <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: ${args.theme === 'dark' ? '#1e293b' : '#ffffff'}; border-radius: 12px;">
+      <div style="text-align: center; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};">
+        <sh-icon name="Package" size="xs" color="primary" data-theme="${args.theme}"></sh-icon>
+        <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">XS</p>
       </div>
-      <div style="text-align: center; color: #f8fafc;">
-        <sh-icon name="Package" size="sm" color="primary"></sh-icon>
-        <p style="margin: 8px 0 0 0; font-size: 12px; color: #cbd5e1;">SM</p>
+      <div style="text-align: center; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};">
+        <sh-icon name="Package" size="sm" color="primary" data-theme="${args.theme}"></sh-icon>
+        <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">SM</p>
       </div>
-      <div style="text-align: center; color: #f8fafc;">
-        <sh-icon name="Package" size="md" color="primary"></sh-icon>
-        <p style="margin: 8px 0 0 0; font-size: 12px; color: #cbd5e1;">MD</p>
+      <div style="text-align: center; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};">
+        <sh-icon name="Package" size="md" color="primary" data-theme="${args.theme}"></sh-icon>
+        <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">MD</p>
       </div>
-      <div style="text-align: center; color: #f8fafc;">
-        <sh-icon name="Package" size="lg" color="primary"></sh-icon>
-        <p style="margin: 8px 0 0 0; font-size: 12px; color: #cbd5e1;">LG</p>
+      <div style="text-align: center; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};">
+        <sh-icon name="Package" size="lg" color="primary" data-theme="${args.theme}"></sh-icon>
+        <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">LG</p>
       </div>
-      <div style="text-align: center; color: #f8fafc;">
-        <sh-icon name="Package" size="xl" color="primary"></sh-icon>
-        <p style="margin: 8px 0 0 0; font-size: 12px; color: #cbd5e1;">XL</p>
+      <div style="text-align: center; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};">
+        <sh-icon name="Package" size="xl" color="primary" data-theme="${args.theme}"></sh-icon>
+        <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">XL</p>
       </div>
+    </div>
     </div>
   `,
 }
 
 // Couleurs
 export const Colors: Story = {
-    render: () => `
-    <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: #1e293b; border-radius: 12px;">
+    args: {
+        theme: "dark",
+    },
+    render: (args) => `
+    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
+    <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: ${args.theme === 'dark' ? '#1e293b' : '#ffffff'}; border-radius: 12px;">
       <div style="text-align: center;">
-        <sh-icon name="Package" size="lg" color="inherit" style="color: #f8fafc;"></sh-icon>
-        <p style="margin: 8px 0 0 0; font-size: 12px; color: #cbd5e1;">Inherit</p>
+        <sh-icon name="Package" size="lg" color="inherit" style="color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};" data-theme="${args.theme}"></sh-icon>
+        <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">Inherit</p>
       </div>
       <div style="text-align: center;">
-        <sh-icon name="Package" size="lg" color="primary"></sh-icon>
-        <p style="margin: 8px 0 0 0; font-size: 12px; color: #cbd5e1;">Primary</p>
+        <sh-icon name="Package" size="lg" color="primary" data-theme="${args.theme}"></sh-icon>
+        <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">Primary</p>
       </div>
       <div style="text-align: center;">
-        <sh-icon name="Package" size="lg" color="success"></sh-icon>
-        <p style="margin: 8px 0 0 0; font-size: 12px; color: #cbd5e1;">Success</p>
+        <sh-icon name="Package" size="lg" color="success" data-theme="${args.theme}"></sh-icon>
+        <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">Success</p>
       </div>
       <div style="text-align: center;">
-        <sh-icon name="Package" size="lg" color="warning"></sh-icon>
-        <p style="margin: 8px 0 0 0; font-size: 12px; color: #cbd5e1;">Warning</p>
+        <sh-icon name="Package" size="lg" color="warning" data-theme="${args.theme}"></sh-icon>
+        <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">Warning</p>
       </div>
       <div style="text-align: center;">
-        <sh-icon name="Package" size="lg" color="danger"></sh-icon>
-        <p style="margin: 8px 0 0 0; font-size: 12px; color: #cbd5e1;">Danger</p>
+        <sh-icon name="Package" size="lg" color="danger" data-theme="${args.theme}"></sh-icon>
+        <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">Danger</p>
       </div>
       <div style="text-align: center;">
-        <sh-icon name="Package" size="lg" color="muted"></sh-icon>
-        <p style="margin: 8px 0 0 0; font-size: 12px; color: #cbd5e1;">Muted</p>
+        <sh-icon name="Package" size="lg" color="muted" data-theme="${args.theme}"></sh-icon>
+        <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">Muted</p>
       </div>
+    </div>
     </div>
   `,
 }
 
 // États interactifs
 export const Interactive: Story = {
-    render: () => `
-    <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: #1e293b; border-radius: 12px;">
+    args: {
+        theme: "dark",
+    },
+    render: (args) => `
+    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
+    <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: ${args.theme === 'dark' ? '#1e293b' : '#ffffff'}; border-radius: 12px;">
       <div style="text-align: center;">
-        <sh-icon name="Settings" size="lg" color="primary" clickable></sh-icon>
-        <p style="margin: 8px 0 0 0; font-size: 12px; color: #cbd5e1;">Clickable</p>
+        <sh-icon name="Settings" size="lg" color="primary" clickable data-theme="${args.theme}"></sh-icon>
+        <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">Clickable</p>
       </div>
       <div style="text-align: center;">
-        <sh-icon name="RefreshCw" size="lg" color="primary" spin></sh-icon>
-        <p style="margin: 8px 0 0 0; font-size: 12px; color: #cbd5e1;">Spinning</p>
+        <sh-icon name="RefreshCw" size="lg" color="primary" spin data-theme="${args.theme}"></sh-icon>
+        <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">Spinning</p>
       </div>
       <div style="text-align: center;">
-        <sh-icon name="Bell" size="lg" color="warning" clickable></sh-icon>
-        <p style="margin: 8px 0 0 0; font-size: 12px; color: #cbd5e1;">Notification</p>
+        <sh-icon name="Bell" size="lg" color="warning" clickable data-theme="${args.theme}"></sh-icon>
+        <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">Notification</p>
       </div>
+    </div>
     </div>
   `,
 }
 
 // Cas d'usage StockHub
 export const StockHubUsage: Story = {
-    render: () => `
+    args: {
+        theme: "dark",
+    },
+    render: (args) => `
+    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 400px;">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; padding: 16px;">
       <!-- Métriques -->
-      <div style="background: #334155; padding: 16px; border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.1);">
+      <div style="background: ${args.theme === 'dark' ? '#334155' : '#ffffff'}; padding: 16px; border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.1);">
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-          <sh-icon name="Package" size="lg" color="primary"></sh-icon>
-          <h3 style="margin: 0; color: #f8fafc; font-size: 16px;">Total Produits</h3>
+          <sh-icon name="Package" size="lg" color="primary" data-theme="${args.theme}"></sh-icon>
+          <h3 style="margin: 0; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'}; font-size: 16px;">Total Produits</h3>
         </div>
         <div style="display: flex; align-items: center; gap: 8px;">
-          <span style="font-size: 24px; font-weight: bold; color: #f8fafc;">248</span>
-          <sh-icon name="ArrowUpRight" size="sm" color="success"></sh-icon>
+          <span style="font-size: 24px; font-weight: bold; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};">248</span>
+          <sh-icon name="ArrowUpRight" size="sm" color="success" data-theme="${args.theme}"></sh-icon>
           <span style="font-size: 14px; color: #22c55e;">+12</span>
         </div>
       </div>
 
       <!-- Actions -->
-      <div style="background: #334155; padding: 16px; border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.1);">
-        <h3 style="margin: 0 0 12px 0; color: #f8fafc; font-size: 16px;">Actions</h3>
+      <div style="background: ${args.theme === 'dark' ? '#334155' : '#ffffff'}; padding: 16px; border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.1);">
+        <h3 style="margin: 0 0 12px 0; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'}; font-size: 16px;">Actions</h3>
         <div style="display: flex; gap: 8px;">
-          <sh-icon name="Plus" size="md" color="primary" clickable></sh-icon>
-          <sh-icon name="Edit" size="md" color="muted" clickable></sh-icon>
-          <sh-icon name="Trash2" size="md" color="danger" clickable></sh-icon>
-          <sh-icon name="Eye" size="md" color="muted" clickable></sh-icon>
+          <sh-icon name="Plus" size="md" color="primary" clickable data-theme="${args.theme}"></sh-icon>
+          <sh-icon name="Edit" size="md" color="muted" clickable data-theme="${args.theme}"></sh-icon>
+          <sh-icon name="Trash2" size="md" color="danger" clickable data-theme="${args.theme}"></sh-icon>
+          <sh-icon name="Eye" size="md" color="muted" clickable data-theme="${args.theme}"></sh-icon>
         </div>
       </div>
 
       <!-- Navigation -->
-      <div style="background: #334155; padding: 16px; border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.1);">
-        <h3 style="margin: 0 0 12px 0; color: #f8fafc; font-size: 16px;">Navigation</h3>
+      <div style="background: ${args.theme === 'dark' ? '#334155' : '#ffffff'}; padding: 16px; border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.1);">
+        <h3 style="margin: 0 0 12px 0; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'}; font-size: 16px;">Navigation</h3>
         <div style="display: flex; flex-direction: column; gap: 8px;">
-          <div style="display: flex; align-items: center; gap: 8px; color: #cbd5e1;">
-            <sh-icon name="Home" size="sm" color="muted"></sh-icon>
+          <div style="display: flex; align-items: center; gap: 8px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">
+            <sh-icon name="Home" size="sm" color="muted" data-theme="${args.theme}"></sh-icon>
             <span style="font-size: 14px;">Tableau de bord</span>
-            <sh-icon name="ChevronRight" size="xs" color="muted" style="margin-left: auto;"></sh-icon>
+            <sh-icon name="ChevronRight" size="xs" color="muted" style="margin-left: auto;" data-theme="${args.theme}"></sh-icon>
           </div>
-          <div style="display: flex; align-items: center; gap: 8px; color: #cbd5e1;">
-            <sh-icon name="Package" size="sm" color="primary"></sh-icon>
+          <div style="display: flex; align-items: center; gap: 8px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">
+            <sh-icon name="Package" size="sm" color="primary" data-theme="${args.theme}"></sh-icon>
             <span style="font-size: 14px;">Produits</span>
-            <sh-icon name="ChevronRight" size="xs" color="muted" style="margin-left: auto;"></sh-icon>
+            <sh-icon name="ChevronRight" size="xs" color="muted" style="margin-left: auto;" data-theme="${args.theme}"></sh-icon>
           </div>
         </div>
       </div>
+    </div>
     </div>
   `,
 }

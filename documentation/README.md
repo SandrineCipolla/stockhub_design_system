@@ -227,4 +227,4 @@ Pour toute question ou problème :
 ---
 
 **Maintenu par** : Sandrine Cipolla
-**Dernière mise à jour** : 16 Octobre 2025
+**Dernière mise à jour** : 19 Octobre 2025

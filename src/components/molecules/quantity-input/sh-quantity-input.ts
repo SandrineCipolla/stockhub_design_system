@@ -1,7 +1,7 @@
 import {css, html, LitElement} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 import '../../atoms/input/sh-input.ts';
-import {icons} from '../../../icons/icons.ts'
+import '../../atoms/icon/sh-icon.ts';
 
 /**
  * Quantity input component with sync button for inventory management.
@@ -29,13 +29,15 @@ export class ShQuantityInput extends LitElement {
         border: none;
         color: white;
         cursor: pointer;
-        padding: 4px 8px;
-        border-radius: 4px;
-        
+        padding: 8px 12px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s ease, opacity 0.2s ease;
     }
-     .sync-button svg {
-         width: 16px;
-         height: 16px;
+     .sync-button:hover:not(:disabled) {
+        background-color: #7c3aed;
      }
      .sync-button:disabled {
         opacity: 0.5;
@@ -88,9 +90,9 @@ export class ShQuantityInput extends LitElement {
                         @click=${this.handleSync}
                         ?disabled=${!this.dirty}
                         title="Synchroniser"
+                        aria-label="Synchroniser la quantité"
                 >
-                    ${icons.sync}
-                    
+                    <sh-icon name="RefreshCw" size="sm" color="inherit"></sh-icon>
                 </button>
             </div>
         `;

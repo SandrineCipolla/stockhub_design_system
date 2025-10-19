@@ -186,16 +186,20 @@ CSS Parts:
 | Métrique | Valeur |
 |----------|--------|
 | **Composants documentés** | 10/10 (100%) |
+| **Composants mis à jour** | 2 (Logo, Card) |
 | **Fichiers JSDoc modifiés** | 10 |
 | **Fichiers config créés** | 2 |
 | **Fichiers doc créés** | 2 |
-| **Propriétés documentées** | ~60 |
+| **Propriétés documentées** | ~65 |
 | **Events documentés** | 8 |
 | **Slots documentés** | 7 |
+| **CSS Custom Properties** | 5 |
+| **Stories créées/améliorées** | ~15 |
 | **Temps configuration** | ~30 min |
 | **Temps documentation composants** | ~45 min |
 | **Temps documentation projet** | ~15 min |
-| **Total** | ~1h30 |
+| **Temps améliorations composants** | ~20 min |
+| **Total** | ~1h50 |
 
 ---
 
@@ -211,17 +215,51 @@ CSS Parts:
 - `src/components/atoms/badge/sh-badge.ts`
 - `src/components/atoms/icon/sh-icon.ts`
 - `src/components/atoms/input/sh-input.ts`
-- `src/components/atoms/logo/sh-logo.ts`
+- `src/components/atoms/logo/sh-logo.ts` ⭐ + Design V2
 - `src/components/atoms/text/sh-text.ts`
 - `src/components/molecules/button/sh-button.ts`
-- `src/components/molecules/card/sh-card.ts`
+- `src/components/molecules/card/sh-card.ts` ⭐ + Fix TypeScript
 - `src/components/molecules/status-badge/sh-status-badge.ts`
 - `src/components/molecules/quantity-input/sh-quantity-input.ts`
 - `src/components/organisms/header/sh-header.ts`
 
+### Modifiés (Stories améliorées)
+- `src/components/atoms/logo/sh-logo.stories.ts` ⭐ 7 nouvelles stories
+
 ### Modifiés (Configuration)
 - `package.json`
 - `.storybook/preview.ts`
+
+---
+
+## 🎨 Améliorations Composants
+
+### ShLogo - Mise à jour design StockHub V2
+
+**Avant**:
+- SVG générique blanc (invisible sur fond clair)
+- Taille fixe avec CSS variable `--logo-size`
+
+**Après**:
+- ✅ Design StockHub V2 avec initiales "SH" sur fond dégradé violet
+- ✅ Icône carrée avec `border-radius` et shadow
+- ✅ Texte "StockHub" avec dégradé violet (background-clip: text)
+- ✅ Property `size` avec 3 variants: `sm`, `md`, `lg`
+- ✅ CSS variables: `--logo-icon-size`, `--logo-text-size`, `--logo-gap`
+- ✅ 7 nouvelles stories (Default, AllSizes, CustomSizes, InHeader, etc.)
+- ✅ Support dark mode amélioré
+
+**Fichiers modifiés**:
+- `src/components/atoms/logo/sh-logo.ts` - Composant complètement réécrit
+- `src/components/atoms/logo/sh-logo.stories.ts` - Stories améliorées
+
+### ShCard - Correction TypeScript
+
+- ✅ Résolu erreur `TS6133: 'e' is declared but its value is never read`
+- ✅ Retiré paramètre inutilisé dans `_handleClick`
+
+**Fichier modifié**:
+- `src/components/molecules/card/sh-card.ts`
 
 ---
 
@@ -234,6 +272,8 @@ CSS Parts:
 - [x] Créer guide de documentation projet
 - [x] Tester la génération dans Storybook
 - [x] Créer SESSION-2-SUMMARY.md
+- [x] Mettre à jour sh-logo avec design StockHub V2
+- [x] Corriger erreurs TypeScript
 
 ---
 

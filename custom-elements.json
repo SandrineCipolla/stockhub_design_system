@@ -112,6 +112,236 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/atoms/icon/sh-icon.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Icon component that displays Lucide icons with various sizes and colors.",
+          "name": "ShIcon",
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"CircleHelp\"",
+              "description": "Name of the Lucide icon to display",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "\"md\"",
+              "description": "Size of the icon",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "'primary' | 'success' | 'warning' | 'danger' | 'muted' | 'inherit'"
+              },
+              "default": "\"inherit\"",
+              "description": "Color theme for the icon",
+              "attribute": "color"
+            },
+            {
+              "kind": "field",
+              "name": "clickable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enable interactive hover effects",
+              "attribute": "clickable"
+            },
+            {
+              "kind": "field",
+              "name": "spin",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enable spinning animation",
+              "attribute": "spin"
+            },
+            {
+              "kind": "method",
+              "name": "buildSVGFromIconData",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "iconData",
+                  "type": {
+                    "text": "any[]"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getIconSVG",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"CircleHelp\"",
+              "description": "Name of the Lucide icon to display",
+              "fieldName": "name"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "\"md\"",
+              "description": "Size of the icon",
+              "fieldName": "size"
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "'primary' | 'success' | 'warning' | 'danger' | 'muted' | 'inherit'"
+              },
+              "default": "\"inherit\"",
+              "description": "Color theme for the icon",
+              "fieldName": "color"
+            },
+            {
+              "name": "clickable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enable interactive hover effects",
+              "fieldName": "clickable"
+            },
+            {
+              "name": "spin",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enable spinning animation",
+              "fieldName": "spin"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-icon",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShIcon",
+          "declaration": {
+            "name": "ShIcon",
+            "module": "src/components/atoms/icon/sh-icon.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-icon",
+          "declaration": {
+            "name": "ShIcon",
+            "module": "src/components/atoms/icon/sh-icon.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/atoms/logo/sh-logo.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Logo component displaying the StockHub brand with icon and text.",
+          "name": "ShLogo",
+          "cssProperties": [
+            {
+              "description": "Controls the size of the logo icon (default: 40px)",
+              "name": "--logo-icon-size"
+            },
+            {
+              "description": "Controls the size of the logo text (default: 20px)",
+              "name": "--logo-text-size"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Logo size variant",
+              "attribute": "size"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Logo size variant",
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-logo",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShLogo",
+          "declaration": {
+            "name": "ShLogo",
+            "module": "src/components/atoms/logo/sh-logo.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-logo",
+          "declaration": {
+            "name": "ShLogo",
+            "module": "src/components/atoms/logo/sh-logo.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/atoms/input/sh-input.ts",
       "declarations": [
         {
@@ -559,168 +789,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/atoms/icon/sh-icon.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Icon component that displays Lucide icons with various sizes and colors.",
-          "name": "ShIcon",
-          "members": [
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"CircleHelp\"",
-              "description": "Name of the Lucide icon to display",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
-              },
-              "default": "\"md\"",
-              "description": "Size of the icon",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "color",
-              "type": {
-                "text": "'primary' | 'success' | 'warning' | 'danger' | 'muted' | 'inherit'"
-              },
-              "default": "\"inherit\"",
-              "description": "Color theme for the icon",
-              "attribute": "color"
-            },
-            {
-              "kind": "field",
-              "name": "clickable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enable interactive hover effects",
-              "attribute": "clickable"
-            },
-            {
-              "kind": "field",
-              "name": "spin",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enable spinning animation",
-              "attribute": "spin"
-            },
-            {
-              "kind": "method",
-              "name": "buildSVGFromIconData",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "iconData",
-                  "type": {
-                    "text": "any[]"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "getIconSVG",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"CircleHelp\"",
-              "description": "Name of the Lucide icon to display",
-              "fieldName": "name"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
-              },
-              "default": "\"md\"",
-              "description": "Size of the icon",
-              "fieldName": "size"
-            },
-            {
-              "name": "color",
-              "type": {
-                "text": "'primary' | 'success' | 'warning' | 'danger' | 'muted' | 'inherit'"
-              },
-              "default": "\"inherit\"",
-              "description": "Color theme for the icon",
-              "fieldName": "color"
-            },
-            {
-              "name": "clickable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enable interactive hover effects",
-              "fieldName": "clickable"
-            },
-            {
-              "name": "spin",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enable spinning animation",
-              "fieldName": "spin"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-icon",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShIcon",
-          "declaration": {
-            "name": "ShIcon",
-            "module": "src/components/atoms/icon/sh-icon.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-icon",
-          "declaration": {
-            "name": "ShIcon",
-            "module": "src/components/atoms/icon/sh-icon.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/molecules/button/sh-button.ts",
       "declarations": [
         {
@@ -922,48 +990,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/atoms/logo/sh-logo.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Logo component displaying the StockHub brand with icon and text.",
-          "name": "ShLogo",
-          "cssProperties": [
-            {
-              "description": "Controls the size of the logo (default: 48px)",
-              "name": "--logo-size"
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-logo",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShLogo",
-          "declaration": {
-            "name": "ShLogo",
-            "module": "src/components/atoms/logo/sh-logo.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-logo",
-          "declaration": {
-            "name": "ShLogo",
-            "module": "src/components/atoms/logo/sh-logo.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/molecules/card/sh-card.ts",
       "declarations": [
         {
@@ -1018,15 +1044,7 @@
             {
               "kind": "method",
               "name": "_handleClick",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "MouseEvent"
-                  }
-                }
-              ]
+              "privacy": "private"
             },
             {
               "kind": "method",

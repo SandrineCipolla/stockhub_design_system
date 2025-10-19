@@ -3,6 +3,17 @@ import {customElement, property} from 'lit/decorators.js';
 import '../../molecules/button/sh-button.ts';
 import '../../atoms/logo/sh-logo.ts';
 
+/**
+ * Header component with logo, user welcome message, and action buttons.
+ *
+ * @element sh-header
+ *
+ * @example
+ * ```html
+ * <sh-header userName="John Doe" isLoggedIn></sh-header>
+ * <sh-header userName="Guest" .isLoggedIn="${false}"></sh-header>
+ * ```
+ */
 @customElement('sh-header')
 export class ShHeader extends LitElement {
 
@@ -30,7 +41,18 @@ export class ShHeader extends LitElement {
         }
     `;
 
+    /**
+     * User name to display in welcome message
+     * @type {string}
+     * @default 'Utilisateur'
+     */
     @property({ type: String }) userName: string = 'Utilisateur';
+
+    /**
+     * Login state
+     * @type {boolean}
+     * @default true
+     */
     @property({ type: Boolean }) isLoggedIn: boolean = true;
 
     render() {

@@ -1,6 +1,18 @@
 import {css, html, LitElement} from 'lit';
 import {customElement} from 'lit/decorators.js';
 
+/**
+ * Logo component displaying the StockHub brand with icon and text.
+ *
+ * @element sh-logo
+ *
+ * @cssproperty --logo-size - Controls the size of the logo (default: 48px)
+ *
+ * @example
+ * ```html
+ * <sh-logo style="--logo-size: 32px;"></sh-logo>
+ * ```
+ */
 @customElement('sh-logo')
 export class ShLogo extends LitElement {
     static styles = css`

@@ -7,6 +7,12 @@ import "../src/tokens/design-tokens.css"
 import "../src/components/atoms/icon/sh-icon.ts"
 import "../src/components/molecules/button/sh-button.ts"
 
+// Import custom elements manifest for documentation
+import { setCustomElementsManifest } from '@storybook/web-components';
+import customElements from '../custom-elements.json';
+
+setCustomElementsManifest(customElements);
+
 const preview: Preview = {
     parameters: {
         // Configuration de l'ordre des sections dans le menu

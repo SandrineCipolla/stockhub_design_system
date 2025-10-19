@@ -1,6 +1,17 @@
 import {customElement, property} from "lit/decorators.js";
 import {css, html, LitElement} from "lit";
 
+/**
+ * Text component for rendering headings and paragraphs with custom styling.
+ *
+ * @element sh-text
+ *
+ * @example
+ * ```html
+ * <sh-text type="title" tag="h1" content="Welcome" color="#8b5cf6"></sh-text>
+ * <sh-text type="paragraph" content="This is a paragraph"></sh-text>
+ * ```
+ */
 @customElement('sh-text')
 export class ShText extends LitElement {
     static styles = css`
@@ -40,9 +51,32 @@ export class ShText extends LitElement {
       
     }
   `;
+    /**
+     * Type of text element
+     * @type {'title' | 'paragraph'}
+     * @default 'paragraph'
+     */
     @property({ type: String }) type: 'title' | 'paragraph' = 'paragraph';
+
+    /**
+     * Text content to display
+     * @type {string}
+     * @default ''
+     */
     @property({ type: String }) content: string = '';
+
+    /**
+     * HTML tag to use when type is 'title'
+     * @type {'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'}
+     * @default 'h1'
+     */
     @property({ type: String }) tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' = 'h1';
+
+    /**
+     * Text color
+     * @type {string}
+     * @default 'inherit'
+     */
     @property({type:String}) color:string ='inherit';
 
     render() {

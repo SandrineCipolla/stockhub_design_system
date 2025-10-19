@@ -1,10 +1,47 @@
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
+/**
+ * Card component with glassmorphism effect, customizable padding, and interactive states.
+ *
+ * @element sh-card
+ *
+ * @slot - Main card content
+ * @slot header - Optional header content
+ * @slot footer - Optional footer content
+ *
+ * @fires sh-card-click - Fired when clickable card is clicked
+ *
+ * @example
+ * ```html
+ * <sh-card padding="md">
+ *   <div slot="header">Header</div>
+ *   Card content
+ * </sh-card>
+ * <sh-card clickable>Clickable card</sh-card>
+ * ```
+ */
 @customElement('sh-card')
 export class ShCard extends LitElement {
+  /**
+   * Enable hover effects
+   * @type {boolean}
+   * @default true
+   */
   @property({ type: Boolean }) hover = true;
+
+  /**
+   * Make card clickable
+   * @type {boolean}
+   * @default false
+   */
   @property({ type: Boolean }) clickable = false;
+
+  /**
+   * Padding size
+   * @type {'none' | 'sm' | 'md' | 'lg'}
+   * @default 'md'
+   */
   @property({ type: String }) padding: 'none' | 'sm' | 'md' | 'lg' = 'md';
 
   static styles = css`
@@ -104,7 +141,7 @@ export class ShCard extends LitElement {
     `;
   }
 
-  private _handleClick(e: MouseEvent) {
+  private _handleClick() {
     if (!this.clickable) return;
 
     this.dispatchEvent(
@@ -121,7 +158,7 @@ export class ShCard extends LitElement {
 
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      this._handleClick(e as any);
+      this._handleClick();
     }
   }
 }

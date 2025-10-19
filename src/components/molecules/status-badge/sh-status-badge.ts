@@ -45,10 +45,38 @@ const STATUS_CONFIG: Record<StockStatus, StatusConfig> = {
   }
 };
 
+/**
+ * Status badge component for displaying stock status with icons and animations.
+ *
+ * @element sh-status-badge
+ *
+ * @example
+ * ```html
+ * <sh-status-badge status="optimal"></sh-status-badge>
+ * <sh-status-badge status="critical" size="lg"></sh-status-badge>
+ * <sh-status-badge status="low" label="Custom Label"></sh-status-badge>
+ * ```
+ */
 @customElement('sh-status-badge')
 export class ShStatusBadge extends LitElement {
+  /**
+   * Stock status type
+   * @type {'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'}
+   * @default 'optimal'
+   */
   @property({ type: String }) status: StockStatus = 'optimal';
+
+  /**
+   * Size of the badge
+   * @type {'sm' | 'md' | 'lg'}
+   * @default 'md'
+   */
   @property({ type: String }) size: 'sm' | 'md' | 'lg' = 'md';
+
+  /**
+   * Custom label override
+   * @type {string}
+   */
   @property({ type: String }) label?: string; // optional override
 
   static styles = css`

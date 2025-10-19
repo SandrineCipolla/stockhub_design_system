@@ -3,7 +3,18 @@ import {customElement, property} from 'lit/decorators.js';
 import '../../atoms/input/sh-input.ts';
 import {icons} from '../../../icons/icons.ts'
 
-
+/**
+ * Quantity input component with sync button for inventory management.
+ *
+ * @element sh-quantity-input
+ *
+ * @fires sync - Fired when sync button is clicked with updated value
+ *
+ * @example
+ * ```html
+ * <sh-quantity-input value="10" hideArrows></sh-quantity-input>
+ * ```
+ */
 @customElement('sh-quantity-input')
 export class ShQuantityInput extends LitElement {
     static styles = css`
@@ -40,8 +51,25 @@ export class ShQuantityInput extends LitElement {
     }    
   `;
 
+    /**
+     * Current quantity value
+     * @type {string}
+     * @default ''
+     */
     @property({ type: String }) value = '';
+
+    /**
+     * Indicates if value has changed
+     * @type {boolean}
+     * @default false
+     */
     @property({ type: Boolean }) dirty = false;
+
+    /**
+     * Hide number input arrows
+     * @type {boolean}
+     * @default false
+     */
     @property({ type: Boolean }) hideArrows = false;
 
 

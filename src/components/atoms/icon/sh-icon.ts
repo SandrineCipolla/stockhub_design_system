@@ -6,6 +6,18 @@ import * as lucideIcons from 'lucide';
 // Export type for icon names
 export type IconName = keyof typeof lucideIcons;
 
+/**
+ * Icon component that displays Lucide icons with various sizes and colors.
+ *
+ * @element sh-icon
+ *
+ * @example
+ * ```html
+ * <sh-icon name="Check" size="md" color="success"></sh-icon>
+ * <sh-icon name="Settings" clickable></sh-icon>
+ * <sh-icon name="Loader" spin></sh-icon>
+ * ```
+ */
 @customElement("sh-icon")
 export class ShIcon extends LitElement {
     static styles = css`
@@ -103,10 +115,39 @@ export class ShIcon extends LitElement {
         }
     `
 
+    /**
+     * Name of the Lucide icon to display
+     * @type {string}
+     * @default "CircleHelp"
+     */
     @property() name: string = "CircleHelp"
+
+    /**
+     * Size of the icon
+     * @type {'xs' | 'sm' | 'md' | 'lg' | 'xl'}
+     * @default 'md'
+     */
     @property() size: "xs" | "sm" | "md" | "lg" | "xl" = "md"
+
+    /**
+     * Color theme for the icon
+     * @type {'primary' | 'success' | 'warning' | 'danger' | 'muted' | 'inherit'}
+     * @default 'inherit'
+     */
     @property() color: "primary" | "success" | "warning" | "danger" | "muted" | "inherit" = "inherit"
+
+    /**
+     * Enable interactive hover effects
+     * @type {boolean}
+     * @default false
+     */
     @property({ type: Boolean }) clickable = false
+
+    /**
+     * Enable spinning animation
+     * @type {boolean}
+     * @default false
+     */
     @property({ type: Boolean }) spin = false
 
     private buildSVGFromIconData(iconData: any[]): string {

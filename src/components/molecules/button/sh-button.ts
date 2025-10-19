@@ -1,14 +1,69 @@
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
+/**
+ * Button component with multiple variants, sizes, loading state, and icon support.
+ *
+ * @element sh-button
+ *
+ * @slot - Button content (text or other elements)
+ *
+ * @fires sh-button-click - Fired when button is clicked
+ *
+ * @example
+ * ```html
+ * <sh-button variant="primary">Click me</sh-button>
+ * <sh-button variant="danger" iconBefore="Trash">Delete</sh-button>
+ * <sh-button loading>Loading...</sh-button>
+ * ```
+ */
 @customElement('sh-button')
 export class ShButton extends LitElement {
+  /**
+   * Visual variant of the button
+   * @type {'primary' | 'secondary' | 'ghost' | 'danger'}
+   * @default 'primary'
+   */
   @property({ type: String }) variant: 'primary' | 'secondary' | 'ghost' | 'danger' = 'primary';
+
+  /**
+   * Size of the button
+   * @type {'sm' | 'md' | 'lg'}
+   * @default 'md'
+   */
   @property({ type: String }) size: 'sm' | 'md' | 'lg' = 'md';
+
+  /**
+   * Disable the button
+   * @type {boolean}
+   * @default false
+   */
   @property({ type: Boolean }) disabled = false;
+
+  /**
+   * Show loading spinner
+   * @type {boolean}
+   * @default false
+   */
   @property({ type: Boolean }) loading = false;
+
+  /**
+   * Icon name to display before content
+   * @type {string}
+   */
   @property({ type: String }) iconBefore?: string;
+
+  /**
+   * Icon name to display after content
+   * @type {string}
+   */
   @property({ type: String }) iconAfter?: string;
+
+  /**
+   * Button type attribute
+   * @type {'button' | 'submit' | 'reset'}
+   * @default 'button'
+   */
   @property({ type: String }) type: 'button' | 'submit' | 'reset' = 'button';
 
   static styles = css`

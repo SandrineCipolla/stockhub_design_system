@@ -1,10 +1,42 @@
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
+/**
+ * Badge component for displaying labels, statuses, counters, and categories.
+ *
+ * @element sh-badge
+ *
+ * @slot - Default slot for badge content (text, icons, or both)
+ *
+ * @csspart badge - The badge container element
+ *
+ * @example
+ * ```html
+ * <sh-badge variant="success">Active</sh-badge>
+ * <sh-badge variant="danger" size="sm" pill>99+</sh-badge>
+ * ```
+ */
 @customElement('sh-badge')
 export class ShBadge extends LitElement {
+  /**
+   * Visual variant of the badge (color scheme)
+   * @type {'success' | 'warning' | 'danger' | 'info' | 'default'}
+   * @default 'default'
+   */
   @property({ type: String }) variant: 'success' | 'warning' | 'danger' | 'info' | 'default' = 'default';
+
+  /**
+   * Size of the badge
+   * @type {'sm' | 'md' | 'lg'}
+   * @default 'md'
+   */
   @property({ type: String }) size: 'sm' | 'md' | 'lg' = 'md';
+
+  /**
+   * Enable fully rounded corners (pill shape)
+   * @type {boolean}
+   * @default true
+   */
   @property({ type: Boolean }) pill = true; // Default to pill (rounded-full) like StockHub V2
 
   static styles = css`

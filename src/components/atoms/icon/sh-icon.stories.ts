@@ -61,6 +61,11 @@ const meta: Meta = {
             control: "boolean",
             description: "Animation de rotation",
         },
+        theme: {
+            control: "select",
+            options: ["light", "dark"],
+            description: "Thème de l'icône (light ou dark)",
+        },
     },
 }
 
@@ -75,8 +80,13 @@ export const Default: Story = {
         color: "inherit",
         clickable: false,
         spin: false,
+        theme: "dark",
     },
-    render: (args) => `<sh-icon name="${args.name}" size="${args.size}" color="${args.color}" ?clickable="${args.clickable}" ?spin="${args.spin}"></sh-icon>`,
+    render: (args) => `
+        <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+            <sh-icon name="${args.name}" size="${args.size}" color="${args.color}" ?clickable="${args.clickable}" ?spin="${args.spin}" data-theme="${args.theme}"></sh-icon>
+        </div>
+    `,
 }
 
 // Toutes les icônes StockHub principales

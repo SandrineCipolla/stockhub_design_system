@@ -147,35 +147,6 @@ export const UsageExamples: Story = {
   `,
 };
 
-// Dark Mode
-export const DarkMode: Story = {
-  render: () => `
-    <div style="display: flex; gap: 1rem; flex-direction: column;">
-      <div style="padding: 2rem; background: white; border-radius: 8px;">
-        <h4 style="margin-top: 0;">Light Mode</h4>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <sh-badge variant="success">Success</sh-badge>
-          <sh-badge variant="warning">Warning</sh-badge>
-          <sh-badge variant="danger">Danger</sh-badge>
-          <sh-badge variant="info">Info</sh-badge>
-          <sh-badge variant="default">Default</sh-badge>
-        </div>
-      </div>
-
-      <div style="padding: 2rem; background: #1e293b; border-radius: 8px;" data-theme="dark">
-        <h4 style="margin-top: 0; color: white;">Dark Mode</h4>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <sh-badge variant="success" data-theme="dark">Success</sh-badge>
-          <sh-badge variant="warning" data-theme="dark">Warning</sh-badge>
-          <sh-badge variant="danger" data-theme="dark">Danger</sh-badge>
-          <sh-badge variant="info" data-theme="dark">Info</sh-badge>
-          <sh-badge variant="default" data-theme="dark">Default</sh-badge>
-        </div>
-      </div>
-    </div>
-  `,
-};
-
 // Interactive Playground
 export const Playground: Story = {
   args: {

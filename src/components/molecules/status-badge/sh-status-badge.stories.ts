@@ -227,35 +227,6 @@ export const PulseAnimation: Story = {
   `,
 };
 
-// Dark Mode
-export const DarkMode: Story = {
-  render: () => `
-    <div style="display: flex; gap: 1rem; flex-direction: column;">
-      <div style="padding: 2rem; background: white; border-radius: 8px;">
-        <h4 style="margin-top: 0; color: #111827;">Light Mode</h4>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <sh-status-badge status="optimal"></sh-status-badge>
-          <sh-status-badge status="low"></sh-status-badge>
-          <sh-status-badge status="critical"></sh-status-badge>
-          <sh-status-badge status="out-of-stock"></sh-status-badge>
-          <sh-status-badge status="overstocked"></sh-status-badge>
-        </div>
-      </div>
-
-      <div style="padding: 2rem; background: #1e293b; border-radius: 8px;" data-theme="dark">
-        <h4 style="margin-top: 0; color: #f3f4f6;">Dark Mode</h4>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <sh-status-badge status="optimal" data-theme="dark"></sh-status-badge>
-          <sh-status-badge status="low" data-theme="dark"></sh-status-badge>
-          <sh-status-badge status="critical" data-theme="dark"></sh-status-badge>
-          <sh-status-badge status="out-of-stock" data-theme="dark"></sh-status-badge>
-          <sh-status-badge status="overstocked" data-theme="dark"></sh-status-badge>
-        </div>
-      </div>
-    </div>
-  `,
-};
-
 // Interactive Playground
 export const Playground: Story = {
   args: {

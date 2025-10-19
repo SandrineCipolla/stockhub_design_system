@@ -242,33 +242,6 @@ export const FormCard: Story = {
   `,
 };
 
-// Dark Mode
-export const DarkMode: Story = {
-  render: () => `
-    <div style="display: flex; gap: 1rem; flex-direction: column;">
-      <div style="padding: 2rem; background: white; border-radius: 8px;">
-        <h4 style="margin-top: 0;">Light Mode</h4>
-        <sh-card hover style="width: 250px;">
-          <h3 style="margin: 0 0 0.5rem 0;">Light Card</h3>
-          <p style="margin: 0; color: #6b7280;">
-            This card is in light mode
-          </p>
-        </sh-card>
-      </div>
-
-      <div style="padding: 2rem; background: #1e293b; border-radius: 8px;" data-theme="dark">
-        <h4 style="margin-top: 0; color: white;">Dark Mode</h4>
-        <sh-card hover data-theme="dark" style="width: 250px;">
-          <h3 style="margin: 0 0 0.5rem 0; color: white;">Dark Card</h3>
-          <p style="margin: 0; color: #cbd5e1;">
-            This card is in dark mode
-          </p>
-        </sh-card>
-      </div>
-    </div>
-  `,
-};
-
 // Interactive Playground
 export const Playground: Story = {
   args: {

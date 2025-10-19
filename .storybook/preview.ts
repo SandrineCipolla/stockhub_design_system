@@ -88,9 +88,17 @@ const preview: Preview = {
       `
             document.head.appendChild(style)
 
+            // Apply theme to all sh-* components after story renders
+            setTimeout(() => {
+                const allComponents = document.querySelectorAll('[data-theme], sh-badge, sh-card, sh-button, sh-icon, sh-input, sh-logo, sh-text, sh-status-badge, sh-quantity-input, sh-header')
+                allComponents.forEach((el) => {
+                    el.setAttribute('data-theme', theme)
+                })
+            }, 0)
+
             return `
         <div data-theme="${theme}" style="
-          min-height: 100vh; 
+          min-height: 100vh;
           padding: 20px;
           background: ${theme === "dark" ? "linear-gradient(to br, #0f172a, #1e1b4b)" : "linear-gradient(to br, #f8fafc, #f0ebff)"};
           color: ${theme === "dark" ? "#f8fafc" : "#1e293b"};

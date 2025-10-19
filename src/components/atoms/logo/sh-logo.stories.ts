@@ -85,33 +85,6 @@ export const InHeader: Story = {
     `,
 };
 
-// Light background
-export const OnLightBackground: Story = {
-    render: () => `
-        <div style="
-            background: white;
-            padding: 2rem;
-            border-radius: 0.5rem;
-            border: 1px solid #e5e7eb;
-        ">
-            <sh-logo size="lg"></sh-logo>
-        </div>
-    `,
-};
-
-// Dark background
-export const OnDarkBackground: Story = {
-    render: () => `
-        <div style="
-            background: #1e293b;
-            padding: 2rem;
-            border-radius: 0.5rem;
-        ">
-            <sh-logo size="lg"></sh-logo>
-        </div>
-    `,
-};
-
 // Playground
 export const Playground: Story = {
     args: {

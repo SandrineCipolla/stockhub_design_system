@@ -195,11 +195,13 @@ CSS Parts:
 | **Slots documentés** | 7 |
 | **CSS Custom Properties** | 5 |
 | **Stories créées/améliorées** | ~15 |
+| **Stories redondantes supprimées** | 6 |
 | **Temps configuration** | ~30 min |
 | **Temps documentation composants** | ~45 min |
 | **Temps documentation projet** | ~15 min |
 | **Temps améliorations composants** | ~20 min |
-| **Total** | ~1h50 |
+| **Temps optimisation Storybook** | ~10 min |
+| **Total** | ~2h00 |
 
 ---
 
@@ -225,6 +227,12 @@ CSS Parts:
 
 ### Modifiés (Stories améliorées)
 - `src/components/atoms/logo/sh-logo.stories.ts` ⭐ 7 nouvelles stories
+
+### Modifiés (Stories optimisées - Suppression redondances)
+- `src/components/atoms/badge/sh-badge.stories.ts` - Supprimé "DarkMode"
+- `src/components/atoms/logo/sh-logo.stories.ts` - Supprimé "OnLightBackground" et "OnDarkBackground"
+- `src/components/molecules/card/sh-card.stories.ts` - Supprimé "DarkMode"
+- `src/components/molecules/status-badge/sh-status-badge.stories.ts` - Supprimé "DarkMode"
 
 ### Modifiés (Configuration)
 - `package.json`
@@ -274,6 +282,25 @@ CSS Parts:
 - [x] Créer SESSION-2-SUMMARY.md
 - [x] Mettre à jour sh-logo avec design StockHub V2
 - [x] Corriger erreurs TypeScript
+
+---
+
+## 🎨 Optimisation Storybook - Theme Toggle
+
+### Suppression Stories Redondantes
+
+Lors de la relecture, nous avons remarqué que les stories "DarkMode" qui affichent côte à côte les versions light et dark étaient **redondantes** avec le toggle global de thème dans la toolbar Storybook.
+
+**Actions réalisées**:
+- ✅ Confirmé que dark mode est déjà configuré par défaut dans `.storybook/preview.ts` (line 57: `defaultValue: "dark"`)
+- ✅ Supprimé story "DarkMode" de `sh-badge.stories.ts` (lines 150-177)
+- ✅ Supprimé story "DarkMode" de `sh-card.stories.ts` (lines 245-270)
+- ✅ Supprimé stories "OnLightBackground" et "OnDarkBackground" de `sh-logo.stories.ts` (lines 88-114)
+- ✅ Supprimé story "DarkMode" de `sh-status-badge.stories.ts` (lines 230-257)
+
+**Conservées**: Stories contextuelles comme "InHeader" (logo), "InContext" (status-badge), "InTable" (status-badge) car elles montrent le composant dans un contexte d'utilisation réel, pas juste la comparaison light/dark.
+
+**Bénéfice**: Interface Storybook plus claire, utilisateurs peuvent facilement basculer entre light/dark avec le toggle global au lieu d'avoir des stories dédiées.
 
 ---
 

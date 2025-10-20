@@ -271,7 +271,8 @@ Header de l'application.
 
 Le Storybook est **automatiquement déployé** sur Chromatic à chaque commit :
 
-- **Voir le Storybook en ligne** : Rendez-vous sur le [dashboard Chromatic](https://www.chromatic.com/builds?appId=VOTRE_APP_ID)
+- **Voir le Storybook en ligne** : https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/
+- **Dashboard Chromatic** : https://www.chromatic.com/builds?appId=68f5fbe10f495706cb168751
 - **Preview de PR** : Chaque Pull Request génère automatiquement une URL de preview
 - **Visual Testing** : Détection automatique des changements visuels entre versions
 

@@ -267,6 +267,20 @@ Header de l'application.
 
 ## 📖 Storybook
 
+### 🌐 Accès en ligne (Chromatic)
+
+Le Storybook est **automatiquement déployé** sur Chromatic à chaque commit :
+
+- **Voir le Storybook en ligne** : https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/
+- **Dashboard Chromatic** : https://www.chromatic.com/builds?appId=68f5fbe10f495706cb168751
+- **Preview de PR** : Chaque Pull Request génère automatiquement une URL de preview
+- **Visual Testing** : Détection automatique des changements visuels entre versions
+
+> **Note :** Les Pull Requests provenant de forks **ne génèrent pas d'URL de preview Chromatic**.
+> Ceci est dû à une limitation de GitHub Actions : les secrets du repository (comme `CHROMATIC_PROJECT_TOKEN`) ne sont pas exposés aux workflows déclenchés par des forks, pour des raisons de sécurité.
+
+Pour plus d'informations, consultez [`.github/CHROMATIC_SETUP.md`](.github/CHROMATIC_SETUP.md)
+
 ### Lancer Storybook Localement
 ```bash
 npm run storybook

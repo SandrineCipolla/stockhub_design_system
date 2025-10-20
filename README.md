@@ -269,7 +269,7 @@ Header de l'application.
 
 ### 🌐 Accès en ligne (Chromatic)
 
-Le Storybook est **automatiquement déployé** sur Chromatic à chaque commit :
+Le Storybook est **automatiquement déployé** sur Chromatic à chaque commit (sur master ou feature branches) :
 
 - **Voir le Storybook en ligne** : https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/
 - **Dashboard Chromatic** : https://www.chromatic.com/builds?appId=68f5fbe10f495706cb168751

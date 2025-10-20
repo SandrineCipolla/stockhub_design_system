@@ -18,12 +18,79 @@ Intégrer les Web Components du Design System dans l'application React StockHub 
 
 ## 📦 Installation
 
-### 1. Installer le package
+### Méthode 1 : Installer depuis GitHub ✅ RECOMMANDÉ
+
+Puisque les deux projets sont sur la même machine et le Design System n'est pas publié sur NPM, installez directement depuis GitHub :
 
 ```bash
-cd Front_End/stockHub_V2_front
+# 1. Naviguer vers StockHub V2
+cd C:/Users/sandr/Dev/RNCP7/StockHub_V2/Front_End/stockHub_V2_front
+
+# 2. Installer depuis GitHub (branche master)
+npm install git+https://github.com/SandrineCipolla/stockhub_design_system.git
+
+# OU installer une branche spécifique
+npm install git+https://github.com/SandrineCipolla/stockhub_design_system.git#v2
+
+# OU installer un tag spécifique
+npm install git+https://github.com/SandrineCipolla/stockhub_design_system.git#v2.0.0
+```
+
+**Avantages** :
+- ✅ Fonctionne en local ET sur GitHub Actions CI/CD
+- ✅ Pas besoin de NPM (gratuit)
+- ✅ Versionné via Git (tags, branches)
+- ✅ Facile à mettre à jour
+
+**Mise à jour** :
+```bash
+npm update @stockhub/design-system
+# OU forcer la réinstallation
+npm install git+https://github.com/SandrineCipolla/stockhub_design_system.git --force
+```
+
+---
+
+### Méthode 2 : npm link (Développement local uniquement)
+
+**⚠️ Limitation** : Ne fonctionne PAS sur GitHub Actions, uniquement en local.
+
+```bash
+# 1. Dans le Design System
+cd C:/Users/sandr/Dev/RNCP7/stockhub_design_system
+npm link
+
+# 2. Dans StockHub V2
+cd C:/Users/sandr/Dev/RNCP7/StockHub_V2/Front_End/stockHub_V2_front
+npm link @stockhub/design-system
+```
+
+**Avantages** :
+- ✅ Modifications instantanées (pas besoin de republier)
+- ✅ Idéal pour développement
+
+**Inconvénients** :
+- ❌ Ne fonctionne pas sur CI/CD
+- ❌ Lien cassé si vous changez de répertoire
+
+---
+
+### Méthode 3 : Publier sur NPM (Si vous voulez le partager)
+
+```bash
+# 1. Login sur NPM
+npm login
+
+# 2. Publier
+cd C:/Users/sandr/Dev/RNCP7/stockhub_design_system
+npm publish --access public
+
+# 3. Installer depuis NPM
+cd C:/Users/sandr/Dev/RNCP7/StockHub_V2/Front_End/stockHub_V2_front
 npm install @stockhub/design-system@latest
 ```
+
+---
 
 ### 2. Importer les composants
 

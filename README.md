@@ -328,18 +328,39 @@ Conteneur de contenu avec effets glassmorphism.
 </sh-card>
 ```
 
-#### `<sh-status-badge>` 🆕 NOUVEAU
-Badge spécialisé pour statuts de stock avec indicateur animé.
+#### `<sh-status-badge>` ⚡ MIS À JOUR - 5 Nouveaux Statuts
+Badge spécialisé pour statuts de stock avec icônes Lucide et animation pulse pour états critiques.
 
 **Props** :
-- `status`: `"in-stock"` | `"low-stock"` | `"out-of-stock"` | `"restock-needed"`
-- `showIndicator`: boolean - Affiche l'indicateur pulse
+- `status`: `"optimal"` | `"low"` | `"critical"` | `"out-of-stock"` | `"overstocked"`
+- `size`: `"sm"` | `"md"` | `"lg"`
 - `label`: string - Override du label par défaut
 
+**Statuts disponibles** :
+- **optimal** (vert) - Stock optimal avec icône CheckCircle
+- **low** (orange) - Stock faible avec icône AlertCircle
+- **critical** (rouge + pulse) - Stock critique avec icône AlertTriangle
+- **out-of-stock** (gris + pulse) - Rupture de stock avec icône XCircle
+- **overstocked** (bleu) - Surstockage avec icône TrendingUp
+
 ```html
-<sh-status-badge status="in-stock"></sh-status-badge>
-<sh-status-badge status="low-stock" showIndicator></sh-status-badge>
-<sh-status-badge status="out-of-stock" label="Rupture de stock"></sh-status-badge>
+<!-- Stock optimal -->
+<sh-status-badge status="optimal"></sh-status-badge>
+
+<!-- Stock faible -->
+<sh-status-badge status="low" size="lg"></sh-status-badge>
+
+<!-- Stock critique (animation pulse) -->
+<sh-status-badge status="critical"></sh-status-badge>
+
+<!-- Rupture de stock (animation pulse) -->
+<sh-status-badge status="out-of-stock"></sh-status-badge>
+
+<!-- Surstockage -->
+<sh-status-badge status="overstocked"></sh-status-badge>
+
+<!-- Label personnalisé -->
+<sh-status-badge status="low" label="Réapprovisionner"></sh-status-badge>
 ```
 
 #### `<sh-quantity-input>`
@@ -700,36 +721,51 @@ StockHubV2/Front_End/stockHub_V2_front/documentation/planning/
 - ✅ **CI/CD Chromatic** : Déploiement automatique, visual testing, workflow optimisé
 - ✅ **Sécurité** : Permissions minimales, concurrency group, protection forks
 
-### ✅ Session 3 (Complétée - 2h30) - Nouveaux Composants
-**Objectif** : Créer les composants manquants pour StockHub V2
+### ✅ Session 3 (Complétée - 2h00) - Theme Toggle Global
+**Objectif** : Synchroniser le toggle theme global de Storybook avec tous les composants
 
+- ✅ **Theme Toggle Global** : Synchronisation automatique de `context.globals.theme` avec `args.theme`
+- ✅ **sh-header** : Correction couleur icône Bell (dark mode)
+- ✅ **9 stories header** : Adaptation des nested elements au theme
+- ✅ **9 stories card** : Adaptation complète au theme toggle
+- ✅ **Pattern réutilisable** : Wrapper div avec gradient + color pour toutes les stories
+- ✅ **DX améliorée** : Un seul toggle au lieu de stories séparées light/dark
+
+### ✅ Session 4 (Complétée - 2h30) - Nouveaux Composants StockHub V2
+**Objectif** : Créer les composants spécifiques pour StockHub V2
+
+- ✅ **sh-status-badge V2** : Mis à jour avec 5 nouveaux statuts alignés StockHub V2
+  - 5 statuts : `optimal`, `low`, `critical`, `out-of-stock`, `overstocked`
+  - Animation pulse pour `critical` et `out-of-stock`
+  - Icônes Lucide : CheckCircle, AlertCircle, AlertTriangle, XCircle, TrendingUp
+  - 7 stories complètes avec theme toggle
 - ✅ **sh-metric-card** : Carte métrique avec icône, valeur, et indicateur de tendance
   - Props : `icon`, `label`, `value`, `trend`, `trendValue`, `variant`, `clickable`
   - Variants : `default`, `success`, `warning`, `danger`, `info`
   - Support thème light/dark complet
   - Icônes colorées selon variant (comme StockHub V2)
-  - 7 stories : Default, WithIncreaseTrend, WithDecreaseTrend, MonetaryValue, Clickable, AllVariants, DashboardExample
-- ✅ **sh-stock-item-card** : Carte produit pour l'inventaire familial (loisirs créatifs, alimentaire, maison)
+- ✅ **sh-stock-item-card** : Carte produit pour l'inventaire familial
   - Props : `name`, `sku`, `quantity`, `value`, `location`, `status`, `loading`
-  - 5 statuts : `optimal`, `low`, `critical`, `out-of-stock`, `overstocked`
   - Actions : boutons View/Edit/Delete (icônes Eye, Edit, Trash2)
-  - Badge de statut avec labels en anglais
-  - Grid de métriques (quantité, valeur, emplacement)
-  - 9 stories : Optimal, LowStock, CriticalStock, OutOfStock, Overstocked, Minimal, Loading, AllStatuses, InventoryGrid
-  - **Exemples réalistes** : Produits créatifs (peinture acrylique, crayons aquarelle, tissu, papier, pinceaux)
-  - **Emplacements familiaux** : Atelier - Étagère 3, Bureau - Tiroir 2, Cellier - Casier B
+  - Badge de statut avec 5 variantes
+  - Grid de métriques responsive (quantité, valeur, emplacement)
+  - Barre de statut colorée (border-left)
+- ✅ **Corrections TypeScript** : Fix erreurs dans metric-card et stock-item-card
+- ✅ **Documentation** : JSDoc complet, SESSION-4-SUMMARY.md
 
-### 🔧 Session 4 - Améliorations Composants
-**Objectif** : Finaliser les composants existants
+### 🚀 Session 5 (En cours) - Finalisation Phase 1
+**Objectif** : Préparer le Design System pour intégration StockHub V2
 
-- [ ] **sh-logo** : Fixer couleur adaptative pour les thèmes
-- [ ] **sh-header** : Mettre à jour selon les besoins de StockHub V2
-- [ ] Vérifier tous les composants dans Chromatic
-- [ ] Documentation complète de tous les composants
+- [x] Build du Design System
+- [x] Vérification des exports package.json
+- [x] Mise à jour README avec nouveaux composants
+- [ ] Guide d'intégration StockHub V2
+- [ ] SESSION-5-SUMMARY.md
+- [ ] Tag version v2.0.0
 
-**Temps estimé** : 1-2h
+**Temps estimé** : 2-3h
 
-### 🧪 Session 5 - Tests Unitaires
+### 🧪 Session 6 - Tests Unitaires
 **Objectif** : Coverage ≥ 93%
 
 - [ ] Setup Vitest + Testing Library
@@ -817,7 +853,10 @@ ISC - Sandrine Cipolla
 
 ---
 
-**Version** : 1.3.0
+**Version** : 2.0.0-rc
 **Dernière mise à jour** : 20 Octobre 2025
-**Statut** : En développement actif
-**Nouveautés** : sh-metric-card et sh-stock-item-card pour inventaire familial (loisirs créatifs, alimentaire, maison)
+**Statut** : Phase 1 complète - Prêt pour intégration StockHub V2
+**Nouveautés Session 4** :
+- sh-status-badge V2 avec 5 nouveaux statuts (optimal, low, critical, out-of-stock, overstocked)
+- sh-metric-card pour KPIs avec tendances
+- sh-stock-item-card pour inventaire familial avec actions (View/Edit/Delete)

@@ -14,7 +14,7 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 - **Chromatic CI/CD** : Configuration complète de Chromatic pour le déploiement automatique du Storybook
   - 🌐 **Storybook en ligne** : https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/
   - 🔄 **GitHub Actions** : Workflow automatique sur tous les push et PR
-  - 📸 **Visual Testing** : 80 snapshots capturés pour détecter les régressions visuelles
+  - 📸 **Visual Testing** : Snapshots visuels capturés pour détecter les régressions visuelles
   - 🎯 **Preview de PR** : Chaque PR génère automatiquement une URL de preview
   - 📊 **Dashboard** : https://www.chromatic.com/builds?appId=68f5fbe10f495706cb168751
 

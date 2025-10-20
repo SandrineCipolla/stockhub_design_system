@@ -598,17 +598,58 @@ StockHubV2/Front_End/stockHub_V2_front/documentation/planning/
 - ✅ Backgrounds adaptatifs dans toutes les stories
 - ✅ Documentation CHANGELOG et README mise à jour
 
-### 🔄 Session 3 (À venir)
-- [ ] Build & tests
-- [ ] Créer `sh-metric-card`
-- [ ] Créer `sh-stock-item-card`
-- [ ] Fixer `sh-logo` (couleur adaptative)
-- [ ] Mettre à jour `sh-header` selon StockHub V2
+### ✅ Session Maintenance (Complétée - 2h)
+- ✅ **Build fixes** : Configuration ES modules pour build NPM
+- ✅ **Code quality** : 13 issues GitHub Copilot résolues
+- ✅ **UX improvements** : Header logout/login, dirty state docs, card overflow
+- ✅ **CI/CD Chromatic** : Déploiement automatique, visual testing, workflow optimisé
+- ✅ **Sécurité** : Permissions minimales, concurrency group, protection forks
 
-### 📋 Sessions 3-4 (À venir)
-- [ ] Prototypage CategoryCard
-- [ ] Refactoring architecture finale
-- [ ] Tests unitaires
+### 🔄 Session 3 (Prochaine) - Nouveaux Composants
+**Objectif** : Créer les composants manquants pour StockHub V2
+
+- [ ] **sh-metric-card** : Carte métrique avec icône, valeur, et indicateur de tendance
+  - Props : `icon`, `label`, `value`, `trend`, `trendValue`
+  - Variants : `default`, `success`, `warning`, `danger`
+  - Support thème light/dark complet
+- [ ] **sh-stock-item-card** : Carte produit pour l'inventaire
+  - Props : `image`, `title`, `sku`, `quantity`, `status`, `price`
+  - Actions : boutons d'édition, suppression
+  - Slot pour contenu personnalisé
+
+**Temps estimé** : 2-3h
+
+### 🔧 Session 4 - Améliorations Composants
+**Objectif** : Finaliser les composants existants
+
+- [ ] **sh-logo** : Fixer couleur adaptative pour les thèmes
+- [ ] **sh-header** : Mettre à jour selon les besoins de StockHub V2
+- [ ] Vérifier tous les composants dans Chromatic
+- [ ] Documentation complète de tous les composants
+
+**Temps estimé** : 1-2h
+
+### 🧪 Session 5 - Tests Unitaires
+**Objectif** : Coverage ≥ 93%
+
+- [ ] Setup Vitest + Testing Library
+- [ ] Tests pour tous les composants (14 composants)
+- [ ] Tests d'accessibilité (a11y)
+- [ ] Tests d'interaction utilisateur
+- [ ] CI/CD : intégrer les tests dans GitHub Actions
+
+**Temps estimé** : 3-4h
+
+### 📦 Session 6 - Publication & Intégration
+**Objectif** : Package prêt pour production
+
+- [ ] Vérifier build de production (`npm run build:lib`)
+- [ ] Tester l'intégration dans StockHub V2
+- [ ] Publier sur NPM (version 1.3.0)
+- [ ] Documentation d'installation et migration
+- [ ] Exemples d'intégration React
+
+**Temps estimé** : 1-2h
 
 ## 📝 Contribution
 

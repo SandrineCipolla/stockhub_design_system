@@ -45,6 +45,56 @@ Carte métrique pour afficher des KPIs avec icône, valeur et tendance.
 ></sh-metric-card>
 ```
 
+##### **sh-stock-item-card** 🆕
+Carte de produit pour la gestion d'inventaire familial (loisirs créatifs, alimentaire, maison).
+
+**Props** :
+- `name` : Nom du produit
+- `sku` : Code SKU
+- `quantity` : Quantité en stock
+- `value` : Valeur totale (optionnel)
+- `location` : Emplacement (ex: "Atelier - Étagère 3", "Bureau - Tiroir 2")
+- `status` : `"optimal"` | `"low"` | `"critical"` | `"out-of-stock"` | `"overstocked"`
+- `loading` : État de chargement
+- `theme` : Thème light/dark
+
+**Fonctionnalités** :
+- ✅ Barre de statut colorée (border-left) selon le niveau de stock
+- ✅ Badge de statut en anglais (Optimal, Low Stock, Critical, Out of Stock, Overstocked)
+- ✅ Grid de métriques responsive (quantité, valeur, emplacement)
+- ✅ 3 actions avec boutons : Voir/Éditer/Supprimer
+- ✅ Événements : `sh-view-click`, `sh-edit-click`, `sh-delete-click`
+- ✅ Support complet des thèmes light/dark
+- ✅ Animations hover fluides
+- ✅ Responsive mobile-friendly
+- ✅ Accessibilité complète (ARIA, keyboard navigation)
+- ✅ 9 stories Storybook avec produits créatifs réalistes (peinture, crayons, tissu, papier aquarelle, toiles, feutres, pinceaux)
+
+**Exemple d'utilisation** :
+```html
+<sh-stock-item-card
+  name="Peinture Acrylique 500ml - Bleu Cobalt"
+  sku="PNT-001"
+  quantity="45"
+  value="€675"
+  location="Atelier - Étagère 3"
+  status="optimal"
+></sh-stock-item-card>
+```
+
+**Difficultés rencontrées & Solutions** :
+- ❌ **Problème** : Labels des badges initialement en français ("En stock", "Stock faible")
+  - ✅ **Solution** : Changé en anglais pour cohérence avec StockHub V2 ("Optimal", "Low Stock", "Critical", "Out of Stock", "Overstocked")
+
+- ❌ **Problème** : Exemples génériques (laptops, souris) pas adaptés au contexte
+  - ✅ **Solution** : Utilisé des produits créatifs réalistes (peinture acrylique/huile, crayons aquarelle, tissu coton bio, papier aquarelle, toiles tendues, feutres Posca, pinceaux)
+
+- ❌ **Problème** : Emplacements codes alphanumériques (A-12-3, B-05-1) trop "entrepôt industriel"
+  - ✅ **Solution** : Emplacements familiaux réalistes : "Atelier - Étagère 3", "Bureau - Tiroir 2", "Cellier - Casier B", "Atelier - Rangement Mural"
+
+**Contexte d'utilisation** :
+Gestion personnelle des stocks familiaux (loisirs créatifs, alimentaire, maison) pour un usage domestique, pas commercial.
+
 #### CI/CD et Déploiement Automatique
 
 - **Chromatic CI/CD** : Configuration complète de Chromatic pour le déploiement automatique du Storybook

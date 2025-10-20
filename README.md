@@ -39,16 +39,18 @@ Cette stratégie définit :
 src/
 ├── components/
 │   ├── atoms/                    # Composants de base
-│   │   ├── badge/               # sh-badge (NEW)
+│   │   ├── badge/               # sh-badge
 │   │   ├── icon/                # sh-icon (Lucide)
 │   │   ├── input/               # sh-input
 │   │   ├── logo/                # sh-logo
 │   │   └── text/                # sh-text
 │   ├── molecules/                # Combinaisons d'atoms
 │   │   ├── button/              # sh-button (ghost, loading, icons)
-│   │   ├── card/                # sh-card (NEW)
+│   │   ├── card/                # sh-card
+│   │   ├── metric-card/         # sh-metric-card (NEW)
 │   │   ├── quantity-input/      # sh-quantity-input
-│   │   └── status-badge/        # sh-status-badge (NEW)
+│   │   ├── status-badge/        # sh-status-badge
+│   │   └── stock-item-card/     # sh-stock-item-card (NEW)
 │   └── organisms/                # Composants complexes
 │       └── header/              # sh-header
 ├── tokens/                       # Design tokens (colors, spacing, etc.)
@@ -219,6 +221,60 @@ Carte métrique pour afficher des KPIs avec icône, valeur et tendance.
   trend-value="+15%"
   clickable
 ></sh-metric-card>
+```
+
+#### `<sh-stock-item-card>` 🆕 NOUVEAU
+Carte de produit pour l'inventaire familial avec statut, métriques et actions.
+
+**Props** :
+- `name`: string - Nom du produit
+- `sku`: string - Code SKU du produit
+- `quantity`: string | number - Quantité en stock
+- `value`: string - Valeur totale (optionnel)
+- `location`: string - Emplacement (optionnel, ex: "Atelier - Étagère 3")
+- `status`: `"optimal"` | `"low"` | `"critical"` | `"out-of-stock"` | `"overstocked"`
+- `loading`: boolean - État de chargement
+- `theme`: `"light"` | `"dark"`
+
+**Événements** :
+- `sh-view-click` - Émis au clic sur "Voir"
+- `sh-edit-click` - Émis au clic sur "Éditer"
+- `sh-delete-click` - Émis au clic sur "Supprimer"
+
+```html
+<!-- Produit en stock optimal -->
+<sh-stock-item-card
+  name="Peinture Acrylique 500ml - Bleu Cobalt"
+  sku="PNT-001"
+  quantity="45"
+  value="€675"
+  location="Atelier - Étagère 3"
+  status="optimal"
+></sh-stock-item-card>
+
+<!-- Stock faible -->
+<sh-stock-item-card
+  name="Crayons Aquarelle (Boîte de 24)"
+  sku="CRY-042"
+  quantity="8"
+  value="€240"
+  location="Bureau - Tiroir 2"
+  status="low"
+></sh-stock-item-card>
+
+<!-- Écouter les événements -->
+<script>
+  const card = document.querySelector('sh-stock-item-card');
+  card.addEventListener('sh-view-click', (e) => {
+    console.log('View:', e.detail); // { name, sku, status }
+  });
+  card.addEventListener('sh-edit-click', (e) => {
+    console.log('Edit:', e.detail);
+  });
+  card.addEventListener('sh-delete-click', (e) => {
+    console.log('Delete:', e.detail);
+  });
+</script>
 ```
 
 #### `<sh-button>` ⚡ AMÉLIORÉ
@@ -644,19 +700,24 @@ StockHubV2/Front_End/stockHub_V2_front/documentation/planning/
 - ✅ **CI/CD Chromatic** : Déploiement automatique, visual testing, workflow optimisé
 - ✅ **Sécurité** : Permissions minimales, concurrency group, protection forks
 
-### 🔄 Session 3 (Prochaine) - Nouveaux Composants
+### ✅ Session 3 (Complétée - 2h30) - Nouveaux Composants
 **Objectif** : Créer les composants manquants pour StockHub V2
 
-- [ ] **sh-metric-card** : Carte métrique avec icône, valeur, et indicateur de tendance
-  - Props : `icon`, `label`, `value`, `trend`, `trendValue`
-  - Variants : `default`, `success`, `warning`, `danger`
+- ✅ **sh-metric-card** : Carte métrique avec icône, valeur, et indicateur de tendance
+  - Props : `icon`, `label`, `value`, `trend`, `trendValue`, `variant`, `clickable`
+  - Variants : `default`, `success`, `warning`, `danger`, `info`
   - Support thème light/dark complet
-- [ ] **sh-stock-item-card** : Carte produit pour l'inventaire
-  - Props : `image`, `title`, `sku`, `quantity`, `status`, `price`
-  - Actions : boutons d'édition, suppression
-  - Slot pour contenu personnalisé
-
-**Temps estimé** : 2-3h
+  - Icônes colorées selon variant (comme StockHub V2)
+  - 7 stories : Default, WithIncreaseTrend, WithDecreaseTrend, MonetaryValue, Clickable, AllVariants, DashboardExample
+- ✅ **sh-stock-item-card** : Carte produit pour l'inventaire familial (loisirs créatifs, alimentaire, maison)
+  - Props : `name`, `sku`, `quantity`, `value`, `location`, `status`, `loading`
+  - 5 statuts : `optimal`, `low`, `critical`, `out-of-stock`, `overstocked`
+  - Actions : boutons View/Edit/Delete (icônes Eye, Edit, Trash2)
+  - Badge de statut avec labels en anglais
+  - Grid de métriques (quantité, valeur, emplacement)
+  - 9 stories : Optimal, LowStock, CriticalStock, OutOfStock, Overstocked, Minimal, Loading, AllStatuses, InventoryGrid
+  - **Exemples réalistes** : Produits créatifs (peinture acrylique, crayons aquarelle, tissu, papier, pinceaux)
+  - **Emplacements familiaux** : Atelier - Étagère 3, Bureau - Tiroir 2, Cellier - Casier B
 
 ### 🔧 Session 4 - Améliorations Composants
 **Objectif** : Finaliser les composants existants
@@ -727,7 +788,7 @@ ISC - Sandrine Cipolla
 
 ---
 
-**Version** : 1.2.0
-**Dernière mise à jour** : 19 Octobre 2025
+**Version** : 1.3.0
+**Dernière mise à jour** : 20 Octobre 2025
 **Statut** : En développement actif
-**Nouveautés** : Support thème global, sh-text amélioré, sh-quantity-input migré vers Lucide, 35+ stories avec toggle light/dark
+**Nouveautés** : sh-metric-card et sh-stock-item-card pour inventaire familial (loisirs créatifs, alimentaire, maison)

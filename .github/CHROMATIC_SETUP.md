@@ -6,8 +6,9 @@ Le Design System est automatiquement déployé sur Chromatic à chaque commit et
 
 ### URLs d'accès :
 
-- **Production (master)** : Sera disponible après la première publication
-- **Dernière version** : Visible sur https://www.chromatic.com/builds?appId=VOTRE_APP_ID
+- **Storybook en ligne** : https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/
+- **Dashboard Chromatic** : https://www.chromatic.com/builds?appId=68f5fbe10f495706cb168751
+- **App ID** : `68f5fbe10f495706cb168751`
 
 ### Comment accéder au Storybook d'une PR :
 
@@ -18,20 +19,19 @@ Le Design System est automatiquement déployé sur Chromatic à chaque commit et
 
 ## 🔧 Configuration Chromatic (pour les mainteneurs)
 
-### Obtenir le project token :
+### Le project token est déjà configuré
 
-1. Allez sur https://www.chromatic.com/
-2. Sign in with GitHub
-3. Ajoutez le projet `stockhub_design_system`
-4. Copiez le project token
+Le token Chromatic est stocké dans les **GitHub Secrets** : `CHROMATIC_PROJECT_TOKEN`
 
-### Ajouter le token dans GitHub :
+**Pour retrouver ou modifier le token** :
+1. Allez sur : https://github.com/SandrineCipolla/stockhub_design_system/settings/secrets/actions
+2. Le secret `CHROMATIC_PROJECT_TOKEN` est listé (la valeur est chiffrée)
+3. Pour modifier : Delete le secret + recréer avec la nouvelle valeur
 
-1. Repository Settings → Secrets and variables → Actions
-2. New repository secret
-3. Name: `CHROMATIC_PROJECT_TOKEN`
-4. Value: Le token de Chromatic
-5. Add secret
+**Pour récupérer le token depuis Chromatic** :
+1. Allez sur le [dashboard Chromatic](https://www.chromatic.com/builds?appId=68f5fbe10f495706cb168751)
+2. Settings → Manage → Project Tokens
+3. Le token actuel : `chpt_52a1690d61432df`
 
 ## 📊 Fonctionnalités
 

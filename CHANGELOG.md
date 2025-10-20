@@ -5,6 +5,30 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [Unreleased]
+
+### ✨ Ajouté
+
+#### CI/CD et Déploiement Automatique
+
+- **Chromatic CI/CD** : Configuration complète de Chromatic pour le déploiement automatique du Storybook
+  - 🌐 **Storybook en ligne** : https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/
+  - 🔄 **GitHub Actions** : Workflow automatique sur tous les push et PR
+  - 📸 **Visual Testing** : 80 snapshots capturés pour détecter les régressions visuelles
+  - 🎯 **Preview de PR** : Chaque PR génère automatiquement une URL de preview
+  - 📊 **Dashboard** : https://www.chromatic.com/builds?appId=68f5fbe10f495706cb168751
+
+- **Documentation CI/CD** :
+  - `.github/workflows/chromatic.yml` : Workflow GitHub Actions
+  - `.github/CHROMATIC_SETUP.md` : Guide complet de configuration
+  - README mis à jour avec les liens d'accès
+
+### 📦 Dépendances
+
+- ➕ **chromatic** (^13.3.0) : Visual testing et déploiement Storybook
+
+---
+
 ## [1.2.1] - 2025-10-20
 
 ### 🐛 Corrigé

@@ -1,6 +1,5 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { IconName } from '../../atoms/icon/sh-icon.js';
 import '../../atoms/icon/sh-icon.js';
 import '../../atoms/badge/sh-badge.js';
 import '../button/sh-button.js';
@@ -91,7 +90,7 @@ export class ShStockItemCard extends LitElement {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-left: 4px solid var(--status-color);
-      border-radius: var(--radius-lg);
+      border-radius: var(--border-radius-lg);
       overflow: hidden;
       transition: all 0.2s ease;
       height: 100%;

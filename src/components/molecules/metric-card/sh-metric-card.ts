@@ -1,6 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
-import { IconName } from '../../atoms/icon/sh-icon.js';
+import { customElement, property } from 'lit/decorators.js';
 import '../../atoms/icon/sh-icon.js';
 
 /**
@@ -36,7 +35,7 @@ import '../../atoms/icon/sh-icon.js';
  */
 @customElement('sh-metric-card')
 export class ShMetricCard extends LitElement {
-  @property() icon: IconName = 'TrendingUp';
+  @property() icon = 'TrendingUp';
   @property() label = '';
   @property() value: string | number = '0';
   @property() variant: 'default' | 'success' | 'warning' | 'danger' | 'info' = 'default';
@@ -44,8 +43,6 @@ export class ShMetricCard extends LitElement {
   @property({ attribute: 'trend-value' }) trendValue?: string;
   @property({ type: Boolean }) clickable = false;
   @property({ type: String, reflect: true, attribute: 'data-theme' }) theme: 'light' | 'dark' = 'dark';
-
-  @state() private _isHovered = false;
 
   static styles = css`
     :host {
@@ -107,7 +104,7 @@ export class ShMetricCard extends LitElement {
     .metric-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: var(--radius-lg);
+      border-radius: var(--border-radius-lg);
       padding: var(--spacing-lg);
       transition: all 0.2s ease;
       height: 100%;
@@ -142,7 +139,7 @@ export class ShMetricCard extends LitElement {
       justify-content: center;
       width: 48px;
       height: 48px;
-      border-radius: var(--radius-md);
+      border-radius: var(--border-radius-md);
       background: var(--icon-bg-variant, var(--icon-bg));
       transition: transform 0.2s ease;
     }
@@ -180,7 +177,7 @@ export class ShMetricCard extends LitElement {
       font-size: var(--font-fontSize-sm);
       font-weight: var(--font-fontWeight-medium);
       padding: 4px 8px;
-      border-radius: var(--radius-sm);
+      border-radius: var(--border-radius-sm);
     }
 
     .trend.increase {

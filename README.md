@@ -772,7 +772,9 @@ docs(readme): update installation instructions
 refactor(icons): migrate to lucide icons system
 ```
 
-## 🎯 Leçons Apprises (Session 1)
+## 🎯 Leçons Apprises
+
+### Session 1 - Setup Initial
 
 1. **Storybook + Web Components**: Template strings simples > `html` tagged templates de Lit
 2. **CSS Variables**: Toujours vérifier noms générés vs noms utilisés
@@ -781,6 +783,33 @@ refactor(icons): migrate to lucide icons system
 5. **Debugging**: Examiner composants qui fonctionnent (sh-input) = solution rapide
 6. **Compatibilité StockHub V2**: Utiliser Lucide (vanilla) pour aligner avec lucide-react
 7. **Nommage des icônes**: Lucide utilise PascalCase (Package, TrendingUp) vs kebab-case
+
+### Session 3 - Nouveaux Composants
+
+1. **Design Tokens Consistency**: Toujours utiliser les tokens définis dans `design-tokens.css`
+   - ❌ Erreur : Utiliser `--radius-lg` (raccourci mental)
+   - ✅ Correct : Utiliser `--border-radius-lg` (nom complet du token)
+   - **Solution** : Consulter `design-tokens.css` régulièrement ou utiliser l'autocomplétion IDE
+
+2. **TypeScript Strict Mode**: Ne jamais laisser d'imports/variables inutilisés
+   - Erreur `TS6133`: Import `IconName` et `state` déclarés mais jamais utilisés
+   - **Solution** : Vérifier avec `npx tsc --noEmit` avant de commiter
+   - **Bonne pratique** : Lucide ne nécessite pas de types stricts, utiliser `string` pour les noms d'icônes
+
+3. **État CSS vs État JS**: Privilégier CSS `:hover` plutôt que gérer un state JS
+   - ❌ Erreur : Créer une variable `@state() private _isHovered` pour gérer le hover
+   - ✅ Correct : Utiliser directement `:host([clickable]) .metric-card:hover` en CSS
+   - **Raison** : Meilleure performance, moins de code, natif au navigateur
+
+4. **Contexte d'utilisation**: Adapter les exemples au cas d'usage réel
+   - Inventaire familial ≠ Entrepôt commercial
+   - Exemples réalistes (peinture, crayons) > Exemples génériques (laptops)
+   - Emplacements familiaux ("Atelier - Étagère 3") > Codes alphanumériques ("A-12-3")
+   - **Impact** : Meilleure compréhension pour les utilisateurs finaux
+
+5. **Localisation des Composants**: Cohérence avec le projet parent
+   - Labels en anglais dans StockHub V2 → Labels en anglais dans Design System
+   - **Solution** : Toujours vérifier la cohérence avec le projet parent
 
 ## 📄 License
 

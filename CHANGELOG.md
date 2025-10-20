@@ -95,6 +95,35 @@ Carte de produit pour la gestion d'inventaire familial (loisirs créatifs, alime
 **Contexte d'utilisation** :
 Gestion personnelle des stocks familiaux (loisirs créatifs, alimentaire, maison) pour un usage domestique, pas commercial.
 
+### 🐛 Corrigé
+
+#### Corrections TypeScript et CSS Custom Properties
+
+**Problèmes TypeScript** :
+- ❌ **`sh-metric-card.ts`** : Import `IconName` inutilisé (ligne 3)
+  - ✅ **Solution** : Supprimé l'import et utilisé type `string` pour la prop `icon`
+  - **Raison** : Lucide ne nécessite pas de type strict, le nom d'icône est une string
+
+- ❌ **`sh-metric-card.ts`** : Variable `_isHovered` déclarée mais jamais utilisée
+  - ✅ **Solution** : Supprimé la variable et l'import `state` de Lit
+  - **Raison** : La gestion du hover se fait via CSS `:hover`, pas besoin de state JS
+
+- ❌ **`sh-stock-item-card.ts`** : Import `IconName` inutilisé (ligne 3)
+  - ✅ **Solution** : Supprimé l'import
+  - **Raison** : Les icônes sont passées en strings aux composants `sh-button`
+
+**Problèmes CSS Custom Properties** :
+- ❌ **Cannot resolve custom property** : Utilisation de `--radius-lg`, `--radius-md`, `--radius-sm`
+  - ✅ **Solution** : Remplacé par `--border-radius-lg`, `--border-radius-md`, `--border-radius-sm`
+  - **Raison** : Les design tokens utilisent le préfixe `--border-radius-*` (voir `design-tokens.css:114-120`)
+  - **Fichiers concernés** : `sh-metric-card.ts` (2 occurrences), `sh-stock-item-card.ts` (1 occurrence)
+
+**Impact** :
+- ✅ TypeScript compile sans erreurs (`npx tsc --noEmit`)
+- ✅ Storybook fonctionne correctement
+- ✅ Aucune régression visuelle
+- ✅ Meilleure cohérence avec le système de design tokens
+
 #### CI/CD et Déploiement Automatique
 
 - **Chromatic CI/CD** : Configuration complète de Chromatic pour le déploiement automatique du Storybook

@@ -130,7 +130,7 @@ export class ShCard extends LitElement {
         tabindex="${this.clickable ? '0' : undefined}"
         @click="${this._handleClick}"
         @keydown="${this._handleKeyDown}"
-q page      >
+      >
         <slot name="header"></slot>
         <slot></slot>
         <slot name="footer"></slot>

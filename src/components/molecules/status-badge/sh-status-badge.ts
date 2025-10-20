@@ -215,11 +215,6 @@ export class ShStatusBadge extends LitElement {
       color: #60a5fa; /* text-blue-400 */
       border-color: rgba(59, 130, 246, 0.3); /* border-blue-500/30 */
     }
-
-    /* Accessibility */
-    .status-badge {
-      role: status;
-    }
   `;
 
   render() {

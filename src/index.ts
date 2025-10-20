@@ -1,5 +1,5 @@
 // Design Tokens
-export * from './tokens/design-tokens';
+export * from './tokens/design-tokens.js';
 
 // Atoms
 export * from './components/atoms/icon/sh-icon';

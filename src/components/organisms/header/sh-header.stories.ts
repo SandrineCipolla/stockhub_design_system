@@ -43,10 +43,11 @@ export const Default: Story = {
     render: (args) => `
         <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; min-height: 200vh; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
             <sh-header
+                id="header-default"
                 userName="${args.userName}"
                 notificationCount="${args.notificationCount}"
                 theme="${args.theme}"
-                ?isLoggedIn="${args.isLoggedIn}"
+                ${args.isLoggedIn ? 'isLoggedIn' : ''}
                 data-theme="${args.theme}"
             ></sh-header>
             <div style="padding: 6rem 2rem 2rem 2rem;">
@@ -55,6 +56,19 @@ export const Default: Story = {
                 <div style="height: 150vh;"></div>
             </div>
         </div>
+        <script>
+            (function() {
+                const header = document.getElementById('header-default');
+                if (header) {
+                    header.addEventListener('sh-logout-click', () => {
+                        header.removeAttribute('isLoggedIn');
+                    });
+                    header.addEventListener('sh-login-click', () => {
+                        header.setAttribute('isLoggedIn', '');
+                    });
+                }
+            })();
+        </script>
     `,
 };
 
@@ -69,17 +83,32 @@ export const LoggedOut: Story = {
     render: (args) => `
         <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; min-height: 100vh; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
             <sh-header
+                id="header-loggedout"
                 userName="${args.userName}"
                 notificationCount="${args.notificationCount}"
                 theme="${args.theme}"
-                ?isLoggedIn="${args.isLoggedIn}"
+                ${args.isLoggedIn ? 'isLoggedIn' : ''}
                 data-theme="${args.theme}"
             ></sh-header>
             <div style="padding: 6rem 2rem 2rem 2rem;">
                 <h2>Logged Out State</h2>
-                <p>When isLoggedIn=false, the header shows "Login" button instead of user name and "Logout".</p>
+                <p>When isLoggedIn=false, the header shows "Login" button. Click it to log in!</p>
             </div>
         </div>
+        <script>
+            (function() {
+                const header = document.getElementById('header-loggedout');
+                if (header) {
+                    header.addEventListener('sh-logout-click', () => {
+                        header.removeAttribute('isLoggedIn');
+                    });
+                    header.addEventListener('sh-login-click', () => {
+                        header.setAttribute('isLoggedIn', '');
+                        header.setAttribute('userName', 'Sandrine Cipolla');
+                    });
+                }
+            })();
+        </script>
     `,
 };
 
@@ -97,7 +126,7 @@ export const ManyNotifications: Story = {
                 userName="${args.userName}"
                 notificationCount="${args.notificationCount}"
                 theme="${args.theme}"
-                ?isLoggedIn="${args.isLoggedIn}"
+                ${args.isLoggedIn ? 'isLoggedIn' : ''}
                 data-theme="${args.theme}"
             ></sh-header>
             <div style="padding: 6rem 2rem 2rem 2rem;">
@@ -122,7 +151,7 @@ export const MaxNotifications: Story = {
                 userName="${args.userName}"
                 notificationCount="${args.notificationCount}"
                 theme="${args.theme}"
-                ?isLoggedIn="${args.isLoggedIn}"
+                ${args.isLoggedIn ? 'isLoggedIn' : ''}
                 data-theme="${args.theme}"
             ></sh-header>
             <div style="padding: 6rem 2rem 2rem 2rem;">
@@ -147,7 +176,7 @@ export const NoNotifications: Story = {
                 userName="${args.userName}"
                 notificationCount="${args.notificationCount}"
                 theme="${args.theme}"
-                ?isLoggedIn="${args.isLoggedIn}"
+                ${args.isLoggedIn ? 'isLoggedIn' : ''}
                 data-theme="${args.theme}"
             ></sh-header>
             <div style="padding: 6rem 2rem 2rem 2rem;">
@@ -172,7 +201,7 @@ export const LightTheme: Story = {
                 userName="${args.userName}"
                 notificationCount="${args.notificationCount}"
                 theme="${args.theme}"
-                ?isLoggedIn="${args.isLoggedIn}"
+                ${args.isLoggedIn ? 'isLoggedIn' : ''}
                 data-theme="${args.theme}"
             ></sh-header>
             <div style="padding: 6rem 2rem 2rem 2rem;">
@@ -197,7 +226,7 @@ export const StickyScrollDemo: Story = {
                 userName="${args.userName}"
                 notificationCount="${args.notificationCount}"
                 theme="${args.theme}"
-                ?isLoggedIn="${args.isLoggedIn}"
+                ${args.isLoggedIn ? 'isLoggedIn' : ''}
                 data-theme="${args.theme}"
             ></sh-header>
             <div style="padding: 6rem 2rem 2rem 2rem;">
@@ -230,7 +259,7 @@ export const ResponsiveDemo: Story = {
                 userName="${args.userName}"
                 notificationCount="${args.notificationCount}"
                 theme="${args.theme}"
-                ?isLoggedIn="${args.isLoggedIn}"
+                ${args.isLoggedIn ? 'isLoggedIn' : ''}
                 data-theme="${args.theme}"
             ></sh-header>
             <div style="padding: 6rem 2rem 2rem 2rem;">
@@ -266,7 +295,7 @@ export const WithEventListeners: Story = {
                 userName="${args.userName}"
                 notificationCount="${args.notificationCount}"
                 theme="${args.theme}"
-                ?isLoggedIn="${args.isLoggedIn}"
+                ${args.isLoggedIn ? 'isLoggedIn' : ''}
                 data-theme="${args.theme}"
                 id="interactive-header"
             ></sh-header>
@@ -331,7 +360,7 @@ export const Playground: Story = {
                 userName="${args.userName}"
                 notificationCount="${args.notificationCount}"
                 theme="${args.theme}"
-                ?isLoggedIn="${args.isLoggedIn}"
+                ${args.isLoggedIn ? 'isLoggedIn' : ''}
                 data-theme="${args.theme}"
             ></sh-header>
             <div style="padding: 6rem 2rem 2rem 2rem;">

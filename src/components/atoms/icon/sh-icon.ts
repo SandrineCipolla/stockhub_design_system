@@ -117,10 +117,10 @@ export class ShIcon extends LitElement {
 
     /**
      * Name of the Lucide icon to display
-     * @type {string}
+     * @type {IconName}
      * @default "CircleHelp"
      */
-    @property() name: string = "CircleHelp"
+    @property() name: IconName = "CircleHelp"
 
     /**
      * Size of the icon

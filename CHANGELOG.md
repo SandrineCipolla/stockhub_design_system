@@ -16,12 +16,51 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
   - Impact : Le build de la bibliothèque NPM fonctionne maintenant correctement
   - Formats générés : CommonJS (`dist/index.js`), ES Modules (`dist/index.esm.js`), TypeScript types (`dist/index.d.ts`)
 
+#### Corrections Issues GitHub Copilot (PR #2)
+
+**Composants - Bugs & Améliorations** :
+- **sh-card** : Supprimé caractères parasites `q page` dans le template (ligne 133)
+- **sh-status-badge** : Supprimé bloc CSS invalide `role: status;` (les rôles ARIA ne peuvent pas être définis en CSS)
+- **sh-header** :
+  - Mise à jour automatique de `this.theme` après le toggle pour synchroniser l'icône et les labels ARIA
+  - Ajout de `reflect: true` et `attribute: 'data-theme'` pour la propriété `theme`
+  - Suppression de l'import inutilisé `sh-badge`
+- **sh-logo** :
+  - Remplacement de `<h1>` par `<span>` pour éviter les conflits de structure sémantique
+  - Ajout de `reflect: true` sur la propriété `size` pour synchronisation CSS
+- **sh-icon** : Typage strict de la propriété `name` avec `IconName` (validation compile-time)
+
+**Stories - Syntaxe Template Strings** :
+- **sh-header.stories.ts** : Remplacement de `?isLoggedIn="${...}"` (syntaxe Lit) par `${args.isLoggedIn ? 'isLoggedIn' : ''}` (8 occurrences)
+- **sh-quantity-input.stories.ts** : Remplacement de `?dirty` et `?hideArrows` par syntaxe conditionnelle (2 occurrences)
+- **sh-button.stories.ts** : Correction de `?disabled`, `?loading`, et attributs icônes avec `|| undefined` (4 attributs)
+
+**Configuration & Optimisation** :
+- **src/index.ts** : Export explicite de `design-tokens.js` au lieu de `design-tokens` (résolution ambiguïté .ts/.css)
+- **.storybook/preview.ts** : Réutilisation du même élément `<style>` via ID pour éviter l'accumulation (memory leak fix)
+- **tsconfig.json** : Exclusion explicite des fichiers `.md` pour éviter les erreurs TypeScript sur les blocs de code
+- **fix-stories.py** : Suppression du script temporaire contenant des chemins absolus Windows
+
+**Améliorations UX Storybook** :
+- **sh-header.stories.ts** : Ajout de listeners pour simuler le comportement logout/login dans les stories (Default & LoggedOut)
+- **sh-quantity-input.stories.ts** : Amélioration de la documentation du "dirty state" avec explications claires
+- **sh-button.stories.ts** : Correction du débordement dans GhostShowcase (`max-width: 100%` au lieu de `width: 100%`)
+
+### 🎯 Problèmes Résolus
+
+1. **Bindings booléens Lit invalides** : Les syntaxes `?disabled`, `?loading`, `?isLoggedIn` ne fonctionnent que dans les `html` tagged templates de Lit, pas dans les template strings simples de Storybook
+2. **Memory leak Storybook** : Création répétée d'éléments `<style>` à chaque render → solution : réutilisation avec ID
+3. **Propriétés non reflétées** : Sans `reflect: true`, les changements programmatiques ne mettent pas à jour les attributs HTML et donc les sélecteurs CSS
+4. **Structure sémantique HTML** : Utilisation de `<h1>` dans un composant atom créait des conflits de hiérarchie de headings
+5. **Type safety** : Propriété `name` de `sh-icon` acceptait n'importe quelle string au lieu des noms d'icônes valides
+
 ### ✅ Tests Effectués
 - ✅ `npm run build:lib` - Build bibliothèque NPM réussi
 - ✅ `npm run build-storybook` - Build Storybook réussi
 - ✅ Génération des fichiers dist (871KB ESM, 872KB CJS)
 - ✅ Génération des source maps
 - ✅ Génération des types TypeScript
+- ✅ Toutes les stories Storybook fonctionnent correctement
 
 ---
 

@@ -22,7 +22,7 @@ export class ShLogo extends LitElement {
      * @type {'sm' | 'md' | 'lg'}
      * @default 'md'
      */
-    @property({ type: String }) size: 'sm' | 'md' | 'lg' = 'md';
+    @property({ type: String, reflect: true }) size: 'sm' | 'md' | 'lg' = 'md';
 
     static styles = css`
         :host {
@@ -115,7 +115,7 @@ export class ShLogo extends LitElement {
                 <div class="icon" role="img" aria-label="Logo StockHub">
                     <span>SH</span>
                 </div>
-                <h1 class="text">StockHub</h1>
+                <span class="text">StockHub</span>
             </div>
         `;
     }

@@ -30,7 +30,7 @@ export const Default: Story = {
     },
     render: (args) => `
         <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-            <sh-quantity-input value="${args.value}" ?dirty="${args.dirty}" ?hideArrows="${args.hideArrows}" data-theme="${args.theme}"></sh-quantity-input>
+            <sh-quantity-input value="${args.value}" ${args.dirty ? 'dirty' : ''} ${args.hideArrows ? 'hideArrows' : ''} data-theme="${args.theme}"></sh-quantity-input>
         </div>
     `,
 };
@@ -66,15 +66,21 @@ export const DirtyState: Story = {
         theme: 'dark',
     },
     render: (args) => `
-        <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px;">
+        <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 400px;">
+            <h3 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; text-align: center; margin-bottom: 1rem;">Dirty State Indicator</h3>
+            <p style="color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'}; text-align: center; max-width: 600px; margin: 0 auto 2rem;">
+                L'attribut <code style="background: ${args.theme === 'dark' ? 'rgba(139, 92, 246, 0.2)' : 'rgba(139, 92, 246, 0.1)'}; padding: 2px 6px; border-radius: 4px;">dirty</code> indique qu'une valeur a été modifiée par l'utilisateur.
+                Cela affiche une icône "sync" pour signaler que les changements n'ont pas encore été sauvegardés.
+            </p>
             <div style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center;">
                 <div style="text-align: center;">
-                    <p style="margin-bottom: 0.5rem; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">Normal State</p>
+                    <p style="margin-bottom: 0.5rem; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">État Normal (sauvegardé)</p>
                     <sh-quantity-input value="10" data-theme="${args.theme}"></sh-quantity-input>
                 </div>
                 <div style="text-align: center;">
-                    <p style="margin-bottom: 0.5rem; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">Dirty State (Modified)</p>
+                    <p style="margin-bottom: 0.5rem; color: ${args.theme === 'dark' ? '#fbbf24' : '#f59e0b'}; font-weight: 500;">État "Dirty" (modifié, non sauvegardé) 🔄</p>
                     <sh-quantity-input value="15" dirty data-theme="${args.theme}"></sh-quantity-input>
+                    <p style="margin-top: 0.5rem; font-size: 0.875rem; color: ${args.theme === 'dark' ? '#94a3b8' : '#64748b'};">L'icône sync indique des changements en attente</p>
                 </div>
             </div>
         </div>
@@ -146,8 +152,8 @@ export const Playground: Story = {
         <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
             <sh-quantity-input
                 value="${args.value}"
-                ?dirty="${args.dirty}"
-                ?hideArrows="${args.hideArrows}"
+                ${args.dirty ? 'dirty' : ''}
+                ${args.hideArrows ? 'hideArrows' : ''}
                 data-theme="${args.theme}">
             </sh-quantity-input>
         </div>

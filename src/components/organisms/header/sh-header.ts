@@ -3,7 +3,6 @@ import {customElement, property} from 'lit/decorators.js';
 import '../../molecules/button/sh-button.ts';
 import '../../atoms/logo/sh-logo.ts';
 import '../../atoms/icon/sh-icon.ts';
-import '../../atoms/badge/sh-badge.ts';
 
 /**
  * Header component with logo, notifications, theme toggle, and user actions.
@@ -43,7 +42,7 @@ export class ShHeader extends LitElement {
      * @type {'light' | 'dark'}
      * @default 'dark'
      */
-    @property({ type: String }) theme: 'light' | 'dark' = 'dark';
+    @property({ type: String, reflect: true, attribute: 'data-theme' }) theme: 'light' | 'dark' = 'dark';
 
     /**
      * Login state - if true shows Logout, if false shows Login
@@ -316,6 +315,8 @@ export class ShHeader extends LitElement {
                 composed: true,
             })
         );
+        // Update internal state so icon and ARIA label reflect the change
+        this.theme = newTheme;
     }
 
     private _handleLoginClick() {

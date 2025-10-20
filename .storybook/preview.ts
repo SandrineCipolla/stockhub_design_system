@@ -74,8 +74,14 @@ const preview: Preview = {
                 context.args.theme = theme
             }
 
-            // ⭐️ IMPORTANT: Injecter les variables CSS dans le document
-            const style = document.createElement("style")
+            // ⭐️ IMPORTANT: Injecter les variables CSS dans le document (réutilise le même élément)
+            const styleId = 'storybook-theme-vars';
+            let style = document.getElementById(styleId) as HTMLStyleElement;
+            if (!style) {
+                style = document.createElement("style");
+                style.id = styleId;
+                document.head.appendChild(style);
+            }
             style.textContent = `
         :root {
           /* Variables CSS disponibles globalement */
@@ -91,7 +97,6 @@ const preview: Preview = {
           --transition-timing-ease: cubic-bezier(0.4, 0, 0.2, 1);
         }
       `
-            document.head.appendChild(style)
 
             // Apply theme to all sh-* components after story renders
             setTimeout(() => {

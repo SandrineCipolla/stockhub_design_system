@@ -181,7 +181,7 @@ export const GhostShowcase: Story = {
   render: (args) => `
     <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 400px;">
       <div style="display: flex; gap: 1rem; flex-direction: column; align-items: flex-start;">
-        <div style="padding: 2rem; background: ${args.theme === 'dark' ? '#1e293b' : 'white'}; border-radius: 8px; width: 100%;">
+        <div style="padding: 2rem; background: ${args.theme === 'dark' ? '#1e293b' : 'white'}; border-radius: 8px; max-width: 100%;">
           <h4 style="margin-top: 0; color: ${args.theme === 'dark' ? '#ffffff' : '#000000'};">${args.theme === 'dark' ? 'Dark' : 'Light'} Background</h4>
           <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
             <sh-button variant="ghost" data-theme="${args.theme}">Cancel</sh-button>
@@ -246,10 +246,10 @@ export const Playground: Story = {
       <sh-button
         variant="${args.variant}"
         size="${args.size}"
-        ?disabled="${args.disabled}"
-        ?loading="${args.loading}"
-        iconBefore="${args.iconBefore || undefined}"
-        iconAfter="${args.iconAfter || undefined}"
+        ${args.disabled ? 'disabled' : ''}
+        ${args.loading ? 'loading' : ''}
+        ${args.iconBefore ? `iconBefore="${args.iconBefore}"` : ''}
+        ${args.iconAfter ? `iconAfter="${args.iconAfter}"` : ''}
         data-theme="${args.theme}"
       >
         Button Text

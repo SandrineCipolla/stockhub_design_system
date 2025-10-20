@@ -182,6 +182,45 @@ Logo StockHub avec variants.
 
 ### Molecules (Combinaisons)
 
+#### `<sh-metric-card>` 🆕 NOUVEAU
+Carte métrique pour afficher des KPIs avec icône, valeur et tendance.
+
+**Props** :
+- `icon`: string - Icône Lucide (PascalCase)
+- `label`: string - Label descriptif
+- `value`: string | number - Valeur affichée
+- `variant`: `"default"` | `"success"` | `"warning"` | `"danger"` | `"info"`
+- `trend`: `"increase"` | `"decrease"` - Direction de la tendance
+- `trendValue`: string - Valeur de la tendance (ex: "+12%")
+- `clickable`: boolean - Carte interactive
+- `theme`: `"light"` | `"dark"`
+
+**Événements** :
+- `sh-metric-click` - Émis au clic (si `clickable`)
+
+```html
+<!-- Métrique avec tendance -->
+<sh-metric-card
+  icon="Package"
+  label="Total Produits"
+  value="156"
+  variant="success"
+  trend="increase"
+  trend-value="+12"
+></sh-metric-card>
+
+<!-- Métrique monétaire -->
+<sh-metric-card
+  icon="DollarSign"
+  label="Valeur Totale"
+  value="€45,250"
+  variant="info"
+  trend="increase"
+  trend-value="+15%"
+  clickable
+></sh-metric-card>
+```
+
 #### `<sh-button>` ⚡ AMÉLIORÉ
 Bouton avec variants, états, et support d'icônes.
 

@@ -9,6 +9,42 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
 ### ✨ Ajouté
 
+#### Nouveaux Composants (Session 3)
+
+##### **sh-metric-card** 🆕
+Carte métrique pour afficher des KPIs avec icône, valeur et tendance.
+
+**Props** :
+- `icon` : Icône Lucide (PascalCase)
+- `label` : Label descriptif de la métrique
+- `value` : Valeur à afficher (nombre ou texte)
+- `variant` : `"default"` | `"success"` | `"warning"` | `"danger"` | `"info"`
+- `trend` : Direction de la tendance (`"increase"` | `"decrease"`)
+- `trendValue` : Valeur de la tendance (ex: "+12%", "-5")
+- `clickable` : Rend la carte cliquable
+- `theme` : Thème light/dark
+
+**Fonctionnalités** :
+- ✅ Icônes colorées selon le variant (inspiré de StockHub V2)
+- ✅ Indicateur de tendance avec icône dynamique (TrendingUp/TrendingDown)
+- ✅ Support complet des thèmes light/dark
+- ✅ Mode clickable avec événement `sh-metric-click`
+- ✅ Animations hover fluides
+- ✅ Accessibilité complète (ARIA, focus visible, keyboard navigation)
+- ✅ 7 stories Storybook (Default, Trends, Clickable, Variants, Dashboard)
+
+**Exemple d'utilisation** :
+```html
+<sh-metric-card
+  icon="Package"
+  label="Total Produits"
+  value="156"
+  variant="success"
+  trend="increase"
+  trend-value="+12"
+></sh-metric-card>
+```
+
 #### CI/CD et Déploiement Automatique
 
 - **Chromatic CI/CD** : Configuration complète de Chromatic pour le déploiement automatique du Storybook

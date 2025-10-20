@@ -267,6 +267,16 @@ Header de l'application.
 
 ## 📖 Storybook
 
+### 🌐 Accès en ligne (Chromatic)
+
+Le Storybook est **automatiquement déployé** sur Chromatic à chaque commit :
+
+- **Voir le Storybook en ligne** : Rendez-vous sur le [dashboard Chromatic](https://www.chromatic.com/builds?appId=VOTRE_APP_ID)
+- **Preview de PR** : Chaque Pull Request génère automatiquement une URL de preview
+- **Visual Testing** : Détection automatique des changements visuels entre versions
+
+Pour plus d'informations, consultez [`.github/CHROMATIC_SETUP.md`](.github/CHROMATIC_SETUP.md)
+
 ### Lancer Storybook Localement
 ```bash
 npm run storybook

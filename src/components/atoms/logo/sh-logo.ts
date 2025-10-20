@@ -1,36 +1,122 @@
 import {css, html, LitElement} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import {customElement, property} from 'lit/decorators.js';
 
+/**
+ * Logo component displaying the StockHub brand with icon and text.
+ *
+ * @element sh-logo
+ *
+ * @cssproperty --logo-icon-size - Controls the size of the logo icon (default: 40px)
+ * @cssproperty --logo-text-size - Controls the size of the logo text (default: 20px)
+ *
+ * @example
+ * ```html
+ * <sh-logo></sh-logo>
+ * <sh-logo style="--logo-icon-size: 32px; --logo-text-size: 16px;"></sh-logo>
+ * ```
+ */
 @customElement('sh-logo')
 export class ShLogo extends LitElement {
+    /**
+     * Logo size variant
+     * @type {'sm' | 'md' | 'lg'}
+     * @default 'md'
+     */
+    @property({ type: String, reflect: true }) size: 'sm' | 'md' | 'lg' = 'md';
+
     static styles = css`
         :host {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: var(--logo-size,48px);
-            font-weight: bold;
-            color: white;
+            gap: var(--logo-gap, 0.75rem);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: var(--logo-gap, 0.75rem);
         }
 
         .icon {
-            width: 1em;
-            height: 1em;
-            display: inline-block;
-            fill: currentColor;
+            background: linear-gradient(to bottom right, #8b5cf6, #7c3aed);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        /* Sizes */
+        :host([size="sm"]) .icon {
+            width: 2rem;
+            height: 2rem;
+            font-size: 0.875rem;
+        }
+
+        :host([size="md"]) .icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            font-size: 1rem;
+        }
+
+        :host([size="lg"]) .icon {
+            width: 3rem;
+            height: 3rem;
+            font-size: 1.125rem;
+        }
+
+        /* Custom sizes via CSS variables */
+        .icon {
+            width: var(--logo-icon-size, 2.5rem);
+            height: var(--logo-icon-size, 2.5rem);
+            font-size: calc(var(--logo-icon-size, 2.5rem) * 0.4);
         }
 
         .text {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-fontFamily-base, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif);
+            font-weight: bold;
+            background: linear-gradient(to right, #8b5cf6, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        :host([size="sm"]) .text {
+            font-size: 1rem;
+        }
+
+        :host([size="md"]) .text {
+            font-size: 1.25rem;
+        }
+
+        :host([size="lg"]) .text {
+            font-size: 1.5rem;
+        }
+
+        /* Custom text size via CSS variable */
+        .text {
+            font-size: var(--logo-text-size, 1.25rem);
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .icon {
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+            }
         }
     `;
 
     render() {
         return html`
-            <svg class="icon" width="100%" height="100%" viewBox="0 0 24 24">
-                <path d="M21 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5v-11A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5Zm-9 7.5V5h-6a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h6v-4Zm1-9v4h6v-3a1 1 0 0 0-1-1h-5Zm6 5h-6v4h6v-4Zm-6 5v4h5a1 1 0 0 0 1-1v-3h-6Z"/>
-            </svg>
-            <span class="text">StockHub</span>
+            <div class="logo-container">
+                <div class="icon" role="img" aria-label="Logo StockHub">
+                    <span>SH</span>
+                </div>
+                <span class="text">StockHub</span>
+            </div>
         `;
     }
 }

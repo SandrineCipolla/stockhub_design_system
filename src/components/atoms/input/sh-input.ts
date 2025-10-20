@@ -1,6 +1,21 @@
 import {css, html, LitElement} from "lit"
 import {customElement, property} from "lit/decorators.js"
 
+/**
+ * Input component with validation, error states, and multiple sizes.
+ *
+ * @element sh-input
+ *
+ * @fires sh-input-change - Fired when input value changes
+ * @fires sh-input-blur - Fired when input loses focus
+ * @fires sh-input-focus - Fired when input receives focus
+ *
+ * @example
+ * ```html
+ * <sh-input type="email" placeholder="Email" required></sh-input>
+ * <sh-input type="number" size="small" hideArrows></sh-input>
+ * ```
+ */
 @customElement("sh-input")
 export class ShInput extends LitElement {
 
@@ -156,15 +171,74 @@ export class ShInput extends LitElement {
     }
   `
 
+    /**
+     * Input type
+     * @type {'text' | 'number' | 'email' | 'password' | 'tel'}
+     * @default 'text'
+     */
     @property({ type: String }) type: "text" | "number" | "email" | "password" | "tel" = "text"
+
+    /**
+     * Placeholder text
+     * @type {string}
+     * @default ''
+     */
     @property({ type: String }) placeholder = ""
+
+    /**
+     * Input value
+     * @type {string}
+     * @default ''
+     */
     @property({ type: String }) value = ""
+
+    /**
+     * Show error state
+     * @type {boolean}
+     * @default false
+     */
     @property({ type: Boolean }) error = false
+
+    /**
+     * Error message to display
+     * @type {string}
+     * @default 'Ce champ est requis'
+     */
     @property({ type: String }) errorMessage = "Ce champ est requis"
+
+    /**
+     * Size of the input
+     * @type {'small' | 'medium' | 'large'}
+     * @default 'medium'
+     */
     @property({ type: String }) size: "small" | "medium" | "large" = "medium"
+
+    /**
+     * Hide number input arrows
+     * @type {boolean}
+     * @default false
+     */
     @property({ type: Boolean }) hideArrows = false
+
+    /**
+     * Disable the input
+     * @type {boolean}
+     * @default false
+     */
     @property({ type: Boolean }) disabled = false
+
+    /**
+     * Input name attribute
+     * @type {string}
+     * @default ''
+     */
     @property({ type: String }) name = ""
+
+    /**
+     * Mark as required field
+     * @type {boolean}
+     * @default false
+     */
     @property({ type: Boolean }) required = false
 
     render() {

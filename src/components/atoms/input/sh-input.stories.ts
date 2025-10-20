@@ -2,7 +2,7 @@ import type {Meta, StoryObj} from "@storybook/web-components"
 import "./sh-input.ts"
 
 const meta = {
-    title: "StockHub/Atoms/Input",
+    title: "Components/Atoms/Input",
     component: "sh-input",
     tags: ["autodocs"],
     parameters: {
@@ -55,6 +55,11 @@ const meta = {
             control: "text",
             description: "Nom de l'input pour les formulaires",
         },
+        theme: {
+            control: "select",
+            options: ["light", "dark"],
+            description: "Thème de l'input (light ou dark)",
+        },
     },
 } satisfies Meta
 
@@ -72,7 +77,24 @@ export const Default: Story = {
         disabled: false,
         required: false,
         name: "default-input",
+        theme: "dark",
     },
+    render: (args) => `
+        <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+            <sh-input
+                type="${args.type}"
+                placeholder="${args.placeholder}"
+                size="${args.size}"
+                ?error="${args.error}"
+                error-message="${args.errorMessage || ''}"
+                ?hide-arrows="${args.hideArrows}"
+                ?disabled="${args.disabled}"
+                ?required="${args.required}"
+                name="${args.name}"
+                data-theme="${args.theme}"
+            ></sh-input>
+        </div>
+    `,
 }
 
 // Toutes les tailles
@@ -176,7 +198,3 @@ export const States: Story = {
 //         </div>
 //     `,
 // }
-
-
-
-

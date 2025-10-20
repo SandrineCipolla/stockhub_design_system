@@ -1,10 +1,36 @@
 import type {Preview} from "@storybook/web-components"
-import 'lit/polyfill-support.js'; // recommandé
-// ✅ IMPORT CRITIQUE - Vérifiez que ce chemin est correct
+import 'lit/polyfill-support.js' // recommandé
+// ⭐️ IMPORTANT: S'assurer que ce chemin est correct
 import "../src/tokens/design-tokens.css"
+
+// ⭐️ IMPORTANT: Importer aussi les composants principaux pour s'assurer qu'ils sont chargés
+import "../src/components/atoms/icon/sh-icon.ts"
+import "../src/components/molecules/button/sh-button.ts"
+
+// Import custom elements manifest for documentation
+import { setCustomElementsManifest } from '@storybook/web-components';
+import customElements from '../custom-elements.json';
+
+setCustomElementsManifest(customElements);
 
 const preview: Preview = {
     parameters: {
+        // Configuration de l'ordre des sections dans le menu
+        options: {
+            storySort: {
+                order: [
+                    'Introduction', // Pour les stories génériques
+                    'Design Tokens',
+                    'Icons',
+                    'Components',
+                    ['Atoms', ['Badge', 'Icon', 'Input', 'Logo', 'Text'],
+                     'Molecules', ['Button', 'Card', 'QuantityInput', 'StatusBadge'],
+                     'Organisms', ['Header']],
+                    '*', // Autres sections à la fin
+                ],
+                method: 'alphabetical',
+            },
+        },
         backgrounds: {
             default: "stockhub-dark",
             values: [
@@ -17,6 +43,13 @@ const preview: Preview = {
                     value: "linear-gradient(to br, #f8fafc, #f0ebff)",
                 },
             ],
+        },
+        actions: { argTypesRegex: "^on[A-Z].*" },
+        controls: {
+            matchers: {
+                color: /(background|color)$/i,
+                date: /Date$/,
+            },
         },
     },
     globalTypes: {
@@ -36,8 +69,19 @@ const preview: Preview = {
         (story, context) => {
             const theme = context.globals.theme || "dark"
 
-            // ✅ SOLUTION : Injecter les variables CSS dans le document
-            const style = document.createElement("style")
+            // ⭐️ SYNC: Override args.theme with global theme toggle
+            if (context.args && 'theme' in context.args) {
+                context.args.theme = theme
+            }
+
+            // ⭐️ IMPORTANT: Injecter les variables CSS dans le document (réutilise le même élément)
+            const styleId = 'storybook-theme-vars';
+            let style = document.getElementById(styleId) as HTMLStyleElement;
+            if (!style) {
+                style = document.createElement("style");
+                style.id = styleId;
+                document.head.appendChild(style);
+            }
             style.textContent = `
         :root {
           /* Variables CSS disponibles globalement */
@@ -53,11 +97,18 @@ const preview: Preview = {
           --transition-timing-ease: cubic-bezier(0.4, 0, 0.2, 1);
         }
       `
-            document.head.appendChild(style)
+
+            // Apply theme to all sh-* components after story renders
+            setTimeout(() => {
+                const allComponents = document.querySelectorAll('[data-theme], sh-badge, sh-card, sh-button, sh-icon, sh-input, sh-logo, sh-text, sh-status-badge, sh-quantity-input, sh-header')
+                allComponents.forEach((el) => {
+                    el.setAttribute('data-theme', theme)
+                })
+            }, 0)
 
             return `
         <div data-theme="${theme}" style="
-          min-height: 100vh; 
+          min-height: 100vh;
           padding: 20px;
           background: ${theme === "dark" ? "linear-gradient(to br, #0f172a, #1e1b4b)" : "linear-gradient(to br, #f8fafc, #f0ebff)"};
           color: ${theme === "dark" ? "#f8fafc" : "#1e293b"};

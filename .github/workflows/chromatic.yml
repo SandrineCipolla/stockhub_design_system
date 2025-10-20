@@ -50,5 +50,5 @@ jobs:
           # If you want the job not to fail on visual diffs, use exitZeroOnChanges: true.
           # If you want the job to return early after upload, keep exitOnceUploaded: true.
           # exitOnceUploaded: true
-          # Auto-accept changes on master branch
-          autoAcceptChanges: "master"
+          # Auto-accept changes only on master branch
+          autoAcceptChanges: ${{ github.ref_name == 'master' }}

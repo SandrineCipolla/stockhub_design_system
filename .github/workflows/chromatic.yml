@@ -10,11 +10,19 @@ on:
       - feature/**
   pull_request:
 
+# Minimal permissions for security (least-privilege principle)
+permissions:
+  contents: read
+
 # List of jobs
 jobs:
   chromatic-deployment:
     # Operating System
     runs-on: ubuntu-latest
+    # Concurrency group to cancel in-progress runs for the same branch/PR
+    concurrency:
+      group: chromatic-${{ github.ref }}
+      cancel-in-progress: true
     # Job steps
     steps:
       - name: Checkout repository
@@ -38,7 +46,9 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           # Build Storybook
           buildScriptName: build-storybook
-          # Exit with error on visual changes (optional, remove if you want manual approval)
+          # exitOnceUploaded ends the job after upload and does not control failure on visual diffs.
+          # If you want the job not to fail on visual diffs, use exitZeroOnChanges: true.
+          # If you want the job to return early after upload, keep exitOnceUploaded: true.
           # exitOnceUploaded: true
           # Auto-accept changes on master branch
           autoAcceptChanges: "master"

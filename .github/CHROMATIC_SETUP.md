@@ -31,7 +31,7 @@ Le token Chromatic est stocké dans les **GitHub Secrets** : `CHROMATIC_PROJECT_
 **Pour récupérer le token depuis Chromatic** :
 1. Allez sur le [dashboard Chromatic](https://www.chromatic.com/builds?appId=68f5fbe10f495706cb168751)
 2. Settings → Manage → Project Tokens
-3. Le token actuel : `chpt_52a1690d61432df`
+3. Le token actuel est visible dans le dashboard Chromatic, sous Settings → Manage → Project Tokens. Ne copiez jamais le token dans la documentation ou le code, utilisez-le uniquement pour configurer le secret GitHub `CHROMATIC_PROJECT_TOKEN`.
 
 ## 📊 Fonctionnalités
 

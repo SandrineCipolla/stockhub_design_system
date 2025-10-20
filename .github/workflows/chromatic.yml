@@ -17,6 +17,8 @@ permissions:
 # List of jobs
 jobs:
   chromatic-deployment:
+    # Skip workflow for PRs from forks (secrets unavailable)
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false }}
     # Operating System
     runs-on: ubuntu-latest
     # Concurrency group to cancel in-progress runs for the same branch/PR

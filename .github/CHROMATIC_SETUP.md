@@ -36,9 +36,20 @@ Le token Chromatic est stocké dans les **GitHub Secrets** : `CHROMATIC_PROJECT_
 ## 📊 Fonctionnalités
 
 - ✅ **Déploiement automatique** : Chaque push déclenche un build
-- ✅ **Preview URL** : Chaque PR a son propre Storybook
+- ✅ **Preview URL** : Chaque PR a son propre Storybook (sauf PRs de forks)
 - ✅ **Visual Testing** : Détection automatique des changements visuels
 - ✅ **Historique** : Tous les builds sont archivés
+- ✅ **Protection forks** : Le workflow skip automatiquement les PRs de forks (pas d'accès aux secrets)
+
+## ⚠️ Limitations
+
+### Pull Requests depuis des Forks
+
+Les PRs provenant de **forks externes** ne génèrent **pas** de preview Chromatic automatique.
+
+**Raison** : GitHub Actions ne partage pas les secrets du repository (comme `CHROMATIC_PROJECT_TOKEN`) avec les workflows déclenchés par des forks, pour des raisons de sécurité.
+
+**Solution** : Le workflow détecte automatiquement les PRs de forks et skip le job Chromatic pour éviter les erreurs. Les contributeurs externes devront tester localement avec `npm run storybook`.
 
 ## 🔗 Liens utiles
 

@@ -216,54 +216,64 @@ export const AllVariants: Story = {
   },
   render: (args) => `
     <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 100%;">
-      <sh-metric-card
-        icon="Package"
-        label="Success Variant"
-        value="156"
-        variant="success"
-        trend="increase"
-        trend-value="+12"
-        data-theme="${args.theme}"
-      ></sh-metric-card>
+      <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
+        <div style="flex: 1 1 300px; max-width: 320px;">
+          <sh-metric-card
+            icon="Package"
+            label="Success Variant"
+            value="156"
+            variant="success"
+            trend="increase"
+            trend-value="+12"
+            data-theme="${args.theme}"
+          ></sh-metric-card>
+        </div>
 
-      <sh-metric-card
-        icon="AlertTriangle"
-        label="Warning Variant"
-        value="42"
-        variant="warning"
-        trend="increase"
-        trend-value="+3"
-        data-theme="${args.theme}"
-      ></sh-metric-card>
+        <div style="flex: 1 1 300px; max-width: 320px;">
+          <sh-metric-card
+            icon="AlertTriangle"
+            label="Warning Variant"
+            value="42"
+            variant="warning"
+            trend="increase"
+            trend-value="+3"
+            data-theme="${args.theme}"
+          ></sh-metric-card>
+        </div>
 
-      <sh-metric-card
-        icon="XCircle"
-        label="Danger Variant"
-        value="3"
-        variant="danger"
-        trend="decrease"
-        trend-value="-2"
-        data-theme="${args.theme}"
-      ></sh-metric-card>
+        <div style="flex: 1 1 300px; max-width: 320px;">
+          <sh-metric-card
+            icon="XCircle"
+            label="Danger Variant"
+            value="3"
+            variant="danger"
+            trend="decrease"
+            trend-value="-2"
+            data-theme="${args.theme}"
+          ></sh-metric-card>
+        </div>
 
-      <sh-metric-card
-        icon="TrendingUp"
-        label="Info Variant"
-        value="€45,250"
-        variant="info"
-        trend="increase"
-        trend-value="+15%"
-        data-theme="${args.theme}"
-      ></sh-metric-card>
+        <div style="flex: 1 1 300px; max-width: 320px;">
+          <sh-metric-card
+            icon="TrendingUp"
+            label="Info Variant"
+            value="€45,250"
+            variant="info"
+            trend="increase"
+            trend-value="+15%"
+            data-theme="${args.theme}"
+          ></sh-metric-card>
+        </div>
 
-      <sh-metric-card
-        icon="BarChart"
-        label="Default Variant"
-        value="1,234"
-        variant="default"
-        data-theme="${args.theme}"
-      ></sh-metric-card>
+        <div style="flex: 1 1 300px; max-width: 320px;">
+          <sh-metric-card
+            icon="BarChart"
+            label="Default Variant"
+            value="1,234"
+            variant="default"
+            data-theme="${args.theme}"
+          ></sh-metric-card>
+        </div>
       </div>
     </div>
   `,

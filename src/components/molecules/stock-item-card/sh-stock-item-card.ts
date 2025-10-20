@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import '../../atoms/icon/sh-icon.js';
-import '../../atoms/badge/sh-badge.js';
+import '../status-badge/sh-status-badge.js';
 import '../button/sh-button.js';
 
 /**
@@ -215,27 +215,6 @@ export class ShStockItemCard extends LitElement {
     }
   `;
 
-  private _getStatusLabel(): string {
-    const labels = {
-      'optimal': 'Optimal',
-      'low': 'Low Stock',
-      'critical': 'Critical',
-      'out-of-stock': 'Out of Stock',
-      'overstocked': 'Overstocked'
-    };
-    return labels[this.status];
-  }
-
-  private _getStatusVariant(): 'success' | 'warning' | 'danger' | 'default' {
-    const variants = {
-      'optimal': 'success',
-      'low': 'warning',
-      'critical': 'danger',
-      'out-of-stock': 'default',
-      'overstocked': 'default'
-    };
-    return variants[this.status] as 'success' | 'warning' | 'danger' | 'default';
-  }
 
   private _handleView() {
     this.dispatchEvent(new CustomEvent('sh-view-click', {
@@ -282,12 +261,10 @@ export class ShStockItemCard extends LitElement {
             <div class="name">${this.name}</div>
             <div class="sku">${this.sku}</div>
           </div>
-          <sh-badge
-            variant="${this._getStatusVariant()}"
+          <sh-status-badge
+            status="${this.status}"
             size="sm"
-          >
-            ${this._getStatusLabel()}
-          </sh-badge>
+          ></sh-status-badge>
         </div>
 
         <!-- Metrics Grid -->

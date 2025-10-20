@@ -1,6 +1,7 @@
 {
   "name": "@stockhub/design-system",
-  "version": "1.0.0",
+  "version": "1.2.1",
+  "type": "module",
   "description": "Design system for StockHub application",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

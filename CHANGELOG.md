@@ -5,6 +5,26 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
+## [1.2.1] - 2025-10-20
+
+### 🐛 Corrigé
+
+#### Configuration Build
+- **package.json** : Ajout de `"type": "module"` pour permettre l'utilisation de la syntaxe ESM dans rollup.config.js
+  - Problème : `npm run build:lib` échouait avec "Cannot use import statement outside a module"
+  - Solution : Configuration du package comme module ES pour compatibilité avec Rollup
+  - Impact : Le build de la bibliothèque NPM fonctionne maintenant correctement
+  - Formats générés : CommonJS (`dist/index.js`), ES Modules (`dist/index.esm.js`), TypeScript types (`dist/index.d.ts`)
+
+### ✅ Tests Effectués
+- ✅ `npm run build:lib` - Build bibliothèque NPM réussi
+- ✅ `npm run build-storybook` - Build Storybook réussi
+- ✅ Génération des fichiers dist (871KB ESM, 872KB CJS)
+- ✅ Génération des source maps
+- ✅ Génération des types TypeScript
+
+---
+
 ## [1.2.0] - 2025-10-19
 
 ### ✨ Ajouté

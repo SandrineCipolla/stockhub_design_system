@@ -13,6 +13,7 @@ export * from './components/molecules/button/sh-button';
 export * from './components/molecules/quantity-input/sh-quantity-input';
 export * from './components/molecules/status-badge/sh-status-badge';
 export * from './components/molecules/card/sh-card';
+export * from './components/molecules/metric-card/sh-metric-card';
 
 // Organisms
 export * from './components/organisms/header/sh-header';

@@ -274,6 +274,75 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/atoms/logo/sh-logo.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Logo component displaying the StockHub brand with icon and text.",
+          "name": "ShLogo",
+          "cssProperties": [
+            {
+              "description": "Controls the size of the logo icon (default: 40px)",
+              "name": "--logo-icon-size"
+            },
+            {
+              "description": "Controls the size of the logo text (default: 20px)",
+              "name": "--logo-text-size"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Logo size variant",
+              "attribute": "size",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Logo size variant",
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-logo",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShLogo",
+          "declaration": {
+            "name": "ShLogo",
+            "module": "src/components/atoms/logo/sh-logo.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-logo",
+          "declaration": {
+            "name": "ShLogo",
+            "module": "src/components/atoms/logo/sh-logo.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/atoms/input/sh-input.ts",
       "declarations": [
         {
@@ -587,69 +656,155 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/atoms/logo/sh-logo.ts",
+      "path": "src/components/atoms/text/sh-text.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Logo component displaying the StockHub brand with icon and text.",
-          "name": "ShLogo",
-          "cssProperties": [
-            {
-              "description": "Controls the size of the logo icon (default: 40px)",
-              "name": "--logo-icon-size"
-            },
-            {
-              "description": "Controls the size of the logo text (default: 20px)",
-              "name": "--logo-text-size"
-            }
-          ],
+          "description": "Text component for rendering headings and paragraphs with custom styling.",
+          "name": "ShText",
           "members": [
             {
               "kind": "field",
-              "name": "size",
+              "name": "type",
               "type": {
-                "text": "'sm' | 'md' | 'lg'"
+                "text": "'title' | 'paragraph'"
               },
-              "default": "'md'",
-              "description": "Logo size variant",
-              "attribute": "size",
+              "default": "'paragraph'",
+              "description": "Type of text element",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "content",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Text content to display",
+              "attribute": "content"
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "type": {
+                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
+              },
+              "default": "'h1'",
+              "description": "HTML tag to use when type is 'title'",
+              "attribute": "tag"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "'inherit'",
+              "description": "Text color (overrides theme colors)",
+              "attribute": "color"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "description": "Theme variant",
+              "attribute": "data-theme",
               "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "renderWithTag",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "tag",
+                  "type": {
+                    "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'"
+                  }
+                },
+                {
+                  "name": "content",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
             }
           ],
           "attributes": [
             {
-              "name": "size",
+              "name": "data-theme",
               "type": {
-                "text": "'sm' | 'md' | 'lg'"
+                "text": "'light' | 'dark'"
               },
-              "default": "'md'",
-              "description": "Logo size variant",
-              "fieldName": "size"
+              "default": "'dark'",
+              "description": "Theme variant",
+              "fieldName": "theme",
+              "attribute": "data-theme"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "'title' | 'paragraph'"
+              },
+              "default": "'paragraph'",
+              "description": "Type of text element",
+              "fieldName": "type"
+            },
+            {
+              "name": "content",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Text content to display",
+              "fieldName": "content"
+            },
+            {
+              "name": "tag",
+              "type": {
+                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
+              },
+              "default": "'h1'",
+              "description": "HTML tag to use when type is 'title'",
+              "fieldName": "tag"
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "'inherit'",
+              "description": "Text color (overrides theme colors)",
+              "fieldName": "color"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "sh-logo",
+          "tagName": "sh-text",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "ShLogo",
+          "name": "ShText",
           "declaration": {
-            "name": "ShLogo",
-            "module": "src/components/atoms/logo/sh-logo.ts"
+            "name": "ShText",
+            "module": "src/components/atoms/text/sh-text.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "sh-logo",
+          "name": "sh-text",
           "declaration": {
-            "name": "ShLogo",
-            "module": "src/components/atoms/logo/sh-logo.ts"
+            "name": "ShText",
+            "module": "src/components/atoms/text/sh-text.ts"
           }
         }
       ]
@@ -816,161 +971,6 @@
           "declaration": {
             "name": "ShHeader",
             "module": "src/components/organisms/header/sh-header.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/atoms/text/sh-text.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Text component for rendering headings and paragraphs with custom styling.",
-          "name": "ShText",
-          "members": [
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "'title' | 'paragraph'"
-              },
-              "default": "'paragraph'",
-              "description": "Type of text element",
-              "attribute": "type"
-            },
-            {
-              "kind": "field",
-              "name": "content",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Text content to display",
-              "attribute": "content"
-            },
-            {
-              "kind": "field",
-              "name": "tag",
-              "type": {
-                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
-              },
-              "default": "'h1'",
-              "description": "HTML tag to use when type is 'title'",
-              "attribute": "tag"
-            },
-            {
-              "kind": "field",
-              "name": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "'inherit'",
-              "description": "Text color (overrides theme colors)",
-              "attribute": "color"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "description": "Theme variant",
-              "attribute": "data-theme",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "renderWithTag",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "tag",
-                  "type": {
-                    "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'"
-                  }
-                },
-                {
-                  "name": "content",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "data-theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "description": "Theme variant",
-              "fieldName": "theme",
-              "attribute": "data-theme"
-            },
-            {
-              "name": "type",
-              "type": {
-                "text": "'title' | 'paragraph'"
-              },
-              "default": "'paragraph'",
-              "description": "Type of text element",
-              "fieldName": "type"
-            },
-            {
-              "name": "content",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Text content to display",
-              "fieldName": "content"
-            },
-            {
-              "name": "tag",
-              "type": {
-                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
-              },
-              "default": "'h1'",
-              "description": "HTML tag to use when type is 'title'",
-              "fieldName": "tag"
-            },
-            {
-              "name": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "'inherit'",
-              "description": "Text color (overrides theme colors)",
-              "fieldName": "color"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-text",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShText",
-          "declaration": {
-            "name": "ShText",
-            "module": "src/components/atoms/text/sh-text.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-text",
-          "declaration": {
-            "name": "ShText",
-            "module": "src/components/atoms/text/sh-text.ts"
           }
         }
       ]
@@ -1309,6 +1309,221 @@
           "declaration": {
             "name": "ShCard",
             "module": "src/components/molecules/card/sh-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/molecules/metric-card/sh-metric-card.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ShMetricCard",
+          "slots": [
+            {
+              "description": "Contenu personnalisé (remplace la valeur par défaut)",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "IconName"
+              },
+              "default": "'TrendingUp'",
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | number"
+              },
+              "default": "'0'",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "'default' | 'success' | 'warning' | 'danger' | 'info'"
+              },
+              "default": "'default'",
+              "attribute": "variant"
+            },
+            {
+              "kind": "field",
+              "name": "trend",
+              "type": {
+                "text": "'increase' | 'decrease' | undefined"
+              },
+              "attribute": "trend"
+            },
+            {
+              "kind": "field",
+              "name": "trendValue",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "trend-value"
+            },
+            {
+              "kind": "field",
+              "name": "clickable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "clickable"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_isHovered",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeyDown",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-metric-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis au clic sur la carte (si clickable)"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "icon",
+              "type": {
+                "text": "IconName"
+              },
+              "default": "'TrendingUp'",
+              "fieldName": "icon"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "label"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string | number"
+              },
+              "default": "'0'",
+              "fieldName": "value"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "'default' | 'success' | 'warning' | 'danger' | 'info'"
+              },
+              "default": "'default'",
+              "fieldName": "variant"
+            },
+            {
+              "name": "trend",
+              "type": {
+                "text": "'increase' | 'decrease' | undefined"
+              },
+              "fieldName": "trend"
+            },
+            {
+              "name": "trend-value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "trendValue"
+            },
+            {
+              "name": "clickable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "clickable"
+            },
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "fieldName": "theme"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-metric-card",
+          "customElement": true,
+          "summary": "Carte métrique avec icône, valeur et indicateur de tendance"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShMetricCard",
+          "declaration": {
+            "name": "ShMetricCard",
+            "module": "src/components/molecules/metric-card/sh-metric-card.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-metric-card",
+          "declaration": {
+            "name": "ShMetricCard",
+            "module": "src/components/molecules/metric-card/sh-metric-card.ts"
           }
         }
       ]

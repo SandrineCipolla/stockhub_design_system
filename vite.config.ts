@@ -8,12 +8,12 @@ export default defineConfig({
             fileName: (format) => `stockhub-design-system.${format}.js`,
             formats: ['es', 'umd'],
         },
+        // Remove external to bundle Lit with the components
+        // This ensures CSS-in-JS works properly
         rollupOptions: {
-            external: ['lit'],
             output: {
-                globals: {
-                    lit: 'lit',
-                },
+                // Ensure all dependencies are bundled
+                inlineDynamicImports: false,
             },
         },
     },

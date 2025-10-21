@@ -1,4 +1,6 @@
 import { defineConfig } from 'vite';
+import { copyFileSync, mkdirSync } from 'fs';
+import { join } from 'path';
 
 export default defineConfig({
     build: {
@@ -17,4 +19,18 @@ export default defineConfig({
             },
         },
     },
+    plugins: [
+        {
+            name: 'copy-css-tokens',
+            closeBundle() {
+                // Copy design-tokens.css to dist/tokens/
+                const distTokensDir = join(process.cwd(), 'dist', 'tokens');
+                mkdirSync(distTokensDir, { recursive: true });
+                copyFileSync(
+                    join(process.cwd(), 'src', 'tokens', 'design-tokens.css'),
+                    join(distTokensDir, 'design-tokens.css')
+                );
+            },
+        },
+    ],
 });

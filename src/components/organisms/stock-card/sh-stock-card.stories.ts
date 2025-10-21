@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import './sh-stock-card';
 
 const meta: Meta = {
-  title: 'Components/Molecules/StockCard',
+  title: 'Components/Organisms/StockCard',
   component: 'sh-stock-card',
   tags: ['autodocs'],
   argTypes: {

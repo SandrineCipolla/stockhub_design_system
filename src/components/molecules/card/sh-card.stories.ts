@@ -176,31 +176,36 @@ export const DifferentPadding: Story = {
   `,
 };
 
-// Product Card Example
-export const ProductCard: Story = {
+// Inventory Item Card Example
+export const InventoryCard: Story = {
   args: {
     theme: 'dark',
   },
   render: (args) => `
     <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px; display: flex; align-items: center; justify-content: center; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
       <sh-card hover clickable style="width: 280px;" data-theme="${args.theme}">
-        <img
-          src="https://via.placeholder.com/280x180"
-          alt="Product"
-          style="width: calc(100% + 32px); margin: -16px -16px 16px -16px; border-radius: 16px 16px 0 0; display: block;"
-        >
-        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-          <h3 style="margin: 0;">Product Name</h3>
-          <sh-badge variant="success" pill data-theme="${args.theme}">New</sh-badge>
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
+          <div>
+            <h3 style="margin: 0;">Peinture Acrylique</h3>
+            <p style="margin: 0.25rem 0 0 0; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'}; font-size: 0.875rem;">
+              SKU: PNT-001
+            </p>
+          </div>
+          <sh-badge variant="success" pill data-theme="${args.theme}">En stock</sh-badge>
         </div>
-        <p style="margin: 0 0 1rem 0; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'}; font-size: 0.875rem;">
-          Short description of the product goes here.
-        </p>
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary-600);">
-            $29.99
-          </span>
-          <sh-button variant="primary" size="sm" iconBefore="ShoppingCart" data-theme="${args.theme}">Add</sh-button>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; padding: 1rem; background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)'}; border-radius: 8px;">
+          <div>
+            <div style="font-size: 0.75rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'}; text-transform: uppercase; margin-bottom: 0.25rem;">Quantité</div>
+            <div style="font-size: 1.25rem; font-weight: 700;">45</div>
+          </div>
+          <div>
+            <div style="font-size: 0.75rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'}; text-transform: uppercase; margin-bottom: 0.25rem;">Valeur</div>
+            <div style="font-size: 1.25rem; font-weight: 700;">€675</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <sh-button variant="ghost" size="sm" iconBefore="Eye" style="flex: 1;" data-theme="${args.theme}">Détails</sh-button>
+          <sh-button variant="primary" size="sm" iconBefore="Edit" style="flex: 1;" data-theme="${args.theme}">Modifier</sh-button>
         </div>
       </sh-card>
     </div>
@@ -243,8 +248,8 @@ export const StatsCard: Story = {
   `,
 };
 
-// Form Card Example
-export const FormCard: Story = {
+// Add Stock Form Example
+export const AddStockForm: Story = {
   args: {
     theme: 'dark',
   },
@@ -252,44 +257,65 @@ export const FormCard: Story = {
     <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 400px; display: flex; align-items: center; justify-content: center; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
       <sh-card style="width: 400px;" data-theme="${args.theme}">
         <div slot="header">
-          <h2 style="margin: 0;">Login</h2>
+          <h2 style="margin: 0;">Ajouter un stock</h2>
           <p style="margin: 0.5rem 0 0 0; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
-            Enter your credentials to continue
+            Enregistrer un nouveau produit dans l'inventaire
           </p>
         </div>
 
         <form style="display: flex; flex-direction: column; gap: 1rem;">
           <div>
             <label style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; font-weight: 500;">
-              Email
+              Nom du produit
             </label>
             <input
-              type="email"
-              placeholder="you@example.com"
+              type="text"
+              placeholder="Ex: Peinture Acrylique Bleu"
               style="width: 100%; padding: 0.5rem; border: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.2)' : '#d1d5db'}; border-radius: 6px; font-size: 0.875rem; background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.05)' : '#ffffff'}; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};"
             >
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <label style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; font-weight: 500;">
+                Quantité
+              </label>
+              <input
+                type="number"
+                placeholder="0"
+                style="width: 100%; padding: 0.5rem; border: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.2)' : '#d1d5db'}; border-radius: 6px; font-size: 0.875rem; background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.05)' : '#ffffff'}; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};"
+              >
+            </div>
+            <div>
+              <label style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; font-weight: 500;">
+                Prix unitaire
+              </label>
+              <input
+                type="text"
+                placeholder="€0.00"
+                style="width: 100%; padding: 0.5rem; border: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.2)' : '#d1d5db'}; border-radius: 6px; font-size: 0.875rem; background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.05)' : '#ffffff'}; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};"
+              >
+            </div>
           </div>
 
           <div>
             <label style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; font-weight: 500;">
-              Password
+              Catégorie
             </label>
-            <input
-              type="password"
-              placeholder="••••••••"
+            <select
               style="width: 100%; padding: 0.5rem; border: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.2)' : '#d1d5db'}; border-radius: 6px; font-size: 0.875rem; background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.05)' : '#ffffff'}; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};"
             >
+              <option>Peinture</option>
+              <option>Textile</option>
+              <option>Outils</option>
+              <option>Papeterie</option>
+            </select>
           </div>
-
-          <sh-button type="submit" variant="primary" style="width: 100%;" data-theme="${args.theme}">
-            Sign In
-          </sh-button>
         </form>
 
-        <div slot="footer" style="text-align: center;">
-          <a href="#" style="font-size: 0.875rem; color: var(--color-primary-600);">
-            Forgot password?
-          </a>
+        <div slot="footer" style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+          <sh-button variant="ghost" size="sm" data-theme="${args.theme}">Annuler</sh-button>
+          <sh-button variant="primary" size="sm" iconBefore="Plus" data-theme="${args.theme}">Ajouter</sh-button>
         </div>
       </sh-card>
     </div>

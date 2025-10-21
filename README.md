@@ -38,25 +38,31 @@ Cette stratégie définit :
 ```
 src/
 ├── components/
-│   ├── atoms/                    # Composants de base
+│   ├── atoms/                    # Composants de base (5)
 │   │   ├── badge/               # sh-badge
 │   │   ├── icon/                # sh-icon (Lucide)
 │   │   ├── input/               # sh-input
 │   │   ├── logo/                # sh-logo
 │   │   └── text/                # sh-text
-│   ├── molecules/                # Combinaisons d'atoms
+│   ├── molecules/                # Combinaisons d'atoms (6)
 │   │   ├── button/              # sh-button (ghost, loading, icons)
-│   │   ├── card/                # sh-card
-│   │   ├── metric-card/         # sh-metric-card (NEW)
+│   │   ├── card/                # sh-card (base)
+│   │   ├── metric-card/         # sh-metric-card
 │   │   ├── quantity-input/      # sh-quantity-input
-│   │   ├── status-badge/        # sh-status-badge
-│   │   └── stock-item-card/     # sh-stock-item-card (NEW)
-│   └── organisms/                # Composants complexes
-│       └── header/              # sh-header
+│   │   ├── search-input/        # sh-search-input ✨ NEW
+│   │   └── status-badge/        # sh-status-badge
+│   └── organisms/                # Composants complexes (5)
+│       ├── footer/              # sh-footer ✨ NEW
+│       ├── header/              # sh-header
+│       ├── ia-alert-banner/     # sh-ia-alert-banner ✨ NEW
+│       ├── stock-card/          # sh-stock-card
+│       └── stock-item-card/     # sh-stock-item-card
 ├── tokens/                       # Design tokens (colors, spacing, etc.)
 ├── icons/                        # DEPRECATED: Remplacé par Lucide
 └── styles/                       # Global styles et CSS utilities
 ```
+
+**Total : 16 composants Web Components**
 
 ### Convention de Nommage
 Tous les composants utilisent le préfixe `sh-` (StockHub) :

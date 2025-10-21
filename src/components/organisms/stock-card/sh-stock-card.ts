@@ -31,7 +31,7 @@ import '../../molecules/button/sh-button.js';
  * <sh-stock-card
  *   name="Acrylique Bleu Cobalt"
  *   category="Peinture"
- *   lastUpdate="il y a 3i"
+ *   lastUpdate="il y a 3h"
  *   percentage="65"
  *   quantity="1 tube"
  *   value="€12"

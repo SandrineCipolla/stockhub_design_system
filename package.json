@@ -6,6 +6,14 @@
   "main": "dist/stockhub-design-system.umd.js",
   "module": "dist/stockhub-design-system.es.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/stockhub-design-system.es.js",
+      "require": "./dist/stockhub-design-system.umd.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/tokens/design-tokens.css": "./dist/tokens/design-tokens.css"
+  },
   "files": [
     "dist",
     "README.md"

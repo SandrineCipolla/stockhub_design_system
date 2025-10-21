@@ -4,6 +4,114 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "src/components/atoms/badge/sh-badge.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Badge component for displaying labels, statuses, counters, and categories.",
+          "name": "ShBadge",
+          "cssParts": [
+            {
+              "description": "The badge container element",
+              "name": "badge"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Default slot for badge content (text, icons, or both)",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "'success' | 'warning' | 'danger' | 'info' | 'default'"
+              },
+              "default": "'default'",
+              "description": "Visual variant of the badge (color scheme)",
+              "attribute": "variant"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "pill",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Enable fully rounded corners (pill shape)",
+              "attribute": "pill"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "'success' | 'warning' | 'danger' | 'info' | 'default'"
+              },
+              "default": "'default'",
+              "description": "Visual variant of the badge (color scheme)",
+              "fieldName": "variant"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "fieldName": "size"
+            },
+            {
+              "name": "pill",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Enable fully rounded corners (pill shape)",
+              "fieldName": "pill"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-badge",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShBadge",
+          "declaration": {
+            "name": "ShBadge",
+            "module": "src/components/atoms/badge/sh-badge.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-badge",
+          "declaration": {
+            "name": "ShBadge",
+            "module": "src/components/atoms/badge/sh-badge.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/atoms/icon/sh-icon.ts",
       "declarations": [
         {
@@ -229,269 +337,6 @@
           "declaration": {
             "name": "ShLogo",
             "module": "src/components/atoms/logo/sh-logo.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/atoms/badge/sh-badge.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Badge component for displaying labels, statuses, counters, and categories.",
-          "name": "ShBadge",
-          "cssParts": [
-            {
-              "description": "The badge container element",
-              "name": "badge"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Default slot for badge content (text, icons, or both)",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "'success' | 'warning' | 'danger' | 'info' | 'default'"
-              },
-              "default": "'default'",
-              "description": "Visual variant of the badge (color scheme)",
-              "attribute": "variant"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "pill",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Enable fully rounded corners (pill shape)",
-              "attribute": "pill"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "'success' | 'warning' | 'danger' | 'info' | 'default'"
-              },
-              "default": "'default'",
-              "description": "Visual variant of the badge (color scheme)",
-              "fieldName": "variant"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "fieldName": "size"
-            },
-            {
-              "name": "pill",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Enable fully rounded corners (pill shape)",
-              "fieldName": "pill"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-badge",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShBadge",
-          "declaration": {
-            "name": "ShBadge",
-            "module": "src/components/atoms/badge/sh-badge.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-badge",
-          "declaration": {
-            "name": "ShBadge",
-            "module": "src/components/atoms/badge/sh-badge.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/atoms/text/sh-text.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Text component for rendering headings and paragraphs with custom styling.",
-          "name": "ShText",
-          "members": [
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "'title' | 'paragraph'"
-              },
-              "default": "'paragraph'",
-              "description": "Type of text element",
-              "attribute": "type"
-            },
-            {
-              "kind": "field",
-              "name": "content",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Text content to display",
-              "attribute": "content"
-            },
-            {
-              "kind": "field",
-              "name": "tag",
-              "type": {
-                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
-              },
-              "default": "'h1'",
-              "description": "HTML tag to use when type is 'title'",
-              "attribute": "tag"
-            },
-            {
-              "kind": "field",
-              "name": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "'inherit'",
-              "description": "Text color (overrides theme colors)",
-              "attribute": "color"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "description": "Theme variant",
-              "attribute": "data-theme",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "renderWithTag",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "tag",
-                  "type": {
-                    "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'"
-                  }
-                },
-                {
-                  "name": "content",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "data-theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "description": "Theme variant",
-              "fieldName": "theme",
-              "attribute": "data-theme"
-            },
-            {
-              "name": "type",
-              "type": {
-                "text": "'title' | 'paragraph'"
-              },
-              "default": "'paragraph'",
-              "description": "Type of text element",
-              "fieldName": "type"
-            },
-            {
-              "name": "content",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Text content to display",
-              "fieldName": "content"
-            },
-            {
-              "name": "tag",
-              "type": {
-                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
-              },
-              "default": "'h1'",
-              "description": "HTML tag to use when type is 'title'",
-              "fieldName": "tag"
-            },
-            {
-              "name": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "'inherit'",
-              "description": "Text color (overrides theme colors)",
-              "fieldName": "color"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-text",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShText",
-          "declaration": {
-            "name": "ShText",
-            "module": "src/components/atoms/text/sh-text.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-text",
-          "declaration": {
-            "name": "ShText",
-            "module": "src/components/atoms/text/sh-text.ts"
           }
         }
       ]
@@ -805,6 +650,161 @@
           "declaration": {
             "name": "ShInput",
             "module": "src/components/atoms/input/sh-input.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/atoms/text/sh-text.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Text component for rendering headings and paragraphs with custom styling.",
+          "name": "ShText",
+          "members": [
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "'title' | 'paragraph'"
+              },
+              "default": "'paragraph'",
+              "description": "Type of text element",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "content",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Text content to display",
+              "attribute": "content"
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "type": {
+                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
+              },
+              "default": "'h1'",
+              "description": "HTML tag to use when type is 'title'",
+              "attribute": "tag"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "'inherit'",
+              "description": "Text color (overrides theme colors)",
+              "attribute": "color"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "description": "Theme variant",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "renderWithTag",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "tag",
+                  "type": {
+                    "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'"
+                  }
+                },
+                {
+                  "name": "content",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "description": "Theme variant",
+              "fieldName": "theme",
+              "attribute": "data-theme"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "'title' | 'paragraph'"
+              },
+              "default": "'paragraph'",
+              "description": "Type of text element",
+              "fieldName": "type"
+            },
+            {
+              "name": "content",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Text content to display",
+              "fieldName": "content"
+            },
+            {
+              "name": "tag",
+              "type": {
+                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
+              },
+              "default": "'h1'",
+              "description": "HTML tag to use when type is 'title'",
+              "fieldName": "tag"
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "'inherit'",
+              "description": "Text color (overrides theme colors)",
+              "fieldName": "color"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-text",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShText",
+          "declaration": {
+            "name": "ShText",
+            "module": "src/components/atoms/text/sh-text.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-text",
+          "declaration": {
+            "name": "ShText",
+            "module": "src/components/atoms/text/sh-text.ts"
           }
         }
       ]
@@ -1660,26 +1660,6 @@
             },
             {
               "kind": "method",
-              "name": "_getStatusLabel",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "_getStatusVariant",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "'success' | 'warning' | 'danger' | 'default'"
-                }
-              }
-            },
-            {
-              "kind": "method",
               "name": "_handleView",
               "privacy": "private"
             },
@@ -1807,6 +1787,273 @@
           "declaration": {
             "name": "ShStockItemCard",
             "module": "src/components/molecules/stock-item-card/sh-stock-item-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/molecules/stock-card/sh-stock-card.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ShStockCard",
+          "slots": [
+            {
+              "description": "Contenu personnalisé additionnel",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "category",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "category"
+            },
+            {
+              "kind": "field",
+              "name": "lastUpdate",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "lastUpdate"
+            },
+            {
+              "kind": "field",
+              "name": "percentage",
+              "type": {
+                "text": "string | number"
+              },
+              "default": "'0'",
+              "attribute": "percentage"
+            },
+            {
+              "kind": "field",
+              "name": "quantity",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "quantity"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
+              },
+              "default": "'optimal'",
+              "attribute": "status"
+            },
+            {
+              "kind": "field",
+              "name": "iaCount",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "iaCount"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "loading"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleSession",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleDetails",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleEdit",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleDelete",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-session-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis au clic sur \"Enregistrer session\""
+            },
+            {
+              "name": "sh-details-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis au clic sur \"Détails\""
+            },
+            {
+              "name": "sh-edit-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis au clic sur éditer"
+            },
+            {
+              "name": "sh-delete-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis au clic sur supprimer"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "name"
+            },
+            {
+              "name": "category",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "category"
+            },
+            {
+              "name": "lastUpdate",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "lastUpdate"
+            },
+            {
+              "name": "percentage",
+              "type": {
+                "text": "string | number"
+              },
+              "default": "'0'",
+              "fieldName": "percentage"
+            },
+            {
+              "name": "quantity",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "quantity"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "value"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
+              },
+              "default": "'optimal'",
+              "fieldName": "status"
+            },
+            {
+              "name": "iaCount",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "iaCount"
+            },
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "loading"
+            },
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "fieldName": "theme"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-stock-card",
+          "customElement": true,
+          "summary": "Carte de stock pour le dashboard avec statut, métriques et actions"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShStockCard",
+          "declaration": {
+            "name": "ShStockCard",
+            "module": "src/components/molecules/stock-card/sh-stock-card.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-stock-card",
+          "declaration": {
+            "name": "ShStockCard",
+            "module": "src/components/molecules/stock-card/sh-stock-card.ts"
           }
         }
       ]

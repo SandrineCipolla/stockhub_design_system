@@ -1,8 +1,8 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import '../../atoms/icon/sh-icon.js';
-import '../status-badge/sh-status-badge.js';
-import '../button/sh-button.js';
+import '../../molecules/status-badge/sh-status-badge.js';
+import '../../molecules/button/sh-button.js';
 
 /**
  * @element sh-stock-card

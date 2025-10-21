@@ -3,8 +3,8 @@
   "version": "1.2.1",
   "type": "module",
   "description": "Design system for StockHub application",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "main": "dist/stockhub-design-system.umd.js",
+  "module": "dist/stockhub-design-system.es.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",

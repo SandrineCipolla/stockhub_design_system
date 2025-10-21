@@ -81,7 +81,7 @@ export const Optimal: Story = {
   args: {
     name: 'Acrylique Bleu Cobalt',
     category: 'Peinture',
-    lastUpdate: 'Mis à jour il y a 3i',
+    lastUpdate: 'Mis à jour il y a 3h',
     percentage: '65',
     quantity: '1 tube',
     value: '€12',

@@ -714,6 +714,91 @@ Tester après chaque phase.
 
 ---
 
+### Phase 3 : Composants Organisms StockHub V2 (Session 7) 🆕
+
+#### 7. StockCard (Dashboard)
+
+**Nouveau composant organism** pour afficher les cartes de stock dans le dashboard principal.
+
+**Utilisation** :
+```tsx
+<sh-stock-card
+  name="Acrylique Bleu Cobalt"
+  category="Peinture"
+  last-update="Mis à jour il y a 3i"
+  percentage="65"
+  quantity="1 tube"
+  value="€12"
+  status="optimal"
+  data-theme="dark"
+  onsh-session-click={(e: CustomEvent) => handleSessionSave(e.detail)}
+  onsh-details-click={(e: CustomEvent) => handleViewDetails(e.detail)}
+  onsh-edit-click={(e: CustomEvent) => handleEdit(e.detail)}
+  onsh-delete-click={(e: CustomEvent) => handleDelete(e.detail)}
+/>
+```
+
+**Props** :
+- `name` : Nom du stock
+- `category` : Catégorie du produit
+- `last-update` : Texte de dernière mise à jour
+- `percentage` : Pourcentage de stock (string ou number)
+- `quantity` : Sous-texte de quantité (ex: "1 tube")
+- `value` : Valeur totale
+- `status` : `'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'`
+- `ia-count` : Nombre d'alertes IA (number) - affiche badge IA si > 0
+
+**Badge IA avec JavaScript** :
+```tsx
+useEffect(() => {
+  customElements.whenDefined('sh-stock-card').then(() => {
+    const card = document.getElementById('my-stock-card');
+    if (card) {
+      card.iaCount = 2; // Doit être assigné via propriété JS, pas attribut HTML
+    }
+  });
+}, []);
+```
+
+**Événements** :
+- `sh-session-click` : Click sur "Enregistrer session"
+- `sh-details-click` : Click sur "Détails"
+- `sh-edit-click` : Click sur éditer
+- `sh-delete-click` : Click sur supprimer
+
+**Distinction avec StockItemCard** :
+- `sh-stock-card` = **Carte de stock global** (dashboard principal)
+- `sh-stock-item-card` = **Carte d'item individuel** (vue détaillée d'un stock)
+
+---
+
+### Organisation Atomic Design mise à jour
+
+**Organisms** (composants métier complexes) :
+- `sh-header` : Navigation principale
+- `sh-stock-card` : Carte de stock dashboard 🆕
+- `sh-stock-item-card` : Carte d'item inventaire
+
+**Molecules** (groupes d'atomes) :
+- `sh-button`, `sh-status-badge`, `sh-metric-card`, `sh-card` (base)
+
+**Atoms** (composants de base) :
+- `sh-icon`, `sh-input`, `sh-badge`, `sh-text`
+
+---
+
+### Composants à venir (Phase 4)
+
+**À créer prochainement** :
+1. **Header/Navbar** : Logo, notifications, thème, menu user
+2. **Alert Banner IA** : Bandeau d'alertes avec liste déroulante
+3. **Search Input** : Barre de recherche avec icône
+4. **Footer** : Copyright et liens légaux
+
+**Captures de référence disponibles** dans `documentation/captures/`
+
+---
+
 **Maintenu par** : Sandrine Cipolla
-**Dernière mise à jour** : 20 Octobre 2025
-**Version** : 1.0
+**Dernière mise à jour** : 21 Octobre 2025
+**Version** : 1.1

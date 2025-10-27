@@ -266,7 +266,7 @@ export class ShHeader extends LitElement {
                                     <sh-button
                                         variant="primary"
                                         size="sm"
-                                        iconBefore="User"
+                                        iconBefore="LogOut"
                                         @click="${this._handleLogoutClick}"
                                         aria-label="Se déconnecter de l'application StockHub"
                                         title="Se déconnecter"

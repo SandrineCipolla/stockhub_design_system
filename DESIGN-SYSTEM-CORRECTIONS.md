@@ -11,13 +11,13 @@
 
 ### Statistiques
 - **Total problèmes** : 23
-- **Résolus** : 14 (60.9%)
+- **Résolus** : 17 (73.9%)
 - **Critiques (❌)** : 11 (10 résolus)
-- **Améliorations (⚠️)** : 8
+- **Améliorations (⚠️)** : 8 (3 résolues)
 
 ### Composants par statut
-- ✅ **Fonctionnels** : 6 (sh-footer, sh-status-badge, sh-search-input, sh-header, sh-metric-card, sh-stock-card)
-- ⚠️ **Partiels** : 3 (sh-button, sh-ia-alert-banner, sh-logo)
+- ✅ **Fonctionnels** : 7 (sh-footer, sh-status-badge, sh-search-input, sh-header, sh-metric-card, sh-stock-card, sh-button)
+- ⚠️ **Partiels** : 2 (sh-ia-alert-banner, sh-logo)
 - ❌ **Non fonctionnels** : 0
 - ⏭️ **Non testés** : 1 (sh-badge)
 
@@ -213,58 +213,66 @@
 
 ## ⚠️ PRIORITÉ 2 - Composants Partiels (Non bloquants)
 
-### sh-button (3 problèmes)
+### sh-button (3 problèmes) ✅ COMPLÉTÉ
 
-#### ❌ #1 - Icône `icon-before` ne s'affiche pas
+#### ✅ #1 - Icône `icon-before` ne s'affiche pas
 - **Fichier** : `src/components/molecules/button/sh-button.ts`
-- **Problème** : Attribut `icon-before` ne fonctionne pas en JSX
-- **Solution** : Vérifier mapping kebab-case → camelCase
-- **Code à vérifier** :
+- **Problème** : Attributs `icon-before` et `icon-after` non mappés
+- **Solution** : Ajout mapping kebab-case → camelCase + import sh-icon
+- **Code modifié** (lignes 3, 54, 60) :
 ```typescript
-@property({ type: String, attribute: 'icon-before' })
-iconBefore?: string;
+import '../../atoms/icon/sh-icon.js';
 
-// Dans render()
-${this.iconBefore ? html`<sh-icon name="${this.iconBefore}"></sh-icon>` : ''}
+@property({ type: String, attribute: 'icon-before' }) iconBefore?: string;
+@property({ type: String, attribute: 'icon-after' }) iconAfter?: string;
 ```
-- **Statut** : ⏳ À faire
+- **Stories mises à jour** : Tous les attributs changés en kebab-case
+- **Commit** : (à venir)
+- **Statut** : ✅ Fait
 
-#### ❌ #2 - Couleur primary incorrecte
-- **Fichier** : `src/tokens/tokens.json` + `src/components/molecules/button/sh-button.ts`
-- **Problème** : Primary n'est pas violet StockHub
-- **Solution** : Vérifier tokens purple
-- **Code à vérifier** :
+#### ✅ #2 - Couleur primary incorrecte
+- **Fichier** : `src/tokens/tokens.json`
+- **Problème** : Vérification de la couleur primary
+- **Solution** : La couleur était déjà correcte !
+- **Tokens vérifiés** :
 ```json
-// tokens.json
 "primary": {
-  "500": "#8b5cf6",  // Vérifier que c'est bien violet
+  "500": "#8b5cf6",  // Violet StockHub ✓
   "600": "#7c3aed"
 }
 ```
-- **Statut** : ⏳ À faire
+- **Statut** : ✅ Déjà correct
 
-#### ❌ #3 - Pas de support responsive text
+#### ✅ #3 - Pas de support responsive text
 - **Fichier** : `src/components/molecules/button/sh-button.ts`
 - **Problème** : Impossible de masquer texte sur mobile
-- **Solution** : Ajouter propriété `hideTextMobile`
-- **Code à ajouter** :
+- **Solution** : Ajout propriétés `hideTextMobile` et `iconOnly`
+- **Code ajouté** (lignes 74-81, 230-253, 267) :
 ```typescript
-@property({ type: Boolean, attribute: 'hide-text-mobile' })
-hideTextMobile = false;
+@property({ type: Boolean, attribute: 'hide-text-mobile' }) hideTextMobile = false;
+@property({ type: Boolean, attribute: 'icon-only' }) iconOnly = false;
 
-static styles = css`
-  :host([hide-text-mobile]) .button-text {
-    display: none;
-  }
+// Styles CSS
+:host([icon-only]) .button-text { display: none; }
+:host([icon-only]) button { padding: var(--spacing-sm); aspect-ratio: 1; }
 
-  @media (min-width: 640px) {
-    :host([hide-text-mobile]) .button-text {
-      display: inline;
-    }
-  }
-`;
+:host([hide-text-mobile]) .button-text { display: none; }
+@media (min-width: 640px) {
+  :host([hide-text-mobile]) .button-text { display: inline; }
+}
+
+// Render
+<span class="button-text"><slot></slot></span>
 ```
-- **Statut** : ⏳ À faire
+- **Commit** : (à venir)
+- **Statut** : ✅ Fait
+
+**📝 Notes de session :**
+- Import sh-icon ajouté pour afficher les icônes
+- Stories corrigées avec kebab-case pour tous les attributs icon
+- Mode `icon-only` ajouté pour boutons sans texte (carré)
+- Mode `hide-text-mobile` pour masquer texte sur mobile
+- Test visuel Storybook : ✅ Validé
 
 ---
 
@@ -378,10 +386,10 @@ background: linear-gradient(to bottom right, var(--color-primary-500), var(--col
 ### Phase 2 - Composants Partiels (Priorité 2)
 **Estimation** : 2-3h
 
-4. ✅ **sh-button** (3 corrections)
-   - [ ] #1 - Icon before
-   - [ ] #2 - Couleur primary
-   - [ ] #3 - Responsive text
+4. ✅ **sh-button** (3 corrections) - COMPLÉTÉ
+   - [x] #1 - Icon before
+   - [x] #2 - Couleur primary (déjà correct)
+   - [x] #3 - Responsive text
 
 5. ✅ **sh-ia-alert-banner** (3 corrections)
    - [ ] #12 - Expand/collapse
@@ -404,13 +412,13 @@ background: linear-gradient(to bottom right, var(--color-primary-500), var(--col
 
 ## 📊 Progression
 
-**Total** : 14/23 (60.9%)
+**Total** : 17/23 (73.9%)
 
 ### Par composant
 - [x] sh-header : 4/4 ✅
 - [x] sh-metric-card : 4/4 ✅
 - [x] sh-stock-card : 6/6 ✅
-- [ ] sh-button : 0/3
+- [x] sh-button : 3/3 ✅
 - [ ] sh-ia-alert-banner : 0/3
 - [ ] sh-logo : 0/2
 

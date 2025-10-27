@@ -1,5 +1,6 @@
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import '../../atoms/icon/sh-icon.js';
 
 /**
  * Button component with multiple variants, sizes, loading state, and icon support.
@@ -51,13 +52,13 @@ export class ShButton extends LitElement {
    * Icon name to display before content
    * @type {string}
    */
-  @property({ type: String }) iconBefore?: string;
+  @property({ type: String, attribute: 'icon-before' }) iconBefore?: string;
 
   /**
    * Icon name to display after content
    * @type {string}
    */
-  @property({ type: String }) iconAfter?: string;
+  @property({ type: String, attribute: 'icon-after' }) iconAfter?: string;
 
   /**
    * Button type attribute
@@ -65,6 +66,20 @@ export class ShButton extends LitElement {
    * @default 'button'
    */
   @property({ type: String }) type: 'button' | 'submit' | 'reset' = 'button';
+
+  /**
+   * Hide button text on mobile (show only icon)
+   * @type {boolean}
+   * @default false
+   */
+  @property({ type: Boolean, attribute: 'hide-text-mobile' }) hideTextMobile = false;
+
+  /**
+   * Icon-only mode (no text, just icon)
+   * @type {boolean}
+   * @default false
+   */
+  @property({ type: Boolean, attribute: 'icon-only' }) iconOnly = false;
 
   static styles = css`
     :host {
@@ -212,6 +227,31 @@ export class ShButton extends LitElement {
     sh-icon {
       font-size: 1.25em;
     }
+
+    /* Icon-only mode */
+    :host([icon-only]) .button-text {
+      display: none;
+    }
+
+    :host([icon-only]) button {
+      padding: var(--spacing-sm);
+      aspect-ratio: 1;
+    }
+
+    /* Responsive text hiding */
+    :host([hide-text-mobile]) .button-text {
+      display: none;
+    }
+
+    @media (min-width: 640px) {
+      :host([hide-text-mobile]) .button-text {
+        display: inline;
+      }
+    }
+
+    .button-text {
+      display: inline;
+    }
   `;
 
   render() {
@@ -225,7 +265,7 @@ export class ShButton extends LitElement {
       >
         ${this.loading ? this._renderSpinner() : ''}
         ${!this.loading && this.iconBefore ? html`<sh-icon name="${this.iconBefore}"></sh-icon>` : ''}
-        <slot></slot>
+        <span class="button-text"><slot></slot></span>
         ${!this.loading && this.iconAfter ? html`<sh-icon name="${this.iconAfter}"></sh-icon>` : ''}
       </button>
     `;

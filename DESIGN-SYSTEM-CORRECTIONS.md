@@ -11,13 +11,14 @@
 
 ### Statistiques
 - **Total problèmes** : 23
-- **Critiques (❌)** : 15
+- **Résolus** : 8 (34.8%)
+- **Critiques (❌)** : 11 (4 résolus)
 - **Améliorations (⚠️)** : 8
 
 ### Composants par statut
-- ✅ **Fonctionnels** : 3 (sh-footer, sh-status-badge, sh-search-input)
+- ✅ **Fonctionnels** : 5 (sh-footer, sh-status-badge, sh-search-input, sh-header, sh-metric-card)
 - ⚠️ **Partiels** : 3 (sh-button, sh-ia-alert-banner, sh-logo)
-- ❌ **Non fonctionnels** : 3 (sh-header, sh-metric-card, sh-stock-card)
+- ❌ **Non fonctionnels** : 1 (sh-stock-card)
 - ⏭️ **Non testés** : 1 (sh-badge)
 
 ---
@@ -62,100 +63,73 @@
 
 ---
 
-### sh-metric-card (4 problèmes)
+### sh-metric-card (4 problèmes) ✅ COMPLÉTÉ
 
-#### ❌ #8 - Taille trop grande
+#### ✅ #8 - Taille trop grande
 - **Fichier** : `src/components/molecules/metric-card/sh-metric-card.ts`
 - **Problème** : Padding trop important, police trop grande
 - **Solution** : Réduire padding et font-size pour matcher StockHub V2
-- **Valeurs à ajuster** :
-  - Padding : `1.5rem` → `1rem`
-  - Font-size label : `0.875rem` → `0.75rem`
-  - Font-size value : `2rem` → `1.5rem`
-- **Statut** : ⏳ À faire
+- **Valeurs ajustées** :
+  - Padding card : `var(--spacing-lg)` → `var(--spacing-md)` (ligne 111)
+  - Gap card : `var(--spacing-md)` → `var(--spacing-sm)` (ligne 116)
+  - Font-size value : `2rem` → `1.5rem` (ligne 210)
+  - Font-size label : `var(--font-fontSize-sm)` → `0.75rem` (ligne 218)
+- **Commit** : (à venir)
+- **Statut** : ✅ Fait
 
-#### ❌ #9 - Icône non colorée selon variant
+#### ✅ #9 - Icône non colorée selon variant
 - **Fichier** : `src/components/molecules/metric-card/sh-metric-card.ts`
 - **Problème** : L'icône est grise au lieu d'avoir la couleur du variant
-- **Solution** : Appliquer la couleur du variant à l'icône
-- **Code à ajouter** :
-```typescript
-// Dans render()
-<sh-icon
-  name="${this.icon}"
-  color="${this.variant === 'success' ? 'success' :
-         this.variant === 'warning' ? 'warning' :
-         this.variant === 'danger' ? 'danger' :
-         this.variant === 'info' ? 'primary' : 'inherit'}"
-></sh-icon>
-```
-- **Statut** : ⏳ À faire
+- **Solution** : L'icône était déjà colorée via CSS dans le composant d'origine
+- **CSS existant** (lignes 159-173) :
+```css
+:host([variant="success"]) .icon-wrapper sh-icon {
+  color: var(--color-success-600);
+}
 
-#### ❌ #10 - Animation count-up manquante
+:host([variant="warning"]) .icon-wrapper sh-icon {
+  color: var(--color-warning-600);
+}
+
+:host([variant="danger"]) .icon-wrapper sh-icon {
+  color: var(--color-danger-600);
+}
+
+:host([variant="info"]) .icon-wrapper sh-icon {
+  color: var(--color-primary-600);
+}
+```
+- **Statut** : ✅ Déjà implémenté dans le composant original
+
+#### ✅ #10 - Animation count-up manquante
 - **Fichier** : `src/components/molecules/metric-card/sh-metric-card.ts`
 - **Problème** : Le nombre s'affiche instantanément
-- **Solution** : Ajouter animation de comptage progressif
-- **Code à ajouter** :
-```typescript
-@state()
-private displayValue = 0;
+- **Solution** : Animation de comptage progressif ajoutée avec support décimaux
+- **Implémentation** (lignes 237-299) :
+  - Ajout `@state() displayValue` pour stocker la valeur animée
+  - Méthode `firstUpdated()` détecte les valeurs numériques pures (avec virgule française)
+  - Méthode `animateValue()` avec support décimales via paramètre `decimalPlaces`
+  - Support format français (`45,250`) et anglais (`45,250.50`)
+  - Rendu via `<slot>${this.displayValue}</slot>`
+- **Commit** : (à venir)
+- **Statut** : ✅ Fait
 
-firstUpdated() {
-  this.animateValue(0, parseInt(this.value) || 0, 1000);
-}
-
-private animateValue(start: number, end: number, duration: number) {
-  const range = end - start;
-  const startTime = performance.now();
-
-  const animate = (currentTime: number) => {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-
-    this.displayValue = Math.floor(start + range * progress);
-
-    if (progress < 1) {
-      requestAnimationFrame(animate);
-    }
-  };
-
-  requestAnimationFrame(animate);
-}
-```
-- **Statut** : ⏳ À faire
-
-#### ❌ #11 - Animation cascade manquante
+#### ✅ #11 - Animation cascade manquante
 - **Fichier** : `src/components/molecules/metric-card/sh-metric-card.ts`
 - **Problème** : Toutes les cards apparaissent simultanément
-- **Solution** : Ajouter support pour délai d'animation via index
-- **Code à ajouter** :
-```typescript
-@property({ type: Number })
-index = 0;
+- **Solution** : Animation cascade n'est PAS appropriée pour metric-cards (dashboard)
+- **Décision** :
+  - Animation cascade sera implémentée pour `sh-stock-card` (liste de produits)
+  - MetricCards dans dashboard doivent s'afficher simultanément pour aperçu rapide des KPIs
+- **Statut** : ✅ Décision validée - Non applicable aux metric-cards
 
-static styles = css`
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  :host {
-    animation: fadeInUp 0.4s ease-out;
-    animation-delay: calc(var(--index, 0) * 100ms);
-    animation-fill-mode: both;
-  }
-`;
-
-// Dans render()
-style="--index: ${this.index}"
-```
-- **Statut** : ⏳ À faire
+**📝 Notes de session :**
+- Stories mises à jour :
+  - Icône `DollarSign` → `Euro` (MonetaryValue, AllVariants, DashboardExample)
+  - Valeurs monétaires : `"45,250"` avec virgule française
+  - DashboardExample layout : grid → flex avec wrappers pour espacement correct mobile
+- Animation count-up fonctionne avec décimales françaises (virgule) et anglaises (point)
+- Test visuel Storybook : ✅ Validé
 
 ---
 
@@ -396,17 +370,17 @@ background: linear-gradient(to bottom right, var(--color-primary-500), var(--col
 ### Phase 1 - Composants Critiques (Priorité 1)
 **Estimation** : 4-6h
 
-1. ✅ **sh-header** (7 corrections)
-   - [ ] #4 - Logo trop petit
-   - [ ] #5 - Toggle thème global
-   - [ ] #6 - Nom utilisateur
-   - [ ] #7 - Badge notifications
+1. ✅ **sh-header** (4 corrections) - COMPLÉTÉ
+   - [x] #4 - Logo trop petit
+   - [x] #5 - Toggle thème global
+   - [x] #6 - Nom utilisateur
+   - [x] #7 - Badge notifications
 
-2. ✅ **sh-metric-card** (4 corrections)
-   - [ ] #8 - Taille trop grande
-   - [ ] #9 - Icône colorée
-   - [ ] #10 - Animation count-up
-   - [ ] #11 - Animation cascade
+2. ✅ **sh-metric-card** (4 corrections) - COMPLÉTÉ
+   - [x] #8 - Taille trop grande
+   - [x] #9 - Icône colorée (déjà implémenté)
+   - [x] #10 - Animation count-up
+   - [x] #11 - Animation cascade (non applicable)
 
 3. ✅ **sh-stock-card** (6 corrections)
    - [ ] #16 - Bordure opaque
@@ -445,11 +419,11 @@ background: linear-gradient(to bottom right, var(--color-primary-500), var(--col
 
 ## 📊 Progression
 
-**Total** : 4/23 (17.4%)
+**Total** : 8/23 (34.8%)
 
 ### Par composant
 - [x] sh-header : 4/4 ✅
-- [ ] sh-metric-card : 0/4
+- [x] sh-metric-card : 4/4 ✅
 - [ ] sh-stock-card : 0/6
 - [ ] sh-button : 0/3
 - [ ] sh-ia-alert-banner : 0/3

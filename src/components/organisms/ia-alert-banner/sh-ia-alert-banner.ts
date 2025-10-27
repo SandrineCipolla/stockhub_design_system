@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import '../../atoms/icon/sh-icon.js';
 
 export interface IaAlert {
@@ -45,26 +45,19 @@ export class ShIaAlertBanner extends LitElement {
   static styles = css`
     :host {
       display: block;
-      --alert-bg: rgba(30, 41, 59, 0.8);
-      --alert-border: rgba(255, 255, 255, 0.1);
-      --alert-text: var(--color-neutral-100);
-      --alert-text-muted: var(--color-neutral-400);
-      --alert-icon-bg: var(--color-primary-500);
-    }
-
-    :host([data-theme="light"]) {
-      --alert-bg: rgba(248, 250, 252, 0.95);
-      --alert-border: var(--color-neutral-200);
-      --alert-text: var(--color-neutral-900);
-      --alert-text-muted: var(--color-neutral-600);
     }
 
     .alert-banner {
-      background: var(--alert-bg);
-      border: 1px solid var(--alert-border);
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: var(--border-radius-lg);
       overflow: hidden;
       backdrop-filter: blur(8px);
+    }
+
+    :host([data-theme="light"]) .alert-banner {
+      background: rgba(248, 250, 252, 0.95);
+      border-color: var(--color-neutral-200);
     }
 
     .alert-header {
@@ -81,7 +74,7 @@ export class ShIaAlertBanner extends LitElement {
     }
 
     .icon-wrapper {
-      background: var(--alert-icon-bg);
+      background: var(--color-primary-500);
       padding: var(--spacing-sm);
       border-radius: var(--border-radius-md);
       display: flex;
@@ -93,8 +86,8 @@ export class ShIaAlertBanner extends LitElement {
     .alert-content {
       flex: 1;
       display: flex;
-      align-items: center;
-      gap: var(--spacing-md);
+      flex-direction: column;
+      gap: var(--spacing-xs);
       min-width: 0;
     }
 
@@ -107,42 +100,79 @@ export class ShIaAlertBanner extends LitElement {
     }
 
     .count-badge {
-      font-size: var(--font-fontSize-lg);
-      font-weight: var(--font-fontWeight-bold);
-      color: var(--alert-text);
+      font-size: var(--font-fontSize-sm);
+      font-weight: var(--font-fontWeight-semibold);
+      color: var(--color-neutral-100);
+    }
+
+    :host([data-theme="light"]) .count-badge {
+      color: var(--color-neutral-900);
     }
 
     .alert-message {
-      font-size: var(--font-fontSize-md);
-      color: var(--alert-text);
+      font-size: var(--font-fontSize-sm);
+      color: var(--color-neutral-100);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
+    :host([data-theme="light"]) .alert-message {
+      color: var(--color-neutral-900);
+    }
+
+    .badges-row {
+      display: flex;
+      gap: var(--spacing-xs);
+      flex-wrap: wrap;
+    }
+
     .severity-badge {
-      padding: 4px 12px;
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
       border-radius: var(--border-radius-sm);
       font-size: var(--font-fontSize-xs);
       font-weight: var(--font-fontWeight-semibold);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      flex-shrink: 0;
+      text-transform: capitalize;
+      letter-spacing: 0.02em;
+      border: 1px solid;
     }
 
     .severity-critical {
-      background: var(--color-danger-500);
-      color: white;
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--color-danger-600);
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    :host([data-theme="dark"]) .severity-critical {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--color-danger-400);
+      border-color: rgba(239, 68, 68, 0.4);
     }
 
     .severity-warning {
-      background: var(--color-warning-500);
-      color: white;
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--color-warning-600);
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    :host([data-theme="dark"]) .severity-warning {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--color-warning-400);
+      border-color: rgba(245, 158, 11, 0.4);
     }
 
     .severity-info {
-      background: var(--color-primary-500);
-      color: white;
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--color-primary-600);
+      border-color: rgba(139, 92, 246, 0.3);
+    }
+
+    :host([data-theme="dark"]) .severity-info {
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--color-primary-400);
+      border-color: rgba(139, 92, 246, 0.4);
     }
 
     .toggle-button {
@@ -150,7 +180,7 @@ export class ShIaAlertBanner extends LitElement {
       border: none;
       padding: var(--spacing-xs);
       cursor: pointer;
-      color: var(--alert-text-muted);
+      color: var(--color-neutral-400);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -159,9 +189,17 @@ export class ShIaAlertBanner extends LitElement {
       flex-shrink: 0;
     }
 
+    :host([data-theme="light"]) .toggle-button {
+      color: var(--color-neutral-600);
+    }
+
     .toggle-button:hover {
       background: rgba(255, 255, 255, 0.1);
-      color: var(--alert-text);
+      color: var(--color-neutral-100);
+    }
+
+    :host([data-theme="light"]) .toggle-button:hover {
+      color: var(--color-neutral-900);
     }
 
     .toggle-icon {
@@ -173,9 +211,13 @@ export class ShIaAlertBanner extends LitElement {
     }
 
     .alert-details {
-      border-top: 1px solid var(--alert-border);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       padding: var(--spacing-lg);
       animation: slideDown 0.2s ease;
+    }
+
+    :host([data-theme="light"]) .alert-details {
+      border-top-color: var(--color-neutral-200);
     }
 
     @keyframes slideDown {
@@ -191,8 +233,12 @@ export class ShIaAlertBanner extends LitElement {
 
     .details-subtitle {
       font-size: var(--font-fontSize-sm);
-      color: var(--alert-text-muted);
+      color: var(--color-neutral-400);
       margin-bottom: var(--spacing-md);
+    }
+
+    :host([data-theme="light"]) .details-subtitle {
+      color: var(--color-neutral-600);
     }
 
     .alerts-list {
@@ -209,10 +255,14 @@ export class ShIaAlertBanner extends LitElement {
       align-items: center;
       gap: var(--spacing-sm);
       padding: var(--spacing-sm) 0;
-      color: var(--alert-text);
+      color: var(--color-neutral-100);
       font-size: var(--font-fontSize-sm);
       transition: color 0.2s ease;
       cursor: pointer;
+    }
+
+    :host([data-theme="light"]) .alert-item {
+      color: var(--color-neutral-900);
     }
 
     .alert-item:hover {
@@ -249,6 +299,11 @@ export class ShIaAlertBanner extends LitElement {
 
   private _toggleExpanded() {
     this.expanded = !this.expanded;
+    this.dispatchEvent(new CustomEvent('sh-ia-alert-toggle', {
+      detail: { expanded: this.expanded },
+      bubbles: true,
+      composed: true
+    }));
   }
 
   private _handleItemClick(alert: IaAlert) {
@@ -261,8 +316,8 @@ export class ShIaAlertBanner extends LitElement {
 
   render() {
     const severityLabel = {
-      critical: 'Critiques',
-      warning: 'Attention',
+      critical: 'Critical',
+      warning: 'Warning',
       info: 'Info'
     }[this.severity];
 
@@ -275,13 +330,15 @@ export class ShIaAlertBanner extends LitElement {
 
           <div class="alert-content">
             <div class="alert-title">
-              <span class="count-badge">${this.count}</span>
+              <span class="count-badge">🤖 ${this.count}</span>
               <span class="alert-message">${this.message}</span>
             </div>
 
-            <span class="severity-badge severity-${this.severity}">
-              ${this.count} ${severityLabel}
-            </span>
+            <div class="badges-row">
+              <span class="severity-badge severity-${this.severity}">
+                ${this.count} ${severityLabel}
+              </span>
+            </div>
           </div>
 
           <button

@@ -11,13 +11,13 @@
 
 ### Statistiques
 - **Total problèmes** : 23
-- **Résolus** : 17 (73.9%)
+- **Résolus** : 20 (87%)
 - **Critiques (❌)** : 11 (10 résolus)
-- **Améliorations (⚠️)** : 8 (3 résolues)
+- **Améliorations (⚠️)** : 8 (6 résolues)
 
 ### Composants par statut
-- ✅ **Fonctionnels** : 7 (sh-footer, sh-status-badge, sh-search-input, sh-header, sh-metric-card, sh-stock-card, sh-button)
-- ⚠️ **Partiels** : 2 (sh-ia-alert-banner, sh-logo)
+- ✅ **Fonctionnels** : 8 (sh-footer, sh-status-badge, sh-search-input, sh-header, sh-metric-card, sh-stock-card, sh-button, sh-ia-alert-banner)
+- ⚠️ **Partiels** : 1 (sh-logo)
 - ❌ **Non fonctionnels** : 0
 - ⏭️ **Non testés** : 1 (sh-badge)
 
@@ -276,53 +276,63 @@ import '../../atoms/icon/sh-icon.js';
 
 ---
 
-### sh-ia-alert-banner (3 problèmes)
+### ✅ sh-ia-alert-banner (3 problèmes) - COMPLÉTÉ
 
-#### ❌ #12 - Pas de expand/collapse
-- **Fichier** : `src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts`
-- **Problème** : Banner statique
-- **Solution** : Ajouter état expanded et bouton toggle
-- **Code à ajouter** :
+#### ✅ #12 - Événement toggle ajouté
+- **Fichier** : `src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts:250-257`
+- **Problème** : Toggle existait mais sans événement custom
+- **Solution appliquée** : Ajout de l'événement `sh-ia-alert-toggle` dans `_toggleExpanded()`
+- **Code modifié** :
 ```typescript
-@state()
-private isExpanded = false;
-
-private handleToggle() {
-  this.isExpanded = !this.isExpanded;
+private _toggleExpanded() {
+  this.expanded = !this.expanded;
   this.dispatchEvent(new CustomEvent('sh-ia-alert-toggle', {
-    detail: { expanded: this.isExpanded }
+    detail: { expanded: this.expanded },
+    bubbles: true,
+    composed: true
   }));
 }
-
-// Dans render()
-<button @click="${this.handleToggle}">
-  <sh-icon name="${this.isExpanded ? 'ChevronUp' : 'ChevronDown'}"></sh-icon>
-</button>
-
-${this.isExpanded ? html`
-  <div class="alerts-list">
-    ${this.alerts.map(alert => html`<div>${alert.message}</div>`)}
-  </div>
-` : ''}
 ```
-- **Statut** : ⏳ À faire
+- **Statut** : ✅ Corrigé
+- **Note** : Le toggle expand/collapse existait déjà avec propriété `expanded` et bouton ChevronUp
 
-#### ⚠️ #13 - Emoji robot manquant
-- **Fichier** : `src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts`
-- **Problème** : Pas d'emoji 🤖
-- **Solution** : Ajouter emoji avant le texte
-- **Code à modifier** :
+#### ✅ #13 - Emoji robot 🤖 ajouté
+- **Fichier** : `src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts:283`
+- **Problème** : Pas d'emoji robot avant le count
+- **Solution appliquée** : Ajout de 🤖 avant `${this.count}`
+- **Code modifié** :
 ```html
-<p>🤖 ${this.count} ${this.message}</p>
+<span class="count-badge">🤖 ${this.count}</span>
 ```
-- **Statut** : ⏳ À faire
+- **Statut** : ✅ Corrigé
 
-#### ⚠️ #14 - Style badge différent
-- **Fichier** : `src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts`
-- **Problème** : Badge pas cohérent avec StockHub V2
-- **Solution** : Vérifier styles du badge de sévérité
-- **À comparer** : Avec AISummaryWidget original
-- **Statut** : ⏳ À faire
+#### ✅ #14 - Style badge redesigné selon le design original
+- **Fichier** : `src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts:129-176`
+- **Problème** : Badge différent du design StockHub V2 original
+- **Solution appliquée** : Redesign complet selon AISummaryWidget.tsx
+  - Badges semi-transparents avec bordure (rgba backgrounds)
+  - Positionnés en-dessous du texte (flex-direction: column)
+  - Labels en anglais: "Critical", "Warning", "Info"
+  - Padding réduit (2px 8px) et text-transform: capitalize
+- **Code modifié** :
+```css
+.alert-content {
+  flex-direction: column; /* badges en-dessous */
+  gap: var(--spacing-xs);
+}
+
+.severity-critical {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--color-danger-600);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+```
+- **Statut** : ✅ Corrigé
+- **Fixes additionnels** :
+  - Removed unused `state` import
+  - Replaced custom CSS properties (`--alert-*`) with design tokens
+  - Added proper light/dark theme support with `:host([data-theme])`
+- **Test visuel Storybook** : ✅ Validé - correspond à AISummaryWidget original
 
 ---
 
@@ -391,12 +401,12 @@ background: linear-gradient(to bottom right, var(--color-primary-500), var(--col
    - [x] #2 - Couleur primary (déjà correct)
    - [x] #3 - Responsive text
 
-5. ✅ **sh-ia-alert-banner** (3 corrections)
-   - [ ] #12 - Expand/collapse
-   - [ ] #13 - Emoji robot
-   - [ ] #14 - Style badge
+5. ✅ **sh-ia-alert-banner** (3 corrections) - COMPLÉTÉ
+   - [x] #12 - Expand/collapse
+   - [x] #13 - Emoji robot
+   - [x] #14 - Style badge
 
-6. ✅ **sh-logo** (2 corrections)
+6. ⏳ **sh-logo** (2 corrections)
    - [ ] #22 - Responsive
    - [ ] #23 - Dégradés
 

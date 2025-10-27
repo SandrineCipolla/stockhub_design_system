@@ -11,13 +11,13 @@
 
 ### Statistiques
 - **Total problèmes** : 23
-- **Résolus** : 20 (87%)
-- **Critiques (❌)** : 11 (10 résolus)
-- **Améliorations (⚠️)** : 8 (6 résolues)
+- **Résolus** : 23 (100%) ✅
+- **Critiques (❌)** : 11 (11 résolus)
+- **Améliorations (⚠️)** : 8 (8 résolues)
 
 ### Composants par statut
-- ✅ **Fonctionnels** : 8 (sh-footer, sh-status-badge, sh-search-input, sh-header, sh-metric-card, sh-stock-card, sh-button, sh-ia-alert-banner)
-- ⚠️ **Partiels** : 1 (sh-logo)
+- ✅ **Fonctionnels** : 9 (sh-footer, sh-status-badge, sh-search-input, sh-header, sh-metric-card, sh-stock-card, sh-button, sh-ia-alert-banner, sh-logo)
+- ⚠️ **Partiels** : 0
 - ❌ **Non fonctionnels** : 0
 - ⏭️ **Non testés** : 1 (sh-badge)
 
@@ -336,35 +336,47 @@ private _toggleExpanded() {
 
 ---
 
-### sh-logo (2 problèmes)
+### ✅ sh-logo (2 problèmes) - COMPLÉTÉ
 
-#### ❌ #22 - Pas responsive
-- **Fichier** : `src/components/atoms/logo/sh-logo.ts`
-- **Problème** : Trop gros sur mobile
-- **Solution** : Ajouter media queries
-- **Code à ajouter** :
+#### ✅ #22 - Responsive ajouté
+- **Fichier** : `src/components/atoms/logo/sh-logo.ts:59-71, 99-107`
+- **Problème** : Trop gros sur mobile (taille fixe 2.5rem)
+- **Solution appliquée** : Media queries pour taille adaptative
+- **Code modifié** :
 ```css
-:host([size="md"]) {
-  --logo-size: 32px;
+/* Mobile: 2rem */
+:host([size="md"]) .icon {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.875rem;
 }
 
+/* Desktop (640px+): 2.5rem */
 @media (min-width: 640px) {
-  :host([size="md"]) {
-    --logo-size: 40px;
-  }
+    :host([size="md"]) .icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1rem;
+    }
 }
 ```
-- **Statut** : ⏳ À faire
+- **Statut** : ✅ Corrigé
+- **Note** : Même logique appliquée au texte (1rem → 1.25rem sur desktop)
 
-#### ⚠️ #23 - Dégradés différents
-- **Fichier** : `src/components/atoms/logo/sh-logo.ts`
-- **Problème** : Dégradés violets pas identiques
-- **Solution** : Vérifier couleurs
-- **Code à vérifier** :
+#### ✅ #23 - Dégradés uniformisés
+- **Fichier** : `src/components/atoms/logo/sh-logo.ts:41, 89`
+- **Problème** : Couleurs hardcodées (#8b5cf6, #7c3aed)
+- **Solution appliquée** : Tokens design system
+- **Code modifié** :
 ```css
+/* Icône */
 background: linear-gradient(to bottom right, var(--color-primary-500), var(--color-primary-600));
+
+/* Texte */
+background: linear-gradient(to right, var(--color-primary-500), var(--color-primary-600));
 ```
-- **Statut** : ⏳ À faire
+- **Statut** : ✅ Corrigé
+- **Test visuel Storybook** : ✅ Validé
 
 ---
 
@@ -406,9 +418,9 @@ background: linear-gradient(to bottom right, var(--color-primary-500), var(--col
    - [x] #13 - Emoji robot
    - [x] #14 - Style badge
 
-6. ⏳ **sh-logo** (2 corrections)
-   - [ ] #22 - Responsive
-   - [ ] #23 - Dégradés
+6. ✅ **sh-logo** (2 corrections) - COMPLÉTÉ
+   - [x] #22 - Responsive
+   - [x] #23 - Dégradés
 
 ### Phase 3 - Tests & Validation
 **Estimation** : 1-2h

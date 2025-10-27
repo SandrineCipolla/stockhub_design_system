@@ -38,7 +38,7 @@ export class ShLogo extends LitElement {
         }
 
         .icon {
-            background: linear-gradient(to bottom right, #8b5cf6, #7c3aed);
+            background: linear-gradient(to bottom right, var(--color-primary-500), var(--color-primary-600));
             border-radius: 0.75rem;
             display: flex;
             align-items: center;
@@ -57,9 +57,17 @@ export class ShLogo extends LitElement {
         }
 
         :host([size="md"]) .icon {
-            width: 2.5rem;
-            height: 2.5rem;
-            font-size: 1rem;
+            width: 2rem;
+            height: 2rem;
+            font-size: 0.875rem;
+        }
+
+        @media (min-width: 640px) {
+            :host([size="md"]) .icon {
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1rem;
+            }
         }
 
         :host([size="lg"]) .icon {
@@ -78,7 +86,7 @@ export class ShLogo extends LitElement {
         .text {
             font-family: var(--font-fontFamily-base, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif);
             font-weight: bold;
-            background: linear-gradient(to right, #8b5cf6, #7c3aed);
+            background: linear-gradient(to right, var(--color-primary-500), var(--color-primary-600));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -89,7 +97,13 @@ export class ShLogo extends LitElement {
         }
 
         :host([size="md"]) .text {
-            font-size: 1.25rem;
+            font-size: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            :host([size="md"]) .text {
+                font-size: 1.25rem;
+            }
         }
 
         :host([size="lg"]) .text {

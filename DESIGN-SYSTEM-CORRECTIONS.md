@@ -11,14 +11,14 @@
 
 ### Statistiques
 - **Total problèmes** : 23
-- **Résolus** : 8 (34.8%)
-- **Critiques (❌)** : 11 (4 résolus)
+- **Résolus** : 14 (60.9%)
+- **Critiques (❌)** : 11 (10 résolus)
 - **Améliorations (⚠️)** : 8
 
 ### Composants par statut
-- ✅ **Fonctionnels** : 5 (sh-footer, sh-status-badge, sh-search-input, sh-header, sh-metric-card)
+- ✅ **Fonctionnels** : 6 (sh-footer, sh-status-badge, sh-search-input, sh-header, sh-metric-card, sh-stock-card)
 - ⚠️ **Partiels** : 3 (sh-button, sh-ia-alert-banner, sh-logo)
-- ❌ **Non fonctionnels** : 1 (sh-stock-card)
+- ❌ **Non fonctionnels** : 0
 - ⏭️ **Non testés** : 1 (sh-badge)
 
 ---
@@ -133,96 +133,81 @@
 
 ---
 
-### sh-stock-card (6 problèmes)
+### sh-stock-card (6 problèmes) ✅ COMPLÉTÉ
 
-#### ❌ #16 - Bordure trop opaque
+#### ✅ #16 - Bordure trop opaque
 - **Fichier** : `src/components/organisms/stock-card/sh-stock-card.ts`
 - **Problème** : Bordure trop visible
-- **Solution** : Réduire opacité
-- **Code à modifier** :
+- **Solution** : Opacité réduite de 0.2 à 0.1
+- **Code modifié** (lignes 59, 67) :
 ```css
-/* AVANT */
-border: 1px solid rgba(255, 255, 255, 0.2);
-
-/* APRÈS */
-border: 1px solid rgba(255, 255, 255, 0.1);
+--card-border: rgba(255, 255, 255, 0.1);  /* dark mode */
+--card-border: rgba(0, 0, 0, 0.1);        /* light mode */
 ```
-- **Statut** : ⏳ À faire
+- **Commit** : (à venir)
+- **Statut** : ✅ Fait
 
-#### ❌ #17 - Quantité et valeur mal alignées
+#### ✅ #17 - Quantité et valeur mal alignées
 - **Fichier** : `src/components/organisms/stock-card/sh-stock-card.ts`
 - **Problème** : Texte pas centré
-- **Solution** : Ajouter `text-align: center`
-- **Code à modifier** :
+- **Solution** : Ajout `text-align: center`
+- **Code modifié** (ligne 193) :
 ```css
 .metric {
   text-align: center;
 }
 ```
-- **Statut** : ⏳ À faire
+- **Commit** : (à venir)
+- **Statut** : ✅ Fait
 
-#### ❌ #18 - "Mise à jour" mal affiché
+#### ✅ #18 - "Mise à jour" mal affiché
 - **Fichier** : `src/components/organisms/stock-card/sh-stock-card.ts`
-- **Problème** : Texte "Mis à jour il y a..." pas visible
-- **Solution** : Vérifier affichage de `last-update`
-- **Code à vérifier** :
+- **Problème** : Attribut `last-update` non mappé
+- **Solution** : Ajout attribut explicite
+- **Code modifié** (ligne 46) :
 ```typescript
-@property({ type: String, attribute: 'last-update' })
-lastUpdate = '';
-
-// Dans render()
-${this.lastUpdate ? html`<p class="last-update">${this.lastUpdate}</p>` : ''}
+@property({ attribute: 'last-update' }) lastUpdate = '';
 ```
-- **Statut** : ⏳ À faire
+- **Commit** : (à venir)
+- **Statut** : ✅ Fait
 
-#### ❌ #19 - Bouton "Session" mal stylisé
+#### ✅ #19 - Bouton "Session" mal stylisé
 - **Fichier** : `src/components/organisms/stock-card/sh-stock-card.ts`
-- **Problème** : Bouton trop visible, pas centré
-- **Solution** : Utiliser variant ghost, centrer
-- **Code à modifier** :
+- **Problème** : Bouton trop visible, pleine largeur
+- **Solution** : Changé en variant ghost, retiré width 100%, icône Palette
+- **Code modifié** (lignes 377-386) :
 ```html
-<div style="display: flex; justify-content: center; margin-top: 1rem;">
-  <sh-button variant="ghost" size="sm" iconBefore="Palette">
-    Enregistrer session
-  </sh-button>
-</div>
-```
-- **Statut** : ⏳ À faire
-
-#### ❌ #20 - Bouton "Session" ne fonctionne pas
-- **Fichier** : `src/components/organisms/stock-card/sh-stock-card.ts`
-- **Problème** : Événement pas émis
-- **Solution** : Ajouter handler et événement
-- **Code à ajouter** :
-```typescript
-private handleSessionClick() {
-  this.dispatchEvent(new CustomEvent('sh-session-click', {
-    detail: {
-      name: this.name,
-      quantity: this.quantity,
-      percentage: this.percentage
-    }
-  }));
-}
-
-// Dans render()
-<sh-button @click="${this.handleSessionClick}">
+<sh-button
+  variant="ghost"
+  size="sm"
+  iconBefore="Palette"
+  @click="${this._handleSession}"
+>
   Enregistrer session
 </sh-button>
 ```
-- **Statut** : ⏳ À faire
+- **Commit** : (à venir)
+- **Statut** : ✅ Fait
 
-#### ❌ #21 - Boutons d'action mal stylisés
+#### ✅ #20 - Bouton "Session" ne fonctionne pas
 - **Fichier** : `src/components/organisms/stock-card/sh-stock-card.ts`
-- **Problème** : Boutons pas assez discrets
-- **Solution** : Utiliser variant ghost, ajuster tailles
-- **Code à modifier** :
-```html
-<sh-button variant="ghost" size="sm" iconBefore="Eye">Détails</sh-button>
-<sh-button variant="ghost" size="sm" iconBefore="Edit3"></sh-button>
-<sh-button variant="ghost" size="sm" iconBefore="Trash2"></sh-button>
-```
-- **Statut** : ⏳ À faire
+- **Problème** : Événement pas émis
+- **Solution** : L'événement `_handleSession` était déjà implémenté (lignes 286-295)
+- **Statut** : ✅ Déjà implémenté dans le composant original
+
+#### ✅ #21 - Boutons d'action mal stylisés
+- **Fichier** : `src/components/organisms/stock-card/sh-stock-card.ts`
+- **Problème** : Icône Edit au lieu de Edit3
+- **Solution** : Changé icône `Edit` en `Edit3` (ligne 413)
+- **Note** : Les boutons étaient déjà en variant ghost et size sm
+- **Commit** : (à venir)
+- **Statut** : ✅ Fait
+
+**📝 Notes de session :**
+- Stories mises à jour avec nouvelle story **InteractiveEvents** démontrant l'utilité du bouton "Enregistrer session"
+- La story interactive simule la diminution du stock à chaque session enregistrée
+- Bouton session centré avec sa taille naturelle
+- Test visuel Storybook : ✅ Validé
 
 ---
 
@@ -382,13 +367,13 @@ background: linear-gradient(to bottom right, var(--color-primary-500), var(--col
    - [x] #10 - Animation count-up
    - [x] #11 - Animation cascade (non applicable)
 
-3. ✅ **sh-stock-card** (6 corrections)
-   - [ ] #16 - Bordure opaque
-   - [ ] #17 - Alignement
-   - [ ] #18 - "Mise à jour"
-   - [ ] #19 - Bouton session style
-   - [ ] #20 - Bouton session événement
-   - [ ] #21 - Boutons actions
+3. ✅ **sh-stock-card** (6 corrections) - COMPLÉTÉ
+   - [x] #16 - Bordure opaque
+   - [x] #17 - Alignement
+   - [x] #18 - "Mise à jour"
+   - [x] #19 - Bouton session style
+   - [x] #20 - Bouton session événement (déjà implémenté)
+   - [x] #21 - Boutons actions
 
 ### Phase 2 - Composants Partiels (Priorité 2)
 **Estimation** : 2-3h
@@ -419,12 +404,12 @@ background: linear-gradient(to bottom right, var(--color-primary-500), var(--col
 
 ## 📊 Progression
 
-**Total** : 8/23 (34.8%)
+**Total** : 14/23 (60.9%)
 
 ### Par composant
 - [x] sh-header : 4/4 ✅
 - [x] sh-metric-card : 4/4 ✅
-- [ ] sh-stock-card : 0/6
+- [x] sh-stock-card : 6/6 ✅
 - [ ] sh-button : 0/3
 - [ ] sh-ia-alert-banner : 0/3
 - [ ] sh-logo : 0/2

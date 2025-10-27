@@ -511,3 +511,170 @@ export const Dashboard: Story = {
     </script>
   `,
 };
+
+/**
+ * Story interactive - Démonstration "Enregistrer session"
+ */
+export const InteractiveEvents: Story = {
+  args: {
+    name: 'Acrylique Bleu Cobalt',
+    category: 'Peinture',
+    lastUpdate: 'Mis à jour il y a 3h',
+    percentage: '65',
+    quantity: '1 tube',
+    value: '€12',
+    status: 'optimal',
+    iaCount: 1,
+  },
+  render: (args) => `
+    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+      <div style="max-width: 800px; margin: 0 auto;">
+        <h2 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; font-family: system-ui; margin-bottom: 1.5rem;">
+          📦 Enregistrer une Session Créative
+        </h2>
+        <p style="color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'}; font-family: system-ui; margin-bottom: 2rem;">
+          Cliquez sur <strong>"Enregistrer session"</strong> pour simuler l'utilisation de matériel. La quantité diminuera et le statut peut changer.
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;">
+          <!-- Stock Card -->
+          <div>
+            <sh-stock-card
+              id="stock-card-interactive"
+              name="${args.name}"
+              category="${args.category}"
+              last-update="${args.lastUpdate}"
+              percentage="${args.percentage}"
+              quantity="${args.quantity}"
+              value="${args.value}"
+              status="${args.status}"
+              data-theme="${args.theme}"
+            ></sh-stock-card>
+          </div>
+
+          <!-- Event Log -->
+          <div>
+            <div style="background: rgba(0, 0, 0, 0.2); border: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'}; border-radius: 12px; padding: 1.5rem; min-height: 400px;">
+              <h3 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; font-family: system-ui; margin: 0 0 1rem 0; font-size: 1rem;">
+                📋 Journal d'événements
+              </h3>
+              <div id="event-log-interactive" style="font-family: 'Courier New', monospace; font-size: 0.875rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                <p style="color: ${args.theme === 'dark' ? '#94a3b8' : '#64748b'}; margin: 0;">
+                  Aucun événement pour le moment...
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      customElements.whenDefined('sh-stock-card').then(() => {
+        const card = document.getElementById('stock-card-interactive');
+        const log = document.getElementById('event-log-interactive');
+
+        if (card) {
+          card.iaCount = ${args.iaCount || 0};
+
+          let currentPercentage = 65;
+          let sessionCount = 0;
+
+          function addLogEntry(eventName, detail, color) {
+            if (log.querySelector('p')) {
+              log.innerHTML = '';
+            }
+
+            const entry = document.createElement('div');
+            entry.style.cssText = \`
+              padding: 0.75rem;
+              background: \${color}15;
+              border-left: 3px solid \${color};
+              border-radius: 4px;
+              margin-bottom: 0.5rem;
+            \`;
+
+            const time = new Date().toLocaleTimeString();
+            entry.innerHTML = \`
+              <div style="color: \${color}; font-weight: 600; margin-bottom: 0.25rem;">
+                \${eventName}
+              </div>
+              <div style="color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'}; font-size: 0.75rem;">
+                \${time}
+              </div>
+              <div style="color: ${args.theme === 'dark' ? '#e2e8f0' : '#475569'}; font-size: 0.8rem; margin-top: 0.5rem;">
+                \${JSON.stringify(detail, null, 2)}
+              </div>
+            \`;
+
+            log.insertBefore(entry, log.firstChild);
+
+            // Limiter à 5 entrées
+            while (log.children.length > 5) {
+              log.removeChild(log.lastChild);
+            }
+          }
+
+          card.addEventListener('sh-session-click', (e) => {
+            sessionCount++;
+
+            // Diminuer le pourcentage de 15% à chaque session
+            currentPercentage = Math.max(0, currentPercentage - 15);
+
+            // Mettre à jour la carte
+            card.percentage = currentPercentage;
+            card.lastUpdate = 'Mis à jour à l\\'instant';
+
+            // Changer le statut selon le pourcentage
+            if (currentPercentage === 0) {
+              card.status = 'out-of-stock';
+              card.quantity = '0 tube';
+              card.value = '€0';
+            } else if (currentPercentage <= 20) {
+              card.status = 'critical';
+              card.quantity = '1 tube';
+              card.value = '€12';
+              card.iaCount = 2;
+            } else if (currentPercentage <= 40) {
+              card.status = 'low';
+              card.quantity = '1 tube';
+              card.value = '€12';
+              card.iaCount = 1;
+            } else {
+              card.status = 'optimal';
+              card.quantity = '1 tube';
+              card.value = '€12';
+              card.iaCount = 0;
+            }
+
+            console.log('sh-session-click:', e.detail);
+            addLogEntry(
+              '🎨 Session #' + sessionCount + ' enregistrée',
+              {
+                ...e.detail,
+                nouveauPourcentage: currentPercentage + '%',
+                nouveauStatut: card.status
+              },
+              '#8b5cf6'
+            );
+          });
+
+          card.addEventListener('sh-details-click', (e) => {
+            console.log('sh-details-click:', e.detail);
+            addLogEntry('👁️ sh-details-click', e.detail, '#3b82f6');
+          });
+
+          card.addEventListener('sh-edit-click', (e) => {
+            console.log('sh-edit-click:', e.detail);
+            addLogEntry('✏️ sh-edit-click', e.detail, '#10b981');
+          });
+
+          card.addEventListener('sh-delete-click', (e) => {
+            console.log('sh-delete-click:', e.detail);
+            addLogEntry('🗑️ sh-delete-click', e.detail, '#ef4444');
+          });
+        }
+      });
+    </script>
+  `,
+};

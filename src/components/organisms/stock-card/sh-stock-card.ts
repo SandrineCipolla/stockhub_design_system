@@ -43,7 +43,7 @@ import '../../molecules/button/sh-button.js';
 export class ShStockCard extends LitElement {
   @property() name = '';
   @property() category = '';
-  @property() lastUpdate = '';
+  @property({ attribute: 'last-update' }) lastUpdate = '';
   @property() percentage: string | number = '0';
   @property() quantity = ''; // Ex: "1 tube"
   @property() value = '';
@@ -56,7 +56,7 @@ export class ShStockCard extends LitElement {
     :host {
       display: block;
       --card-bg: var(--color-neutral-800);
-      --card-border: var(--color-neutral-700);
+      --card-border: rgba(255, 255, 255, 0.1);
       --card-text: var(--color-neutral-100);
       --card-text-muted: var(--color-neutral-400);
       --status-color: var(--color-success-500);
@@ -64,7 +64,7 @@ export class ShStockCard extends LitElement {
 
     :host([data-theme="light"]) {
       --card-bg: rgba(255, 255, 255, 0.8);
-      --card-border: var(--color-neutral-200);
+      --card-border: rgba(0, 0, 0, 0.1);
       --card-text: var(--color-neutral-900);
       --card-text-muted: var(--color-neutral-600);
     }
@@ -190,6 +190,7 @@ export class ShStockCard extends LitElement {
       display: flex;
       flex-direction: column;
       gap: var(--spacing-xs);
+      text-align: center;
     }
 
     .metric-value {
@@ -219,10 +220,6 @@ export class ShStockCard extends LitElement {
       border-top: 1px solid var(--card-border);
       display: flex;
       justify-content: center;
-    }
-
-    .session-btn {
-      width: 100%;
     }
 
     /* Actions */
@@ -378,10 +375,9 @@ export class ShStockCard extends LitElement {
         <!-- Session Button -->
         <div class="session-section">
           <sh-button
-            class="session-btn"
-            variant="primary"
+            variant="ghost"
             size="sm"
-            iconBefore="Save"
+            iconBefore="Palette"
             @click="${this._handleSession}"
             ?disabled="${this.loading}"
             aria-label="Enregistrer session pour ${this.name}"
@@ -409,7 +405,7 @@ export class ShStockCard extends LitElement {
               variant="ghost"
               size="sm"
               iconOnly
-              iconBefore="Edit"
+              iconBefore="Edit3"
               @click="${this._handleEdit}"
               ?disabled="${this.loading}"
               aria-label="Éditer ${this.name}"

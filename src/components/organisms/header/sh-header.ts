@@ -28,14 +28,14 @@ export class ShHeader extends LitElement {
      * @type {string}
      * @default 'Utilisateur'
      */
-    @property({ type: String }) userName: string = 'Utilisateur';
+    @property({ type: String, attribute: 'user-name' }) userName: string = 'Utilisateur';
 
     /**
      * Number of unread notifications
      * @type {number}
      * @default 0
      */
-    @property({ type: Number }) notificationCount: number = 0;
+    @property({ type: Number, attribute: 'notification-count' }) notificationCount: number = 0;
 
     /**
      * Current theme (light or dark)
@@ -226,7 +226,7 @@ export class ShHeader extends LitElement {
                     <div class="content">
                         <!-- Logo Section -->
                         <div class="logo-section">
-                            <sh-logo size="sm"></sh-logo>
+                            <sh-logo size="md"></sh-logo>
                         </div>
 
                         <!-- Actions Navigation -->
@@ -305,6 +305,8 @@ export class ShHeader extends LitElement {
 
     private _handleThemeToggle() {
         const newTheme = this.theme === 'dark' ? 'light' : 'dark';
+
+        // Emit event on the component
         this.dispatchEvent(
             new CustomEvent('sh-theme-toggle', {
                 detail: {
@@ -315,6 +317,16 @@ export class ShHeader extends LitElement {
                 composed: true,
             })
         );
+
+        // Also emit on document for global theme management in React apps
+        document.dispatchEvent(
+            new CustomEvent('theme-change', {
+                detail: { theme: newTheme },
+                bubbles: true,
+                composed: true
+            })
+        );
+
         // Update internal state so icon and ARIA label reflect the change
         this.theme = newTheme;
     }

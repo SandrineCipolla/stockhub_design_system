@@ -209,6 +209,11 @@
 - Bouton session centré avec sa taille naturelle
 - Test visuel Storybook : ✅ Validé
 
+**🔧 Améliorations post-intégration :**
+- **Hover effect coloré** : Ajout d'un overlay semi-transparent de la couleur du status au hover (10% opacity dark, 15% light)
+- **Fix attributs icônes** : Correction des attributs camelCase → kebab-case (`iconBefore` → `icon-before`, `iconOnly` → `icon-only`)
+- Correspond au design original StockCard.tsx (lignes 95-107, 142-150)
+
 ---
 
 ## ⚠️ PRIORITÉ 2 - Composants Partiels (Non bloquants)

@@ -100,6 +100,29 @@ export class ShStockCard extends LitElement {
       height: 100%;
       display: flex;
       flex-direction: column;
+      position: relative;
+    }
+
+    .stock-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--status-color);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .stock-card:hover::before {
+      opacity: 0.1;
+    }
+
+    :host([data-theme="light"]) .stock-card:hover::before {
+      opacity: 0.15;
     }
 
     .stock-card:hover {
@@ -377,7 +400,7 @@ export class ShStockCard extends LitElement {
           <sh-button
             variant="ghost"
             size="sm"
-            iconBefore="Palette"
+            icon-before="Palette"
             @click="${this._handleSession}"
             ?disabled="${this.loading}"
             aria-label="Enregistrer session pour ${this.name}"
@@ -392,7 +415,7 @@ export class ShStockCard extends LitElement {
             class="details-btn"
             variant="ghost"
             size="sm"
-            iconBefore="Eye"
+            icon-before="Eye"
             @click="${this._handleDetails}"
             ?disabled="${this.loading}"
             aria-label="Voir les détails de ${this.name}"
@@ -404,8 +427,8 @@ export class ShStockCard extends LitElement {
             <sh-button
               variant="ghost"
               size="sm"
-              iconOnly
-              iconBefore="Edit3"
+              icon-only
+              icon-before="Edit3"
               @click="${this._handleEdit}"
               ?disabled="${this.loading}"
               aria-label="Éditer ${this.name}"
@@ -414,8 +437,8 @@ export class ShStockCard extends LitElement {
             <sh-button
               variant="ghost"
               size="sm"
-              iconOnly
-              iconBefore="Trash2"
+              icon-only
+              icon-before="Trash2"
               @click="${this._handleDelete}"
               ?disabled="${this.loading}"
               aria-label="Supprimer ${this.name}"

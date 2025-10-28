@@ -211,9 +211,9 @@ export const ResponsiveDemo: Story = {
           ];
 
           header.actions = [
-            { label: '', icon: 'Plus', variant: 'primary', handler: 'add-stock' },
-            { label: '', icon: 'BarChart3', variant: 'ghost', handler: 'report' },
-            { label: '', icon: 'Search', variant: 'ghost', handler: 'search' }
+            { label: '', icon: 'Plus', variant: 'primary', handler: 'add-stock', ariaLabel: 'Ajouter un stock' },
+            { label: '', icon: 'BarChart3', variant: 'ghost', handler: 'report', ariaLabel: 'Voir les rapports' },
+            { label: '', icon: 'Search', variant: 'ghost', handler: 'search', ariaLabel: 'Rechercher' }
           ];
 
           // Force mobile-like layout in Shadow DOM

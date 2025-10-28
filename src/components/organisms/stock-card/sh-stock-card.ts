@@ -63,7 +63,7 @@ export class ShStockCard extends LitElement {
     }
 
     :host([data-theme="light"]) {
-      --card-bg: rgba(255, 255, 255, 0.8);
+      --card-bg: var(--color-neutral-50);
       --card-border: rgba(0, 0, 0, 0.1);
       --card-text: var(--color-neutral-900);
       --card-text-muted: var(--color-neutral-600);
@@ -83,11 +83,11 @@ export class ShStockCard extends LitElement {
     }
 
     :host([status="out-of-stock"]) {
-      --status-color: var(--color-neutral-500);
+      --status-color: var(--color-neutral-700);
     }
 
     :host([status="overstocked"]) {
-      --status-color: var(--color-primary-500);
+      --status-color: var(--color-info-600);
     }
 
     .stock-card {
@@ -128,10 +128,6 @@ export class ShStockCard extends LitElement {
     .stock-card:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    }
-
-    :host([data-theme="light"]) .stock-card {
-      backdrop-filter: blur(10px);
     }
 
     /* Header */
@@ -266,7 +262,7 @@ export class ShStockCard extends LitElement {
 
     /* Loading state */
     :host([loading]) .stock-card {
-      opacity: 0.6;
+      opacity: 0.8;
       pointer-events: none;
     }
 
@@ -404,6 +400,7 @@ export class ShStockCard extends LitElement {
             @click="${this._handleSession}"
             ?disabled="${this.loading}"
             .ariaLabel="Enregistrer session pour ${this.name}"
+            data-theme="${this.theme}"
           >
             Enregistrer session
           </sh-button>
@@ -419,6 +416,7 @@ export class ShStockCard extends LitElement {
             @click="${this._handleDetails}"
             ?disabled="${this.loading}"
             .ariaLabel="Voir les détails de ${this.name}"
+            data-theme="${this.theme}"
           >
             Détails
           </sh-button>
@@ -432,6 +430,7 @@ export class ShStockCard extends LitElement {
               @click="${this._handleEdit}"
               ?disabled="${this.loading}"
               .ariaLabel="Éditer ${this.name}"
+              data-theme="${this.theme}"
             ></sh-button>
 
             <sh-button
@@ -442,6 +441,7 @@ export class ShStockCard extends LitElement {
               @click="${this._handleDelete}"
               ?disabled="${this.loading}"
               .ariaLabel="Supprimer ${this.name}"
+              data-theme="${this.theme}"
             ></sh-button>
           </div>
         </div>

@@ -146,7 +146,7 @@ export class ShStatusBadge extends LitElement {
     /* ============================================ */
     .success {
       background: #d1fae5; /* bg-emerald-100 */
-      color: #047857; /* text-emerald-700 */
+      color: #064e3b; /* text-emerald-900 - very dark for WCAG AA compliance */
       border-color: #6ee7b7; /* border-emerald-300 */
     }
 
@@ -161,7 +161,7 @@ export class ShStatusBadge extends LitElement {
     /* ============================================ */
     .warning {
       background: #fef3c7; /* bg-amber-100 */
-      color: #b45309; /* text-amber-700 */
+      color: #92400e; /* text-amber-800 - darker for better contrast */
       border-color: #fcd34d; /* border-amber-300 */
     }
 
@@ -176,7 +176,7 @@ export class ShStatusBadge extends LitElement {
     /* ============================================ */
     .danger {
       background: #fee2e2; /* bg-red-100 */
-      color: #b91c1c; /* text-red-700 */
+      color: #991b1b; /* text-red-800 - darker for better contrast */
       border-color: #fca5a5; /* border-red-300 */
     }
 
@@ -191,7 +191,7 @@ export class ShStatusBadge extends LitElement {
     /* ============================================ */
     .default {
       background: #f3f4f6; /* bg-gray-100 */
-      color: #374151; /* text-gray-700 */
+      color: #1f2937; /* text-gray-800 - darker for better contrast */
       border-color: #d1d5db; /* border-gray-300 */
     }
 
@@ -206,7 +206,7 @@ export class ShStatusBadge extends LitElement {
     /* ============================================ */
     .info {
       background: #dbeafe; /* bg-blue-100 */
-      color: #1d4ed8; /* text-blue-700 */
+      color: #1e40af; /* text-blue-800 - darker for better contrast */
       border-color: #93c5fd; /* border-blue-300 */
     }
 

@@ -3,6 +3,7 @@ import './sh-card.ts';
 import '../../atoms/icon/sh-icon.ts';
 import '../../atoms/badge/sh-badge.ts';
 import '../button/sh-button.ts';
+import '../../organisms/stock-item-card/sh-stock-item-card.ts';
 
 const meta: Meta = {
   title: 'Components/Molecules/Card',
@@ -176,38 +177,23 @@ export const DifferentPadding: Story = {
   `,
 };
 
-// Inventory Item Card Example
-export const InventoryCard: Story = {
+// Stock Item Card Example
+export const WithStockItemCard: Story = {
   args: {
     theme: 'dark',
   },
   render: (args) => `
     <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px; display: flex; align-items: center; justify-content: center; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <sh-card hover clickable style="width: 280px;" data-theme="${args.theme}">
-        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
-          <div>
-            <h3 style="margin: 0;">Peinture Acrylique</h3>
-            <p style="margin: 0.25rem 0 0 0; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'}; font-size: 0.875rem;">
-              SKU: PNT-001
-            </p>
-          </div>
-          <sh-badge variant="success" pill data-theme="${args.theme}">En stock</sh-badge>
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; padding: 1rem; background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)'}; border-radius: 8px;">
-          <div>
-            <div style="font-size: 0.75rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'}; text-transform: uppercase; margin-bottom: 0.25rem;">Quantité</div>
-            <div style="font-size: 1.25rem; font-weight: 700;">45</div>
-          </div>
-          <div>
-            <div style="font-size: 0.75rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'}; text-transform: uppercase; margin-bottom: 0.25rem;">Valeur</div>
-            <div style="font-size: 1.25rem; font-weight: 700;">€675</div>
-          </div>
-        </div>
-        <div style="display: flex; gap: 0.5rem;">
-          <sh-button variant="ghost" size="sm" iconBefore="Eye" style="flex: 1;" data-theme="${args.theme}">Détails</sh-button>
-          <sh-button variant="primary" size="sm" iconBefore="Edit" style="flex: 1;" data-theme="${args.theme}">Modifier</sh-button>
-        </div>
-      </sh-card>
+      <sh-stock-item-card
+        name="Peinture Acrylique Bleu"
+        sku="PNT-001"
+        quantity="45"
+        value="€675"
+        location="A-12-3"
+        status="optimal"
+        data-theme="${args.theme}"
+        style="width: 320px;"
+      ></sh-stock-item-card>
     </div>
   `,
 };
@@ -299,10 +285,11 @@ export const AddStockForm: Story = {
           </div>
 
           <div>
-            <label style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; font-weight: 500;">
+            <label for="category-select" style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; font-weight: 500;">
               Catégorie
             </label>
             <select
+              id="category-select"
               style="width: 100%; padding: 0.5rem; border: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.2)' : '#d1d5db'}; border-radius: 6px; font-size: 0.875rem; background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.05)' : '#ffffff'}; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};"
             >
               <option>Peinture</option>

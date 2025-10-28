@@ -241,6 +241,13 @@ export class ShInput extends LitElement {
      */
     @property({ type: Boolean }) required = false
 
+    /**
+     * Accessible label for screen readers
+     * @type {string}
+     * @default ''
+     */
+    @property({ type: String }) ariaLabel = ""
+
     render() {
         // Générer un id unique pour l'input
         const inputId = `sh-input-${this.name || Math.random().toString(36).substr(2, 9)}`;
@@ -256,6 +263,7 @@ export class ShInput extends LitElement {
           ?disabled=${this.disabled}
           ?required=${this.required}
           name=${this.name}
+          aria-label="${this.ariaLabel || ''}"
           aria-invalid="${this.error ? 'true' : 'false'}"
           aria-describedby="${this.error ? errorId : ''}"
           @input=${this.handleInput}

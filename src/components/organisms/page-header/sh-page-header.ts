@@ -13,6 +13,7 @@ export interface ActionButton {
   icon?: string;
   variant?: 'primary' | 'secondary' | 'ghost';
   handler: string; // event name to dispatch
+  ariaLabel?: string; // aria-label for icon-only buttons
 }
 
 /**
@@ -248,6 +249,7 @@ export class ShPageHeader extends LitElement {
                     data-theme="${this.theme}"
                     ?hide-text-mobile="${action.variant === 'ghost'}"
                     ?icon-only="${!action.label}"
+                    .ariaLabel="${action.ariaLabel || action.label}"
                     @click="${() => this._handleActionClick(action)}"
                     class="page-action-btn"
                   >

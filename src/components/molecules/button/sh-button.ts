@@ -165,18 +165,18 @@ export class ShButton extends LitElement {
     }
 
     .ghost {
-      background: transparent;
-      color: var(--color-primary-600);
-      border: 1px solid transparent;
+      background: rgba(0, 0, 0, 0.02);
+      color: var(--color-neutral-700);
+      border: 1px solid rgba(0, 0, 0, 0.15);
     }
 
     .ghost:hover:not(:disabled) {
-      background: rgba(139, 92, 246, 0.1);
-      border-color: rgba(139, 92, 246, 0.2);
+      background: rgba(0, 0, 0, 0.05);
+      border-color: rgba(0, 0, 0, 0.25);
     }
 
     .ghost:active:not(:disabled) {
-      background: rgba(139, 92, 246, 0.2);
+      background: rgba(0, 0, 0, 0.08);
     }
 
     :host([data-theme="light"]) .ghost {

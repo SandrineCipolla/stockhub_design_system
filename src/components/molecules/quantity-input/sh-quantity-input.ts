@@ -83,6 +83,7 @@ export class ShQuantityInput extends LitElement {
                         class="${this.hideArrows ? 'hide-arrows' : ''}"
                         .value=${this.value}
                         .hideArrows=${this.hideArrows}
+                        .ariaLabel=${"Quantité"}
                         @input-change=${this.handleInputChange}
                 ></sh-input>
                 <button

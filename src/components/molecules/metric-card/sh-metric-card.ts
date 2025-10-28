@@ -184,13 +184,21 @@ export class ShMetricCard extends LitElement {
     }
 
     .trend.increase {
-      color: var(--color-success-600);
+      color: var(--color-success-400);
       background: rgba(16, 185, 129, 0.1);
     }
 
     .trend.decrease {
-      color: var(--color-danger-600);
+      color: var(--color-danger-400);
       background: rgba(239, 68, 68, 0.1);
+    }
+
+    :host([data-theme="light"]) .trend.increase {
+      color: var(--color-success-700);
+    }
+
+    :host([data-theme="light"]) .trend.decrease {
+      color: var(--color-danger-700);
     }
 
     .trend sh-icon {
@@ -326,7 +334,7 @@ export class ShMetricCard extends LitElement {
         class="metric-card"
         role="${this.clickable ? 'button' : 'region'}"
         tabindex="${this.clickable ? '0' : '-1'}"
-        aria-label="${this.clickable ? `${this.label}: ${this.value}` : ''}"
+        aria-label="${this.label}: ${this.value}"
         @click="${this._handleClick}"
         @keydown="${this._handleKeyDown}"
       >

@@ -250,7 +250,7 @@ export class ShHeader extends LitElement {
                             <sh-button
                                 variant="ghost"
                                 size="sm"
-                                iconBefore="${this.theme === 'dark' ? 'Sun' : 'Moon'}"
+                                icon-before="${this.theme === 'dark' ? 'Sun' : 'Moon'}"
                                 @click="${this._handleThemeToggle}"
                                 aria-label="Changer vers le thème ${this.theme === 'dark' ? 'clair' : 'sombre'}"
                                 title="Changer de thème"
@@ -266,7 +266,7 @@ export class ShHeader extends LitElement {
                                     <sh-button
                                         variant="primary"
                                         size="sm"
-                                        iconBefore="LogOut"
+                                        icon-before="LogOut"
                                         @click="${this._handleLogoutClick}"
                                         aria-label="Se déconnecter de l'application StockHub"
                                         title="Se déconnecter"
@@ -277,7 +277,7 @@ export class ShHeader extends LitElement {
                                     <sh-button
                                         variant="primary"
                                         size="sm"
-                                        iconBefore="LogIn"
+                                        icon-before="LogIn"
                                         @click="${this._handleLoginClick}"
                                         aria-label="Se connecter à StockHub"
                                         title="Se connecter"

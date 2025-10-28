@@ -143,9 +143,9 @@ export class ShButton extends LitElement {
     }
 
     :host([data-theme="dark"]) .secondary {
-      background: var(--color-surface-secondary);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--color-text-primary);
-      border-color: var(--color-neutral-700);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .secondary:hover:not(:disabled) {
@@ -154,26 +154,45 @@ export class ShButton extends LitElement {
     }
 
     :host([data-theme="dark"]) .secondary:hover:not(:disabled) {
-      background: var(--color-neutral-800);
+      background: rgba(255, 255, 255, 0.1);
       border-color: var(--color-primary-400);
     }
 
     .ghost {
       background: transparent;
       color: var(--color-primary-600);
-      border: none;
+      border: 1px solid transparent;
     }
 
     .ghost:hover:not(:disabled) {
       background: rgba(139, 92, 246, 0.1);
+      border-color: rgba(139, 92, 246, 0.2);
     }
 
     .ghost:active:not(:disabled) {
       background: rgba(139, 92, 246, 0.2);
     }
 
+    :host([data-theme="light"]) .ghost {
+      color: var(--color-neutral-700);
+      background: rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.15);
+    }
+
+    :host([data-theme="light"]) .ghost:hover:not(:disabled) {
+      background: rgba(0, 0, 0, 0.05);
+      border-color: rgba(0, 0, 0, 0.25);
+    }
+
     :host([data-theme="dark"]) .ghost {
-      color: var(--color-primary-400);
+      color: white;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    :host([data-theme="dark"]) .ghost:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
     }
 
     .danger {

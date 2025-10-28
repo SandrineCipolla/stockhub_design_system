@@ -385,6 +385,121 @@ background: linear-gradient(to right, var(--color-primary-500), var(--color-prim
 
 ---
 
+### ✅ sh-page-header (Nouveau composant) - COMPLÉTÉ
+
+**Composant créé** : `src/components/organisms/page-header/sh-page-header.ts`
+
+#### Description
+Composant page-header (bandeau) manquant du front-end StockHub V2, affiché sous le header principal avec :
+- Fil d'Ariane (breadcrumb) cliquable avec icône Home
+- Titre de page + sous-titre
+- Boutons d'actions (jusqu'à 3) - Primary, Ghost variants
+- Support thèmes light/dark
+- Responsive (layout vertical + boutons icon-only sur mobile)
+
+#### Caractéristiques implémentées
+
+**Interfaces TypeScript** :
+```typescript
+export interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+export interface ActionButton {
+  label: string;
+  icon?: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  handler: string; // nom de l'événement à dispatcher
+}
+```
+
+**Props** :
+- `title`: Titre principal
+- `subtitle`: Sous-titre descriptif (optionnel)
+- `breadcrumb`: Array de BreadcrumbItem
+- `actions`: Array de ActionButton (max 3)
+- `theme`: 'light' | 'dark'
+
+**Événements** :
+- `sh-breadcrumb-click`: Émis au clic sur un item du breadcrumb
+- `sh-action-{handler}`: Émis au clic sur un bouton d'action
+
+**Styling** :
+- Gradient background: `linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)` (dark)
+- Light theme: `linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%)`
+- Breadcrumb avec séparateurs `/` et Home icon
+- Actions alignées à droite (desktop) / flex-start (mobile)
+- Media queries : < 768px (vertical layout), < 640px (typography ajustée)
+
+**Features** :
+- Propagation automatique du `data-theme` aux boutons enfants
+- Détection automatique `icon-only` quand `action.label` est vide
+- Support `hide-text-mobile` pour boutons ghost (icon-only < 640px)
+
+#### Stories créées
+
+**Stories** : `src/components/organisms/page-header/sh-page-header.stories.ts`
+
+1. **Dashboard** - Exemple complet avec breadcrumb + 3 actions
+2. **Simple** - Titre uniquement
+3. **WithBreadcrumb** - Breadcrumb + titre/sous-titre
+4. **SingleAction** - Une seule action
+5. **ResponsiveDemo** - Vue mobile (375px) avec 3 boutons icon-only alignés à gauche
+6. **FullPageIntegration** - sh-header + sh-page-header avec theme toggle synchronisé
+7. **Playground** - Interactif avec event log
+
+#### Corrections durant l'implémentation
+
+**Boutons - Variants corrigés** :
+- "Rapport Détaillé" : `secondary` → `ghost`
+- "Recherche Avancée" : déjà `ghost` ✓
+- Les deux boutons ont maintenant le même style (bordures visibles)
+
+**sh-button.ts - Styles ghost améliorés** :
+- Ajout styles `light` theme pour variant ghost (lignes 176-185) :
+```css
+:host([data-theme="light"]) .ghost {
+  color: var(--color-neutral-700);
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+```
+- Styles `dark` theme pour secondary (lignes 145-148) :
+```css
+:host([data-theme="dark"]) .secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+```
+
+**sh-header.ts - Fix attributs icônes** (lignes 253, 269, 280) :
+- `iconBefore` → `icon-before` (kebab-case)
+- Correction pour : theme toggle (Sun/Moon), LogOut, LogIn
+- Fix: Icône soleil/lune maintenant visible
+
+#### Exports ajoutés
+
+**src/index.ts** (ligne 22) :
+```typescript
+export * from './components/organisms/page-header/sh-page-header';
+```
+
+#### Statut
+- ✅ Composant créé et fonctionnel
+- ✅ 7 stories complètes
+- ✅ Theme toggle synchronisé (FullPageIntegration)
+- ✅ Responsive mobile validé
+- ✅ Export dans index.ts
+
+#### Notes techniques
+- **LightTheme story supprimée** : Impossible de forcer le theme initial à `light` dans Storybook (propriété `theme = 'dark'` par défaut du composant)
+- **ResponsiveDemo** : Utilise JavaScript pour forcer layout mobile (Shadow DOM) car media queries basées sur viewport, pas conteneur
+- **Theme propagation** : `data-theme` passé explicitement aux `sh-button` enfants (Shadow DOM isolation)
+
+---
+
 ## 📋 Plan de Correction
 
 ### Phase 1 - Composants Critiques (Priorité 1)

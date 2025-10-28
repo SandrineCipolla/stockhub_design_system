@@ -193,7 +193,7 @@ export class ShStockCard extends LitElement {
       align-items: center;
       gap: 4px;
       padding: 4px 8px;
-      background: var(--color-danger-500);
+      background: var(--color-danger-600);
       color: white;
       border-radius: var(--border-radius-sm);
       font-size: var(--font-fontSize-xs);
@@ -403,7 +403,7 @@ export class ShStockCard extends LitElement {
             icon-before="Palette"
             @click="${this._handleSession}"
             ?disabled="${this.loading}"
-            aria-label="Enregistrer session pour ${this.name}"
+            .ariaLabel="Enregistrer session pour ${this.name}"
           >
             Enregistrer session
           </sh-button>
@@ -418,7 +418,7 @@ export class ShStockCard extends LitElement {
             icon-before="Eye"
             @click="${this._handleDetails}"
             ?disabled="${this.loading}"
-            aria-label="Voir les détails de ${this.name}"
+            .ariaLabel="Voir les détails de ${this.name}"
           >
             Détails
           </sh-button>
@@ -431,7 +431,7 @@ export class ShStockCard extends LitElement {
               icon-before="Edit3"
               @click="${this._handleEdit}"
               ?disabled="${this.loading}"
-              aria-label="Éditer ${this.name}"
+              .ariaLabel="Éditer ${this.name}"
             ></sh-button>
 
             <sh-button
@@ -441,7 +441,7 @@ export class ShStockCard extends LitElement {
               icon-before="Trash2"
               @click="${this._handleDelete}"
               ?disabled="${this.loading}"
-              aria-label="Supprimer ${this.name}"
+              .ariaLabel="Supprimer ${this.name}"
             ></sh-button>
           </div>
         </div>

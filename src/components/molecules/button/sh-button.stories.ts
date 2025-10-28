@@ -128,16 +128,35 @@ export const IconOnly: Story = {
   args: {
     theme: 'dark',
   },
-  render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-        <sh-button icon-before="Home" icon-only variant="primary" aria-label="Home" data-theme="${args.theme}"></sh-button>
-        <sh-button icon-before="Menu" icon-only variant="secondary" aria-label="Menu" data-theme="${args.theme}"></sh-button>
-        <sh-button icon-before="X" icon-only variant="ghost" aria-label="Close" data-theme="${args.theme}"></sh-button>
-        <sh-button icon-before="Trash2" icon-only variant="danger" aria-label="Delete" data-theme="${args.theme}"></sh-button>
-      </div>
-    </div>
-  `,
+  render: (args) => {
+    // Note: In string templates, we can't use property syntax (.ariaLabel),
+    // so we'll handle this via JavaScript after rendering
+    const container = document.createElement('div');
+    container.style.cssText = `background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;`;
+
+    const buttonsWrapper = document.createElement('div');
+    buttonsWrapper.style.cssText = 'display: flex; gap: 1rem; flex-wrap: wrap;';
+
+    const buttons = [
+      { icon: 'Home', variant: 'primary', label: 'Home' },
+      { icon: 'Menu', variant: 'secondary', label: 'Menu' },
+      { icon: 'X', variant: 'ghost', label: 'Close' },
+      { icon: 'Trash2', variant: 'danger', label: 'Delete' },
+    ];
+
+    buttons.forEach(({ icon, variant, label }) => {
+      const btn = document.createElement('sh-button');
+      btn.setAttribute('icon-before', icon);
+      btn.setAttribute('icon-only', '');
+      btn.setAttribute('variant', variant);
+      btn.setAttribute('data-theme', args.theme);
+      btn.ariaLabel = label;
+      buttonsWrapper.appendChild(btn);
+    });
+
+    container.appendChild(buttonsWrapper);
+    return container;
+  },
 };
 
 // Loading State

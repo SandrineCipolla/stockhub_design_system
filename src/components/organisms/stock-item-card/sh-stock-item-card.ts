@@ -300,7 +300,7 @@ export class ShStockItemCard extends LitElement {
             iconBefore="Eye"
             @click="${this._handleView}"
             ?disabled="${this.loading}"
-            aria-label="Voir les détails de ${this.name}"
+            .ariaLabel="Voir les détails de ${this.name}"
           >
             Voir
           </sh-button>
@@ -311,7 +311,7 @@ export class ShStockItemCard extends LitElement {
             iconBefore="Edit"
             @click="${this._handleEdit}"
             ?disabled="${this.loading}"
-            aria-label="Éditer ${this.name}"
+            .ariaLabel="Éditer ${this.name}"
           >
             Éditer
           </sh-button>
@@ -322,7 +322,7 @@ export class ShStockItemCard extends LitElement {
             iconBefore="Trash2"
             @click="${this._handleDelete}"
             ?disabled="${this.loading}"
-            aria-label="Supprimer ${this.name}"
+            .ariaLabel="Supprimer ${this.name}"
           >
             Supprimer
           </sh-button>

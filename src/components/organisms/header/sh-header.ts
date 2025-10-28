@@ -160,7 +160,7 @@ export class ShHeader extends LitElement {
             min-width: 1rem;
             height: 1rem;
             padding: 0 0.25rem;
-            background: #ef4444;
+            background: #dc2626;
             color: white;
             font-size: 0.625rem;
             font-weight: 600;
@@ -252,7 +252,7 @@ export class ShHeader extends LitElement {
                                 size="sm"
                                 icon-before="${this.theme === 'dark' ? 'Sun' : 'Moon'}"
                                 @click="${this._handleThemeToggle}"
-                                aria-label="Changer vers le thème ${this.theme === 'dark' ? 'clair' : 'sombre'}"
+                                .ariaLabel="Changer vers le thème ${this.theme === 'dark' ? 'clair' : 'sombre'}"
                                 title="Changer de thème"
                             ></sh-button>
 
@@ -268,7 +268,7 @@ export class ShHeader extends LitElement {
                                         size="sm"
                                         icon-before="LogOut"
                                         @click="${this._handleLogoutClick}"
-                                        aria-label="Se déconnecter de l'application StockHub"
+                                        .ariaLabel="Se déconnecter de l'application StockHub"
                                         title="Se déconnecter"
                                     >
                                         <span class="logout-text-desktop">Logout</span>
@@ -279,7 +279,7 @@ export class ShHeader extends LitElement {
                                         size="sm"
                                         icon-before="LogIn"
                                         @click="${this._handleLoginClick}"
-                                        aria-label="Se connecter à StockHub"
+                                        .ariaLabel="Se connecter à StockHub"
                                         title="Se connecter"
                                     >
                                         <span class="logout-text-desktop">Login</span>

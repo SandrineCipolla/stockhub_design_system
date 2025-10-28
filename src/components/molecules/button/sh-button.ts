@@ -1,4 +1,4 @@
-import { css, html, LitElement } from 'lit';
+import { css, html, LitElement, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import '../../atoms/icon/sh-icon.js';
 
@@ -80,6 +80,12 @@ export class ShButton extends LitElement {
    * @default false
    */
   @property({ type: Boolean, attribute: 'icon-only' }) iconOnly = false;
+
+  /**
+   * Accessible label for screen readers (required for icon-only buttons)
+   * @type {string}
+   */
+  @property({ type: String }) ariaLabel: string | null = null;
 
   static styles = css`
     :host {
@@ -281,6 +287,7 @@ export class ShButton extends LitElement {
         ?disabled="${this.disabled || this.loading}"
         @click="${this._handleClick}"
         aria-busy="${this.loading}"
+        aria-label="${this.ariaLabel || nothing}"
       >
         ${this.loading ? this._renderSpinner() : ''}
         ${!this.loading && this.iconBefore ? html`<sh-icon name="${this.iconBefore}"></sh-icon>` : ''}

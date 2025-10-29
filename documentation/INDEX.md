@@ -117,6 +117,21 @@ Checklist opérationnelle pour le Sprint 1 (Fondations).
 
 ### 🔧 Guides Techniques
 
+#### [DESIGN-TOKENS.md](./DESIGN-TOKENS.md)
+Documentation complète du système de Design Tokens.
+
+**Contenu** :
+- Qu'est-ce qu'un Design Token et pourquoi les utiliser
+- Architecture du système (tokens.json → CSS)
+- Workflow complet et scripts disponibles
+- Utilisation dans les composants
+- Tokens disponibles (couleurs, spacing, typography, etc.)
+- Bonnes pratiques et FAQ
+
+**Pour qui** : Tous les développeurs du Design System
+
+---
+
 #### [REACT-INTEGRATION-GUIDE.md](./REACT-INTEGRATION-GUIDE.md)
 Guide complet d'intégration des Web Components dans React.
 
@@ -130,6 +145,25 @@ Guide complet d'intégration des Web Components dans React.
 - Exemples complets
 
 **Pour qui** : Développeurs React
+
+---
+
+### 📊 Audits & Rapports Techniques
+
+#### [DESIGN-TOKENS-AUDIT.md](./DESIGN-TOKENS-AUDIT.md)
+Audit complet de l'utilisation des Design Tokens dans tous les composants.
+
+**Contenu** :
+- Méthodologie et outils d'audit
+- Analyse détaillée composant par composant
+- Taux d'adoption des tokens : 86% (363 utilisations)
+- Identification des valeurs en dur (~40 dans sh-badge)
+- Plan de correction optionnel (priorité basse)
+- Conclusion : Production-ready ✅
+
+**Pour qui** : Lead Dev, Audit qualité, Dette technique
+
+**Statut** : 📋 Améliorations optionnelles (priorité basse)
 
 ---
 

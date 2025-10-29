@@ -236,5 +236,31 @@ npm run storybook
 
 ---
 
+## Déploiement automatique sur Chromatic via GitHub Actions
+
+Un workflow est configuré dans `.github/workflows/chromatic.yml` pour publier Storybook sur Chromatic à chaque push ou pull request sur les branches `master`, `v2` ou `feature/**`.
+
+### Prérequis
+- Ajouter le token Chromatic dans les secrets GitHub du dépôt :
+  1. Aller dans Settings → Secrets and variables → Actions.
+  2. Ajouter un secret nommé `CHROMATIC_PROJECT_TOKEN` avec la valeur du token récupéré dans les paramètres du projet Chromatic.
+
+### Fonctionnement du workflow
+- Le workflow installe les dépendances, build Storybook et publie sur Chromatic.
+- Le token est injecté via `${{ secrets.CHROMATIC_PROJECT_TOKEN }}`.
+- Les résultats sont visibles sur Chromatic et dans les checks GitHub.
+
+### Lancer Chromatic en local
+- Utiliser la commande :
+  ```bash
+  npx chromatic --project-token <YOUR_PROJECT_TOKEN>
+  ```
+- Ou via le script ajouté dans le `package.json` :
+  ```bash
+  npm run chromatic
+  ```
+
+---
+
 **Maintenu par** : Sandrine Cipolla
 **Dernière mise à jour** : 16 Octobre 2025

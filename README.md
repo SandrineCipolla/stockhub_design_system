@@ -506,45 +506,52 @@ export * from './components/atoms/badge/sh-badge';
 
 ## 🎨 Design Tokens
 
-Les design tokens sont centralisés dans `src/tokens/tokens.json` et générés automatiquement en CSS.
+Le Design System utilise un **système de Design Tokens centralisé** pour garantir la cohérence visuelle et faciliter la maintenance.
 
-### Utiliser les Tokens
+### Principe
 
-Dans les composants Lit :
+Les tokens sont définis dans `src/tokens/tokens.json` (source unique) et automatiquement convertis en CSS variables.
+
 ```typescript
+// Dans tokens.json (source)
+{ "color": { "primary": { "500": { "value": "#8b5cf6" } } } }
+
+// ↓ Génère automatiquement
+
+// Dans design-tokens.css
+:root { --color-primary-500: #8b5cf6; }
+
+// ↓ Utilisable dans tous les composants
+
 static styles = css`
-  button {
-    background: var(--color-primary-600);
-    padding: var(--spacing-md);
-    border-radius: var(--radius-md);
-    font-size: var(--font-fontSize-base);
-  }
+  button { background: var(--color-primary-500); }
 `;
 ```
 
 ### Tokens Disponibles
 
-#### Couleurs
-- **Primary (Purple)** : `--color-primary-50` à `--color-primary-900`
-- **Success (Green)** : `--color-success-50` à `--color-success-900`
-- **Warning (Amber)** : `--color-warning-50` à `--color-warning-900`
-- **Danger (Red)** : `--color-danger-50` à `--color-danger-900`
-- **Neutral (Gray)** : `--color-neutral-50` à `--color-neutral-900`
+- **150+ variables CSS** : Couleurs, spacing, typography, border-radius, shadows
+- **6 palettes** : primary, success, warning, danger, neutral, info (9 nuances chacune)
+- **Support thème** : Dark (défaut) + Light avec tokens sémantiques
+- **Type-safe** : Autocomplétion TypeScript
 
-#### Spacing
-- `--spacing-xs`, `--spacing-sm`, `--spacing-md`, `--spacing-lg`, `--spacing-xl`
+### Scripts
 
-#### Typography
-- `--font-fontSize-xs`, `--font-fontSize-sm`, `--font-fontSize-base`, etc.
-- `--font-fontWeight-normal`, `--font-fontWeight-medium`, `--font-fontWeight-bold`
-
-#### Border Radius
-- `--radius-sm`, `--radius-md`, `--radius-lg`, `--radius-full`
-
-### Générer les Tokens
 ```bash
+# Générer design-tokens.css depuis tokens.json
 npm run tokens:generate
+
+# Régénérer automatiquement au changement
+npm run tokens:watch
 ```
+
+### 📚 Documentation Complète
+
+Voir **[DESIGN-TOKENS.md](./documentation/DESIGN-TOKENS.md)** pour :
+- Pourquoi utiliser des Design Tokens ?
+- Architecture du système (tokens.json → CSS)
+- Workflow complet et bonnes pratiques
+- Liste exhaustive des tokens disponibles
 
 ## 🚀 Build & Distribution
 
@@ -726,6 +733,7 @@ Pour une documentation détaillée du projet, consultez **[documentation/INDEX.m
 - **[Session 1-8](./documentation/INDEX.md#-sessions-de-développement)** - Résumés détaillés de toutes les sessions (~17h30)
 
 ### 🔧 Guides Techniques
+- **[DESIGN-TOKENS.md](./documentation/DESIGN-TOKENS.md)** - Système de Design Tokens (pourquoi, comment, bonnes pratiques)
 - **[REACT-INTEGRATION-GUIDE.md](./documentation/REACT-INTEGRATION-GUIDE.md)** - Intégration Web Components dans React
 - **[COMPONENT-DOCUMENTATION.md](./documentation/COMPONENT-DOCUMENTATION.md)** - Guide JSDoc et documentation automatique
 
@@ -766,6 +774,7 @@ Le projet a complété **8 sessions de développement** (~17h30) permettant la c
 - **Index de la documentation** → [documentation/INDEX.md](./documentation/INDEX.md)
 - **Corrections d'intégration** → [DESIGN-SYSTEM-CORRECTIONS.md](./DESIGN-SYSTEM-CORRECTIONS.md)
 - **Rapport accessibilité** → [ACCESSIBILITY-REPORT.md](./ACCESSIBILITY-REPORT.md)
+- **Audit Design Tokens** → [documentation/DESIGN-TOKENS-AUDIT.md](./documentation/DESIGN-TOKENS-AUDIT.md)
 
 ## 📁 Structure du Projet
 

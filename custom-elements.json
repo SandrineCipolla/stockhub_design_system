@@ -1225,6 +1225,129 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/molecules/quantity-input/sh-quantity-input.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Quantity input component with sync button for inventory management.",
+          "name": "ShQuantityInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Current quantity value",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "dirty",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates if value has changed",
+              "attribute": "dirty"
+            },
+            {
+              "kind": "field",
+              "name": "hideArrows",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide number input arrows",
+              "attribute": "hideArrows"
+            },
+            {
+              "kind": "method",
+              "name": "handleInputChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "CustomEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleSync",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "sync",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when sync button is clicked with updated value"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Current quantity value",
+              "fieldName": "value"
+            },
+            {
+              "name": "dirty",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates if value has changed",
+              "fieldName": "dirty"
+            },
+            {
+              "name": "hideArrows",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide number input arrows",
+              "fieldName": "hideArrows"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-quantity-input",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShQuantityInput",
+          "declaration": {
+            "name": "ShQuantityInput",
+            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-quantity-input",
+          "declaration": {
+            "name": "ShQuantityInput",
+            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/molecules/metric-card/sh-metric-card.ts",
       "declarations": [
         {
@@ -1472,129 +1595,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/molecules/quantity-input/sh-quantity-input.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Quantity input component with sync button for inventory management.",
-          "name": "ShQuantityInput",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Current quantity value",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "dirty",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Indicates if value has changed",
-              "attribute": "dirty"
-            },
-            {
-              "kind": "field",
-              "name": "hideArrows",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hide number input arrows",
-              "attribute": "hideArrows"
-            },
-            {
-              "kind": "method",
-              "name": "handleInputChange",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "CustomEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleSync",
-              "privacy": "private"
-            }
-          ],
-          "events": [
-            {
-              "name": "sync",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when sync button is clicked with updated value"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Current quantity value",
-              "fieldName": "value"
-            },
-            {
-              "name": "dirty",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Indicates if value has changed",
-              "fieldName": "dirty"
-            },
-            {
-              "name": "hideArrows",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hide number input arrows",
-              "fieldName": "hideArrows"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-quantity-input",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShQuantityInput",
-          "declaration": {
-            "name": "ShQuantityInput",
-            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-quantity-input",
-          "declaration": {
-            "name": "ShQuantityInput",
-            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/molecules/search-input/sh-search-input.ts",
       "declarations": [
         {
@@ -1793,6 +1793,100 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/molecules/status-badge/sh-status-badge.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Status badge component for displaying stock status with icons and animations.",
+          "name": "ShStatusBadge",
+          "members": [
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
+              },
+              "default": "'optimal'",
+              "description": "Stock status type",
+              "attribute": "status"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Custom label override",
+              "attribute": "label"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "status",
+              "type": {
+                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
+              },
+              "default": "'optimal'",
+              "description": "Stock status type",
+              "fieldName": "status"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "fieldName": "size"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Custom label override",
+              "fieldName": "label"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-status-badge",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShStatusBadge",
+          "declaration": {
+            "name": "ShStatusBadge",
+            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-status-badge",
+          "declaration": {
+            "name": "ShStatusBadge",
+            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts",
       "declarations": [
         {
@@ -1973,94 +2067,112 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/molecules/status-badge/sh-status-badge.ts",
+      "path": "src/components/organisms/footer/sh-footer.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Status badge component for displaying stock status with icons and animations.",
-          "name": "ShStatusBadge",
+          "description": "",
+          "name": "ShFooter",
           "members": [
             {
               "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
-              },
-              "default": "'optimal'",
-              "description": "Stock status type",
-              "attribute": "status"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "label",
+              "name": "appName",
               "type": {
                 "text": "string"
               },
-              "description": "Custom label override",
-              "attribute": "label"
+              "default": "'STOCK HUB'",
+              "attribute": "app-name"
+            },
+            {
+              "kind": "field",
+              "name": "year",
+              "attribute": "year"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleLinkClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "linkName",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-footer-link-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis lors du clic sur un lien"
             }
           ],
           "attributes": [
             {
-              "name": "status",
-              "type": {
-                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
-              },
-              "default": "'optimal'",
-              "description": "Stock status type",
-              "fieldName": "status"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "fieldName": "size"
-            },
-            {
-              "name": "label",
+              "name": "app-name",
               "type": {
                 "text": "string"
               },
-              "description": "Custom label override",
-              "fieldName": "label"
+              "default": "'STOCK HUB'",
+              "fieldName": "appName"
+            },
+            {
+              "name": "year",
+              "fieldName": "year"
+            },
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "fieldName": "theme"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "sh-status-badge",
-          "customElement": true
+          "tagName": "sh-footer",
+          "customElement": true,
+          "summary": "Footer de l'application avec copyright et liens légaux"
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "ShStatusBadge",
+          "name": "ShFooter",
           "declaration": {
-            "name": "ShStatusBadge",
-            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
+            "name": "ShFooter",
+            "module": "src/components/organisms/footer/sh-footer.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "sh-status-badge",
+          "name": "sh-footer",
           "declaration": {
-            "name": "ShStatusBadge",
-            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
+            "name": "ShFooter",
+            "module": "src/components/organisms/footer/sh-footer.ts"
           }
         }
       ]
@@ -2237,284 +2349,6 @@
           "declaration": {
             "name": "ShPageHeader",
             "module": "src/components/organisms/page-header/sh-page-header.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/organisms/footer/sh-footer.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "ShFooter",
-          "members": [
-            {
-              "kind": "field",
-              "name": "appName",
-              "type": {
-                "text": "string"
-              },
-              "default": "'STOCK HUB'",
-              "attribute": "app-name"
-            },
-            {
-              "kind": "field",
-              "name": "year",
-              "attribute": "year"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "attribute": "data-theme",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "_handleLinkClick",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "linkName",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "name": "sh-footer-link-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis lors du clic sur un lien"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "app-name",
-              "type": {
-                "text": "string"
-              },
-              "default": "'STOCK HUB'",
-              "fieldName": "appName"
-            },
-            {
-              "name": "year",
-              "fieldName": "year"
-            },
-            {
-              "name": "data-theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "fieldName": "theme"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-footer",
-          "customElement": true,
-          "summary": "Footer de l'application avec copyright et liens légaux"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShFooter",
-          "declaration": {
-            "name": "ShFooter",
-            "module": "src/components/organisms/footer/sh-footer.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-footer",
-          "declaration": {
-            "name": "ShFooter",
-            "module": "src/components/organisms/footer/sh-footer.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/organisms/header/sh-header.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Header component with logo, notifications, theme toggle, and user actions.\r\nMatches StockHub V2 design with glassmorphism and sticky positioning.",
-          "name": "ShHeader",
-          "members": [
-            {
-              "kind": "field",
-              "name": "userName",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Utilisateur'",
-              "description": "User name to display",
-              "attribute": "user-name"
-            },
-            {
-              "kind": "field",
-              "name": "notificationCount",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Number of unread notifications",
-              "attribute": "notification-count"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "description": "Current theme (light or dark)",
-              "attribute": "data-theme",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "isLoggedIn",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Login state - if true shows Logout, if false shows Login",
-              "attribute": "isLoggedIn"
-            },
-            {
-              "kind": "method",
-              "name": "_handleNotificationClick",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleThemeToggle",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleLoginClick",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleLogoutClick",
-              "privacy": "private"
-            }
-          ],
-          "events": [
-            {
-              "name": "sh-notification-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when notification button is clicked"
-            },
-            {
-              "name": "sh-theme-toggle",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when theme toggle button is clicked"
-            },
-            {
-              "name": "sh-login-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when login button is clicked (when isLoggedIn=false)"
-            },
-            {
-              "name": "sh-logout-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when logout button is clicked (when isLoggedIn=true)"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "user-name",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Utilisateur'",
-              "description": "User name to display",
-              "fieldName": "userName"
-            },
-            {
-              "name": "notification-count",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Number of unread notifications",
-              "fieldName": "notificationCount"
-            },
-            {
-              "name": "data-theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "description": "Current theme (light or dark)",
-              "fieldName": "theme"
-            },
-            {
-              "name": "isLoggedIn",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Login state - if true shows Logout, if false shows Login",
-              "fieldName": "isLoggedIn"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-header",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShHeader",
-          "declaration": {
-            "name": "ShHeader",
-            "module": "src/components/organisms/header/sh-header.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-header",
-          "declaration": {
-            "name": "ShHeader",
-            "module": "src/components/organisms/header/sh-header.ts"
           }
         }
       ]
@@ -3003,6 +2837,172 @@
           "declaration": {
             "name": "ShStockCard",
             "module": "src/components/organisms/stock-card/sh-stock-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/organisms/header/sh-header.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Header component with logo, notifications, theme toggle, and user actions.\r\nMatches StockHub V2 design with glassmorphism and sticky positioning.",
+          "name": "ShHeader",
+          "members": [
+            {
+              "kind": "field",
+              "name": "userName",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Utilisateur'",
+              "description": "User name to display",
+              "attribute": "user-name"
+            },
+            {
+              "kind": "field",
+              "name": "notificationCount",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Number of unread notifications",
+              "attribute": "notification-count"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "description": "Current theme (light or dark)",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "isLoggedIn",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Login state - if true shows Logout, if false shows Login",
+              "attribute": "isLoggedIn"
+            },
+            {
+              "kind": "method",
+              "name": "_handleNotificationClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleThemeToggle",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleLoginClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleLogoutClick",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-notification-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when notification button is clicked"
+            },
+            {
+              "name": "sh-theme-toggle",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when theme toggle button is clicked"
+            },
+            {
+              "name": "sh-login-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when login button is clicked (when isLoggedIn=false)"
+            },
+            {
+              "name": "sh-logout-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when logout button is clicked (when isLoggedIn=true)"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "user-name",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Utilisateur'",
+              "description": "User name to display",
+              "fieldName": "userName"
+            },
+            {
+              "name": "notification-count",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Number of unread notifications",
+              "fieldName": "notificationCount"
+            },
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "description": "Current theme (light or dark)",
+              "fieldName": "theme"
+            },
+            {
+              "name": "isLoggedIn",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Login state - if true shows Logout, if false shows Login",
+              "fieldName": "isLoggedIn"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-header",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShHeader",
+          "declaration": {
+            "name": "ShHeader",
+            "module": "src/components/organisms/header/sh-header.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-header",
+          "declaration": {
+            "name": "ShHeader",
+            "module": "src/components/organisms/header/sh-header.ts"
           }
         }
       ]

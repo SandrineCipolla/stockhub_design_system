@@ -19,6 +19,11 @@ Le Design System StockHub a été audité pour l'accessibilité et a atteint une
 - ✅ **Score Lighthouse moyen** : 100/100
 - ✅ **Composants testés** : 10
 
+### 🔗 Voir aussi
+- **Corrections détaillées** → [DESIGN-SYSTEM-CORRECTIONS.md](./DESIGN-SYSTEM-CORRECTIONS.md#-accessibilité)
+- **Historique des versions** → [CHANGELOG.md](./CHANGELOG.md#unreleased)
+- **Sessions de développement** → [documentation/INDEX.md](./documentation/INDEX.md#-sessions-de-développement)
+
 ---
 
 ## 🔍 Méthodologie de Test

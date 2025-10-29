@@ -1,7 +1,7 @@
 # Documentation - StockHub Design System
 
-**Version** : 1.0
-**Date** : 16 Octobre 2025
+**Version** : 2.0
+**Date** : 29 Octobre 2025
 
 Bienvenue dans la documentation du Design System StockHub.
 
@@ -25,19 +25,26 @@ L'organisation du menu Storybook respecte exactement la hiérarchie des dossiers
 🎨 Icons
 
 📦 Components
-   ├── 🔹 Atoms
+   ├── 🔹 Atoms (5)
    │   ├── Badge
    │   ├── Icon
-   │   ├── Input (+ Test)
+   │   ├── Input
    │   ├── Logo
    │   └── Text
-   ├── 🔸 Molecules
+   ├── 🔸 Molecules (6)
    │   ├── Button
    │   ├── Card
+   │   ├── MetricCard ✨
    │   ├── QuantityInput
+   │   ├── SearchInput ✨
    │   └── StatusBadge
-   └── 🔷 Organisms
-       └── Header
+   └── 🔷 Organisms (5)
+       ├── Footer ✨
+       ├── Header
+       ├── IaAlertBanner ✨
+       ├── PageHeader ✨
+       ├── StockCard
+       └── StockItemCard
 ```
 
 #### Nomenclature des Titres
@@ -45,6 +52,21 @@ L'organisation du menu Storybook respecte exactement la hiérarchie des dossiers
 - **Molécules** : `Components/Molecules/[NomComposant]`
 - **Organismes** : `Components/Organisms/[NomComposant]`
 - **Exemples** : `Introduction/[NomStory] Example`
+
+---
+
+### 📝 Sessions de Développement
+
+Retrouvez les résumés détaillés de toutes les sessions :
+
+- **[Session 1](./planning/SESSION-1-SUMMARY.md)** (16/10) - Fondations (3h)
+- **[Session 2](./planning/SESSION-2-SUMMARY.md)** (19/10) - Support Thème Global (2h)
+- **[Session 3](./planning/SESSION-3-SUMMARY.md)** (19/10) - Documentation Automatique (1h30)
+- **[Session 4](./planning/SESSION-4-SUMMARY.md)** (19/10) - Theme Toggle Global (2h)
+- **[Session 5](./planning/SESSION-5-SUMMARY.md)** (20/10) - Nouveaux Composants V2 (2h30)
+- **[Session 6](./planning/SESSION-6-SUMMARY.md)** (20/10) - Finalisation Phase 1 (1h30)
+- **[Session 7](./planning/SESSION-7-SUMMARY.md)** (21/10) - Refactoring Atomic Design (2h)
+- **[Session 8](./planning/SESSION-8-SUMMARY.md)** (21/10) - Complétion Composants V2 (2h)
 
 ---
 
@@ -130,27 +152,41 @@ Guide complet d'intégration des Web Components dans React.
 
 ## 📊 Résumé du Projet
 
-### Composants Identifiés
+### Composants Créés (16 total)
 
-| Composant | Type | Priorité | Statut | Sprint |
-|-----------|------|----------|--------|--------|
-| sh-badge | Atom | 🔴 Haute | 🆕 À créer | 1 |
-| sh-status-badge | Molecule | 🟡 Moyenne | 🆕 À créer | 1 |
-| sh-card | Molecule | 🔴 Haute | 🆕 À créer | 1 |
-| sh-button | Molecule | 🔴 Haute | ⚠️ À améliorer | 1 |
-| sh-input | Atom | 🟡 Moyenne | ⚠️ À améliorer | 2 |
-| sh-metric-card | Molecule | 🟡 Moyenne | 🆕 À créer | 2 |
-| sh-stock-card | Organism | 🟠 Haute | 🆕 À créer | 3 |
-| sh-stock-grid | Organism | 🟢 Basse | 🆕 À créer | 3 |
+| Composant | Type | Statut | Session |
+|-----------|------|--------|---------|
+| sh-badge | Atom | ✅ Créé | 1 |
+| sh-icon | Atom | ✅ Créé | 1 |
+| sh-input | Atom | ✅ Créé | 1 |
+| sh-logo | Atom | ✅ Créé | 1 |
+| sh-text | Atom | ✅ Créé | 1 |
+| sh-button | Molecule | ✅ Créé | 1 |
+| sh-card | Molecule | ✅ Créé | 1 |
+| sh-metric-card | Molecule | ✅ Créé | 5 |
+| sh-quantity-input | Molecule | ✅ Créé | 1 |
+| sh-search-input | Molecule | ✅ Créé | 7 |
+| sh-status-badge | Molecule | ✅ Créé | 5 |
+| sh-footer | Organism | ✅ Créé | 7 |
+| sh-header | Organism | ✅ Créé | 1 |
+| sh-ia-alert-banner | Organism | ✅ Créé | 7 |
+| sh-page-header | Organism | ✅ Créé | 8 |
+| sh-stock-card | Organism | ✅ Créé | 7 |
+| sh-stock-item-card | Organism | ✅ Créé | 5 |
 
-### Timeline
+### Progression
 
-- **Sprint 1** : Fondations (3-4h) - Tokens + sh-badge, sh-card, sh-button
-- **Sprint 2** : Composants Core (3-4h) - sh-input, sh-metric-card
-- **Sprint 3** : Dashboard (4-5h) - sh-stock-card, sh-stock-grid
-- **Sprint 4** : Intégration (2-3h) - Tests, docs, publication
+- **Sessions 1-2** : Fondations (5h30) - Setup, tokens, composants de base
+- **Sessions 3-4** : Thème & Nouveaux composants (4h30) - Système de thème, metric-card, stock-item-card
+- **Sessions 5-6** : Documentation & Finalisation (3h30) - Docs automatique, préparation intégration
+- **Sessions 7-8** : StockHub V2 Components (4h) - Refactoring, nouveaux composants V2
 
-**Total estimé** : 12-16h
+**Total réalisé** : ~17h30
+
+### 🔗 Voir aussi
+- **Historique des versions** → [CHANGELOG.md](../CHANGELOG.md)
+- **Problèmes d'intégration StockHub V2** → [DESIGN-SYSTEM-CORRECTIONS.md](../DESIGN-SYSTEM-CORRECTIONS.md)
+- **Rapport d'accessibilité WCAG AA** → [ACCESSIBILITY-REPORT.md](../ACCESSIBILITY-REPORT.md)
 
 ---
 
@@ -218,6 +254,16 @@ Pour toute question ou problème :
 
 ## 📝 Notes de Version
 
+### v2.0 (29 Octobre 2025)
+- ✅ **16 composants Web Components** créés et documentés
+- ✅ **8 sessions** de développement complétées (~17h30)
+- ✅ Système de thème global (dark/light) avec toggle Storybook
+- ✅ Migration complète vers Lucide icons (1000+ icônes)
+- ✅ Documentation automatique (JSDoc + Custom Elements Manifest)
+- ✅ Composants StockHub V2 : metric-card, stock-card, stock-item-card, page-header, footer, ia-alert-banner
+- ✅ Support accessibilité WCAG AA complet
+- ✅ Déploiement Chromatic automatique
+
 ### v1.0 (16 Octobre 2025)
 - Documentation initiale
 - Plan de migration complet
@@ -227,4 +273,4 @@ Pour toute question ou problème :
 ---
 
 **Maintenu par** : Sandrine Cipolla
-**Dernière mise à jour** : 19 Octobre 2025
+**Dernière mise à jour** : 29 Octobre 2025

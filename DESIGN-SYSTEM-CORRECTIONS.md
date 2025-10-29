@@ -24,6 +24,11 @@
 - ❌ **Non fonctionnels** : 0
 - ⏭️ **Non testés** : 1 (sh-badge)
 
+### 🔗 Voir aussi
+- **Historique des versions** → [CHANGELOG.md](./CHANGELOG.md)
+- **Sessions de développement** → [documentation/INDEX.md](./documentation/INDEX.md#-sessions-de-développement)
+- **Rapport d'accessibilité WCAG AA** → [ACCESSIBILITY-REPORT.md](./ACCESSIBILITY-REPORT.md)
+
 ---
 
 ## 🔴 PRIORITÉ 1 - Composants Non Fonctionnels (Bloquants)

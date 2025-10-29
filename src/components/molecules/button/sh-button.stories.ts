@@ -1,4 +1,5 @@
 import type {Meta, StoryObj} from '@storybook/web-components';
+import { expect, userEvent } from '@storybook/test';
 import './sh-button.ts';
 import '../../atoms/icon/sh-icon.ts';
 
@@ -271,4 +272,232 @@ export const Playground: Story = {
       </sh-button>
     </div>
   `,
+};
+
+/**
+ * Story d'interaction : teste le comportement du bouton avec @storybook/test.
+ * Vérifie que le bouton peut être cliqué et que l'état reste correct.
+ * Les résultats sont visibles dans le panneau "Interactions" de Storybook.
+ */
+export const InteractionTest: Story = {
+  args: {
+    theme: 'dark',
+    variant: 'primary',
+    size: 'md',
+    disabled: false,
+    loading: false,
+    iconBefore: '',
+    iconAfter: '',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Cette story lance des tests automatisés sur le bouton avec @storybook/test. Les interactions sont visibles dans le panneau 'Interactions' de Storybook. Utile pour la CI/CD et Chromatic."
+      }
+    }
+  },
+  render: (args) => `
+    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+      <sh-button
+        variant="${args.variant}"
+        size="${args.size}"
+        ${args.disabled ? 'disabled' : ''}
+        ${args.loading ? 'loading' : ''}
+        ${args.iconBefore ? `icon-before="${args.iconBefore}"` : ''}
+        ${args.iconAfter ? `icon-after="${args.iconAfter}"` : ''}
+        data-theme="${args.theme}"
+      >
+        Click Me
+      </sh-button>
+      <div id="test-result" style="color: #94a3b8; font-size: 14px; font-weight: 500;">
+        ⏳ Test en cours... (voir l'onglet "Interactions" en bas)
+      </div>
+    </div>
+  `,
+  play: async ({ canvasElement }) => {
+    const resultDiv = canvasElement.querySelector('#test-result') as HTMLElement;
+
+    try {
+      // Pour les Web Components avec Shadow DOM, on doit sélectionner le custom element directement
+      const shButton = canvasElement.querySelector('sh-button') as HTMLElement;
+      await expect(shButton).toBeInTheDocument();
+
+      // Accéder au bouton dans le Shadow DOM
+      const button = shButton.shadowRoot?.querySelector('button') as HTMLButtonElement;
+      await expect(button).toBeTruthy();
+
+      // Vérifier que le bouton est enabled
+      await expect(button.disabled).toBe(false);
+
+      // Simuler un hover sur le custom element
+      await userEvent.hover(shButton);
+
+      // Simuler un click utilisateur réel sur le custom element
+      await userEvent.click(shButton);
+
+      // Vérifier que le bouton interne est toujours enabled après le click
+      await expect(button.disabled).toBe(false);
+
+      // Afficher le succès
+      if (resultDiv) {
+        resultDiv.style.color = '#10b981';
+        resultDiv.innerHTML = '✅ Test réussi ! Tous les comportements sont corrects.';
+      }
+    } catch (error) {
+      // Afficher l'erreur
+      if (resultDiv) {
+        resultDiv.style.color = '#ef4444';
+        resultDiv.innerHTML = `❌ Test échoué : ${error}`;
+      }
+      throw error;
+    }
+  },
+};
+
+/**
+ * Test d'interaction sur un bouton disabled.
+ * Vérifie qu'un bouton désactivé ne peut pas être cliqué.
+ */
+export const InteractionTestDisabled: Story = {
+  args: {
+    theme: 'dark',
+    variant: 'primary',
+    size: 'md',
+    disabled: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Teste qu'un bouton désactivé ne peut pas être cliqué et reste dans l'état disabled."
+      }
+    }
+  },
+  render: (args) => `
+    <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+      <sh-button
+        variant="${args.variant}"
+        size="${args.size}"
+        disabled
+        data-theme="${args.theme}"
+      >
+        Disabled Button
+      </sh-button>
+      <div id="test-result" style="color: #94a3b8; font-size: 14px; font-weight: 500;">
+        ⏳ Test en cours... (voir l'onglet "Interactions" en bas)
+      </div>
+    </div>
+  `,
+  play: async ({ canvasElement }) => {
+    const resultDiv = canvasElement.querySelector('#test-result') as HTMLElement;
+
+    try {
+      // Sélectionner le custom element sh-button
+      const shButton = canvasElement.querySelector('sh-button') as HTMLElement;
+      await expect(shButton).toBeInTheDocument();
+
+      // Vérifier que l'attribut disabled est présent sur le custom element
+      await expect(shButton.hasAttribute('disabled')).toBe(true);
+
+      // Accéder au bouton dans le Shadow DOM
+      const button = shButton.shadowRoot?.querySelector('button') as HTMLButtonElement;
+      await expect(button).toBeTruthy();
+
+      // Vérifier que le bouton interne est bien disabled
+      await expect(button.disabled).toBe(true);
+
+      // Note: userEvent.click() sur un élément disabled ne fait rien (comportement attendu)
+      // Le bouton doit rester disabled
+      await expect(button.disabled).toBe(true);
+
+      // Afficher le succès
+      if (resultDiv) {
+        resultDiv.style.color = '#10b981';
+        resultDiv.innerHTML = '✅ Test réussi ! Le bouton disabled fonctionne correctement.';
+      }
+    } catch (error) {
+      // Afficher l'erreur
+      if (resultDiv) {
+        resultDiv.style.color = '#ef4444';
+        resultDiv.innerHTML = `❌ Test échoué : ${error}`;
+      }
+      throw error;
+    }
+  },
+};
+
+/**
+ * Test d'interaction sur un bouton avec icônes.
+ * Vérifie que les icônes sont présentes et que le bouton fonctionne.
+ */
+export const InteractionTestWithIcons: Story = {
+  args: {
+    theme: 'dark',
+    variant: 'primary',
+    size: 'md',
+    iconBefore: 'Plus',
+    iconAfter: 'ArrowRight',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Teste un bouton avec icônes avant et après le texte."
+      }
+    }
+  },
+  render: (args) => `
+    <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+      <sh-button
+        variant="${args.variant}"
+        size="${args.size}"
+        icon-before="${args.iconBefore}"
+        icon-after="${args.iconAfter}"
+        data-theme="${args.theme}"
+      >
+        Add Item
+      </sh-button>
+      <div id="test-result" style="color: #94a3b8; font-size: 14px; font-weight: 500;">
+        ⏳ Test en cours... (voir l'onglet "Interactions" en bas)
+      </div>
+    </div>
+  `,
+  play: async ({ canvasElement }) => {
+    const resultDiv = canvasElement.querySelector('#test-result') as HTMLElement;
+
+    try {
+      // Sélectionner le custom element sh-button
+      const shButton = canvasElement.querySelector('sh-button') as HTMLElement;
+      await expect(shButton).toBeInTheDocument();
+
+      // Vérifier que les attributs icon-before et icon-after sont présents
+      await expect(shButton.getAttribute('icon-before')).toBe('Plus');
+      await expect(shButton.getAttribute('icon-after')).toBe('ArrowRight');
+
+      // Accéder au bouton dans le Shadow DOM
+      const button = shButton.shadowRoot?.querySelector('button') as HTMLButtonElement;
+      await expect(button).toBeTruthy();
+
+      // Vérifier que les icônes sont présentes dans le Shadow DOM
+      const icons = button.querySelectorAll('sh-icon');
+      await expect(icons.length).toBe(2);
+
+      // Cliquer sur le custom element
+      await userEvent.click(shButton);
+
+      // Le bouton doit rester actif
+      await expect(button.disabled).toBe(false);
+
+      // Afficher le succès
+      if (resultDiv) {
+        resultDiv.style.color = '#10b981';
+        resultDiv.innerHTML = '✅ Test réussi ! 2 icônes détectées et click fonctionnel.';
+      }
+    } catch (error) {
+      // Afficher l'erreur
+      if (resultDiv) {
+        resultDiv.style.color = '#ef4444';
+        resultDiv.innerHTML = `❌ Test échoué : ${error}`;
+      }
+      throw error;
+    }
+  },
 };

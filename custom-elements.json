@@ -4,6 +4,168 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "src/components/atoms/icon/sh-icon.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Icon component that displays Lucide icons with various sizes and colors.",
+          "name": "ShIcon",
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "IconName"
+              },
+              "default": "\"CircleHelp\"",
+              "description": "Name of the Lucide icon to display",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "\"md\"",
+              "description": "Size of the icon",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "'primary' | 'success' | 'warning' | 'danger' | 'muted' | 'inherit'"
+              },
+              "default": "\"inherit\"",
+              "description": "Color theme for the icon",
+              "attribute": "color"
+            },
+            {
+              "kind": "field",
+              "name": "clickable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enable interactive hover effects",
+              "attribute": "clickable"
+            },
+            {
+              "kind": "field",
+              "name": "spin",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enable spinning animation",
+              "attribute": "spin"
+            },
+            {
+              "kind": "method",
+              "name": "buildSVGFromIconData",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "iconData",
+                  "type": {
+                    "text": "any[]"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getIconSVG",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "IconName"
+              },
+              "default": "\"CircleHelp\"",
+              "description": "Name of the Lucide icon to display",
+              "fieldName": "name"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "\"md\"",
+              "description": "Size of the icon",
+              "fieldName": "size"
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "'primary' | 'success' | 'warning' | 'danger' | 'muted' | 'inherit'"
+              },
+              "default": "\"inherit\"",
+              "description": "Color theme for the icon",
+              "fieldName": "color"
+            },
+            {
+              "name": "clickable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enable interactive hover effects",
+              "fieldName": "clickable"
+            },
+            {
+              "name": "spin",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enable spinning animation",
+              "fieldName": "spin"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-icon",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShIcon",
+          "declaration": {
+            "name": "ShIcon",
+            "module": "src/components/atoms/icon/sh-icon.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-icon",
+          "declaration": {
+            "name": "ShIcon",
+            "module": "src/components/atoms/icon/sh-icon.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/atoms/badge/sh-badge.ts",
       "declarations": [
         {
@@ -220,6 +382,16 @@
               "attribute": "required"
             },
             {
+              "kind": "field",
+              "name": "ariaLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Accessible label for screen readers",
+              "attribute": "ariaLabel"
+            },
+            {
               "kind": "method",
               "name": "validate",
               "privacy": "public",
@@ -394,6 +566,15 @@
               "default": "false",
               "description": "Mark as required field",
               "fieldName": "required"
+            },
+            {
+              "name": "ariaLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Accessible label for screen readers",
+              "fieldName": "ariaLabel"
             }
           ],
           "superclass": {
@@ -419,75 +600,6 @@
           "declaration": {
             "name": "ShInput",
             "module": "src/components/atoms/input/sh-input.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/atoms/logo/sh-logo.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Logo component displaying the StockHub brand with icon and text.",
-          "name": "ShLogo",
-          "cssProperties": [
-            {
-              "description": "Controls the size of the logo icon (default: 40px)",
-              "name": "--logo-icon-size"
-            },
-            {
-              "description": "Controls the size of the logo text (default: 20px)",
-              "name": "--logo-text-size"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Logo size variant",
-              "attribute": "size",
-              "reflects": true
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Logo size variant",
-              "fieldName": "size"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-logo",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShLogo",
-          "declaration": {
-            "name": "ShLogo",
-            "module": "src/components/atoms/logo/sh-logo.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-logo",
-          "declaration": {
-            "name": "ShLogo",
-            "module": "src/components/atoms/logo/sh-logo.ts"
           }
         }
       ]
@@ -649,162 +761,69 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/atoms/icon/sh-icon.ts",
+      "path": "src/components/atoms/logo/sh-logo.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Icon component that displays Lucide icons with various sizes and colors.",
-          "name": "ShIcon",
-          "members": [
+          "description": "Logo component displaying the StockHub brand with icon and text.",
+          "name": "ShLogo",
+          "cssProperties": [
             {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "IconName"
-              },
-              "default": "\"CircleHelp\"",
-              "description": "Name of the Lucide icon to display",
-              "attribute": "name"
+              "description": "Controls the size of the logo icon (default: 40px)",
+              "name": "--logo-icon-size"
             },
+            {
+              "description": "Controls the size of the logo text (default: 20px)",
+              "name": "--logo-text-size"
+            }
+          ],
+          "members": [
             {
               "kind": "field",
               "name": "size",
               "type": {
-                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+                "text": "'sm' | 'md' | 'lg'"
               },
-              "default": "\"md\"",
-              "description": "Size of the icon",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "color",
-              "type": {
-                "text": "'primary' | 'success' | 'warning' | 'danger' | 'muted' | 'inherit'"
-              },
-              "default": "\"inherit\"",
-              "description": "Color theme for the icon",
-              "attribute": "color"
-            },
-            {
-              "kind": "field",
-              "name": "clickable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enable interactive hover effects",
-              "attribute": "clickable"
-            },
-            {
-              "kind": "field",
-              "name": "spin",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enable spinning animation",
-              "attribute": "spin"
-            },
-            {
-              "kind": "method",
-              "name": "buildSVGFromIconData",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "iconData",
-                  "type": {
-                    "text": "any[]"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "getIconSVG",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              }
+              "default": "'md'",
+              "description": "Logo size variant",
+              "attribute": "size",
+              "reflects": true
             }
           ],
           "attributes": [
             {
-              "name": "name",
-              "type": {
-                "text": "IconName"
-              },
-              "default": "\"CircleHelp\"",
-              "description": "Name of the Lucide icon to display",
-              "fieldName": "name"
-            },
-            {
               "name": "size",
               "type": {
-                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+                "text": "'sm' | 'md' | 'lg'"
               },
-              "default": "\"md\"",
-              "description": "Size of the icon",
+              "default": "'md'",
+              "description": "Logo size variant",
               "fieldName": "size"
-            },
-            {
-              "name": "color",
-              "type": {
-                "text": "'primary' | 'success' | 'warning' | 'danger' | 'muted' | 'inherit'"
-              },
-              "default": "\"inherit\"",
-              "description": "Color theme for the icon",
-              "fieldName": "color"
-            },
-            {
-              "name": "clickable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enable interactive hover effects",
-              "fieldName": "clickable"
-            },
-            {
-              "name": "spin",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enable spinning animation",
-              "fieldName": "spin"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "sh-icon",
+          "tagName": "sh-logo",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "ShIcon",
+          "name": "ShLogo",
           "declaration": {
-            "name": "ShIcon",
-            "module": "src/components/atoms/icon/sh-icon.ts"
+            "name": "ShLogo",
+            "module": "src/components/atoms/logo/sh-logo.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "sh-icon",
+          "name": "sh-logo",
           "declaration": {
-            "name": "ShIcon",
-            "module": "src/components/atoms/icon/sh-icon.ts"
+            "name": "ShLogo",
+            "module": "src/components/atoms/logo/sh-logo.ts"
           }
         }
       ]
@@ -1576,100 +1595,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/molecules/status-badge/sh-status-badge.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Status badge component for displaying stock status with icons and animations.",
-          "name": "ShStatusBadge",
-          "members": [
-            {
-              "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
-              },
-              "default": "'optimal'",
-              "description": "Stock status type",
-              "attribute": "status"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Custom label override",
-              "attribute": "label"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "status",
-              "type": {
-                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
-              },
-              "default": "'optimal'",
-              "description": "Stock status type",
-              "fieldName": "status"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "fieldName": "size"
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Custom label override",
-              "fieldName": "label"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-status-badge",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShStatusBadge",
-          "declaration": {
-            "name": "ShStatusBadge",
-            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-status-badge",
-          "declaration": {
-            "name": "ShStatusBadge",
-            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/molecules/search-input/sh-search-input.ts",
       "declarations": [
         {
@@ -1862,6 +1787,456 @@
           "declaration": {
             "name": "ShSearchInput",
             "module": "src/components/molecules/search-input/sh-search-input.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ShIaAlertBanner",
+          "members": [
+            {
+              "kind": "field",
+              "name": "count",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "count"
+            },
+            {
+              "kind": "field",
+              "name": "severity",
+              "type": {
+                "text": "'critical' | 'warning' | 'info'"
+              },
+              "default": "'critical'",
+              "attribute": "severity"
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "'stocks nécessitent votre attention'",
+              "attribute": "message"
+            },
+            {
+              "kind": "field",
+              "name": "alerts",
+              "type": {
+                "text": "IaAlert[]"
+              },
+              "default": "[]",
+              "attribute": "alerts"
+            },
+            {
+              "kind": "field",
+              "name": "expanded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "expanded"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_toggleExpanded",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleItemClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "alert",
+                  "type": {
+                    "text": "IaAlert"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-ia-alert-toggle",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "sh-ia-alert-item-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis lors du clic sur un item"
+            },
+            {
+              "description": "Émis lors du clic sur le bandeau",
+              "name": "sh-ia-alert-click"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "count",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "count"
+            },
+            {
+              "name": "severity",
+              "type": {
+                "text": "'critical' | 'warning' | 'info'"
+              },
+              "default": "'critical'",
+              "fieldName": "severity"
+            },
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "'stocks nécessitent votre attention'",
+              "fieldName": "message"
+            },
+            {
+              "name": "alerts",
+              "type": {
+                "text": "IaAlert[]"
+              },
+              "default": "[]",
+              "fieldName": "alerts"
+            },
+            {
+              "name": "expanded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "expanded"
+            },
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "fieldName": "theme"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-ia-alert-banner",
+          "customElement": true,
+          "summary": "Bandeau d'alertes IA pour les stocks nécessitant attention"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShIaAlertBanner",
+          "declaration": {
+            "name": "ShIaAlertBanner",
+            "module": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-ia-alert-banner",
+          "declaration": {
+            "name": "ShIaAlertBanner",
+            "module": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/molecules/status-badge/sh-status-badge.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Status badge component for displaying stock status with icons and animations.",
+          "name": "ShStatusBadge",
+          "members": [
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
+              },
+              "default": "'optimal'",
+              "description": "Stock status type",
+              "attribute": "status"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Custom label override",
+              "attribute": "label"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "status",
+              "type": {
+                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
+              },
+              "default": "'optimal'",
+              "description": "Stock status type",
+              "fieldName": "status"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "fieldName": "size"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Custom label override",
+              "fieldName": "label"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-status-badge",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShStatusBadge",
+          "declaration": {
+            "name": "ShStatusBadge",
+            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-status-badge",
+          "declaration": {
+            "name": "ShStatusBadge",
+            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/organisms/page-header/sh-page-header.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ShPageHeader",
+          "members": [
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "subtitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "subtitle"
+            },
+            {
+              "kind": "field",
+              "name": "breadcrumb",
+              "type": {
+                "text": "BreadcrumbItem[]"
+              },
+              "default": "[]",
+              "attribute": "breadcrumb"
+            },
+            {
+              "kind": "field",
+              "name": "actions",
+              "type": {
+                "text": "ActionButton[]"
+              },
+              "default": "[]",
+              "attribute": "actions"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleBreadcrumbClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "item",
+                  "type": {
+                    "text": "BreadcrumbItem"
+                  }
+                },
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleActionClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "action",
+                  "type": {
+                    "text": "ActionButton"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-breadcrumb-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis au clic sur un item du breadcrumb"
+            },
+            {
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "description": "Émis au clic sur un bouton d'action",
+              "name": "sh-action-{handler}"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "title"
+            },
+            {
+              "name": "subtitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "subtitle"
+            },
+            {
+              "name": "breadcrumb",
+              "type": {
+                "text": "BreadcrumbItem[]"
+              },
+              "default": "[]",
+              "fieldName": "breadcrumb"
+            },
+            {
+              "name": "actions",
+              "type": {
+                "text": "ActionButton[]"
+              },
+              "default": "[]",
+              "fieldName": "actions"
+            },
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "fieldName": "theme"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-page-header",
+          "customElement": true,
+          "summary": "En-tête de page avec breadcrumb, titre et boutons d'action"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShPageHeader",
+          "declaration": {
+            "name": "ShPageHeader",
+            "module": "src/components/organisms/page-header/sh-page-header.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-page-header",
+          "declaration": {
+            "name": "ShPageHeader",
+            "module": "src/components/organisms/page-header/sh-page-header.ts"
           }
         }
       ]
@@ -2146,233 +2521,81 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/organisms/page-header/sh-page-header.ts",
+      "path": "src/components/organisms/stock-item-card/sh-stock-item-card.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "ShPageHeader",
+          "name": "ShStockItemCard",
+          "slots": [
+            {
+              "description": "Contenu personnalisé additionnel",
+              "name": ""
+            }
+          ],
           "members": [
             {
               "kind": "field",
-              "name": "title",
+              "name": "name",
               "type": {
                 "text": "string"
               },
               "default": "''",
-              "attribute": "title"
+              "attribute": "name"
             },
             {
               "kind": "field",
-              "name": "subtitle",
+              "name": "sku",
               "type": {
                 "text": "string"
               },
               "default": "''",
-              "attribute": "subtitle"
+              "attribute": "sku"
             },
             {
               "kind": "field",
-              "name": "breadcrumb",
+              "name": "quantity",
               "type": {
-                "text": "BreadcrumbItem[]"
+                "text": "string | number"
               },
-              "default": "[]",
-              "attribute": "breadcrumb"
+              "default": "'0'",
+              "attribute": "quantity"
             },
             {
               "kind": "field",
-              "name": "actions",
-              "type": {
-                "text": "ActionButton[]"
-              },
-              "default": "[]",
-              "attribute": "actions"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "attribute": "data-theme",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "_handleBreadcrumbClick",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "item",
-                  "type": {
-                    "text": "BreadcrumbItem"
-                  }
-                },
-                {
-                  "name": "index",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_handleActionClick",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "action",
-                  "type": {
-                    "text": "ActionButton"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "name": "sh-breadcrumb-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis au clic sur un item du breadcrumb"
-            },
-            {
-              "type": {
-                "text": "CustomEvent"
-              }
-            },
-            {
-              "description": "Émis au clic sur un bouton d'action",
-              "name": "sh-action-{handler}"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "title",
+              "name": "value",
               "type": {
                 "text": "string"
               },
               "default": "''",
-              "fieldName": "title"
+              "attribute": "value"
             },
             {
-              "name": "subtitle",
+              "kind": "field",
+              "name": "location",
               "type": {
                 "text": "string"
               },
               "default": "''",
-              "fieldName": "subtitle"
-            },
-            {
-              "name": "breadcrumb",
-              "type": {
-                "text": "BreadcrumbItem[]"
-              },
-              "default": "[]",
-              "fieldName": "breadcrumb"
-            },
-            {
-              "name": "actions",
-              "type": {
-                "text": "ActionButton[]"
-              },
-              "default": "[]",
-              "fieldName": "actions"
-            },
-            {
-              "name": "data-theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "fieldName": "theme"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-page-header",
-          "customElement": true,
-          "summary": "En-tête de page avec breadcrumb, titre et boutons d'action"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShPageHeader",
-          "declaration": {
-            "name": "ShPageHeader",
-            "module": "src/components/organisms/page-header/sh-page-header.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-page-header",
-          "declaration": {
-            "name": "ShPageHeader",
-            "module": "src/components/organisms/page-header/sh-page-header.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "ShIaAlertBanner",
-          "members": [
-            {
-              "kind": "field",
-              "name": "count",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "attribute": "count"
+              "attribute": "location"
             },
             {
               "kind": "field",
-              "name": "severity",
+              "name": "status",
               "type": {
-                "text": "'critical' | 'warning' | 'info'"
+                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
               },
-              "default": "'critical'",
-              "attribute": "severity"
+              "default": "'optimal'",
+              "attribute": "status"
             },
             {
               "kind": "field",
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "default": "'stocks nécessitent votre attention'",
-              "attribute": "message"
-            },
-            {
-              "kind": "field",
-              "name": "alerts",
-              "type": {
-                "text": "IaAlert[]"
-              },
-              "default": "[]",
-              "attribute": "alerts"
-            },
-            {
-              "kind": "field",
-              "name": "expanded",
+              "name": "loading",
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
-              "attribute": "expanded"
+              "default": "false",
+              "attribute": "loading"
             },
             {
               "kind": "field",
@@ -2386,82 +2609,99 @@
             },
             {
               "kind": "method",
-              "name": "_toggleExpanded",
+              "name": "_handleView",
               "privacy": "private"
             },
             {
               "kind": "method",
-              "name": "_handleItemClick",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "alert",
-                  "type": {
-                    "text": "IaAlert"
-                  }
-                }
-              ]
+              "name": "_handleEdit",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleDelete",
+              "privacy": "private"
             }
           ],
           "events": [
             {
-              "name": "sh-ia-alert-toggle",
-              "type": {
-                "text": "CustomEvent"
-              }
-            },
-            {
-              "name": "sh-ia-alert-item-click",
+              "name": "sh-view-click",
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Émis lors du clic sur un item"
+              "description": "Émis au clic sur \"Voir\""
             },
             {
-              "description": "Émis lors du clic sur le bandeau",
-              "name": "sh-ia-alert-click"
+              "name": "sh-edit-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis au clic sur \"Éditer\""
+            },
+            {
+              "name": "sh-delete-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis au clic sur \"Supprimer\""
             }
           ],
           "attributes": [
             {
-              "name": "count",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "fieldName": "count"
-            },
-            {
-              "name": "severity",
-              "type": {
-                "text": "'critical' | 'warning' | 'info'"
-              },
-              "default": "'critical'",
-              "fieldName": "severity"
-            },
-            {
-              "name": "message",
+              "name": "name",
               "type": {
                 "text": "string"
               },
-              "default": "'stocks nécessitent votre attention'",
-              "fieldName": "message"
+              "default": "''",
+              "fieldName": "name"
             },
             {
-              "name": "alerts",
+              "name": "sku",
               "type": {
-                "text": "IaAlert[]"
+                "text": "string"
               },
-              "default": "[]",
-              "fieldName": "alerts"
+              "default": "''",
+              "fieldName": "sku"
             },
             {
-              "name": "expanded",
+              "name": "quantity",
+              "type": {
+                "text": "string | number"
+              },
+              "default": "'0'",
+              "fieldName": "quantity"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "value"
+            },
+            {
+              "name": "location",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "location"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
+              },
+              "default": "'optimal'",
+              "fieldName": "status"
+            },
+            {
+              "name": "loading",
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
-              "fieldName": "expanded"
+              "default": "false",
+              "fieldName": "loading"
             },
             {
               "name": "data-theme",
@@ -2476,26 +2716,26 @@
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "sh-ia-alert-banner",
+          "tagName": "sh-stock-item-card",
           "customElement": true,
-          "summary": "Bandeau d'alertes IA pour les stocks nécessitant attention"
+          "summary": "Carte de produit pour l'inventaire avec statut, métriques et actions"
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "ShIaAlertBanner",
+          "name": "ShStockItemCard",
           "declaration": {
-            "name": "ShIaAlertBanner",
-            "module": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts"
+            "name": "ShStockItemCard",
+            "module": "src/components/organisms/stock-item-card/sh-stock-item-card.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "sh-ia-alert-banner",
+          "name": "sh-stock-item-card",
           "declaration": {
-            "name": "ShIaAlertBanner",
-            "module": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts"
+            "name": "ShStockItemCard",
+            "module": "src/components/organisms/stock-item-card/sh-stock-item-card.ts"
           }
         }
       ]
@@ -2763,227 +3003,6 @@
           "declaration": {
             "name": "ShStockCard",
             "module": "src/components/organisms/stock-card/sh-stock-card.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/organisms/stock-item-card/sh-stock-item-card.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "ShStockItemCard",
-          "slots": [
-            {
-              "description": "Contenu personnalisé additionnel",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "sku",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "sku"
-            },
-            {
-              "kind": "field",
-              "name": "quantity",
-              "type": {
-                "text": "string | number"
-              },
-              "default": "'0'",
-              "attribute": "quantity"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "location",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "location"
-            },
-            {
-              "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
-              },
-              "default": "'optimal'",
-              "attribute": "status"
-            },
-            {
-              "kind": "field",
-              "name": "loading",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "loading"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "attribute": "data-theme",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "_handleView",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleEdit",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleDelete",
-              "privacy": "private"
-            }
-          ],
-          "events": [
-            {
-              "name": "sh-view-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis au clic sur \"Voir\""
-            },
-            {
-              "name": "sh-edit-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis au clic sur \"Éditer\""
-            },
-            {
-              "name": "sh-delete-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis au clic sur \"Supprimer\""
-            }
-          ],
-          "attributes": [
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "name"
-            },
-            {
-              "name": "sku",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "sku"
-            },
-            {
-              "name": "quantity",
-              "type": {
-                "text": "string | number"
-              },
-              "default": "'0'",
-              "fieldName": "quantity"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "value"
-            },
-            {
-              "name": "location",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "location"
-            },
-            {
-              "name": "status",
-              "type": {
-                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
-              },
-              "default": "'optimal'",
-              "fieldName": "status"
-            },
-            {
-              "name": "loading",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "loading"
-            },
-            {
-              "name": "data-theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "fieldName": "theme"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-stock-item-card",
-          "customElement": true,
-          "summary": "Carte de produit pour l'inventaire avec statut, métriques et actions"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShStockItemCard",
-          "declaration": {
-            "name": "ShStockItemCard",
-            "module": "src/components/organisms/stock-item-card/sh-stock-item-card.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-stock-item-card",
-          "declaration": {
-            "name": "ShStockItemCard",
-            "module": "src/components/organisms/stock-item-card/sh-stock-item-card.ts"
           }
         }
       ]

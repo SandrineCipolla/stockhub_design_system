@@ -32,7 +32,8 @@
     "tokens:watch": "chokidar 'src/tokens/tokens.json' -c 'npm run tokens:generate'",
     "build:all": "npm run tokens:generate && npm run build-storybook",
     "setup:dark": "npm run tokens:generate && echo '🌙 Dark mode configuré par défaut!'",
-    "analyze": "cem analyze --litelement"
+    "analyze": "cem analyze --litelement",
+    "chromatic": "npx chromatic --project-token chpt_52a1690d61432df"
   },
   "publishConfig": {
     "access": "restricted"

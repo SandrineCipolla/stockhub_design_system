@@ -352,9 +352,11 @@ Gestion personnelle des stocks familiaux (loisirs créatifs, alimentaire, maison
   - `.github/CHROMATIC_SETUP.md` : Guide complet avec section limitations et forks
   - README mis à jour avec les liens d'accès et note sur les forks
 
-### 📦 Dépendances
+### 🛠️ CI/CD Chromatic & Validation visuelle
 
-- ➕ **chromatic** (^13.3.0) : Visual testing et déploiement Storybook
+- Clarification du workflow CI/CD Chromatic : validation manuelle des changements visuels sur les branches de feature, auto-acceptation sur master après merge.
+- Ajout d'une documentation détaillée sur l'option autoAcceptChanges et les bonnes pratiques de validation visuelle dans GETTING-STARTED.md et README.md.
+- Sécurisation du processus pour éviter les régressions visuelles non désirées.
 
 ---
 

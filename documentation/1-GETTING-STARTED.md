@@ -260,6 +260,21 @@ Un workflow est configuré dans `.github/workflows/chromatic.yml` pour publier S
   npm run chromatic
   ```
 
+### ⚠️ À propos de l'option autoAcceptChanges
+
+L'option `autoAcceptChanges: ${{ github.ref_name == 'master' }}` dans le workflow CI/CD Chromatic permet d'accepter automatiquement tous les changements visuels (screenshots, baselines) sur la branche `master`.
+
+- Sur les branches de feature, la validation visuelle est manuelle : tu contrôles et acceptes les changements sur Chromatic avant de merger.
+- Une fois la PR validée et mergée dans `master`, l'auto-acceptation évite une double validation : les changements déjà approuvés sont automatiquement acceptés comme nouvelle référence.
+- Ce fonctionnement accélère le déploiement tout en gardant le contrôle qualité en amont.
+
+**Bonnes pratiques :**
+- Toujours valider manuellement les changements visuels sur les branches de développement ou de feature.
+- Sur `master`, l'auto-acceptation est sûre si la revue a été faite en amont.
+- Surveille régulièrement les rapports Chromatic pour éviter toute régression non désirée.
+
+Pour plus d'infos : [Chromatic autoAcceptChanges](https://www.chromatic.com/docs/configure/#autoacceptchanges)
+
 ---
 
 **Maintenu par** : Sandrine Cipolla

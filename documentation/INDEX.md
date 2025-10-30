@@ -7,6 +7,40 @@ Bienvenue dans la documentation du Design System StockHub.
 
 ---
 
+## 🗂️ Parcours de lecture recommandé
+
+1- [1-GETTING-STARTED.md](./1-GETTING-STARTED.md)  
+   *Introduction, objectifs et philosophie du Design System.*
+
+2- [2-MIGRATION-PLAN.md](./planning/2-MIGRATION-PLAN.md)  
+   *Roadmap et stratégie de migration.*
+
+3- [3-COMPONENT-SPECIFICATIONS.md](./planning/3-COMPONENT-SPECIFICATIONS.md)  
+   *Spécifications techniques des composants.*
+
+4- [4-DESIGN-TOKENS.md](./4-DESIGN-TOKENS.md)  
+   *Système de design tokens et bonnes pratiques.*
+
+5- [5-REACT-INTEGRATION-GUIDE.md](./5-REACT-INTEGRATION-GUIDE.md)  
+   *Intégration des Web Components dans React.*
+
+6- [6-DESIGN-TOKENS-AUDIT.md](./6-DESIGN-TOKENS-AUDIT.md)  
+   *Audit de l’utilisation des tokens.*
+
+7- [7-INTERACTION_TESTS_TRACKING.md](../7-INTERACTION_TESTS_TRACKING.md)  
+   *Suivi des tests d’interaction.*
+
+8- [8-SPRINT-1-CHECKLIST.md](./planning/8-SPRINT-1-CHECKLIST.md)  
+   *Checklist opérationnelle du Sprint 1.*
+
+9- [9-CHANGELOG.md](../9-CHANGELOG.md)  
+   *Historique des versions.*
+
+10- [10-ACCESSIBILITY-REPORT.md](../10-ACCESSIBILITY-REPORT.md)  
+    *Rapport d’accessibilité.*
+
+---
+
 ## 📚 Index de la Documentation
 
 ### 🎨 Organisation Storybook

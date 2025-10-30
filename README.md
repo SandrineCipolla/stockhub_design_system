@@ -892,6 +892,16 @@ refactor(icons): migrate to lucide icons system
    - Labels en anglais dans StockHub V2 → Labels en anglais dans Design System
    - **Solution** : Toujours vérifier la cohérence avec le projet parent
 
+# CI/CD & Validation visuelle
+
+Le projet utilise un workflow GitHub Actions pour publier Storybook sur Chromatic à chaque push ou pull request.
+
+- Sur les branches de feature, la validation visuelle est manuelle : tu acceptes les changements sur Chromatic avant de merger.
+- Sur la branche master, l'option autoAcceptChanges automatise l'acceptation des changements déjà validés en amont, évitant une double validation.
+- Ce fonctionnement accélère le déploiement tout en garantissant le contrôle qualité sur les branches de développement.
+
+Pour plus de détails et de bonnes pratiques, voir [documentation/GETTING-STARTED.md](./documentation/GETTING-STARTED.md).
+
 ## 📄 License
 
 ISC - Sandrine Cipolla

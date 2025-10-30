@@ -35,7 +35,8 @@
     "build:all": "npm run tokens:generate && npm run build-storybook",
     "setup:dark": "npm run tokens:generate && echo '🌙 Dark mode configuré par défaut!'",
     "analyze": "cem analyze --litelement",
-    "chromatic": "chromatic"
+    "chromatic": "chromatic",
+    "audit-accessibility": "npx lighthouse http://localhost:3000 --output html --output-path ./storybook-static/lighthouse-report.html --chrome-flags=\"--headless\""
   },
   "publishConfig": {
     "access": "restricted"
@@ -77,8 +78,10 @@
     "vite": "^6.4.0"
   },
   "dependencies": {
+    "color-contrast-checker": "^2.1.0",
     "lit": "^2.8.0",
-    "lucide": "^0.546.0"
+    "lucide": "^0.546.0",
+    "wcag-contrast": "^3.0.0"
   },
   "customElements": "custom-elements.json"
 }

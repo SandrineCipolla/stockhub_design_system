@@ -1,5 +1,7 @@
 # StockHub Design System
 
+![Accessibilité Lighthouse](https://img.shields.io/badge/accessibility-90%2F100-brightgreen?logo=lighthouse)
+
 > Design System réutilisable (web + mobile) basé sur Web Components (Lit Element)
 
 ## 📋 Contexte
@@ -347,7 +349,7 @@ Badge spécialisé pour statuts de stock avec icônes Lucide et animation pulse 
 - **low** (orange) - Stock faible avec icône AlertCircle
 - **critical** (rouge + pulse) - Stock critique avec icône AlertTriangle
 - **out-of-stock** (gris + pulse) - Rupture de stock avec icône XCircle
-- **overstocked** (bleu) - Surstockage avec icône TrendingUp
+- **overstockage** (bleu) - Surstockage avec icône TrendingUp
 
 ```html
 <!-- Stock optimal -->

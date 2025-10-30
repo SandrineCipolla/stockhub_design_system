@@ -9,14 +9,14 @@
 
 ## 📊 Vue d'ensemble
 
-**Progression totale:** 6/9 composants testés (67%)
+**Progression totale:** 9/9 composants testés (100%) ✅ **PROJET TERMINÉ !**
 
 | Statut | Nombre | Composants |
 |--------|--------|------------|
-| ✅ Complété | 6 | sh-button, sh-quantity-input, sh-search-input, sh-input, sh-card, sh-header |
+| ✅ Complété | 9 | sh-button, sh-quantity-input, sh-search-input, sh-input, sh-card, sh-header, sh-ia-alert-banner, sh-stock-card, sh-stock-item-card |
 | 🔴 Priorité 1 | 0 | - |
-| 🟡 Priorité 2 | 1 | sh-ia-alert-banner |
-| 🟢 Priorité 3 | 2 | sh-stock-card, sh-stock-item-card |
+| 🟡 Priorité 2 | 0 | - |
+| 🟢 Priorité 3 | 0 | - |
 
 ---
 
@@ -99,71 +99,45 @@
 
 ---
 
-### 🟡 Priorité 2 : Organismes complexes (0/1)
+### 🟡 Priorité 2 : Organismes complexes (1/1) ✅
 
-#### 7. **sh-ia-alert-banner** 🟡
+#### 7. **sh-ia-alert-banner** ✅
 - **Fichier:** `src/components/organisms/ia-alert-banner/sh-ia-alert-banner.stories.ts`
-- **Interactivité:**
-  - Expand/Collapse banner
-  - Click sur header entier
-  - Click sur toggle button
-  - Click sur items individuels
-  - Animations
-- **Événements à tester:**
-  - `sh-ia-alert-toggle` : Toggle expansion
-  - `sh-ia-alert-item-click` : Click sur item
-- **Tests à implémenter:**
-  - [ ] Click header pour expand/collapse
-  - [ ] Click toggle button spécifiquement
-  - [ ] Click sur item individuel
-  - [ ] Vérification état expanded
-  - [ ] Vérification animation (rotation icône)
-  - [ ] Vérification contenu liste
-- **Complexité:** Haute (animations, multiples zones cliquables)
+- **Date:** 30 octobre 2025
+- **Tests implémentés:**
+  - `InteractionTestHeaderClick` : Click sur header pour expand/collapse + vérification événement toggle
+  - `InteractionTestToggleButton` : Click sur toggle button + rotation icône + aria-label dynamique
+  - `InteractionTestItemClick` : Click sur items individuels avec vérification payload complet
+  - `InteractionTestCollapsedState` : État collapsed initial + expansion + vérification liste visible
+  - `InteractionTestHoverItems` : Hover sur items + vérification cursor pointer
+- **Événements testés:** `sh-ia-alert-toggle`, `sh-ia-alert-item-click`
+- **Notes:** Tests complexes avec animations (rotation icône ChevronUp), états multiples (expanded/collapsed), multiples zones cliquables (header, toggle button, items). Attention au binding booléen dans template strings : utiliser `banner.expanded = false` via JS au lieu de `?expanded="false"` en HTML.
 
 ---
 
-### 🟢 Priorité 3 : Cartes d'action (0/2)
+### 🟢 Priorité 3 : Cartes d'action (2/2) ✅
 
-#### 8. **sh-stock-card** 🟢
+#### 8. **sh-stock-card** ✅
 - **Fichier:** `src/components/organisms/stock-card/sh-stock-card.stories.ts`
-- **Interactivité:**
-  - 4 boutons d'action distincts
-  - Hover effects
-  - Loading state
-  - Status-based styling
-- **Événements à tester:**
-  - `sh-session-click` : Enregistrer session
-  - `sh-details-click` : Voir détails
-  - `sh-edit-click` : Éditer
-  - `sh-delete-click` : Supprimer
-- **Tests à implémenter:**
-  - [ ] Click sur chaque bouton et vérification événements
-  - [ ] Vérification payloads (name, category, status)
-  - [ ] État loading (boutons disabled)
-  - [ ] Badge IA conditionnel
-  - [ ] Styling basé sur status
-  - [ ] Hover effects
-- **Complexité:** Moyenne-Haute (4 boutons, états complexes)
+- **Date:** 30 octobre 2025
+- **Tests implémentés:**
+  - `InteractionTestAllButtons` : Click sur les 4 boutons (session, details, edit, delete) avec vérification événements et payloads
+  - `InteractionTestLoadingState` : État loading désactive les 4 boutons
+  - `InteractionTestIaBadge` : Badge IA conditionnel (visible quand iaCount > 0, caché avec count = 0)
+  - `InteractionTestStatusVariations` : Tous les statuts (optimal, low, critical, out-of-stock, overstocked)
+- **Événements testés:** `sh-session-click`, `sh-details-click`, `sh-edit-click`, `sh-delete-click`
+- **Notes:** Tests avec Shadow DOM imbriqué (sh-stock-card → sh-button → button natif). 4 boutons d'action distincts avec payloads différents. Badge IA dynamique avec icône Sparkles. Changement dynamique de statut.
 
-#### 9. **sh-stock-item-card** 🟢
+#### 9. **sh-stock-item-card** ✅
 - **Fichier:** `src/components/organisms/stock-item-card/sh-stock-item-card.stories.ts`
-- **Interactivité:**
-  - 3 boutons d'action
-  - Hover effects
-  - Loading state
-  - Status-based styling
-- **Événements à tester:**
-  - `sh-view-click` : Voir
-  - `sh-edit-click` : Éditer
-  - `sh-delete-click` : Supprimer
-- **Tests à implémenter:**
-  - [ ] Click sur chaque bouton
-  - [ ] Vérification payloads (name, sku, status)
-  - [ ] État loading
-  - [ ] Styling basé sur status
-  - [ ] Responsive (mobile stacking)
-- **Complexité:** Moyenne (3 boutons, états)
+- **Date:** 30 octobre 2025
+- **Tests implémentés:**
+  - `InteractionTestAllButtons` : Click sur les 3 boutons (view, edit, delete) avec vérification événements et payloads
+  - `InteractionTestLoadingState` : État loading désactive les 3 boutons
+  - `InteractionTestStatusVariations` : Tous les statuts (optimal, low, critical, out-of-stock, overstocked)
+  - `InteractionTestOptionalFields` : Champs optionnels (value, location) affichés conditionnellement
+- **Événements testés:** `sh-view-click`, `sh-edit-click`, `sh-delete-click`
+- **Notes:** Tests avec Shadow DOM imbriqué (sh-stock-item-card → sh-button → button natif). 3 boutons d'action. Métriques conditionnelles (value et location optionnels). Grid adaptatif de métriques.
 
 ---
 
@@ -270,6 +244,42 @@ await expect(shCard.shadowRoot?.activeElement).toBe(cardDiv); // L'élément int
 ```
 
 **Note:** Quand un élément dans le Shadow DOM a le focus, `document.activeElement` pointe vers l'hôte (le custom element), et `shadowRoot.activeElement` pointe vers l'élément interne qui a réellement le focus.
+
+---
+
+### Problème 4 : Binding booléen dans template strings ne fonctionne pas
+**Date:** 30 octobre 2025
+**Composant:** sh-ia-alert-banner
+**Description:**
+Le test `InteractionTestCollapsedState` échouait car la propriété `expanded` restait à `true` au lieu de `false`. Le problème était l'utilisation de `?expanded="${args.expanded}"` dans un template string HTML.
+
+**Erreur:**
+```
+expect(true).toBe(false)
+expected true to be false
+```
+
+**Explication:**
+Dans un template string HTML (pas dans un vrai template Lit), la syntaxe `?attribute` n'a pas d'effet spécial. Donc `?expanded="false"` crée quand même un attribut `expanded="false"`, et la **présence** de l'attribut (quelle que soit sa valeur) est interprétée comme `true` par les Web Components.
+
+**Solution:**
+Setter la propriété booléenne via JavaScript au lieu de l'attribut HTML :
+```typescript
+// ❌ INCORRECT : Dans le HTML
+?expanded="${args.expanded}"  // Crée expanded="false", interprété comme true
+
+// ✅ CORRECT : Dans le script
+<script>
+  customElements.whenDefined('sh-ia-alert-banner').then(() => {
+    const banner = document.getElementById('alert-collapsed-test');
+    if (banner) {
+      banner.expanded = false; // Setter la propriété directement
+    }
+  });
+</script>
+```
+
+**Note:** La syntaxe `?attribute` ne fonctionne que dans les vrais templates Lit (`html\`...\``), pas dans les template strings JavaScript normaux.
 
 ---
 
@@ -458,6 +468,62 @@ await expect(shCard.clickable).toBe(false);
   - Problème 4 (nouveau) : `getAttribute()` retourne `""` au lieu de `null` pour attributs `undefined` en Lit
 - ✅ **Tous les tests sh-card passent** (4/4)
 
+### 2025-10-30
+- ✅ **sh-ia-alert-banner** : Ajout de 5 tests d'interaction (header click, toggle button, item click, collapsed state, hover items)
+- 🎉 **Priorité 2 terminée !** (1/1)
+- 🐛 **Bug fix sh-ia-alert-banner** : Binding booléen dans template strings → Setter `banner.expanded = false` via JS
+- ✅ **Tous les tests sh-ia-alert-banner passent** (5/5)
+- ✅ **sh-stock-card** : Ajout de 4 tests d'interaction (all buttons avec 4 boutons d'action, loading state, badge IA conditionnel, status variations)
+- ✅ **Tous les tests sh-stock-card passent** (4/4)
+- ✅ **sh-stock-item-card** : Ajout de 4 tests d'interaction (all buttons avec 3 boutons d'action, loading state, status variations, optional fields)
+- ✅ **Tous les tests sh-stock-item-card passent** (4/4)
+- 🎉 **Priorité 3 terminée !** (2/2)
+- 🎊 **PROJET TERMINÉ !** 9/9 composants (100%)
+
 ---
 
-**Dernière mise à jour:** 29 octobre 2025
+**Dernière mise à jour:** 30 octobre 2025
+
+---
+
+## 🎉 CONCLUSION
+
+**Tous les composants ont maintenant des tests d'interaction complets avec @storybook/test !**
+
+### Récapitulatif final
+
+**Total : 9 composants, 44 tests d'interaction**
+
+| Composant | Tests | Événements testés |
+|-----------|-------|-------------------|
+| sh-button | 3 | click, hover |
+| sh-quantity-input | 3 | sync, dirty state |
+| sh-search-input | 3 | sh-search, sh-search-change, sh-search-clear |
+| sh-input | 5 | sh-input-change, sh-input-focus, sh-input-blur, validation |
+| sh-card | 4 | sh-card-click, keyboard navigation |
+| sh-header | 5 | sh-notification-click, sh-theme-toggle, theme-change, sh-logout-click, sh-login-click |
+| sh-ia-alert-banner | 5 | sh-ia-alert-toggle, sh-ia-alert-item-click |
+| sh-stock-card | 4 | sh-session-click, sh-details-click, sh-edit-click, sh-delete-click |
+| sh-stock-item-card | 4 | sh-view-click, sh-edit-click, sh-delete-click |
+
+### Points clés appris
+
+1. **Shadow DOM** : Toujours cliquer sur l'élément interne dans le Shadow DOM, pas sur le custom element
+2. **Binding booléen** : Dans les template strings, utiliser `card.property = false` via JS au lieu de `?attribute="false"` en HTML
+3. **Propriétés vs Attributs** : Vérifier `card.status` au lieu de `card.getAttribute('status')` pour les propriétés non reflectées
+4. **Shadow DOM imbriqué** : Naviguer à travers plusieurs niveaux (ex: sh-stock-card → sh-button → button natif)
+5. **Focus** : `document.activeElement` pointe vers l'hôte, `shadowRoot.activeElement` vers l'élément interne
+6. **Délais** : Toujours attendre après les actions utilisateur (`await new Promise(resolve => setTimeout(resolve, 100))`)
+
+### Prochaines étapes
+
+- ✅ Tests d'interaction terminés
+- 🔄 Tests e2e (optionnel)
+- 🔄 Tests de performance (optionnel)
+- ✅ Documentation complète
+
+**Félicitations ! Le design system StockHub est maintenant entièrement testé ! 🎉**
+
+---
+
+**Dernière mise à jour:** 30 octobre 2025

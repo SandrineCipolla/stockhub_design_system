@@ -1,5 +1,5 @@
 import type {Meta, StoryObj} from '@storybook/web-components';
-import { expect, userEvent, within } from '@storybook/test';
+import {expect, userEvent} from '@storybook/test';
 import './sh-card.ts';
 import '../../atoms/icon/sh-icon.ts';
 import '../../atoms/badge/sh-badge.ts';
@@ -580,10 +580,8 @@ export const InteractionTestNonClickable: Story = {
 
       // Écouter l'événement sh-card-click
       let clickEventFired = false;
-      let eventDetail = null;
-      shCard.addEventListener('sh-card-click', ((e: CustomEvent) => {
+      shCard.addEventListener('sh-card-click', (() => {
         clickEventFired = true;
-        eventDetail = e.detail;
       }) as EventListener);
 
       // Vérifier une dernière fois avant le click

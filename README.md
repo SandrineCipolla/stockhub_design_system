@@ -590,7 +590,40 @@ npm publish
 
 ## 🧪 Tests
 
-**Note** : Tests à implémenter selon stratégie (coverage objectif : ≥ 93%)
+### Tests d'Interaction Storybook ✅
+
+**100% des composants interactifs ont des tests d'interaction complets** avec `@storybook/test` :
+
+- **9 composants testés** (44 tests au total)
+- **Tous les événements custom** vérifiés avec leurs payloads
+- **États et comportements** : loading, disabled, error, validation, keyboard navigation
+- **Shadow DOM** : gestion simple et imbriquée (ex: sh-stock-card → sh-button → button natif)
+
+**Composants testés** :
+1. `sh-button` - Click, hover, disabled
+2. `sh-quantity-input` - Sync event, dirty state
+3. `sh-search-input` - Search events, clear, debounce
+4. `sh-input` - Validation (email, required), focus/blur
+5. `sh-card` - Click, keyboard (Enter/Space/Tab), focus
+6. `sh-header` - Notification, theme toggle, login/logout
+7. `sh-ia-alert-banner` - Toggle, item click, collapsed state
+8. `sh-stock-card` - 4 boutons d'action, loading, badge IA
+9. `sh-stock-item-card` - 3 boutons d'action, optional fields
+
+**Lancer les tests** :
+```bash
+npm run storybook
+# Naviguez vers les stories "InteractionTest*" de chaque composant
+```
+
+**Documentation détaillée** : Voir [INTERACTION_TESTS_TRACKING.md](./INTERACTION_TESTS_TRACKING.md) pour :
+- Problèmes rencontrés et solutions
+- Patterns et bonnes pratiques Shadow DOM
+- Changelog complet
+
+### Tests Unitaires
+
+**Note** : Tests unitaires à implémenter selon stratégie (coverage objectif : ≥ 93%)
 
 ```bash
 npm run test

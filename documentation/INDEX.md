@@ -165,6 +165,25 @@ Audit complet de l'utilisation des Design Tokens dans tous les composants.
 
 **Statut** : 📋 Améliorations optionnelles (priorité basse)
 
+#### [INTERACTION_TESTS_TRACKING.md](../INTERACTION_TESTS_TRACKING.md) ✨ NOUVEAU
+Tracking complet de l'implémentation des tests d'interaction avec @storybook/test.
+
+**Contenu** :
+- 100% des composants interactifs testés (9/9 composants, 44 tests)
+- Tous les événements custom testés avec leurs payloads
+- Documentation des 4 problèmes rencontrés et solutions
+- Patterns et bonnes pratiques pour Shadow DOM
+- Changelog détaillé par composant
+
+**Composants testés** :
+- sh-button, sh-quantity-input, sh-search-input
+- sh-input, sh-card, sh-header
+- sh-ia-alert-banner, sh-stock-card, sh-stock-item-card
+
+**Pour qui** : Développeurs, QA, Tests automatisés
+
+**Statut** : ✅ Projet terminé - 100% de couverture
+
 ---
 
 ## 🎯 Guides par Cas d'Usage

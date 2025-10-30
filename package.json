@@ -24,6 +24,8 @@
     "build:lib": "rollup -c",
     "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test-storybook": "test-storybook",
+    "test-storybook:ci": "test-storybook --url http://localhost:6006",
     "storybook": "npm run analyze && storybook dev -p 6006",
     "build-storybook": "npm run analyze && storybook build",
     "prepare": "npm run build",
@@ -33,7 +35,7 @@
     "build:all": "npm run tokens:generate && npm run build-storybook",
     "setup:dark": "npm run tokens:generate && echo '🌙 Dark mode configuré par défaut!'",
     "analyze": "cem analyze --litelement",
-    "chromatic": "npx chromatic --project-token chpt_52a1690d61432df"
+    "chromatic": "chromatic"
   },
   "publishConfig": {
     "access": "restricted"
@@ -62,6 +64,7 @@
     "@storybook/addon-links": "^8.6.12",
     "@storybook/blocks": "^8.6.12",
     "@storybook/test": "^8.6.12",
+    "@storybook/test-runner": "^0.19.1",
     "@storybook/web-components": "^8.6.12",
     "@storybook/web-components-vite": "^8.6.12",
     "@types/node": "^24.0.3",

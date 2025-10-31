@@ -1,5 +1,12 @@
 # Guide de Documentation des Composants
 
+## 🚦 Vérification automatique des conventions
+
+La conformité aux conventions de nommage (props en camelCase, événements custom en kebab-case préfixés sh-, nommage des fichiers) est vérifiée automatiquement à chaque push ou pull request grâce à la CI (GitHub Actions) et au script `audit-conventions.cjs`.
+
+- Toute erreur de convention bloque le merge jusqu’à correction.
+- Audit local possible avec `npm run audit:conventions`.
+
 ## Vue d'ensemble
 
 Tous les composants du Design System StockHub sont documentés avec des commentaires JSDoc et une documentation générée automatiquement via le Custom Elements Manifest Analyzer.

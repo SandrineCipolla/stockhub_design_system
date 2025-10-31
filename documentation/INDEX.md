@@ -7,6 +7,16 @@ Bienvenue dans la documentation du Design System StockHub.
 
 ---
 
+## 🚦 Automatisation de l’audit des conventions
+
+La cohérence des conventions de nommage (props, événements, fichiers) est vérifiée automatiquement à chaque push ou pull request grâce à la CI (GitHub Actions).
+
+- Si des erreurs sont détectées, le merge est bloqué jusqu’à correction.
+- Pour lancer l’audit localement : `npm run audit:conventions`
+- Le script utilisé est `audit-conventions.cjs` à la racine du projet.
+
+---
+
 ## 🗂️ Parcours de lecture recommandé
 
 1- [1-GETTING-STARTED.md](./1-GETTING-STARTED.md)  

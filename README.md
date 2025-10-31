@@ -391,9 +391,19 @@ Header de l'application.
 
 ## 📖 Storybook
 
-### 🌐 Accès en ligne (Chromatic)
+### 🌐 Accès en ligne
 
-Le Storybook est **automatiquement déployé** sur Chromatic à chaque commit (sur master ou feature branches) :
+#### GitHub Pages (Documentation principale)
+
+Le Storybook est **automatiquement déployé** sur GitHub Pages à chaque push sur `master` :
+
+- **Documentation officielle** : `https://<username>.github.io/stockhub_design_system/`
+- **Toujours à jour** : Reflète la dernière version de `master`
+- **Public** : Accessible sans authentification
+
+#### Chromatic (Visual Testing)
+
+Le Storybook est également déployé sur Chromatic pour les tests visuels :
 
 - **Voir le Storybook en ligne** : https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/
 - **Dashboard Chromatic** : https://www.chromatic.com/builds?appId=68f5fbe10f495706cb168751
@@ -894,26 +904,48 @@ refactor(icons): migrate to lucide icons system
    - Labels en anglais dans StockHub V2 → Labels en anglais dans Design System
    - **Solution** : Toujours vérifier la cohérence avec le projet parent
 
-# CI/CD & Validation visuelle
+## 🔄 CI/CD
 
-Le projet utilise un workflow GitHub Actions pour publier Storybook sur Chromatic à chaque push ou pull request.
+Le projet utilise **2 workflows GitHub Actions optimisés** pour assurer la qualité et le déploiement automatique.
 
-- Sur les branches de feature, la validation visuelle est manuelle : tu acceptes les changements sur Chromatic avant de merger.
-- Sur la branche master, l'option autoAcceptChanges automatise l'acceptation des changements déjà validés en amont, évitant une double validation.
-- Ce fonctionnement accélère le déploiement tout en garantissant le contrôle qualité sur les branches de développement.
+### Workflow 1 : CI (`.github/workflows/ci.yml`)
+
+Pipeline de tests et validation automatique avec **4 jobs parallèles** :
+
+#### Job 1 : Build (Toujours)
+- Build Storybook une seule fois
+- Partage l'artifact avec les autres jobs (optimisation)
+
+#### Job 2 : Tests d'Interaction (Toujours)
+- **Déclenché sur** : `feature/**`, `master`, `v2`, et toutes les PR
+- Tests Playwright + Storybook automatiques
+- Gratuit et illimité
+
+#### Job 3 : Chromatic (Conditionnel)
+- **Déclenché sur** : PR et push `master`/`v2` uniquement
+- Visual regression testing
+- Économise les quotas sur les features
+
+#### Job 4 : Lighthouse (Conditionnel)
+- **Déclenché sur** : Push `master` et PR vers `master`
+- Audit accessibilité (score minimum 90%)
+- Génère rapports + badge automatique
+
+### Workflow 2 : Deploy (`.github/workflows/deploy.yml`)
+
+Déploiement automatique sur GitHub Pages :
+- **Déclenché sur** : Push `master` uniquement
+- Publie Storybook sur GitHub Pages
+- Accessible publiquement
+
+### Workflow typique
+
+```
+feature branch → push → Build + Tests d'interaction
+       ↓
+    Ouvre PR → Build + Tests + Chromatic + Lighthouse
+       ↓
+  Merge master → Build + Tests + Chromatic + Lighthouse + Deploy Pages
+```
 
 Pour plus de détails et de bonnes pratiques, voir [documentation/GETTING-STARTED.md](./documentation/GETTING-STARTED.md).
-
-## 📄 License
-
-ISC - Sandrine Cipolla
-
----
-
-**Version** : 2.0.0-rc
-**Dernière mise à jour** : 20 Octobre 2025
-**Statut** : Phase 1 complète - Prêt pour intégration StockHub V2
-**Nouveautés Session 4** :
-- sh-status-badge V2 avec 5 nouveaux statuts (optimal, low, critical, out-of-stock, overstocked)
-- sh-metric-card pour KPIs avec tendances
-- sh-stock-item-card pour inventaire familial avec actions (View/Edit/Delete)

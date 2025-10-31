@@ -32,13 +32,30 @@ jobs:
       - name: Build Storybook
         run: npm run build-storybook
 
+      - name: Démarrer Storybook en arrière-plan
+        run: npm run storybook &
+        env:
+          NODE_ENV: production
+
+      - name: Attendre le démarrage de Storybook
+        run: |
+          npx wait-on http://localhost:6006
+
+      - name: Générer le rapport Lighthouse
+        run: npm run audit-accessibility
+
+      - name: Copier le rapport Lighthouse dans docs/
+        run: |
+          mkdir -p docs
+          cp ./storybook-static/lighthouse-report.html ./docs/lighthouse-report.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./storybook-static
+          path: ./docs
 
   deploy:
     environment:

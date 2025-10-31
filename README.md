@@ -1,5 +1,7 @@
 # StockHub Design System
 
+[🔗 Rapport Lighthouse (accessibilité)](https://<SandrineCipolla>.github.io/stockhub_design_system/lighthouse-report.html)
+
 ![Accessibilité Lighthouse](https://img.shields.io/badge/accessibility-90%2F100-brightgreen?logo=lighthouse)
 
 > Design System réutilisable (web + mobile) basé sur Web Components (Lit Element)
@@ -393,13 +395,12 @@ Header de l'application.
 
 ### 🌐 Accès en ligne
 
-#### GitHub Pages (Documentation principale)
+#### GitHub Pages (Rapport Lighthouse uniquement)
 
-Le Storybook est **automatiquement déployé** sur GitHub Pages à chaque push sur `master` :
+Seul le rapport Lighthouse est publié sur GitHub Pages à chaque push sur `master` :
 
-- **Documentation officielle** : `https://<username>.github.io/stockhub_design_system/`
-- **Toujours à jour** : Reflète la dernière version de `master`
-- **Public** : Accessible sans authentification
+- **Rapport Lighthouse** : [lighthouse-report.html](https://<ton-utilisateur>.github.io/<repo>/lighthouse-report.html)
+- **Storybook** : hébergé sur Chromatic ([voir ici](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/))
 
 #### Chromatic (Visual Testing)
 
@@ -935,7 +936,7 @@ Pipeline de tests et validation automatique avec **4 jobs parallèles** :
 
 Déploiement automatique sur GitHub Pages :
 - **Déclenché sur** : Push `master` uniquement
-- Publie Storybook sur GitHub Pages
+- **Publie uniquement le rapport Lighthouse** sur GitHub Pages
 - Accessible publiquement
 
 ### Workflow typique

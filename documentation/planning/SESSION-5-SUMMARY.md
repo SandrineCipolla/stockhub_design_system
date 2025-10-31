@@ -1,233 +1,244 @@
-# Session 5 - Finalisation Phase 1 : Documentation & Préparation Intégration
+# Session 4 - Sprint 1 : Nouveaux Composants StockHub V2
 
-**Date** : 20 Octobre 2025
-**Durée** : ~1h30
-**Objectif** : Finaliser le Design System Phase 1 et préparer l'intégration dans StockHub V2
+**Date** : 20/10/2025
+**Durée** : ~2h30
+**Objectif** : Créer les nouveaux composants StockHub V2 (status-badge, metric-card, stock-item-card)
 
 ---
 
 ## ✅ Réalisations
 
-### 🏗️ Build & Validation
+### 🏷️ Status Badge V2 - 5 Nouveaux Statuts
 
-#### Test du Build Production
+**Fichier** : `src/components/molecules/status-badge/sh-status-badge.ts`
 
-**Command** : `npm run build`
+#### Nouveaux Statuts Implémentés
 
-**Résultat** :
-```
-✓ 1672 modules transformed.
-dist/stockhub-design-system.es.js   833.12 kB │ gzip: 116.64 kB
-dist/stockhub-design-system.umd.js  732.14 kB │ gzip: 102.39 kB
-✓ built in 1.95s
-```
+Le `sh-status-badge` a été complètement mis à jour avec les 5 nouveaux statuts de StockHub V2 :
 
-**✅ Succès** :
-- Build compile sans erreurs TypeScript
-- 2 formats générés : ES modules + UMD
-- Taille raisonnable : ~833 KB (ES) / ~733 KB (UMD)
-- Compression gzip efficace : 116 KB / 102 KB
-- Temps de build rapide : < 2 secondes
+| Status | Label | Icône | Couleur | Animation |
+|--------|-------|-------|---------|-----------|
+| **optimal** | Optimal | CheckCircle | Vert (success) | ❌ |
+| **low** | Low | AlertCircle | Orange (warning) | ❌ |
+| **critical** | Critical | AlertTriangle | Rouge (danger) | ✅ Pulse |
+| **out-of-stock** | Out of Stock | XCircle | Gris (default) | ✅ Pulse |
+| **overstocked** | Overstocked | TrendingUp | Bleu (info) | ❌ |
 
----
+#### Animation Pulse
 
-#### Vérification des Exports
+**Implémentation** (lignes 131-142) :
+```css
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
 
-**Fichier** : `src/index.ts`
-
-**Exports vérifiés** :
-```typescript
-// Design Tokens
-export * from './tokens/design-tokens.js';
-
-// Atoms (6 composants)
-export * from './components/atoms/icon/sh-icon';
-export * from './components/atoms/input/sh-input';
-export * from './components/atoms/logo/sh-logo';
-export * from './components/atoms/text/sh-text';
-export * from './components/atoms/badge/sh-badge';
-
-// Molecules (6 composants)
-export * from './components/molecules/button/sh-button';
-export * from './components/molecules/quantity-input/sh-quantity-input';
-export * from './components/molecules/status-badge/sh-status-badge';
-export * from './components/molecules/card/sh-card';
-export * from './components/molecules/metric-card/sh-metric-card';        // ✅ Nouveau
-export * from './components/molecules/stock-item-card/sh-stock-item-card'; // ✅ Nouveau
-
-// Organisms (1 composant)
-export * from './components/organisms/header/sh-header';
-```
-
-**✅ Résultat** :
-- Tous les composants existants exportés
-- Les 2 nouveaux composants (metric-card, stock-item-card) bien inclus
-- Design tokens exportés
-- Structure claire Atoms > Molecules > Organisms
-
----
-
-### 📖 Documentation
-
-#### 1. Mise à Jour README Principal
-
-**Fichier** : `README.md`
-
-**Modifications** :
-
-**a) Section `<sh-status-badge>` mise à jour** (lignes 331-364)
-
-Ancienne version (4 statuts) → Nouvelle version (5 statuts) :
-
-```markdown
-#### `<sh-status-badge>` ⚡ MIS À JOUR - 5 Nouveaux Statuts
-
-**Statuts disponibles** :
-- **optimal** (vert) - Stock optimal avec icône CheckCircle
-- **low** (orange) - Stock faible avec icône AlertCircle
-- **critical** (rouge + pulse) - Stock critique avec icône AlertTriangle
-- **out-of-stock** (gris + pulse) - Rupture de stock avec icône XCircle
-- **overstocked** (bleu) - Surstockage avec icône TrendingUp
-```
-
-**Exemples de code ajoutés** :
-- Stock optimal, faible, critique, rupture, surstockage
-- Utilisation des tailles (sm, md, lg)
-- Label personnalisé
-- Animation pulse documentée
-
-**b) Section Progression mise à jour** (lignes 724-765)
-
-**Session 3** : Réorganisée pour refléter Theme Toggle Global (2h00)
-- Synchronisation automatique `context.globals.theme` avec `args.theme`
-- 18 stories mises à jour (9 header + 9 card)
-- Pattern réutilisable wrapper div avec gradient
-
-**Session 4** : Nouveaux Composants StockHub V2 (2h30)
-- sh-status-badge V2 avec 5 statuts
-- sh-metric-card avec tendances
-- sh-stock-item-card avec actions
-- Corrections TypeScript
-- Documentation JSDoc complète
-
-**Session 5** : Finalisation Phase 1 (en cours, 2-3h)
-- [x] Build du Design System
-- [x] Vérification exports package.json
-- [x] Mise à jour README
-- [ ] Guide d'intégration StockHub V2
-- [ ] SESSION-5-SUMMARY.md
-- [ ] Tag version v2.0.0
-
-**c) Version et Statut** (lignes 856-862)
-
-```markdown
-**Version** : 2.0.0-rc
-**Statut** : Phase 1 complète - Prêt pour intégration StockHub V2
-**Nouveautés Session 4** :
-- sh-status-badge V2 avec 5 nouveaux statuts
-- sh-metric-card pour KPIs avec tendances
-- sh-stock-item-card pour inventaire familial avec actions
-```
-
-**✅ Résultat** :
-- Documentation complète à jour
-- Tous les nouveaux composants documentés
-- Exemples de code réalistes
-- Historique des sessions clair
-
----
-
-#### 2. Guide d'Intégration StockHub V2
-
-**Fichier** : `documentation/integration/STOCKHUB-V2-INTEGRATION.md` (NOUVEAU)
-
-**Structure** :
-
-1. **🎯 Objectif** - Pourquoi intégrer le Design System
-
-2. **📦 Installation**
-   - Commande npm
-   - Import dans React
-   - Configuration TypeScript
-
-3. **🔄 Plan de Migration** (3 phases)
-
-   **Phase 1 : Composants Simples**
-   - Badge → sh-badge
-   - Button → sh-button (+ migration icônes)
-   - Input → sh-input (+ event handlers)
-
-   **Phase 2 : Composants Métier**
-   - StatusBadge → sh-status-badge (+ mapping statuts)
-   - MetricCard → sh-metric-card
-   - StockCard → sh-stock-item-card
-   - Header → sh-header
-
-   **Phase 3 : Composants Génériques**
-   - Card → sh-card (+ slots)
-   - Icônes lucide-react → sh-icon
-
-4. **🎨 Thème (Light/Dark)** - Setup global avec `data-theme`
-
-5. **📋 Checklist Intégration** - Liste complète des actions
-
-6. **🔧 Helpers Utiles**
-   - `mapStatusToWebComponent()` - Mapping des statuts
-   - `formatCurrency()` - Formatage monétaire
-   - `handleCustomEvent()` - Wrapper événements
-
-7. **🚨 Points d'Attention**
-   - Événements custom (onsh-button-click vs onClick)
-   - Attributs kebab-case (trend-value)
-   - Slots HTML (slot="header")
-   - Boolean attributes
-   - Migration progressive
-
-8. **📊 Métriques de Succès** - Performance, qualité, maintenance
-
-9. **🆘 Support** - Problèmes courants et ressources
-
-**Contenu clé** :
-
-**Tableau de mapping StatusBadge** :
-| Ancien (React) | Nouveau (Web Component) | Icône | Animation |
-|----------------|-------------------------|-------|-----------|
-| `in-stock` | `optimal` | CheckCircle | ❌ |
-| `low-stock` | `low` | AlertCircle | ❌ |
-| `critical` | `critical` | AlertTriangle | ✅ Pulse |
-| `out-of-stock` | `out-of-stock` | XCircle | ✅ Pulse |
-| `restock-needed` | `critical` ou `low` | AlertTriangle / AlertCircle | ✅ / ❌ |
-| *(nouveau)* | `overstocked` | TrendingUp | ❌ |
-
-**Exemples de migration avant/après** pour chaque composant avec :
-- Code React original
-- Code Web Component équivalent
-- ⚠️ Différences importantes
-- Actions à effectuer
-
-**Helper de mapping** :
-```typescript
-function mapStatusToWebComponent(status: string): 'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked' {
-  const statusMap: Record<string, any> = {
-    'in-stock': 'optimal',
-    'low-stock': 'low',
-    'critical': 'critical',
-    'out-of-stock': 'out-of-stock',
-    'restock-needed': 'critical',
-    'overstocked': 'overstocked',
-  };
-  return statusMap[status] || 'optimal';
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 ```
 
-**✅ Résultat** :
-- Guide complet de 400+ lignes
-- Plan de migration en 3 phases
-- 9 composants documentés avec exemples avant/après
-- Helpers prêts à copier/coller
-- Checklist complète (40+ items)
-- Points d'attention pour éviter les pièges
-- Support et troubleshooting
+**Application automatique** :
+- `critical` et `out-of-stock` reçoivent automatiquement la classe `animate-pulse`
+- Attire l'attention sur les états critiques
+- Animation douce (2s) pour éviter la fatigue visuelle
+
+#### Props du Composant
+
+```typescript
+@property() status: StockStatus = 'optimal';
+@property() size: 'sm' | 'md' | 'lg' = 'md';
+@property() label?: string; // Override le label par défaut
+```
+
+#### Stories Créées (7)
+
+1. **AllStatusTypes** - Affiche les 5 nouveaux statuts
+2. **AllSizes** - sm, md, lg pour chaque statut
+3. **CustomLabels** - Labels personnalisés
+4. **InContext** - Dans des cartes produit réalistes
+5. **InTable** - Dans un tableau de stock
+6. **PulseAnimation** - Démo de l'animation sur critical/out-of-stock
+7. **Playground** - Interactive avec tous les contrôles
+
+**Résultat** :
+- ✅ 5 statuts alignés avec StockHub V2
+- ✅ Animation pulse pour états critiques
+- ✅ Support light/dark mode
+- ✅ 7 stories complètes avec theme toggle
+- ✅ Documentation JSDoc complète
+
+---
+
+### 📊 Metric Card - Carte de Métrique avec Tendance
+
+**Fichier** : `src/components/molecules/metric-card/sh-metric-card.ts`
+
+#### Description
+
+Composant de carte métrique pour afficher des KPIs avec :
+- Icône Lucide configurable dans un wrapper coloré
+- Grande valeur (animée optionnellement)
+- Label descriptif
+- Indicateur de tendance optionnel (hausse/baisse)
+- Support des variants de couleur
+- Mode clickable avec événement personnalisé
+
+#### Props du Composant
+
+```typescript
+@property() icon = 'TrendingUp';
+@property() label = '';
+@property() value: string | number = '0';
+@property() variant: 'default' | 'success' | 'warning' | 'danger' | 'info' = 'default';
+@property() trend?: 'increase' | 'decrease';
+@property({ attribute: 'trend-value' }) trendValue?: string;
+@property({ type: Boolean }) clickable = false;
+@property() theme: 'light' | 'dark' = 'dark';
+```
+
+#### Variants de Couleur
+
+Chaque variant colore l'icône et le background de son wrapper :
+
+| Variant | Couleur | Usage |
+|---------|---------|-------|
+| **default** | Gris | Métriques neutres |
+| **success** | Vert | Métriques positives |
+| **warning** | Orange | Métriques à surveiller |
+| **danger** | Rouge | Métriques critiques |
+| **info** | Bleu | Métriques informatives |
+
+#### Indicateur de Tendance
+
+Petit badge affiché en haut à droite :
+- **Increase** : Icône TrendingUp + couleur verte
+- **Decrease** : Icône TrendingDown + couleur rouge
+- Affiche la valeur de tendance (ex: "+12%", "-5")
+
+#### Événements
+
+```typescript
+@fires sh-metric-click - Émis au clic sur la carte (si clickable)
+```
+
+**Résultat** :
+- ✅ Composant flexible et réutilisable
+- ✅ Support des tendances (hausse/baisse)
+- ✅ Variants de couleur pour contexte visuel
+- ✅ Mode clickable avec événement custom
+- ✅ Accessibilité (ARIA, keyboard navigation)
+- ✅ Animations hover (si clickable)
+
+---
+
+### 🎴 Stock Item Card - Carte Produit Inventaire
+
+**Fichier** : `src/components/molecules/stock-item-card/sh-stock-item-card.ts`
+
+#### Description
+
+Composant de carte pour afficher un produit en stock avec :
+- Barre de statut colorée (border-left) selon le niveau de stock
+- Nom du produit et SKU
+- Badge de statut (sh-badge)
+- Grid de métriques (quantité, valeur, emplacement)
+- Actions : Voir/Éditer/Supprimer (sh-button)
+- État de chargement
+- Responsive mobile
+
+#### Props du Composant
+
+```typescript
+@property() name = '';
+@property() sku = '';
+@property() quantity: string | number = '0';
+@property() value = '';
+@property() location = '';
+@property() status: 'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked' = 'optimal';
+@property({ type: Boolean }) loading = false;
+@property() theme: 'light' | 'dark' = 'dark';
+```
+
+#### Barre de Statut Colorée
+
+Border-left de 4px dont la couleur change selon le statut :
+
+```css
+border-left: 4px solid var(--status-color);
+```
+
+| Status | Couleur |
+|--------|---------|
+| **optimal** | Vert (success-500) |
+| **low** | Orange (warning-500) |
+| **critical** | Rouge (danger-500) |
+| **out-of-stock** | Gris (neutral-500) |
+| **overstocked** | Bleu (primary-500) |
+
+#### Grid de Métriques
+
+Layout responsive avec `grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))` :
+
+```
+┌─────────────┬─────────────┬─────────────┐
+│   Quantité  │   Valeur    │ Emplacement │
+│     50      │  €45,000    │   A-12-3    │
+└─────────────┴─────────────┴─────────────┘
+```
+
+Mobile (< 640px) : Grid passe en 2 colonnes
+
+#### Actions
+
+3 boutons ghost avec icônes :
+- **Voir** (Eye) - Émit `sh-view-click`
+- **Éditer** (Edit) - Émit `sh-edit-click`
+- **Supprimer** (Trash2) - Émit `sh-delete-click`
+
+Tous désactivés si `loading={true}`
+
+#### Événements
+
+```typescript
+@fires sh-view-click - Émis au clic sur "Voir"
+@fires sh-edit-click - Émis au clic sur "Éditer"
+@fires sh-delete-click - Émis au clic sur "Supprimer"
+```
+
+Chaque événement inclut les détails :
+```typescript
+detail: {
+  name: this.name,
+  sku: this.sku,
+  status: this.status
+}
+```
+
+#### Responsive
+
+**Desktop** :
+- Grid de métriques en 3 colonnes (auto-fit)
+- Actions en row (flex-direction: row)
+
+**Mobile (< 640px)** :
+- Grid de métriques en 2 colonnes
+- Actions en column (flex-direction: column)
+- Boutons full-width
+
+**Résultat** :
+- ✅ Carte complète pour inventaire
+- ✅ Barre de statut visuelle (border-left coloré)
+- ✅ Grid de métriques responsive
+- ✅ Actions intégrées (Voir/Éditer/Supprimer)
+- ✅ 3 événements custom pour interactions
+- ✅ État de chargement
+- ✅ Support light/dark mode
+- ✅ Mobile-friendly
 
 ---
 
@@ -235,249 +246,179 @@ function mapStatusToWebComponent(status: string): 'optimal' | 'low' | 'critical'
 
 | Métrique | Valeur |
 |----------|--------|
-| **Fichiers modifiés** | 2 |
-| **Fichiers créés** | 2 |
-| **Lignes README modifiées** | ~80 |
-| **Lignes guide intégration** | 400+ |
-| **Composants documentés** | 14 (tous) |
-| **Exemples de code** | 25+ |
-| **Helpers fournis** | 3 |
-| **Checklist items** | 40+ |
-| **Build time** | 1.95s |
-| **Bundle size (ES)** | 833 KB (116 KB gzipped) |
-| **Bundle size (UMD)** | 733 KB (102 KB gzipped) |
-| **Temps documentation** | ~1h00 |
-| **Temps build & validation** | ~15 min |
-| **Temps création guide** | ~45 min |
-| **Total** | ~1h30 |
+| **Composants créés** | 3 |
+| **Fichiers modifiés/créés** | 6 |
+| **Stories créées** | 7 (status-badge) |
+| **Lignes de code** | ~900 |
+| **Props totales** | 20+ |
+| **Événements custom** | 4 |
+| **Variants supportés** | 9 (5 status + 4 colors) |
+| **Temps implémentation** | ~1h30 |
+| **Temps fixes TypeScript** | ~30 min |
+| **Temps documentation** | ~30 min |
+| **Total** | ~2h30 |
 
 ---
 
 ## 📝 Fichiers Créés/Modifiés
 
-### Documentation
-- `README.md` - **Mis à jour** (sh-status-badge V2, progression, version 2.0.0-rc)
-- `documentation/integration/STOCKHUB-V2-INTEGRATION.md` - **Créé** (guide complet 400+ lignes)
-- `documentation/planning/SESSION-5-SUMMARY.md` - **Créé** (ce fichier)
+### Composants
+- `src/components/molecules/status-badge/sh-status-badge.ts` - **Mis à jour** (5 nouveaux statuts)
+- `src/components/molecules/metric-card/sh-metric-card.ts` - **Créé**
+- `src/components/molecules/stock-item-card/sh-stock-item-card.ts` - **Créé**
 
-### Build & Validation
-- ✅ `npm run build` réussi
-- ✅ Exports `src/index.ts` validés
-- ✅ TypeScript compilation sans erreurs
+### Stories
+- `src/components/molecules/status-badge/sh-status-badge.stories.ts` - **Mis à jour** (7 stories)
+- `src/components/molecules/metric-card/sh-metric-card.stories.ts` - **Créé**
+- `src/components/molecules/stock-item-card/sh-stock-item-card.stories.ts` - **Créé**
+
+### Documentation
+- `documentation/planning/SESSION-4-SUMMARY.md` - **Créé**
+- `documentation/technical/TYPESCRIPT-FIXES.md` - **Créé** (fixes erreurs TS)
 
 ---
 
 ## 🎯 Objectifs Atteints
 
-- [x] Tester le build du Design System
-- [x] Vérifier les exports dans package.json
-- [x] Mettre à jour le README principal avec sh-status-badge V2
-- [x] Mettre à jour la section progression (Sessions 3-5)
-- [x] Mettre à jour la version (2.0.0-rc)
-- [x] Créer guide d'intégration StockHub V2 complet
-- [x] Documenter les 9 composants à migrer
-- [x] Fournir helpers de mapping (statuts, événements)
-- [x] Créer checklist d'intégration (40+ items)
-- [x] Créer SESSION-5-SUMMARY.md
+- [x] Mettre à jour sh-status-badge avec 5 nouveaux statuts
+- [x] Ajouter animation pulse pour critical et out-of-stock
+- [x] Créer sh-metric-card avec tendance et variants
+- [x] Créer sh-stock-item-card avec grid métriques et actions
+- [x] Documenter les composants avec JSDoc
+- [x] Créer stories complètes pour tous les composants
+- [x] Support light/dark mode pour tous les composants
+- [x] Corriger les erreurs TypeScript
+- [x] Tester dans Storybook
+- [x] Créer SESSION-4-SUMMARY.md
+
+---
+
+## 🔧 Problèmes Résolus
+
+### 1. Erreurs TypeScript dans metric-card et stock-item-card
+
+**Problème** : Erreurs de type lors de la compilation
+
+**Commit** : `ebf961d - fix: correct TypeScript errors in metric-card and stock-item-card`
+
+**Solutions appliquées** :
+- Import correct des design tokens
+- Types stricts pour les props
+- Typage des événements custom
+- Correction des attributs reflect
+
+**Résultat** : ✅ Build réussit sans erreurs TypeScript
+
+### 2. Animation pulse trop agressive
+
+**Problème** : Animation pulse initiale trop rapide (1s) pouvait être fatigante visuellement
+
+**Solution** : Ralentissement à 2s avec easing `ease-in-out`
+
+```css
+animation: pulse 2s ease-in-out infinite;
+```
+
+**Résultat** : ✅ Animation douce et professionnelle
+
+### 3. Responsive des actions dans stock-item-card
+
+**Problème** : Actions trop serrées sur mobile
+
+**Solution** : Media query pour passer en colonne sur mobile
+
+```css
+@media (max-width: 640px) {
+  .actions {
+    flex-direction: column;
+  }
+  .actions sh-button {
+    width: 100%;
+  }
+}
+```
+
+**Résultat** : ✅ Actions full-width lisibles sur mobile
 
 ---
 
 ## 💡 Leçons Apprises
 
-1. **Build Performance** : Vite est très rapide (< 2s) même avec 14 composants et 1672 modules
+1. **Composants Composés** : Les composants complexes comme `stock-item-card` bénéficient grandement de la réutilisation des composants atomiques (sh-badge, sh-button, sh-icon)
 
-2. **Bundle Size** : 833 KB ES / 733 KB UMD est raisonnable pour 14 composants + Lucide icons
-   - Compression gzip efficace : ~86% réduction (833 KB → 116 KB)
-   - Prêt pour production
+2. **Border-left Coloré** : Utiliser `border-left: 4px solid var(--status-color)` est un excellent pattern visuel pour indiquer un statut sans être intrusif
 
-3. **Documentation Progressive** : Documenter au fur et à mesure évite la dette technique
-   - README toujours à jour
-   - Guide d'intégration créé avant l'intégration réelle
-   - Facilite la maintenance future
+3. **Grid Auto-fit** : `grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))` est parfait pour des layouts de métriques responsive
 
-4. **Migration Strategy** : Découper en 3 phases (Simple → Métier → Générique) facilite l'adoption
-   - Permet de tester progressivement
-   - Réduit les risques de régression
-   - Équipe peut s'adapter au fur et à mesure
+4. **Événements Custom** : Les événements custom avec `detail: {}` permettent une intégration propre dans les applications parentes
 
-5. **Helpers Réutilisables** : Fournir des helpers (mapStatusToWebComponent, handleCustomEvent) facilite l'intégration
-   - Copy/paste ready
-   - Évite les erreurs courantes
-   - Accélère le développement
+5. **Loading State** : Ajouter un état `loading` avec `pointer-events: none` et `opacity: 0.6` améliore l'UX pendant les actions async
 
-6. **Exemples Avant/Après** : Montrer le code React original vs Web Component est très efficace
-   - Développeurs voient immédiatement la différence
-   - Réduit la courbe d'apprentissage
-   - Facilite la prise de décision
+6. **Animation Context** : Les animations (pulse) doivent être réservées aux états critiques pour ne pas diluer leur impact
 
-7. **Points d'Attention Anticipés** : Documenter les pièges avant l'intégration évite les frustrations
-   - Événements custom vs onClick
-   - Attributs kebab-case
-   - Slots vs children
-   - Boolean attributes
+7. **JSDoc Complet** : Documenter les `@fires` events et les `@example` dès la création facilite grandement l'utilisation future
 
-8. **Checklist Complète** : Une checklist exhaustive (40+ items) donne une roadmap claire
-   - Équipe sait exactement quoi faire
-   - Permet de suivre la progression
-   - Facilite la planification
+8. **Variants vs Status** : Distinction claire entre `variant` (couleur visuelle) et `status` (état métier) aide à la clarté du code
+
+9. **Mobile-first Grid** : Penser au mobile dès le début (2 colonnes < 640px) évite les refactors
+
+10. **CSS Custom Properties** : Utiliser des CSS vars pour les couleurs de thème (--card-bg, --card-text, etc.) facilite le theming light/dark
 
 ---
 
 ## 🚀 Prochaines Actions
 
-### Session 6 - Intégration StockHub V2 Phase 1 (2-3h)
+### Session 5 - Finalisation Phase 1 (2-3h)
 
-**Objectif** : Intégrer les composants simples dans StockHub V2
+1. **Documentation README**
+   - [ ] Mettre à jour le README principal
+   - [ ] Ajouter exemples d'utilisation des 3 nouveaux composants
+   - [ ] Screenshots Storybook
 
-1. **Installation**
-   - [ ] Installer `@stockhub/design-system@2.0.0-rc` dans StockHub V2
-   - [ ] Créer `src/types/web-components.d.ts`
-   - [ ] Importer les composants dans `main.tsx`
+2. **Build et Publication**
+   - [ ] Tester le build (`npm run build`)
+   - [ ] Vérifier les exports dans package.json
+   - [ ] Tag version v2.0.0
 
-2. **Migration Badge**
-   - [ ] Remplacer `<Badge>` par `<sh-badge>`
-   - [ ] Vérifier toutes les occurrences (variant, size, pill)
-   - [ ] Supprimer `src/components/common/Badge.tsx`
-   - [ ] Tester visuellement
+3. **Tests Visuels**
+   - [ ] Vérifier tous les composants dans Storybook
+   - [ ] Tester le theme toggle sur tous les composants
+   - [ ] Valider l'accessibilité (keyboard navigation)
 
-3. **Migration Button**
-   - [ ] Remplacer `<Button>` par `<sh-button>`
-   - [ ] Migrer les icônes vers Lucide (iconBefore, iconAfter)
-   - [ ] Adapter les event handlers
-   - [ ] Supprimer `src/components/common/Button.tsx`
-   - [ ] Tester interactions
-
-4. **Migration Input**
-   - [ ] Remplacer `<Input>` par `<sh-input>`
-   - [ ] Adapter événements (sh-input-change, e.detail.value)
-   - [ ] Supprimer `src/components/common/Input.tsx`
-   - [ ] Tester formulaires
-
-5. **Tests**
-   - [ ] Tests visuels (Chromatic)
-   - [ ] Tests E2E sur pages migrées
-   - [ ] Lighthouse score ≥ 98
-   - [ ] Accessibilité (WCAG AA)
-
-**Temps estimé** : 2-3h
+4. **Préparation Intégration**
+   - [ ] Créer un guide d'intégration pour StockHub V2
+   - [ ] Lister les composants React à remplacer
+   - [ ] Planifier la Session 6 (Intégration)
 
 ---
 
-### Session 7 - Intégration StockHub V2 Phase 2 (2-3h)
+## 🎉 Conclusion Session 4
 
-**Objectif** : Intégrer les composants métier
+Session dédiée à la **création des composants spécifiques StockHub V2**. Trois composants majeurs créés et documentés :
 
-1. **Migration StatusBadge**
-   - [ ] Créer helper `mapStatusToWebComponent()`
-   - [ ] Remplacer `<StatusBadge>` par `<sh-status-badge>`
-   - [ ] Adapter tous les statuts (mapping)
-   - [ ] Supprimer `src/components/inventory/StatusBadge.tsx`
-
-2. **Migration MetricCard**
-   - [ ] Remplacer `<MetricCard>` par `<sh-metric-card>`
-   - [ ] Adapter tendances (number → increase/decrease)
-   - [ ] Migrer les icônes Lucide
-   - [ ] Supprimer `src/components/dashboard/MetricCard.tsx`
-
-3. **Migration StockCard**
-   - [ ] Remplacer `<StockCard>` par `<sh-stock-item-card>`
-   - [ ] Adapter props (product object → props individuelles)
-   - [ ] Adapter événements (sh-view-click, sh-edit-click, sh-delete-click)
-   - [ ] Supprimer `src/components/inventory/StockCard.tsx`
-
-4. **Migration Header**
-   - [ ] Remplacer `<Header>` par `<sh-header>`
-   - [ ] Adapter événements
-   - [ ] Supprimer `src/components/layout/Header.tsx`
-
-5. **Tests**
-   - [ ] Dashboard fonctionnel
-   - [ ] Inventaire fonctionnel
-   - [ ] Interactions View/Edit/Delete
-   - [ ] Tests E2E complets
-
-**Temps estimé** : 2-3h
-
----
-
-### Session 8 - Intégration StockHub V2 Phase 3 (2-3h)
-
-**Objectif** : Finaliser l'intégration et cleanup
-
-1. **Migration Card & Icon**
-   - [ ] Remplacer `<Card>` par `<sh-card>` (avec slots)
-   - [ ] Migrer toutes les icônes `lucide-react` → `<sh-icon>`
-   - [ ] Supprimer dépendance `lucide-react`
-
-2. **Cleanup**
-   - [ ] Supprimer tous les fichiers React migrés
-   - [ ] Nettoyer les imports inutilisés
-   - [ ] Vérifier les warnings console
-
-3. **Tests Finaux**
-   - [ ] Tests E2E complets (toutes pages)
-   - [ ] Tests visuels (Chromatic)
-   - [ ] Performance (Lighthouse ≥ 98)
-   - [ ] Accessibilité (WCAG AA)
-   - [ ] Responsive (320px - 1920px)
-
-4. **Documentation**
-   - [ ] Mettre à jour doc technique interne
-   - [ ] Guide pour nouveaux développeurs
-   - [ ] CHANGELOG StockHub V2
-
-5. **Release**
-   - [ ] Tag version Design System v2.0.0
-   - [ ] Créer release notes
-   - [ ] Publier sur NPM (si besoin)
-
-**Temps estimé** : 2-3h
-
----
-
-## 🎉 Conclusion Session 5
-
-Session dédiée à la **finalisation du Design System Phase 1** et à la **préparation de l'intégration**.
+- ✅ **Status Badge V2** - 5 statuts avec animation pulse pour états critiques
+- ✅ **Metric Card** - Cartes KPI avec tendances et variants de couleur
+- ✅ **Stock Item Card** - Cartes produit complètes avec métriques et actions
 
 **Points forts** :
-- ✅ Build production fonctionnel et optimisé
-- ✅ Documentation README complète et à jour
-- ✅ Guide d'intégration exhaustif (400+ lignes)
-- ✅ Plan de migration en 3 phases
-- ✅ Helpers prêts à l'emploi
-- ✅ Checklist complète (40+ items)
-- ✅ Exemples avant/après pour chaque composant
+- Composants alignés avec les besoins réels de StockHub V2
+- Réutilisation maximale des composants atomiques (badge, button, icon)
+- Documentation complète (JSDoc + stories)
+- Support light/dark mode natif
+- Accessibilité intégrée (ARIA, keyboard)
+- Responsive mobile-friendly
 
 **Impact positif** :
-- Design System Phase 1 complète et documentée
-- Prêt pour intégration dans StockHub V2
-- Guide facilite l'adoption par l'équipe
-- Migration progressive réduit les risques
-- Bundle size raisonnable (116 KB gzipped)
-- Performance optimale (build < 2s)
+- Design System désormais complet pour la Phase 1
+- Composants prêts pour intégration dans StockHub V2
+- Base solide pour futurs composants de gestion de stock
+- Stories Storybook complètes pour démonstration et tests
 
-**État actuel** :
-- 14 composants créés et documentés
-- 50+ stories Storybook
-- Support light/dark mode complet
-- ~4000 lignes de code
+**Statistiques cumulées (Sessions 1-4)** :
+- 12 composants créés/mis à jour
+- 40+ stories Storybook
+- Support complet light/dark mode
+- ~3000 lignes de code
 - Documentation technique complète
-- Guide d'intégration prêt
 
-**Prochaine étape** : Intégration dans StockHub V2 (3 sessions, 6-9h estimées) 🚀
-
----
-
-**Statistiques cumulées (Sessions 1-5)** :
-- **Composants** : 14 créés/mis à jour
-- **Stories** : 50+
-- **Lignes de code** : ~4000
-- **Documentation** : 8 fichiers (READMEs, summaries, guide)
-- **Temps total** : ~13h (Sessions 1-5)
-- **Build size** : 116 KB (gzipped)
-- **Performance** : Build < 2s, Lighthouse ready
-
----
-
-**Maintenu par** : Sandrine Cipolla
-**Dernière mise à jour** : 20 Octobre 2025
+**Prochaine session** : Finalisation et préparation intégration StockHub V2 🚀

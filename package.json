@@ -24,6 +24,8 @@
     "build:lib": "rollup -c",
     "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test-storybook": "test-storybook",
+    "test-storybook:ci": "test-storybook --url http://localhost:6006",
     "storybook": "npm run analyze && storybook dev -p 6006",
     "build-storybook": "npm run analyze && storybook build",
     "prepare": "npm run build",
@@ -32,7 +34,9 @@
     "tokens:watch": "chokidar 'src/tokens/tokens.json' -c 'npm run tokens:generate'",
     "build:all": "npm run tokens:generate && npm run build-storybook",
     "setup:dark": "npm run tokens:generate && echo '🌙 Dark mode configuré par défaut!'",
-    "analyze": "cem analyze --litelement"
+    "analyze": "cem analyze --litelement",
+    "chromatic": "chromatic",
+    "audit-accessibility": "npx lighthouse http://localhost:3000 --output html --output-path ./storybook-static/lighthouse-report.html --chrome-flags=\"--headless\""
   },
   "publishConfig": {
     "access": "restricted"
@@ -61,20 +65,23 @@
     "@storybook/addon-links": "^8.6.12",
     "@storybook/blocks": "^8.6.12",
     "@storybook/test": "^8.6.12",
+    "@storybook/test-runner": "^0.19.1",
     "@storybook/web-components": "^8.6.12",
     "@storybook/web-components-vite": "^8.6.12",
     "@types/node": "^24.0.3",
     "chokidar-cli": "^3.0.0",
-    "chromatic": "^13.3.0",
+    "chromatic": "^13.3.2",
     "rollup": "^4.0.0",
     "storybook": "^8.6.12",
     "tsx": "^4.0.0",
     "typescript": "^5.8.3",
-    "vite": "^6.3.2"
+    "vite": "^6.4.0"
   },
   "dependencies": {
+    "color-contrast-checker": "^2.1.0",
     "lit": "^2.8.0",
-    "lucide": "^0.546.0"
+    "lucide": "^0.546.0",
+    "wcag-contrast": "^3.0.0"
   },
   "customElements": "custom-elements.json"
 }

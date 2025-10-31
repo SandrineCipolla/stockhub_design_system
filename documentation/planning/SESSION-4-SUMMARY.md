@@ -1,244 +1,140 @@
-# Session 4 - Sprint 1 : Nouveaux Composants StockHub V2
+# Session 3 - Sprint 1 : Theme Toggle Global & Header Updates
 
-**Date** : 20/10/2025
-**Durée** : ~2h30
-**Objectif** : Créer les nouveaux composants StockHub V2 (status-badge, metric-card, stock-item-card)
+**Date** : 19/10/2025
+**Durée** : ~2h00
+**Objectif** : Synchroniser le toggle theme global de Storybook avec tous les composants et mettre à jour le header
 
 ---
 
 ## ✅ Réalisations
 
-### 🏷️ Status Badge V2 - 5 Nouveaux Statuts
+### 🎨 Theme Toggle Global Synchronization
 
-**Fichier** : `src/components/molecules/status-badge/sh-status-badge.ts`
+#### Problème Initial
+- Le toggle theme dans la toolbar Storybook changeait seulement `context.globals.theme`
+- Les stories utilisaient `args.theme` qui restait fixé à `'dark'` par défaut
+- Résultat : seul le wrapper du decorator changeait de couleur, pas le contenu des stories
 
-#### Nouveaux Statuts Implémentés
-
-Le `sh-status-badge` a été complètement mis à jour avec les 5 nouveaux statuts de StockHub V2 :
-
-| Status | Label | Icône | Couleur | Animation |
-|--------|-------|-------|---------|-----------|
-| **optimal** | Optimal | CheckCircle | Vert (success) | ❌ |
-| **low** | Low | AlertCircle | Orange (warning) | ❌ |
-| **critical** | Critical | AlertTriangle | Rouge (danger) | ✅ Pulse |
-| **out-of-stock** | Out of Stock | XCircle | Gris (default) | ✅ Pulse |
-| **overstocked** | Overstocked | TrendingUp | Bleu (info) | ❌ |
-
-#### Animation Pulse
-
-**Implémentation** (lignes 131-142) :
-```css
-.animate-pulse {
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-```
-
-**Application automatique** :
-- `critical` et `out-of-stock` reçoivent automatiquement la classe `animate-pulse`
-- Attire l'attention sur les états critiques
-- Animation douce (2s) pour éviter la fatigue visuelle
-
-#### Props du Composant
+#### Solution Implémentée
+**Fichier modifié** : `.storybook/preview.ts`
 
 ```typescript
-@property() status: StockStatus = 'optimal';
-@property() size: 'sm' | 'md' | 'lg' = 'md';
-@property() label?: string; // Override le label par défaut
+// ⭐️ SYNC: Override args.theme with global theme toggle
+if (context.args && 'theme' in context.args) {
+    context.args.theme = theme
+}
 ```
 
-#### Stories Créées (7)
-
-1. **AllStatusTypes** - Affiche les 5 nouveaux statuts
-2. **AllSizes** - sm, md, lg pour chaque statut
-3. **CustomLabels** - Labels personnalisés
-4. **InContext** - Dans des cartes produit réalistes
-5. **InTable** - Dans un tableau de stock
-6. **PulseAnimation** - Démo de l'animation sur critical/out-of-stock
-7. **Playground** - Interactive avec tous les contrôles
-
-**Résultat** :
-- ✅ 5 statuts alignés avec StockHub V2
-- ✅ Animation pulse pour états critiques
-- ✅ Support light/dark mode
-- ✅ 7 stories complètes avec theme toggle
-- ✅ Documentation JSDoc complète
+**Impact** :
+- ✅ Le toggle theme de Storybook synchronise maintenant `args.theme`
+- ✅ Toutes les stories qui utilisent `args.theme` s'adaptent automatiquement
+- ✅ Plus besoin de stories séparées "LightMode" / "DarkMode"
 
 ---
 
-### 📊 Metric Card - Carte de Métrique avec Tendance
+### 🔔 Header Component - Corrections
 
-**Fichier** : `src/components/molecules/metric-card/sh-metric-card.ts`
+#### 1. Couleur Icône Notifications (Bell)
 
-#### Description
+**Problème** : L'icône cloche était noire en dark mode (invisible)
 
-Composant de carte métrique pour afficher des KPIs avec :
-- Icône Lucide configurable dans un wrapper coloré
-- Grande valeur (animée optionnellement)
-- Label descriptif
-- Indicateur de tendance optionnel (hausse/baisse)
-- Support des variants de couleur
-- Mode clickable avec événement personnalisé
-
-#### Props du Composant
-
-```typescript
-@property() icon = 'TrendingUp';
-@property() label = '';
-@property() value: string | number = '0';
-@property() variant: 'default' | 'success' | 'warning' | 'danger' | 'info' = 'default';
-@property() trend?: 'increase' | 'decrease';
-@property({ attribute: 'trend-value' }) trendValue?: string;
-@property({ type: Boolean }) clickable = false;
-@property() theme: 'light' | 'dark' = 'dark';
-```
-
-#### Variants de Couleur
-
-Chaque variant colore l'icône et le background de son wrapper :
-
-| Variant | Couleur | Usage |
-|---------|---------|-------|
-| **default** | Gris | Métriques neutres |
-| **success** | Vert | Métriques positives |
-| **warning** | Orange | Métriques à surveiller |
-| **danger** | Rouge | Métriques critiques |
-| **info** | Bleu | Métriques informatives |
-
-#### Indicateur de Tendance
-
-Petit badge affiché en haut à droite :
-- **Increase** : Icône TrendingUp + couleur verte
-- **Decrease** : Icône TrendingDown + couleur rouge
-- Affiche la valeur de tendance (ex: "+12%", "-5")
-
-#### Événements
-
-```typescript
-@fires sh-metric-click - Émis au clic sur la carte (si clickable)
-```
-
-**Résultat** :
-- ✅ Composant flexible et réutilisable
-- ✅ Support des tendances (hausse/baisse)
-- ✅ Variants de couleur pour contexte visuel
-- ✅ Mode clickable avec événement custom
-- ✅ Accessibilité (ARIA, keyboard navigation)
-- ✅ Animations hover (si clickable)
-
----
-
-### 🎴 Stock Item Card - Carte Produit Inventaire
-
-**Fichier** : `src/components/molecules/stock-item-card/sh-stock-item-card.ts`
-
-#### Description
-
-Composant de carte pour afficher un produit en stock avec :
-- Barre de statut colorée (border-left) selon le niveau de stock
-- Nom du produit et SKU
-- Badge de statut (sh-badge)
-- Grid de métriques (quantité, valeur, emplacement)
-- Actions : Voir/Éditer/Supprimer (sh-button)
-- État de chargement
-- Responsive mobile
-
-#### Props du Composant
-
-```typescript
-@property() name = '';
-@property() sku = '';
-@property() quantity: string | number = '0';
-@property() value = '';
-@property() location = '';
-@property() status: 'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked' = 'optimal';
-@property({ type: Boolean }) loading = false;
-@property() theme: 'light' | 'dark' = 'dark';
-```
-
-#### Barre de Statut Colorée
-
-Border-left de 4px dont la couleur change selon le statut :
+**Solution** : Ajout de couleurs conditionnelles dans `sh-header.ts`
 
 ```css
-border-left: 4px solid var(--status-color);
-```
+/* Notification button */
+.notification-btn {
+    /* ... */
+    color: #6b7280; /* Light mode: gris moyen */
+}
 
-| Status | Couleur |
-|--------|---------|
-| **optimal** | Vert (success-500) |
-| **low** | Orange (warning-500) |
-| **critical** | Rouge (danger-500) |
-| **out-of-stock** | Gris (neutral-500) |
-| **overstocked** | Bleu (primary-500) |
-
-#### Grid de Métriques
-
-Layout responsive avec `grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))` :
-
-```
-┌─────────────┬─────────────┬─────────────┐
-│   Quantité  │   Valeur    │ Emplacement │
-│     50      │  €45,000    │   A-12-3    │
-└─────────────┴─────────────┴─────────────┘
-```
-
-Mobile (< 640px) : Grid passe en 2 colonnes
-
-#### Actions
-
-3 boutons ghost avec icônes :
-- **Voir** (Eye) - Émit `sh-view-click`
-- **Éditer** (Edit) - Émit `sh-edit-click`
-- **Supprimer** (Trash2) - Émit `sh-delete-click`
-
-Tous désactivés si `loading={true}`
-
-#### Événements
-
-```typescript
-@fires sh-view-click - Émis au clic sur "Voir"
-@fires sh-edit-click - Émis au clic sur "Éditer"
-@fires sh-delete-click - Émis au clic sur "Supprimer"
-```
-
-Chaque événement inclut les détails :
-```typescript
-detail: {
-  name: this.name,
-  sku: this.sku,
-  status: this.status
+:host([data-theme="dark"]) .notification-btn {
+    color: #d1d5db; /* Dark mode: gris clair */
 }
 ```
 
-#### Responsive
+**Résultat** :
+- ✅ Icône visible en light mode (#6b7280)
+- ✅ Icône visible en dark mode (#d1d5db)
+- ✅ Cohérent avec le design StockHub V2
 
-**Desktop** :
-- Grid de métriques en 3 colonnes (auto-fit)
-- Actions en row (flex-direction: row)
+#### 2. Adaptation Theme des Stories Header
 
-**Mobile (< 640px)** :
-- Grid de métriques en 2 colonnes
-- Actions en column (flex-direction: column)
-- Boutons full-width
+**Fichier modifié** : `src/components/organisms/header/sh-header.stories.ts`
+
+Toutes les stories ont été mises à jour pour adapter les couleurs des éléments nested :
+
+**StickyScrollDemo** (lignes 207-213) :
+- Section cards : backgrounds, borders, h3 colors conditionnels
+
+**ResponsiveDemo** (lignes 237-249) :
+- Liste container : background, border, text colors
+- Tip box : background, border, text colors
+
+**WithEventListeners** (lignes 274-277) :
+- Event log container : background, border, placeholder color
 
 **Résultat** :
-- ✅ Carte complète pour inventaire
-- ✅ Barre de statut visuelle (border-left coloré)
-- ✅ Grid de métriques responsive
-- ✅ Actions intégrées (Voir/Éditer/Supprimer)
-- ✅ 3 événements custom pour interactions
-- ✅ État de chargement
-- ✅ Support light/dark mode
-- ✅ Mobile-friendly
+- ✅ Toute la page (pas seulement le header) s'adapte au theme toggle
+- ✅ Textes lisibles en light et dark mode
+- ✅ Bordures et backgrounds appropriés pour chaque theme
+
+---
+
+### 🃏 Card Component - Stories Theme Adaptation
+
+**Fichier modifié** : `src/components/molecules/card/sh-card.stories.ts`
+
+#### Configuration Meta
+Ajout de `theme` dans les argTypes pour toutes les stories :
+
+```typescript
+argTypes: {
+    // ... existing args
+    theme: {
+      control: 'select',
+      options: ['light', 'dark'],
+      description: 'Thème de la carte (light ou dark)',
+    },
+}
+```
+
+#### Stories Mises à Jour (9/9)
+
+| Story | Changements Principaux |
+|-------|----------------------|
+| **Basic** | Text colors conditionnels, data-theme attribute |
+| **WithSlots** | Borders (header/footer), text colors, buttons data-theme |
+| **HoverEffects** | Text colors dans les 2 cards |
+| **Clickable** | Icon color="primary", text colors |
+| **DifferentPadding** | Text colors dans les 4 cards |
+| **ProductCard** | Description color, badge + button data-theme |
+| **StatsCard** | Labels colors, icons size + color props |
+| **FormCard** | Subtitle, inputs (border, bg, color), button data-theme |
+| **Playground** | Text colors, theme arg ajouté |
+
+#### Pattern Utilisé
+
+```typescript
+export const StoryName: Story = {
+  args: {
+    theme: 'dark',
+  },
+  render: (args) => `
+    <sh-card data-theme="${args.theme}">
+      <p style="color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
+        Text adapts to theme
+      </p>
+      <sh-button data-theme="${args.theme}">Button</sh-button>
+    </sh-card>
+  `,
+};
+```
+
+**Résultat** :
+- ✅ 9 stories entièrement adaptées au theme toggle
+- ✅ Textes, bordures, backgrounds, inputs conditionnels
+- ✅ Sous-composants (buttons, badges, icons) avec data-theme
+- ✅ Lisibilité parfaite en light et dark mode
 
 ---
 
@@ -246,179 +142,163 @@ detail: {
 
 | Métrique | Valeur |
 |----------|--------|
-| **Composants créés** | 3 |
-| **Fichiers modifiés/créés** | 6 |
-| **Stories créées** | 7 (status-badge) |
-| **Lignes de code** | ~900 |
-| **Props totales** | 20+ |
-| **Événements custom** | 4 |
-| **Variants supportés** | 9 (5 status + 4 colors) |
-| **Temps implémentation** | ~1h30 |
-| **Temps fixes TypeScript** | ~30 min |
-| **Temps documentation** | ~30 min |
-| **Total** | ~2h30 |
+| **Fichiers modifiés** | 3 |
+| **Stories mises à jour** | 18 (9 header + 9 card) |
+| **Lignes de code modifiées** | ~150 |
+| **Composants fixes** | 2 (Header, Card) |
+| **Temps configuration theme** | ~30 min |
+| **Temps header corrections** | ~30 min |
+| **Temps card stories** | ~45 min |
+| **Temps documentation** | ~15 min |
+| **Total** | ~2h00 |
 
 ---
 
-## 📝 Fichiers Créés/Modifiés
+## 📝 Fichiers Modifiés
+
+### Configuration
+- `.storybook/preview.ts` - Ajout sync `args.theme` avec `globals.theme`
 
 ### Composants
-- `src/components/molecules/status-badge/sh-status-badge.ts` - **Mis à jour** (5 nouveaux statuts)
-- `src/components/molecules/metric-card/sh-metric-card.ts` - **Créé**
-- `src/components/molecules/stock-item-card/sh-stock-item-card.ts` - **Créé**
+- `src/components/organisms/header/sh-header.ts` - Couleur icône Bell conditionnelle
 
 ### Stories
-- `src/components/molecules/status-badge/sh-status-badge.stories.ts` - **Mis à jour** (7 stories)
-- `src/components/molecules/metric-card/sh-metric-card.stories.ts` - **Créé**
-- `src/components/molecules/stock-item-card/sh-stock-item-card.stories.ts` - **Créé**
+- `src/components/organisms/header/sh-header.stories.ts` - 9 stories (nested elements colors)
+- `src/components/molecules/card/sh-card.stories.ts` - 9 stories (complete theme adaptation)
 
 ### Documentation
-- `documentation/planning/SESSION-4-SUMMARY.md` - **Créé**
-- `documentation/technical/TYPESCRIPT-FIXES.md` - **Créé** (fixes erreurs TS)
+- `documentation/planning/SESSION-3-SUMMARY.md` - Nouveau fichier de session
 
 ---
 
 ## 🎯 Objectifs Atteints
 
-- [x] Mettre à jour sh-status-badge avec 5 nouveaux statuts
-- [x] Ajouter animation pulse pour critical et out-of-stock
-- [x] Créer sh-metric-card avec tendance et variants
-- [x] Créer sh-stock-item-card avec grid métriques et actions
-- [x] Documenter les composants avec JSDoc
-- [x] Créer stories complètes pour tous les composants
-- [x] Support light/dark mode pour tous les composants
-- [x] Corriger les erreurs TypeScript
-- [x] Tester dans Storybook
-- [x] Créer SESSION-4-SUMMARY.md
+- [x] Synchroniser toggle theme global avec args.theme des stories
+- [x] Corriger couleur icône Bell du header (dark mode)
+- [x] Adapter nested elements des stories header au theme
+- [x] Adapter toutes les stories card au theme toggle
+- [x] Ajouter argType theme à la configuration card meta
+- [x] Tester le toggle theme sur header et card
+- [x] Créer SESSION-3-SUMMARY.md
 
 ---
 
 ## 🔧 Problèmes Résolus
 
-### 1. Erreurs TypeScript dans metric-card et stock-item-card
+### 1. Theme Toggle ne synchronisait pas les stories
+**Problème** : Cliquer sur le toggle theme en haut de Storybook ne changeait que le background du wrapper, pas le contenu des stories
 
-**Problème** : Erreurs de type lors de la compilation
+**Solution** : Override `context.args.theme` avec `context.globals.theme` dans le decorator
 
-**Commit** : `ebf961d - fix: correct TypeScript errors in metric-card and stock-item-card`
+**Résultat** : Toutes les stories avec `args.theme` s'adaptent automatiquement
 
-**Solutions appliquées** :
-- Import correct des design tokens
-- Types stricts pour les props
-- Typage des événements custom
-- Correction des attributs reflect
+### 2. Icône Bell invisible en dark mode
+**Problème** : L'icône utilisait `currentColor` mais aucune couleur n'était définie sur le bouton parent
 
-**Résultat** : ✅ Build réussit sans erreurs TypeScript
+**Solution** : Ajout de `color: #6b7280` (light) et `color: #d1d5db` (dark) sur `.notification-btn`
 
-### 2. Animation pulse trop agressive
+**Résultat** : Icône visible et avec bon contraste dans les 2 modes
 
-**Problème** : Animation pulse initiale trop rapide (1s) pouvait être fatigante visuellement
+### 3. Textes invisibles dans les stories Card (Problème majeur)
+**Problème** : Texte blanc invisible sur fond blanc dans les stories Card
 
-**Solution** : Ralentissement à 2s avec easing `ease-in-out`
+**Cause** : Le `layout: 'centered'` de Storybook ne crée pas de background coloré, contrairement au decorator global qui wrappe automatiquement les stories Header
 
-```css
-animation: pulse 2s ease-in-out infinite;
+**Tentative 1** : Ajouter seulement `color: ${args.theme === 'dark' ? '...' : '...'}` sur les éléments inline
+- ❌ Ne fonctionnait pas : pas de background pour créer le contraste
+
+**Solution finale** : Wrapper chaque story Card avec une `<div>` ayant background + color
+
+```typescript
+render: (args) => `
+  <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+    <sh-card data-theme="${args.theme}">
+      <!-- Content avec colors conditionnels -->
+    </sh-card>
+  </div>
+`
 ```
 
-**Résultat** : ✅ Animation douce et professionnelle
+**Résultat** : Lisibilité parfaite en light et dark mode pour toutes les 9 stories Card
 
-### 3. Responsive des actions dans stock-item-card
+### 4. Hover Effects non visibles dans HoverEffects story
+**Problème** : Les deux cartes avaient le même comportement au hover
 
-**Problème** : Actions trop serrées sur mobile
+**Cause** : La propriété `hover` a une valeur par défaut `true`, et on ne peut pas passer `false` via HTML attributes en template string
 
-**Solution** : Media query pour passer en colonne sur mobile
+**Tentative 1** : `?hover="${false}"`
+- ❌ Ne fonctionnait pas : syntaxe invalide pour boolean attributes
 
-```css
-@media (max-width: 640px) {
-  .actions {
-    flex-direction: column;
-  }
-  .actions sh-button {
-    width: 100%;
-  }
-}
+**Solution finale** : Utiliser JavaScript pour modifier la propriété après le render
+
+```typescript
+<sh-card id="no-hover-card">...</sh-card>
+<script>
+  (function() {
+    const card = document.getElementById('no-hover-card');
+    if (card) {
+      card.hover = false;
+    }
+  })();
+</script>
 ```
 
-**Résultat** : ✅ Actions full-width lisibles sur mobile
+**Résultat** : Différence visible entre "With Hover" (effet) et "No Hover" (statique)
 
 ---
 
 ## 💡 Leçons Apprises
 
-1. **Composants Composés** : Les composants complexes comme `stock-item-card` bénéficient grandement de la réutilisation des composants atomiques (sh-badge, sh-button, sh-icon)
-
-2. **Border-left Coloré** : Utiliser `border-left: 4px solid var(--status-color)` est un excellent pattern visuel pour indiquer un statut sans être intrusif
-
-3. **Grid Auto-fit** : `grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))` est parfait pour des layouts de métriques responsive
-
-4. **Événements Custom** : Les événements custom avec `detail: {}` permettent une intégration propre dans les applications parentes
-
-5. **Loading State** : Ajouter un état `loading` avec `pointer-events: none` et `opacity: 0.6` améliore l'UX pendant les actions async
-
-6. **Animation Context** : Les animations (pulse) doivent être réservées aux états critiques pour ne pas diluer leur impact
-
-7. **JSDoc Complet** : Documenter les `@fires` events et les `@example` dès la création facilite grandement l'utilisation future
-
-8. **Variants vs Status** : Distinction claire entre `variant` (couleur visuelle) et `status` (état métier) aide à la clarté du code
-
-9. **Mobile-first Grid** : Penser au mobile dès le début (2 colonnes < 640px) évite les refactors
-
-10. **CSS Custom Properties** : Utiliser des CSS vars pour les couleurs de thème (--card-bg, --card-text, etc.) facilite le theming light/dark
+1. **Global vs Args** : `context.globals` (toolbar) != `context.args` (controls) → Besoin de sync manuelle
+2. **currentColor** : Les SVG avec `stroke: currentColor` héritent la couleur du parent → Définir color sur le parent
+3. **Storybook Layout** : `layout: 'centered'` ne crée PAS de background coloré → Wrapper manuellement si besoin
+4. **Background + Color** : Pour visibilité du texte, mettre `background` ET `color` sur le MÊME élément parent
+5. **Boolean Props HTML** : Impossible de passer `false` via HTML attributes → Utiliser JavaScript pour modifier
+6. **Nested Elements** : Les éléments inline dans les stories doivent avoir des couleurs conditionnelles
+7. **data-theme Propagation** : Tous les sous-composants doivent recevoir `data-theme="${args.theme}"`
+8. **DX Improvement** : Toggle global > Stories séparées light/dark pour l'UX
+9. **Pattern Réutilisable** : Wrapper div avec gradient + color = solution universelle pour toutes les stories
 
 ---
 
 ## 🚀 Prochaines Actions
 
-### Session 5 - Finalisation Phase 1 (2-3h)
+### Session 4 - Composants StockHub V2
 
-1. **Documentation README**
-   - [ ] Mettre à jour le README principal
-   - [ ] Ajouter exemples d'utilisation des 3 nouveaux composants
-   - [ ] Screenshots Storybook
+1. **Update sh-status-badge**
+   - [ ] Remplacer les 4 anciens statuts par les 5 nouveaux :
+     - `optimal` (vert) - Stock optimal
+     - `low` (orange) - Stock faible
+     - `critical` (rouge + pulse) - Stock critique
+     - `out-of-stock` (gris + pulse) - Rupture de stock
+     - `overstocked` (bleu) - Surstockage
+   - [ ] Ajouter animation pulse pour `critical` et `out-of-stock`
+   - [ ] Mettre à jour les stories
 
-2. **Build et Publication**
-   - [ ] Tester le build (`npm run build`)
-   - [ ] Vérifier les exports dans package.json
-   - [ ] Tag version v2.0.0
+2. **Créer nouveaux composants**
+   - [ ] sh-metric-card (carte métrique avec icône + valeur)
+   - [ ] sh-stock-item-card (carte produit avec status badge)
+   - [ ] Documenter avec JSDoc
 
-3. **Tests Visuels**
-   - [ ] Vérifier tous les composants dans Storybook
-   - [ ] Tester le theme toggle sur tous les composants
-   - [ ] Valider l'accessibilité (keyboard navigation)
-
-4. **Préparation Intégration**
-   - [ ] Créer un guide d'intégration pour StockHub V2
-   - [ ] Lister les composants React à remplacer
-   - [ ] Planifier la Session 6 (Intégration)
+3. **Commit et Versioning**
+   - [ ] Commit: "feat: Sync global theme toggle and fix header/card stories theme adaptation"
+   - [ ] Tag version v1.3.0
 
 ---
 
-## 🎉 Conclusion Session 4
+## 🎉 Conclusion Session 3
 
-Session dédiée à la **création des composants spécifiques StockHub V2**. Trois composants majeurs créés et documentés :
+Session dédiée à l'**amélioration de l'expérience développeur** et à la **cohérence visuelle**. Mise en place d'un système de theme toggle global fonctionnel avec :
 
-- ✅ **Status Badge V2** - 5 statuts avec animation pulse pour états critiques
-- ✅ **Metric Card** - Cartes KPI avec tendances et variants de couleur
-- ✅ **Stock Item Card** - Cartes produit complètes avec métriques et actions
-
-**Points forts** :
-- Composants alignés avec les besoins réels de StockHub V2
-- Réutilisation maximale des composants atomiques (badge, button, icon)
-- Documentation complète (JSDoc + stories)
-- Support light/dark mode natif
-- Accessibilité intégrée (ARIA, keyboard)
-- Responsive mobile-friendly
+- ✅ **Synchronisation automatique** - Toggle global → args.theme
+- ✅ **Composants adaptés** - Header et Card entièrement responsifs au theme
+- ✅ **Stories optimisées** - 18 stories mises à jour pour parfaite lisibilité
+- ✅ **Meilleure DX** - Un seul toggle au lieu de stories séparées light/dark
 
 **Impact positif** :
-- Design System désormais complet pour la Phase 1
-- Composants prêts pour intégration dans StockHub V2
-- Base solide pour futurs composants de gestion de stock
-- Stories Storybook complètes pour démonstration et tests
+- Meilleure cohérence visuelle
+- Stories plus faciles à tester (un clic pour changer le theme)
+- Code plus maintenable (pattern réutilisable)
+- Base solide pour les prochains composants
 
-**Statistiques cumulées (Sessions 1-4)** :
-- 12 composants créés/mis à jour
-- 40+ stories Storybook
-- Support complet light/dark mode
-- ~3000 lignes de code
-- Documentation technique complète
-
-**Prochaine session** : Finalisation et préparation intégration StockHub V2 🚀
+**Prochaine session** : Nouveaux composants StockHub V2 (metric-card, stock-item-card, status-badge V2) 🚀

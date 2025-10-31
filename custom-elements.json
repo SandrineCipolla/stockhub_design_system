@@ -4,813 +4,6 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "src/components/atoms/badge/sh-badge.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Badge component for displaying labels, statuses, counters, and categories.",
-          "name": "ShBadge",
-          "cssParts": [
-            {
-              "description": "The badge container element",
-              "name": "badge"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Default slot for badge content (text, icons, or both)",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "'success' | 'warning' | 'danger' | 'info' | 'default'"
-              },
-              "default": "'default'",
-              "description": "Visual variant of the badge (color scheme)",
-              "attribute": "variant"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "pill",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Enable fully rounded corners (pill shape)",
-              "attribute": "pill"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "'success' | 'warning' | 'danger' | 'info' | 'default'"
-              },
-              "default": "'default'",
-              "description": "Visual variant of the badge (color scheme)",
-              "fieldName": "variant"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "fieldName": "size"
-            },
-            {
-              "name": "pill",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Enable fully rounded corners (pill shape)",
-              "fieldName": "pill"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-badge",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShBadge",
-          "declaration": {
-            "name": "ShBadge",
-            "module": "src/components/atoms/badge/sh-badge.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-badge",
-          "declaration": {
-            "name": "ShBadge",
-            "module": "src/components/atoms/badge/sh-badge.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/atoms/input/sh-input.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Input component with validation, error states, and multiple sizes.",
-          "name": "ShInput",
-          "members": [
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "'text' | 'number' | 'email' | 'password' | 'tel'"
-              },
-              "default": "\"text\"",
-              "description": "Input type",
-              "attribute": "type"
-            },
-            {
-              "kind": "field",
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "description": "Placeholder text",
-              "attribute": "placeholder"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "description": "Input value",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "error",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Show error state",
-              "attribute": "error"
-            },
-            {
-              "kind": "field",
-              "name": "errorMessage",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"Ce champ est requis\"",
-              "description": "Error message to display",
-              "attribute": "errorMessage"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'small' | 'medium' | 'large'"
-              },
-              "default": "\"medium\"",
-              "description": "Size of the input",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "hideArrows",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hide number input arrows",
-              "attribute": "hideArrows"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Disable the input",
-              "attribute": "disabled"
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "description": "Input name attribute",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Mark as required field",
-              "attribute": "required"
-            },
-            {
-              "kind": "method",
-              "name": "validate",
-              "privacy": "public",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "focusInput",
-              "privacy": "public"
-            },
-            {
-              "kind": "method",
-              "name": "clear",
-              "privacy": "public"
-            },
-            {
-              "kind": "method",
-              "name": "handleInput",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleBlur",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleFocus",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "isValidEmail",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "email",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "name": "sh-input-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when input value changes"
-            },
-            {
-              "name": "sh-input-blur",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when input loses focus"
-            },
-            {
-              "name": "sh-input-focus",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when input receives focus"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "type",
-              "type": {
-                "text": "'text' | 'number' | 'email' | 'password' | 'tel'"
-              },
-              "default": "\"text\"",
-              "description": "Input type",
-              "fieldName": "type"
-            },
-            {
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "description": "Placeholder text",
-              "fieldName": "placeholder"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "description": "Input value",
-              "fieldName": "value"
-            },
-            {
-              "name": "error",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Show error state",
-              "fieldName": "error"
-            },
-            {
-              "name": "errorMessage",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"Ce champ est requis\"",
-              "description": "Error message to display",
-              "fieldName": "errorMessage"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "'small' | 'medium' | 'large'"
-              },
-              "default": "\"medium\"",
-              "description": "Size of the input",
-              "fieldName": "size"
-            },
-            {
-              "name": "hideArrows",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hide number input arrows",
-              "fieldName": "hideArrows"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Disable the input",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "description": "Input name attribute",
-              "fieldName": "name"
-            },
-            {
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Mark as required field",
-              "fieldName": "required"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-input",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShInput",
-          "declaration": {
-            "name": "ShInput",
-            "module": "src/components/atoms/input/sh-input.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-input",
-          "declaration": {
-            "name": "ShInput",
-            "module": "src/components/atoms/input/sh-input.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/atoms/logo/sh-logo.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Logo component displaying the StockHub brand with icon and text.",
-          "name": "ShLogo",
-          "cssProperties": [
-            {
-              "description": "Controls the size of the logo icon (default: 40px)",
-              "name": "--logo-icon-size"
-            },
-            {
-              "description": "Controls the size of the logo text (default: 20px)",
-              "name": "--logo-text-size"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Logo size variant",
-              "attribute": "size",
-              "reflects": true
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Logo size variant",
-              "fieldName": "size"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-logo",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShLogo",
-          "declaration": {
-            "name": "ShLogo",
-            "module": "src/components/atoms/logo/sh-logo.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-logo",
-          "declaration": {
-            "name": "ShLogo",
-            "module": "src/components/atoms/logo/sh-logo.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/atoms/text/sh-text.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Text component for rendering headings and paragraphs with custom styling.",
-          "name": "ShText",
-          "members": [
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "'title' | 'paragraph'"
-              },
-              "default": "'paragraph'",
-              "description": "Type of text element",
-              "attribute": "type"
-            },
-            {
-              "kind": "field",
-              "name": "content",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Text content to display",
-              "attribute": "content"
-            },
-            {
-              "kind": "field",
-              "name": "tag",
-              "type": {
-                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
-              },
-              "default": "'h1'",
-              "description": "HTML tag to use when type is 'title'",
-              "attribute": "tag"
-            },
-            {
-              "kind": "field",
-              "name": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "'inherit'",
-              "description": "Text color (overrides theme colors)",
-              "attribute": "color"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "description": "Theme variant",
-              "attribute": "data-theme",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "renderWithTag",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "tag",
-                  "type": {
-                    "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'"
-                  }
-                },
-                {
-                  "name": "content",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "data-theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "description": "Theme variant",
-              "fieldName": "theme",
-              "attribute": "data-theme"
-            },
-            {
-              "name": "type",
-              "type": {
-                "text": "'title' | 'paragraph'"
-              },
-              "default": "'paragraph'",
-              "description": "Type of text element",
-              "fieldName": "type"
-            },
-            {
-              "name": "content",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Text content to display",
-              "fieldName": "content"
-            },
-            {
-              "name": "tag",
-              "type": {
-                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
-              },
-              "default": "'h1'",
-              "description": "HTML tag to use when type is 'title'",
-              "fieldName": "tag"
-            },
-            {
-              "name": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "'inherit'",
-              "description": "Text color (overrides theme colors)",
-              "fieldName": "color"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-text",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShText",
-          "declaration": {
-            "name": "ShText",
-            "module": "src/components/atoms/text/sh-text.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-text",
-          "declaration": {
-            "name": "ShText",
-            "module": "src/components/atoms/text/sh-text.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/atoms/icon/sh-icon.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Icon component that displays Lucide icons with various sizes and colors.",
-          "name": "ShIcon",
-          "members": [
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "IconName"
-              },
-              "default": "\"CircleHelp\"",
-              "description": "Name of the Lucide icon to display",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
-              },
-              "default": "\"md\"",
-              "description": "Size of the icon",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "color",
-              "type": {
-                "text": "'primary' | 'success' | 'warning' | 'danger' | 'muted' | 'inherit'"
-              },
-              "default": "\"inherit\"",
-              "description": "Color theme for the icon",
-              "attribute": "color"
-            },
-            {
-              "kind": "field",
-              "name": "clickable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enable interactive hover effects",
-              "attribute": "clickable"
-            },
-            {
-              "kind": "field",
-              "name": "spin",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enable spinning animation",
-              "attribute": "spin"
-            },
-            {
-              "kind": "method",
-              "name": "buildSVGFromIconData",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "iconData",
-                  "type": {
-                    "text": "any[]"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "getIconSVG",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "name",
-              "type": {
-                "text": "IconName"
-              },
-              "default": "\"CircleHelp\"",
-              "description": "Name of the Lucide icon to display",
-              "fieldName": "name"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
-              },
-              "default": "\"md\"",
-              "description": "Size of the icon",
-              "fieldName": "size"
-            },
-            {
-              "name": "color",
-              "type": {
-                "text": "'primary' | 'success' | 'warning' | 'danger' | 'muted' | 'inherit'"
-              },
-              "default": "\"inherit\"",
-              "description": "Color theme for the icon",
-              "fieldName": "color"
-            },
-            {
-              "name": "clickable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enable interactive hover effects",
-              "fieldName": "clickable"
-            },
-            {
-              "name": "spin",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Enable spinning animation",
-              "fieldName": "spin"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-icon",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShIcon",
-          "declaration": {
-            "name": "ShIcon",
-            "module": "src/components/atoms/icon/sh-icon.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-icon",
-          "declaration": {
-            "name": "ShIcon",
-            "module": "src/components/atoms/icon/sh-icon.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/molecules/button/sh-button.ts",
       "declarations": [
         {
@@ -1063,6 +256,129 @@
           "declaration": {
             "name": "ShButton",
             "module": "src/components/molecules/button/sh-button.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/molecules/quantity-input/sh-quantity-input.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Quantity input component with sync button for inventory management.",
+          "name": "ShQuantityInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Current quantity value",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "dirty",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates if value has changed",
+              "attribute": "dirty"
+            },
+            {
+              "kind": "field",
+              "name": "hideArrows",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide number input arrows",
+              "attribute": "hideArrows"
+            },
+            {
+              "kind": "method",
+              "name": "handleInputChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "CustomEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleSync",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "sync",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when sync button is clicked with updated value"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Current quantity value",
+              "fieldName": "value"
+            },
+            {
+              "name": "dirty",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates if value has changed",
+              "fieldName": "dirty"
+            },
+            {
+              "name": "hideArrows",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide number input arrows",
+              "fieldName": "hideArrows"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-quantity-input",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShQuantityInput",
+          "declaration": {
+            "name": "ShQuantityInput",
+            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-quantity-input",
+          "declaration": {
+            "name": "ShQuantityInput",
+            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
           }
         }
       ]
@@ -1453,223 +769,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/molecules/quantity-input/sh-quantity-input.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Quantity input component with sync button for inventory management.",
-          "name": "ShQuantityInput",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Current quantity value",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "dirty",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Indicates if value has changed",
-              "attribute": "dirty"
-            },
-            {
-              "kind": "field",
-              "name": "hideArrows",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hide number input arrows",
-              "attribute": "hideArrows"
-            },
-            {
-              "kind": "method",
-              "name": "handleInputChange",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "CustomEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleSync",
-              "privacy": "private"
-            }
-          ],
-          "events": [
-            {
-              "name": "sync",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when sync button is clicked with updated value"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Current quantity value",
-              "fieldName": "value"
-            },
-            {
-              "name": "dirty",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Indicates if value has changed",
-              "fieldName": "dirty"
-            },
-            {
-              "name": "hideArrows",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hide number input arrows",
-              "fieldName": "hideArrows"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-quantity-input",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShQuantityInput",
-          "declaration": {
-            "name": "ShQuantityInput",
-            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-quantity-input",
-          "declaration": {
-            "name": "ShQuantityInput",
-            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/molecules/status-badge/sh-status-badge.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Status badge component for displaying stock status with icons and animations.",
-          "name": "ShStatusBadge",
-          "members": [
-            {
-              "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
-              },
-              "default": "'optimal'",
-              "description": "Stock status type",
-              "attribute": "status"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Custom label override",
-              "attribute": "label"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "status",
-              "type": {
-                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
-              },
-              "default": "'optimal'",
-              "description": "Stock status type",
-              "fieldName": "status"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "fieldName": "size"
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Custom label override",
-              "fieldName": "label"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-status-badge",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShStatusBadge",
-          "declaration": {
-            "name": "ShStatusBadge",
-            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-status-badge",
-          "declaration": {
-            "name": "ShStatusBadge",
-            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/molecules/search-input/sh-search-input.ts",
       "declarations": [
         {
@@ -1868,6 +967,926 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/atoms/badge/sh-badge.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Badge component for displaying labels, statuses, counters, and categories.",
+          "name": "ShBadge",
+          "cssParts": [
+            {
+              "description": "The badge container element",
+              "name": "badge"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Default slot for badge content (text, icons, or both)",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "'success' | 'warning' | 'danger' | 'info' | 'default'"
+              },
+              "default": "'default'",
+              "description": "Visual variant of the badge (color scheme)",
+              "attribute": "variant"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "pill",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Enable fully rounded corners (pill shape)",
+              "attribute": "pill"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "'success' | 'warning' | 'danger' | 'info' | 'default'"
+              },
+              "default": "'default'",
+              "description": "Visual variant of the badge (color scheme)",
+              "fieldName": "variant"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "fieldName": "size"
+            },
+            {
+              "name": "pill",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Enable fully rounded corners (pill shape)",
+              "fieldName": "pill"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-badge",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShBadge",
+          "declaration": {
+            "name": "ShBadge",
+            "module": "src/components/atoms/badge/sh-badge.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-badge",
+          "declaration": {
+            "name": "ShBadge",
+            "module": "src/components/atoms/badge/sh-badge.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/molecules/status-badge/sh-status-badge.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Status badge component for displaying stock status with icons and animations.",
+          "name": "ShStatusBadge",
+          "members": [
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
+              },
+              "default": "'optimal'",
+              "description": "Stock status type",
+              "attribute": "status"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Custom label override",
+              "attribute": "label"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "status",
+              "type": {
+                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
+              },
+              "default": "'optimal'",
+              "description": "Stock status type",
+              "fieldName": "status"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "fieldName": "size"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Custom label override",
+              "fieldName": "label"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-status-badge",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShStatusBadge",
+          "declaration": {
+            "name": "ShStatusBadge",
+            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-status-badge",
+          "declaration": {
+            "name": "ShStatusBadge",
+            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/atoms/icon/sh-icon.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Icon component that displays Lucide icons with various sizes and colors.",
+          "name": "ShIcon",
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "IconName"
+              },
+              "default": "\"CircleHelp\"",
+              "description": "Name of the Lucide icon to display",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "\"md\"",
+              "description": "Size of the icon",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "'primary' | 'success' | 'warning' | 'danger' | 'muted' | 'inherit'"
+              },
+              "default": "\"inherit\"",
+              "description": "Color theme for the icon",
+              "attribute": "color"
+            },
+            {
+              "kind": "field",
+              "name": "clickable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enable interactive hover effects",
+              "attribute": "clickable"
+            },
+            {
+              "kind": "field",
+              "name": "spin",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enable spinning animation",
+              "attribute": "spin"
+            },
+            {
+              "kind": "method",
+              "name": "buildSVGFromIconData",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "iconData",
+                  "type": {
+                    "text": "any[]"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getIconSVG",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "IconName"
+              },
+              "default": "\"CircleHelp\"",
+              "description": "Name of the Lucide icon to display",
+              "fieldName": "name"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "\"md\"",
+              "description": "Size of the icon",
+              "fieldName": "size"
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "'primary' | 'success' | 'warning' | 'danger' | 'muted' | 'inherit'"
+              },
+              "default": "\"inherit\"",
+              "description": "Color theme for the icon",
+              "fieldName": "color"
+            },
+            {
+              "name": "clickable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enable interactive hover effects",
+              "fieldName": "clickable"
+            },
+            {
+              "name": "spin",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Enable spinning animation",
+              "fieldName": "spin"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-icon",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShIcon",
+          "declaration": {
+            "name": "ShIcon",
+            "module": "src/components/atoms/icon/sh-icon.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-icon",
+          "declaration": {
+            "name": "ShIcon",
+            "module": "src/components/atoms/icon/sh-icon.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/atoms/input/sh-input.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Input component with validation, error states, and multiple sizes.",
+          "name": "ShInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "'text' | 'number' | 'email' | 'password' | 'tel'"
+              },
+              "default": "\"text\"",
+              "description": "Input type",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Placeholder text",
+              "attribute": "placeholder"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Input value",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Show error state",
+              "attribute": "error"
+            },
+            {
+              "kind": "field",
+              "name": "errorMessage",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Ce champ est requis\"",
+              "description": "Error message to display",
+              "attribute": "errorMessage"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'small' | 'medium' | 'large'"
+              },
+              "default": "\"medium\"",
+              "description": "Size of the input",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "hideArrows",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide number input arrows",
+              "attribute": "hideArrows"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Disable the input",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Input name attribute",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Mark as required field",
+              "attribute": "required"
+            },
+            {
+              "kind": "field",
+              "name": "ariaLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Accessible label for screen readers",
+              "attribute": "ariaLabel"
+            },
+            {
+              "kind": "method",
+              "name": "validate",
+              "privacy": "public",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "focusInput",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "clear",
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "handleInput",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleBlur",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleFocus",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "isValidEmail",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "email",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-input-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when input value changes"
+            },
+            {
+              "name": "sh-input-blur",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when input loses focus"
+            },
+            {
+              "name": "sh-input-focus",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when input receives focus"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "type",
+              "type": {
+                "text": "'text' | 'number' | 'email' | 'password' | 'tel'"
+              },
+              "default": "\"text\"",
+              "description": "Input type",
+              "fieldName": "type"
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Placeholder text",
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Input value",
+              "fieldName": "value"
+            },
+            {
+              "name": "error",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Show error state",
+              "fieldName": "error"
+            },
+            {
+              "name": "errorMessage",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Ce champ est requis\"",
+              "description": "Error message to display",
+              "fieldName": "errorMessage"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'small' | 'medium' | 'large'"
+              },
+              "default": "\"medium\"",
+              "description": "Size of the input",
+              "fieldName": "size"
+            },
+            {
+              "name": "hideArrows",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide number input arrows",
+              "fieldName": "hideArrows"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Disable the input",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Input name attribute",
+              "fieldName": "name"
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Mark as required field",
+              "fieldName": "required"
+            },
+            {
+              "name": "ariaLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Accessible label for screen readers",
+              "fieldName": "ariaLabel"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-input",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShInput",
+          "declaration": {
+            "name": "ShInput",
+            "module": "src/components/atoms/input/sh-input.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-input",
+          "declaration": {
+            "name": "ShInput",
+            "module": "src/components/atoms/input/sh-input.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/atoms/text/sh-text.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Text component for rendering headings and paragraphs with custom styling.",
+          "name": "ShText",
+          "members": [
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "'title' | 'paragraph'"
+              },
+              "default": "'paragraph'",
+              "description": "Type of text element",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "content",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Text content to display",
+              "attribute": "content"
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "type": {
+                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
+              },
+              "default": "'h1'",
+              "description": "HTML tag to use when type is 'title'",
+              "attribute": "tag"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "'inherit'",
+              "description": "Text color (overrides theme colors)",
+              "attribute": "color"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "description": "Theme variant",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "renderWithTag",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "tag",
+                  "type": {
+                    "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'"
+                  }
+                },
+                {
+                  "name": "content",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "description": "Theme variant",
+              "fieldName": "theme",
+              "attribute": "data-theme"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "'title' | 'paragraph'"
+              },
+              "default": "'paragraph'",
+              "description": "Type of text element",
+              "fieldName": "type"
+            },
+            {
+              "name": "content",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Text content to display",
+              "fieldName": "content"
+            },
+            {
+              "name": "tag",
+              "type": {
+                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
+              },
+              "default": "'h1'",
+              "description": "HTML tag to use when type is 'title'",
+              "fieldName": "tag"
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "'inherit'",
+              "description": "Text color (overrides theme colors)",
+              "fieldName": "color"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-text",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShText",
+          "declaration": {
+            "name": "ShText",
+            "module": "src/components/atoms/text/sh-text.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-text",
+          "declaration": {
+            "name": "ShText",
+            "module": "src/components/atoms/text/sh-text.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/atoms/logo/sh-logo.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Logo component displaying the StockHub brand with icon and text.",
+          "name": "ShLogo",
+          "cssProperties": [
+            {
+              "description": "Controls the size of the logo icon (default: 40px)",
+              "name": "--logo-icon-size"
+            },
+            {
+              "description": "Controls the size of the logo text (default: 20px)",
+              "name": "--logo-text-size"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Logo size variant",
+              "attribute": "size",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Logo size variant",
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-logo",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShLogo",
+          "declaration": {
+            "name": "ShLogo",
+            "module": "src/components/atoms/logo/sh-logo.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-logo",
+          "declaration": {
+            "name": "ShLogo",
+            "module": "src/components/atoms/logo/sh-logo.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/organisms/footer/sh-footer.ts",
       "declarations": [
         {
@@ -1974,172 +1993,6 @@
           "declaration": {
             "name": "ShFooter",
             "module": "src/components/organisms/footer/sh-footer.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/organisms/header/sh-header.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Header component with logo, notifications, theme toggle, and user actions.\r\nMatches StockHub V2 design with glassmorphism and sticky positioning.",
-          "name": "ShHeader",
-          "members": [
-            {
-              "kind": "field",
-              "name": "userName",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Utilisateur'",
-              "description": "User name to display",
-              "attribute": "user-name"
-            },
-            {
-              "kind": "field",
-              "name": "notificationCount",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Number of unread notifications",
-              "attribute": "notification-count"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "description": "Current theme (light or dark)",
-              "attribute": "data-theme",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "isLoggedIn",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Login state - if true shows Logout, if false shows Login",
-              "attribute": "isLoggedIn"
-            },
-            {
-              "kind": "method",
-              "name": "_handleNotificationClick",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleThemeToggle",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleLoginClick",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleLogoutClick",
-              "privacy": "private"
-            }
-          ],
-          "events": [
-            {
-              "name": "sh-notification-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when notification button is clicked"
-            },
-            {
-              "name": "sh-theme-toggle",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when theme toggle button is clicked"
-            },
-            {
-              "name": "sh-login-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when login button is clicked (when isLoggedIn=false)"
-            },
-            {
-              "name": "sh-logout-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when logout button is clicked (when isLoggedIn=true)"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "user-name",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Utilisateur'",
-              "description": "User name to display",
-              "fieldName": "userName"
-            },
-            {
-              "name": "notification-count",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Number of unread notifications",
-              "fieldName": "notificationCount"
-            },
-            {
-              "name": "data-theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "description": "Current theme (light or dark)",
-              "fieldName": "theme"
-            },
-            {
-              "name": "isLoggedIn",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Login state - if true shows Logout, if false shows Login",
-              "fieldName": "isLoggedIn"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-header",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShHeader",
-          "declaration": {
-            "name": "ShHeader",
-            "module": "src/components/organisms/header/sh-header.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-header",
-          "declaration": {
-            "name": "ShHeader",
-            "module": "src/components/organisms/header/sh-header.ts"
           }
         }
       ]
@@ -2322,57 +2175,32 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts",
+      "path": "src/components/organisms/header/sh-header.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "",
-          "name": "ShIaAlertBanner",
+          "description": "Header component with logo, notifications, theme toggle, and user actions.\r\nMatches StockHub V2 design with glassmorphism and sticky positioning.",
+          "name": "ShHeader",
           "members": [
             {
               "kind": "field",
-              "name": "count",
+              "name": "userName",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Utilisateur'",
+              "description": "User name to display",
+              "attribute": "user-name"
+            },
+            {
+              "kind": "field",
+              "name": "notificationCount",
               "type": {
                 "text": "number"
               },
               "default": "0",
-              "attribute": "count"
-            },
-            {
-              "kind": "field",
-              "name": "severity",
-              "type": {
-                "text": "'critical' | 'warning' | 'info'"
-              },
-              "default": "'critical'",
-              "attribute": "severity"
-            },
-            {
-              "kind": "field",
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "default": "'stocks nécessitent votre attention'",
-              "attribute": "message"
-            },
-            {
-              "kind": "field",
-              "name": "alerts",
-              "type": {
-                "text": "IaAlert[]"
-              },
-              "default": "[]",
-              "attribute": "alerts"
-            },
-            {
-              "kind": "field",
-              "name": "expanded",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "attribute": "expanded"
+              "description": "Number of unread notifications",
+              "attribute": "notification-count"
             },
             {
               "kind": "field",
@@ -2381,87 +2209,89 @@
                 "text": "'light' | 'dark'"
               },
               "default": "'dark'",
+              "description": "Current theme (light or dark)",
               "attribute": "data-theme",
               "reflects": true
             },
             {
-              "kind": "method",
-              "name": "_toggleExpanded",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleItemClick",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "alert",
-                  "type": {
-                    "text": "IaAlert"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "name": "sh-ia-alert-toggle",
-              "type": {
-                "text": "CustomEvent"
-              }
-            },
-            {
-              "name": "sh-ia-alert-item-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis lors du clic sur un item"
-            },
-            {
-              "description": "Émis lors du clic sur le bandeau",
-              "name": "sh-ia-alert-click"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "count",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "fieldName": "count"
-            },
-            {
-              "name": "severity",
-              "type": {
-                "text": "'critical' | 'warning' | 'info'"
-              },
-              "default": "'critical'",
-              "fieldName": "severity"
-            },
-            {
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "default": "'stocks nécessitent votre attention'",
-              "fieldName": "message"
-            },
-            {
-              "name": "alerts",
-              "type": {
-                "text": "IaAlert[]"
-              },
-              "default": "[]",
-              "fieldName": "alerts"
-            },
-            {
-              "name": "expanded",
+              "kind": "field",
+              "name": "isLoggedIn",
               "type": {
                 "text": "boolean"
               },
               "default": "true",
-              "fieldName": "expanded"
+              "description": "Login state - if true shows Logout, if false shows Login",
+              "attribute": "isLoggedIn"
+            },
+            {
+              "kind": "method",
+              "name": "_handleNotificationClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleThemeToggle",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleLoginClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleLogoutClick",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-notification-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when notification button is clicked"
+            },
+            {
+              "name": "sh-theme-toggle",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when theme toggle button is clicked"
+            },
+            {
+              "name": "sh-login-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when login button is clicked (when isLoggedIn=false)"
+            },
+            {
+              "name": "sh-logout-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when logout button is clicked (when isLoggedIn=true)"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "user-name",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Utilisateur'",
+              "description": "User name to display",
+              "fieldName": "userName"
+            },
+            {
+              "name": "notification-count",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Number of unread notifications",
+              "fieldName": "notificationCount"
             },
             {
               "name": "data-theme",
@@ -2469,33 +2299,42 @@
                 "text": "'light' | 'dark'"
               },
               "default": "'dark'",
+              "description": "Current theme (light or dark)",
               "fieldName": "theme"
+            },
+            {
+              "name": "isLoggedIn",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Login state - if true shows Logout, if false shows Login",
+              "fieldName": "isLoggedIn"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "sh-ia-alert-banner",
-          "customElement": true,
-          "summary": "Bandeau d'alertes IA pour les stocks nécessitant attention"
+          "tagName": "sh-header",
+          "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "ShIaAlertBanner",
+          "name": "ShHeader",
           "declaration": {
-            "name": "ShIaAlertBanner",
-            "module": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts"
+            "name": "ShHeader",
+            "module": "src/components/organisms/header/sh-header.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "sh-ia-alert-banner",
+          "name": "sh-header",
           "declaration": {
-            "name": "ShIaAlertBanner",
-            "module": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts"
+            "name": "ShHeader",
+            "module": "src/components/organisms/header/sh-header.ts"
           }
         }
       ]
@@ -2763,6 +2602,186 @@
           "declaration": {
             "name": "ShStockCard",
             "module": "src/components/organisms/stock-card/sh-stock-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ShIaAlertBanner",
+          "members": [
+            {
+              "kind": "field",
+              "name": "count",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "count"
+            },
+            {
+              "kind": "field",
+              "name": "severity",
+              "type": {
+                "text": "'critical' | 'warning' | 'info'"
+              },
+              "default": "'critical'",
+              "attribute": "severity"
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "'stocks nécessitent votre attention'",
+              "attribute": "message"
+            },
+            {
+              "kind": "field",
+              "name": "alerts",
+              "type": {
+                "text": "IaAlert[]"
+              },
+              "default": "[]",
+              "attribute": "alerts"
+            },
+            {
+              "kind": "field",
+              "name": "expanded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "expanded"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_toggleExpanded",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleItemClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "alert",
+                  "type": {
+                    "text": "IaAlert"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-ia-alert-toggle",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "sh-ia-alert-item-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis lors du clic sur un item"
+            },
+            {
+              "description": "Émis lors du clic sur le bandeau",
+              "name": "sh-ia-alert-click"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "count",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "count"
+            },
+            {
+              "name": "severity",
+              "type": {
+                "text": "'critical' | 'warning' | 'info'"
+              },
+              "default": "'critical'",
+              "fieldName": "severity"
+            },
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "'stocks nécessitent votre attention'",
+              "fieldName": "message"
+            },
+            {
+              "name": "alerts",
+              "type": {
+                "text": "IaAlert[]"
+              },
+              "default": "[]",
+              "fieldName": "alerts"
+            },
+            {
+              "name": "expanded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "expanded"
+            },
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "fieldName": "theme"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-ia-alert-banner",
+          "customElement": true,
+          "summary": "Bandeau d'alertes IA pour les stocks nécessitant attention"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShIaAlertBanner",
+          "declaration": {
+            "name": "ShIaAlertBanner",
+            "module": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-ia-alert-banner",
+          "declaration": {
+            "name": "ShIaAlertBanner",
+            "module": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts"
           }
         }
       ]

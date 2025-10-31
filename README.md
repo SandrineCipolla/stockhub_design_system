@@ -1,19 +1,21 @@
 # StockHub Design System
 
+![Accessibilité Lighthouse](https://img.shields.io/badge/accessibility-90%2F100-brightgreen?logo=lighthouse)
+
 > Design System réutilisable (web + mobile) basé sur Web Components (Lit Element)
 
-## 📋 Contexte & Stratégie Complète
+## 📋 Contexte
 
-**Ce Design System est développé selon la stratégie documentée dans** :
-- **Repo** : StockHubV2
-- **Branche** : `feature/ai-business-intelligence`
-- **Chemin** : `Front_End/stockHub_V2_front/documentation/planning/STORYBOOK-ARCHITECTURE-STRATEGY.md`
+Ce Design System a été créé pour **StockHub V2**, une application de gestion de stock avec intelligence artificielle.
 
-Cette stratégie définit :
-- Architecture à 2 niveaux (CategoryCard → StockItemCard)
-- Migration progressive vers Web Components
-- Méthodologie Atomic Design (Atoms, Molecules, Organisms)
-- Plan de développement en sessions
+Le projet contient **16 composants Web Components réutilisables** couvrant tous les besoins de l'application :
+- **Composants de base (atoms)** : badges, icônes Lucide, inputs, logo, texte
+- **Composants composés (molecules)** : buttons, cards, metric-card, search, status-badge, quantity-input
+- **Composants complexes (organisms)** : header, footer, page-header, ia-alert-banner, stock-card, stock-item-card
+
+Développé selon la **méthodologie Atomic Design** avec une approche progressive et itérative. Le projet évolue continuellement en fonction des besoins de StockHub V2.
+
+> **📚 Documentation complète** : Voir l'historique des sessions, la stratégie et le planning → [documentation/INDEX.md](./documentation/INDEX.md)
 
 ## 🎯 Vision & Objectifs
 
@@ -347,7 +349,7 @@ Badge spécialisé pour statuts de stock avec icônes Lucide et animation pulse 
 - **low** (orange) - Stock faible avec icône AlertCircle
 - **critical** (rouge + pulse) - Stock critique avec icône AlertTriangle
 - **out-of-stock** (gris + pulse) - Rupture de stock avec icône XCircle
-- **overstocked** (bleu) - Surstockage avec icône TrendingUp
+- **overstockage** (bleu) - Surstockage avec icône TrendingUp
 
 ```html
 <!-- Stock optimal -->
@@ -389,9 +391,19 @@ Header de l'application.
 
 ## 📖 Storybook
 
-### 🌐 Accès en ligne (Chromatic)
+### 🌐 Accès en ligne
 
-Le Storybook est **automatiquement déployé** sur Chromatic à chaque commit (sur master ou feature branches) :
+#### GitHub Pages (Documentation principale)
+
+Le Storybook est **automatiquement déployé** sur GitHub Pages à chaque push sur `master` :
+
+- **Documentation officielle** : `https://<username>.github.io/stockhub_design_system/`
+- **Toujours à jour** : Reflète la dernière version de `master`
+- **Public** : Accessible sans authentification
+
+#### Chromatic (Visual Testing)
+
+Le Storybook est également déployé sur Chromatic pour les tests visuels :
 
 - **Voir le Storybook en ligne** : https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/
 - **Dashboard Chromatic** : https://www.chromatic.com/builds?appId=68f5fbe10f495706cb168751
@@ -506,45 +518,52 @@ export * from './components/atoms/badge/sh-badge';
 
 ## 🎨 Design Tokens
 
-Les design tokens sont centralisés dans `src/tokens/tokens.json` et générés automatiquement en CSS.
+Le Design System utilise un **système de Design Tokens centralisé** pour garantir la cohérence visuelle et faciliter la maintenance.
 
-### Utiliser les Tokens
+### Principe
 
-Dans les composants Lit :
+Les tokens sont définis dans `src/tokens/tokens.json` (source unique) et automatiquement convertis en CSS variables.
+
 ```typescript
+// Dans tokens.json (source)
+{ "color": { "primary": { "500": { "value": "#8b5cf6" } } } }
+
+// ↓ Génère automatiquement
+
+// Dans design-tokens.css
+:root { --color-primary-500: #8b5cf6; }
+
+// ↓ Utilisable dans tous les composants
+
 static styles = css`
-  button {
-    background: var(--color-primary-600);
-    padding: var(--spacing-md);
-    border-radius: var(--radius-md);
-    font-size: var(--font-fontSize-base);
-  }
+  button { background: var(--color-primary-500); }
 `;
 ```
 
 ### Tokens Disponibles
 
-#### Couleurs
-- **Primary (Purple)** : `--color-primary-50` à `--color-primary-900`
-- **Success (Green)** : `--color-success-50` à `--color-success-900`
-- **Warning (Amber)** : `--color-warning-50` à `--color-warning-900`
-- **Danger (Red)** : `--color-danger-50` à `--color-danger-900`
-- **Neutral (Gray)** : `--color-neutral-50` à `--color-neutral-900`
+- **150+ variables CSS** : Couleurs, spacing, typography, border-radius, shadows
+- **6 palettes** : primary, success, warning, danger, neutral, info (9 nuances chacune)
+- **Support thème** : Dark (défaut) + Light avec tokens sémantiques
+- **Type-safe** : Autocomplétion TypeScript
 
-#### Spacing
-- `--spacing-xs`, `--spacing-sm`, `--spacing-md`, `--spacing-lg`, `--spacing-xl`
+### Scripts
 
-#### Typography
-- `--font-fontSize-xs`, `--font-fontSize-sm`, `--font-fontSize-base`, etc.
-- `--font-fontWeight-normal`, `--font-fontWeight-medium`, `--font-fontWeight-bold`
-
-#### Border Radius
-- `--radius-sm`, `--radius-md`, `--radius-lg`, `--radius-full`
-
-### Générer les Tokens
 ```bash
+# Générer design-tokens.css depuis tokens.json
 npm run tokens:generate
+
+# Régénérer automatiquement au changement
+npm run tokens:watch
 ```
+
+### 📚 Documentation Complète
+
+Voir **[DESIGN-TOKENS.md](./documentation/DESIGN-TOKENS.md)** pour :
+- Pourquoi utiliser des Design Tokens ?
+- Architecture du système (tokens.json → CSS)
+- Workflow complet et bonnes pratiques
+- Liste exhaustive des tokens disponibles
 
 ## 🚀 Build & Distribution
 
@@ -560,18 +579,63 @@ npm run build-storybook
 npm run build:all
 ```
 
-### Publication NPM
+### Publication NPM (Optionnel)
+
+Le package est **prêt pour publication** sur npm avec configuration restricted.
+
+**Utilisation actuelle** : Installation via git repository dans StockHub V2
+```bash
+# Dans StockHub V2 package.json
+"@stockhub/design-system": "git+https://github.com/SandrineCipolla/stockhub_design_system.git"
+```
+
+**Publication future (si nécessaire)** :
 ```bash
 # Préparer release
 npm version patch|minor|major
 
-# Publier (actuellement restricted)
+# Publier sur npm (nécessite npm organization)
 npm publish
 ```
 
+> **Note** : La configuration `"access": "restricted"` dans package.json nécessite un compte npm organization payant. Pour publication publique gratuite, changer en `"access": "public"`.
+
 ## 🧪 Tests
 
-**Note** : Tests à implémenter selon stratégie (coverage objectif : ≥ 93%)
+### Tests d'Interaction Storybook ✅
+
+**100% des composants interactifs ont des tests d'interaction complets** avec `@storybook/test` :
+
+- **9 composants testés** (44 tests au total)
+- **Tous les événements custom** vérifiés avec leurs payloads
+- **États et comportements** : loading, disabled, error, validation, keyboard navigation
+- **Shadow DOM** : gestion simple et imbriquée (ex: sh-stock-card → sh-button → button natif)
+
+**Composants testés** :
+1. `sh-button` - Click, hover, disabled
+2. `sh-quantity-input` - Sync event, dirty state
+3. `sh-search-input` - Search events, clear, debounce
+4. `sh-input` - Validation (email, required), focus/blur
+5. `sh-card` - Click, keyboard (Enter/Space/Tab), focus
+6. `sh-header` - Notification, theme toggle, login/logout
+7. `sh-ia-alert-banner` - Toggle, item click, collapsed state
+8. `sh-stock-card` - 4 boutons d'action, loading, badge IA
+9. `sh-stock-item-card` - 3 boutons d'action, optional fields
+
+**Lancer les tests** :
+```bash
+npm run storybook
+# Naviguez vers les stories "InteractionTest*" de chaque composant
+```
+
+**Documentation détaillée** : Voir [INTERACTION_TESTS_TRACKING.md](./INTERACTION_TESTS_TRACKING.md) pour :
+- Problèmes rencontrés et solutions
+- Patterns et bonnes pratiques Shadow DOM
+- Changelog complet
+
+### Tests Unitaires
+
+**Note** : Tests unitaires à implémenter selon stratégie (coverage objectif : ≥ 93%)
 
 ```bash
 npm run test
@@ -700,98 +764,85 @@ StockHubV2/Front_End/stockHub_V2_front/documentation/planning/
 └── SESSION-1-SUMMARY.md                  # Résumé Session 1
 ```
 
+## 📚 Documentation Avancée
+
+Pour une documentation détaillée du projet, consultez **[documentation/INDEX.md](./documentation/INDEX.md)** qui contient :
+
+### 📋 Planning & Stratégie
+- **[MIGRATION-PLAN.md](./documentation/planning/MIGRATION-PLAN.md)** - Plan complet de migration
+- **[COMPONENT-SPECIFICATIONS.md](./documentation/planning/COMPONENT-SPECIFICATIONS.md)** - Spécifications techniques
+- **[SPRINT-1-CHECKLIST.md](./documentation/planning/SPRINT-1-CHECKLIST.md)** - Checklist opérationnelle
+- **[INTEGRATION-PLAN.md](./documentation/planning/INTEGRATION-PLAN.md)** - Plan d'intégration StockHub V2
+
+### 📝 Sessions de Développement (8 sessions)
+- **[Session 1-8](./documentation/INDEX.md#-sessions-de-développement)** - Résumés détaillés de toutes les sessions (~17h30)
+
+### 🔧 Guides Techniques
+- **[DESIGN-TOKENS.md](./documentation/DESIGN-TOKENS.md)** - Système de Design Tokens (pourquoi, comment, bonnes pratiques)
+- **[REACT-INTEGRATION-GUIDE.md](./documentation/REACT-INTEGRATION-GUIDE.md)** - Intégration Web Components dans React
+- **[COMPONENT-DOCUMENTATION.md](./documentation/COMPONENT-DOCUMENTATION.md)** - Guide JSDoc et documentation automatique
+
+### 🎯 Accès Rapide
+- **Je veux comprendre le plan global** → [MIGRATION-PLAN.md](./documentation/planning/MIGRATION-PLAN.md)
+- **Je vais développer un composant** → [COMPONENT-SPECIFICATIONS.md](./documentation/planning/COMPONENT-SPECIFICATIONS.md)
+- **Je dois intégrer dans StockHub V2** → [REACT-INTEGRATION-GUIDE.md](./documentation/REACT-INTEGRATION-GUIDE.md)
+- **Je veux voir l'historique des sessions** → [INDEX.md](./documentation/INDEX.md)
+
 ## 📈 Progression
 
-### ✅ Session 1 (Complétée - 3h30)
-- ✅ Storybook configuré
-- ✅ Lit Element setup
-- ✅ 3 nouveaux composants: `sh-badge`, `sh-status-badge`, `sh-card`
-- ✅ `sh-button` amélioré (ghost, loading, icons)
-- ✅ **Migration vers Lucide** (compatibilité StockHub V2)
-- ✅ Résolution problèmes affichage Storybook
-- ✅ Documentation complète
+Le projet a complété **8 sessions de développement** (~17h30) permettant la création de **16 composants Web Components** prêts pour la production.
 
-### ✅ Session 2 (Complétée - 2h)
-- ✅ **Système de thème global** dans Storybook (toggle light/dark)
-- ✅ **sh-text** amélioré avec support thème complet
-- ✅ **35+ stories** mises à jour avec support thème
-- ✅ **sh-quantity-input** migré vers Lucide (RefreshCw icon)
-- ✅ Decorator global pour synchronisation automatique
-- ✅ Backgrounds adaptatifs dans toutes les stories
-- ✅ Documentation CHANGELOG et README mise à jour
+### 🎯 Métriques Clés
+- ✅ **16 composants** : 5 atoms, 6 molecules, 5 organisms
+- ✅ **100% WCAG AA** : Accessibilité complète validée
+- ✅ **Lucide icons** : Migration complète (1000+ icônes disponibles)
+- ✅ **Thème global** : Support dark/light avec toggle Storybook
+- ✅ **Documentation automatique** : JSDoc + Custom Elements Manifest
+- ✅ **CI/CD Chromatic** : Déploiement et visual testing automatique
 
-### ✅ Session Maintenance (Complétée - 2h)
-- ✅ **Build fixes** : Configuration ES modules pour build NPM
-- ✅ **Code quality** : 13 issues GitHub Copilot résolues
-- ✅ **UX improvements** : Header logout/login, dirty state docs, card overflow
-- ✅ **CI/CD Chromatic** : Déploiement automatique, visual testing, workflow optimisé
-- ✅ **Sécurité** : Permissions minimales, concurrency group, protection forks
+### 📝 Sessions Complétées
 
-### ✅ Session 3 (Complétée - 2h00) - Theme Toggle Global
-**Objectif** : Synchroniser le toggle theme global de Storybook avec tous les composants
+**Phase 1 : Fondations (16-19 Oct)**
+- ✅ [Session 1](./documentation/planning/SESSION-1-SUMMARY.md) (16/10, 3h) - Setup initial, 5 composants de base
+- ✅ [Session 2](./documentation/planning/SESSION-2-SUMMARY.md) (19/10, 2h) - Système de thème global
+- ✅ [Session 3](./documentation/planning/SESSION-3-SUMMARY.md) (19/10, 1h30) - Documentation automatique
+- ✅ [Session 4](./documentation/planning/SESSION-4-SUMMARY.md) (19/10, 2h) - Theme toggle global
 
-- ✅ **Theme Toggle Global** : Synchronisation automatique de `context.globals.theme` avec `args.theme`
-- ✅ **sh-header** : Correction couleur icône Bell (dark mode)
-- ✅ **9 stories header** : Adaptation des nested elements au theme
-- ✅ **9 stories card** : Adaptation complète au theme toggle
-- ✅ **Pattern réutilisable** : Wrapper div avec gradient + color pour toutes les stories
-- ✅ **DX améliorée** : Un seul toggle au lieu de stories séparées light/dark
+**Phase 2 : Composants StockHub V2 (20-21 Oct)**
+- ✅ [Session 5](./documentation/planning/SESSION-5-SUMMARY.md) (20/10, 2h30) - metric-card, stock-item-card, status-badge V2
+- ✅ [Session 6](./documentation/planning/SESSION-6-SUMMARY.md) (20/10, 1h30) - Finalisation Phase 1
+- ✅ [Session 7](./documentation/planning/SESSION-7-SUMMARY.md) (21/10, 2h) - Refactoring Atomic Design, nouveaux organisms
+- ✅ [Session 8](./documentation/planning/SESSION-8-SUMMARY.md) (21/10, 2h) - page-header, footer, search-input
 
-### ✅ Session 4 (Complétée - 2h30) - Nouveaux Composants StockHub V2
-**Objectif** : Créer les composants spécifiques pour StockHub V2
+### 📚 Documentation Détaillée
+- **Historique complet des versions** → [CHANGELOG.md](./CHANGELOG.md)
+- **Index de la documentation** → [documentation/INDEX.md](./documentation/INDEX.md)
+- **Corrections d'intégration** → [DESIGN-SYSTEM-CORRECTIONS.md](./DESIGN-SYSTEM-CORRECTIONS.md)
+- **Rapport accessibilité** → [ACCESSIBILITY-REPORT.md](./ACCESSIBILITY-REPORT.md)
+- **Audit Design Tokens** → [documentation/DESIGN-TOKENS-AUDIT.md](./documentation/DESIGN-TOKENS-AUDIT.md)
 
-- ✅ **sh-status-badge V2** : Mis à jour avec 5 nouveaux statuts alignés StockHub V2
-  - 5 statuts : `optimal`, `low`, `critical`, `out-of-stock`, `overstocked`
-  - Animation pulse pour `critical` et `out-of-stock`
-  - Icônes Lucide : CheckCircle, AlertCircle, AlertTriangle, XCircle, TrendingUp
-  - 7 stories complètes avec theme toggle
-- ✅ **sh-metric-card** : Carte métrique avec icône, valeur, et indicateur de tendance
-  - Props : `icon`, `label`, `value`, `trend`, `trendValue`, `variant`, `clickable`
-  - Variants : `default`, `success`, `warning`, `danger`, `info`
-  - Support thème light/dark complet
-  - Icônes colorées selon variant (comme StockHub V2)
-- ✅ **sh-stock-item-card** : Carte produit pour l'inventaire familial
-  - Props : `name`, `sku`, `quantity`, `value`, `location`, `status`, `loading`
-  - Actions : boutons View/Edit/Delete (icônes Eye, Edit, Trash2)
-  - Badge de statut avec 5 variantes
-  - Grid de métriques responsive (quantité, valeur, emplacement)
-  - Barre de statut colorée (border-left)
-- ✅ **Corrections TypeScript** : Fix erreurs dans metric-card et stock-item-card
-- ✅ **Documentation** : JSDoc complet, SESSION-4-SUMMARY.md
+## 📁 Structure du Projet
 
-### 🚀 Session 5 (En cours) - Finalisation Phase 1
-**Objectif** : Préparer le Design System pour intégration StockHub V2
+La documentation est organisée selon les **standards de l'industrie open-source** :
 
-- [x] Build du Design System
-- [x] Vérification des exports package.json
-- [x] Mise à jour README avec nouveaux composants
-- [ ] Guide d'intégration StockHub V2
-- [ ] SESSION-5-SUMMARY.md
-- [ ] Tag version v2.0.0
+### Fichiers à la Racine
+- **README.md** : Point d'entrée principal (affiché sur GitHub/npm)
+- **CHANGELOG.md** : Historique des versions (convention [Keep a Changelog](https://keepachangelog.com/))
+- **ACCESSIBILITY-REPORT.md** : Certification WCAG AA (badge de qualité)
+- **DESIGN-SYSTEM-CORRECTIONS.md** : Suivi des corrections et améliorations
 
-**Temps estimé** : 2-3h
+### Dossier documentation/
+- **INDEX.md** : Navigation complète de la documentation
+- **Guides techniques** : Intégration React, JSDoc, etc.
+- **planning/** : Résumés des 8 sessions de développement (~17h30)
+- **Stratégie** : Plans de migration, spécifications composants
 
-### 🧪 Session 6 - Tests Unitaires
-**Objectif** : Coverage ≥ 93%
-
-- [ ] Setup Vitest + Testing Library
-- [ ] Tests pour tous les composants (14 composants)
-- [ ] Tests d'accessibilité (a11y)
-- [ ] Tests d'interaction utilisateur
-- [ ] CI/CD : intégrer les tests dans GitHub Actions
-
-**Temps estimé** : 3-4h
-
-### 📦 Session 6 - Publication & Intégration
-**Objectif** : Package prêt pour production
-
-- [ ] Vérifier build de production (`npm run build:lib`)
-- [ ] Tester l'intégration dans StockHub V2
-- [ ] Publier sur NPM (version 1.3.0)
-- [ ] Documentation d'installation et migration
-- [ ] Exemples d'intégration React
-
-**Temps estimé** : 1-2h
+### Rationale
+Cette organisation offre :
+- ✅ **Visibilité maximale** des fichiers critiques (README, CHANGELOG)
+- ✅ **Certification qualité** visible (accessibilité WCAG AA)
+- ✅ **Navigation structurée** pour documentation détaillée
+- ✅ **Adoption facilitée** pour nouveaux développeurs et contributeurs
 
 ## 📝 Contribution
 
@@ -853,16 +904,48 @@ refactor(icons): migrate to lucide icons system
    - Labels en anglais dans StockHub V2 → Labels en anglais dans Design System
    - **Solution** : Toujours vérifier la cohérence avec le projet parent
 
-## 📄 License
+## 🔄 CI/CD
 
-ISC - Sandrine Cipolla
+Le projet utilise **2 workflows GitHub Actions optimisés** pour assurer la qualité et le déploiement automatique.
 
----
+### Workflow 1 : CI (`.github/workflows/ci.yml`)
 
-**Version** : 2.0.0-rc
-**Dernière mise à jour** : 20 Octobre 2025
-**Statut** : Phase 1 complète - Prêt pour intégration StockHub V2
-**Nouveautés Session 4** :
-- sh-status-badge V2 avec 5 nouveaux statuts (optimal, low, critical, out-of-stock, overstocked)
-- sh-metric-card pour KPIs avec tendances
-- sh-stock-item-card pour inventaire familial avec actions (View/Edit/Delete)
+Pipeline de tests et validation automatique avec **4 jobs parallèles** :
+
+#### Job 1 : Build (Toujours)
+- Build Storybook une seule fois
+- Partage l'artifact avec les autres jobs (optimisation)
+
+#### Job 2 : Tests d'Interaction (Toujours)
+- **Déclenché sur** : `feature/**`, `master`, `v2`, et toutes les PR
+- Tests Playwright + Storybook automatiques
+- Gratuit et illimité
+
+#### Job 3 : Chromatic (Conditionnel)
+- **Déclenché sur** : PR et push `master`/`v2` uniquement
+- Visual regression testing
+- Économise les quotas sur les features
+
+#### Job 4 : Lighthouse (Conditionnel)
+- **Déclenché sur** : Push `master` et PR vers `master`
+- Audit accessibilité (score minimum 90%)
+- Génère rapports + badge automatique
+
+### Workflow 2 : Deploy (`.github/workflows/deploy.yml`)
+
+Déploiement automatique sur GitHub Pages :
+- **Déclenché sur** : Push `master` uniquement
+- Publie Storybook sur GitHub Pages
+- Accessible publiquement
+
+### Workflow typique
+
+```
+feature branch → push → Build + Tests d'interaction
+       ↓
+    Ouvre PR → Build + Tests + Chromatic + Lighthouse
+       ↓
+  Merge master → Build + Tests + Chromatic + Lighthouse + Deploy Pages
+```
+
+Pour plus de détails et de bonnes pratiques, voir [documentation/GETTING-STARTED.md](./documentation/GETTING-STARTED.md).

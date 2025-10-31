@@ -5,7 +5,47 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
+> **📝 Sessions détaillées** : Retrouvez les résumés complets de toutes les sessions de développement dans [documentation/INDEX.md](./documentation/INDEX.md#-sessions-de-développement)
+
 ## [Unreleased]
+
+### 🧪 Tests
+
+#### Tests d'Interaction Storybook - 100% de couverture
+
+**Ajout complet de tests d'interaction avec @storybook/test** :
+
+- **9 composants testés** (44 tests au total)
+- **Tous les événements custom** testés avec vérification des payloads
+- **États et validations** : loading, disabled, error, dirty, required
+- **Accessibilité** : keyboard navigation, focus management, ARIA
+- **Shadow DOM** : gestion simple et imbriquée (ex: sh-stock-card → sh-button → button natif)
+
+**Composants avec tests d'interaction** :
+1. **sh-button** (3 tests) : Click, hover, disabled
+2. **sh-quantity-input** (3 tests) : Sync event, dirty state, cycle complet
+3. **sh-search-input** (3 tests) : Search events, clear, debounce
+4. **sh-input** (5 tests) : Change/focus/blur, validation email/required, error clearing
+5. **sh-card** (4 tests) : Click, keyboard (Enter/Space/Tab), non-clickable, focus
+6. **sh-header** (5 tests) : Notification, theme toggle, login/logout, badge 99+
+7. **sh-ia-alert-banner** (5 tests) : Header/toggle click, item click, collapsed state, hover
+8. **sh-stock-card** (4 tests) : 4 boutons d'action, loading, badge IA, status variations
+9. **sh-stock-item-card** (4 tests) : 3 boutons d'action, loading, status, optional fields
+
+**Patterns établis** :
+- Click dans Shadow DOM : toujours cibler l'élément interne, pas le custom element
+- Binding booléen : setter via JS (`card.property = false`) au lieu d'attribut HTML
+- Propriétés vs attributs : vérifier `card.status` au lieu de `getAttribute('status')`
+- Focus : `document.activeElement` (hôte) vs `shadowRoot.activeElement` (élément interne)
+
+**Documentation** :
+- `INTERACTION_TESTS_TRACKING.md` : tracking complet avec problèmes résolus et bonnes pratiques
+
+**Fichiers modifiés** : Tous les `*.stories.ts` des 9 composants testés
+
+**Statut** : ✅ 100% des composants interactifs testés
+
+---
 
 ### ♿ Accessibilité
 
@@ -312,9 +352,11 @@ Gestion personnelle des stocks familiaux (loisirs créatifs, alimentaire, maison
   - `.github/CHROMATIC_SETUP.md` : Guide complet avec section limitations et forks
   - README mis à jour avec les liens d'accès et note sur les forks
 
-### 📦 Dépendances
+### 🛠️ CI/CD Chromatic & Validation visuelle
 
-- ➕ **chromatic** (^13.3.0) : Visual testing et déploiement Storybook
+- Clarification du workflow CI/CD Chromatic : validation manuelle des changements visuels sur les branches de feature, auto-acceptation sur master après merge.
+- Ajout d'une documentation détaillée sur l'option autoAcceptChanges et les bonnes pratiques de validation visuelle dans GETTING-STARTED.md et README.md.
+- Sécurisation du processus pour éviter les régressions visuelles non désirées.
 
 ---
 

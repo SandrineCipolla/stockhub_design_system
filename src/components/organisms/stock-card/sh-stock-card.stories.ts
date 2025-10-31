@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
+import { expect, userEvent } from '@storybook/test';
 import './sh-stock-card';
 
 const meta: Meta = {
@@ -677,4 +678,411 @@ export const InteractiveEvents: Story = {
       });
     </script>
   `,
+};
+
+/**
+ * Test d'interaction : Click sur tous les boutons d'action
+ */
+export const InteractionTestAllButtons: Story = {
+  args: {
+    name: 'Acrylique Bleu Cobalt',
+    category: 'Peinture',
+    lastUpdate: 'Mis à jour il y a 3h',
+    percentage: '65',
+    quantity: '1 tube',
+    value: '€12',
+    status: 'optimal',
+    iaCount: 0,
+    theme: 'dark',
+  },
+  render: (args) => `
+    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+      <div style="max-width: 400px;">
+        <sh-stock-card
+          id="stock-card-test-all"
+          name="${args.name}"
+          category="${args.category}"
+          last-update="${args.lastUpdate}"
+          percentage="${args.percentage}"
+          quantity="${args.quantity}"
+          value="${args.value}"
+          status="${args.status}"
+          data-theme="${args.theme}"
+        ></sh-stock-card>
+      </div>
+
+      <div id="test-result" style="margin-top: 2rem; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 8px; color: white;">
+        En attente du test...
+      </div>
+    </div>
+
+    <script>
+      customElements.whenDefined('sh-stock-card').then(() => {
+        const card = document.getElementById('stock-card-test-all');
+        if (card) {
+          card.iaCount = ${args.iaCount || 0};
+        }
+      });
+    </script>
+  `,
+  play: async ({ canvasElement }) => {
+    const resultDiv = canvasElement.querySelector('#test-result') as HTMLElement;
+
+    try {
+      await customElements.whenDefined('sh-stock-card');
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      const card = canvasElement.querySelector('#stock-card-test-all') as any;
+      await expect(card).toBeInTheDocument();
+
+      // Test 1: Session button
+      let sessionEvent: any = null;
+      card.addEventListener('sh-session-click', ((e: CustomEvent) => {
+        sessionEvent = e.detail;
+      }) as EventListener);
+
+      // Trouver le bouton "Enregistrer session" dans le Shadow DOM
+      const sessionButton = Array.from(card.shadowRoot?.querySelectorAll('sh-button') || [])
+        .find((btn: any) => btn.textContent?.includes('Enregistrer session')) as any;
+      await expect(sessionButton).toBeTruthy();
+
+      // Cliquer sur le bouton natif dans le Shadow DOM du sh-button
+      const sessionButtonNative = sessionButton.shadowRoot?.querySelector('button');
+      await userEvent.click(sessionButtonNative);
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      await expect(sessionEvent).toBeTruthy();
+      await expect(sessionEvent.name).toBe('Acrylique Bleu Cobalt');
+      await expect(sessionEvent.status).toBe('optimal');
+
+      // Test 2: Details button
+      let detailsEvent: any = null;
+      card.addEventListener('sh-details-click', ((e: CustomEvent) => {
+        detailsEvent = e.detail;
+      }) as EventListener);
+
+      const detailsButton = Array.from(card.shadowRoot?.querySelectorAll('sh-button') || [])
+        .find((btn: any) => btn.textContent?.includes('Détails')) as any;
+      await expect(detailsButton).toBeTruthy();
+
+      const detailsButtonNative = detailsButton.shadowRoot?.querySelector('button');
+      await userEvent.click(detailsButtonNative);
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      await expect(detailsEvent).toBeTruthy();
+      await expect(detailsEvent.name).toBe('Acrylique Bleu Cobalt');
+      await expect(detailsEvent.category).toBe('Peinture');
+      await expect(detailsEvent.status).toBe('optimal');
+
+      // Test 3: Edit button (icon-only avec Edit3)
+      let editEvent: any = null;
+      card.addEventListener('sh-edit-click', ((e: CustomEvent) => {
+        editEvent = e.detail;
+      }) as EventListener);
+
+      const allButtons = Array.from(card.shadowRoot?.querySelectorAll('sh-button') || []);
+      const editButton = allButtons.find((btn: any) =>
+        btn.hasAttribute('icon-only') && btn.getAttribute('icon-before') === 'Edit3'
+      ) as any;
+      await expect(editButton).toBeTruthy();
+
+      const editButtonNative = editButton.shadowRoot?.querySelector('button');
+      await userEvent.click(editButtonNative);
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      await expect(editEvent).toBeTruthy();
+      await expect(editEvent.name).toBe('Acrylique Bleu Cobalt');
+      await expect(editEvent.status).toBe('optimal');
+
+      // Test 4: Delete button (icon-only avec Trash2)
+      let deleteEvent: any = null;
+      card.addEventListener('sh-delete-click', ((e: CustomEvent) => {
+        deleteEvent = e.detail;
+      }) as EventListener);
+
+      const deleteButton = allButtons.find((btn: any) =>
+        btn.hasAttribute('icon-only') && btn.getAttribute('icon-before') === 'Trash2'
+      ) as any;
+      await expect(deleteButton).toBeTruthy();
+
+      const deleteButtonNative = deleteButton.shadowRoot?.querySelector('button');
+      await userEvent.click(deleteButtonNative);
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      await expect(deleteEvent).toBeTruthy();
+      await expect(deleteEvent.name).toBe('Acrylique Bleu Cobalt');
+      await expect(deleteEvent.status).toBe('optimal');
+
+      if (resultDiv) {
+        resultDiv.style.color = '#10b981';
+        resultDiv.innerHTML = '✅ Test réussi : 4 boutons (session, details, edit, delete) avec événements et payloads corrects';
+      }
+    } catch (error) {
+      if (resultDiv) {
+        resultDiv.style.color = '#ef4444';
+        resultDiv.innerHTML = `❌ Test échoué : ${error}`;
+      }
+      throw error;
+    }
+  },
+};
+
+/**
+ * Test d'interaction : État loading désactive les boutons
+ */
+export const InteractionTestLoadingState: Story = {
+  args: {
+    name: 'Acrylique Rouge Vermillon',
+    category: 'Peinture',
+    lastUpdate: 'Mis à jour il y a 1h',
+    percentage: '15',
+    quantity: '1 tube',
+    value: '€12',
+    status: 'low',
+    loading: true,
+    theme: 'dark',
+  },
+  render: (args) => `
+    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+      <div style="max-width: 400px;">
+        <sh-stock-card
+          id="stock-card-test-loading"
+          name="${args.name}"
+          category="${args.category}"
+          last-update="${args.lastUpdate}"
+          percentage="${args.percentage}"
+          quantity="${args.quantity}"
+          value="${args.value}"
+          status="${args.status}"
+          data-theme="${args.theme}"
+          ${args.loading ? 'loading' : ''}
+        ></sh-stock-card>
+      </div>
+
+      <div id="test-result" style="margin-top: 2rem; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 8px; color: white;">
+        En attente du test...
+      </div>
+    </div>
+
+    <script>
+      customElements.whenDefined('sh-stock-card').then(() => {
+        const card = document.getElementById('stock-card-test-loading');
+        if (card) {
+          card.iaCount = 0;
+        }
+      });
+    </script>
+  `,
+  play: async ({ canvasElement }) => {
+    const resultDiv = canvasElement.querySelector('#test-result') as HTMLElement;
+
+    try {
+      await customElements.whenDefined('sh-stock-card');
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      const card = canvasElement.querySelector('#stock-card-test-loading') as any;
+      await expect(card).toBeInTheDocument();
+
+      // Vérifier que la carte est en loading
+      await expect(card.loading).toBe(true);
+
+      // Vérifier que tous les boutons sont disabled
+      const allButtons = Array.from(card.shadowRoot?.querySelectorAll('sh-button') || []);
+      await expect(allButtons.length).toBe(4);
+
+      for (const button of allButtons) {
+        const btn = button as any;
+        await expect(btn.disabled).toBe(true);
+
+        // Vérifier que le bouton natif est aussi disabled
+        const nativeButton = btn.shadowRoot?.querySelector('button');
+        await expect(nativeButton.disabled).toBe(true);
+      }
+
+      // Vérifier que la carte a l'attribut loading
+      await expect(card.hasAttribute('loading')).toBe(true);
+
+      if (resultDiv) {
+        resultDiv.style.color = '#10b981';
+        resultDiv.innerHTML = '✅ Test réussi : État loading désactive les 4 boutons correctement';
+      }
+    } catch (error) {
+      if (resultDiv) {
+        resultDiv.style.color = '#ef4444';
+        resultDiv.innerHTML = `❌ Test échoué : ${error}`;
+      }
+      throw error;
+    }
+  },
+};
+
+/**
+ * Test d'interaction : Badge IA conditionnel
+ */
+export const InteractionTestIaBadge: Story = {
+  args: {
+    name: 'Acrylique Jaune Cadmium',
+    category: 'Peinture',
+    lastUpdate: 'Mis à jour il y a 2j',
+    percentage: '5',
+    quantity: '2 tubes',
+    value: '€24',
+    status: 'critical',
+    iaCount: 2,
+    theme: 'dark',
+  },
+  render: (args) => `
+    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+      <div style="max-width: 400px;">
+        <sh-stock-card
+          id="stock-card-test-ia"
+          name="${args.name}"
+          category="${args.category}"
+          last-update="${args.lastUpdate}"
+          percentage="${args.percentage}"
+          quantity="${args.quantity}"
+          value="${args.value}"
+          status="${args.status}"
+          data-theme="${args.theme}"
+        ></sh-stock-card>
+      </div>
+
+      <div id="test-result" style="margin-top: 2rem; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 8px; color: white;">
+        En attente du test...
+      </div>
+    </div>
+
+    <script>
+      customElements.whenDefined('sh-stock-card').then(() => {
+        const card = document.getElementById('stock-card-test-ia');
+        if (card) {
+          card.iaCount = ${args.iaCount || 0};
+        }
+      });
+    </script>
+  `,
+  play: async ({ canvasElement }) => {
+    const resultDiv = canvasElement.querySelector('#test-result') as HTMLElement;
+
+    try {
+      await customElements.whenDefined('sh-stock-card');
+      await new Promise(resolve => setTimeout(resolve, 200));
+
+      const card = canvasElement.querySelector('#stock-card-test-ia') as any;
+      await expect(card).toBeInTheDocument();
+
+      // Vérifier que iaCount est 2
+      await expect(card.iaCount).toBe(2);
+
+      // Vérifier que le badge IA est présent
+      const iaBadge = card.shadowRoot?.querySelector('.ia-badge');
+      await expect(iaBadge).toBeTruthy();
+
+      // Vérifier le contenu du badge
+      await expect(iaBadge?.textContent).toContain('IA (2)');
+
+      // Vérifier l'icône Sparkles
+      const sparklesIcon = iaBadge?.querySelector('sh-icon[name="Sparkles"]');
+      await expect(sparklesIcon).toBeTruthy();
+
+      // Changer iaCount à 0 et vérifier que le badge disparaît
+      card.iaCount = 0;
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      const iaBadgeAfter = card.shadowRoot?.querySelector('.ia-badge');
+      await expect(iaBadgeAfter).toBeFalsy();
+
+      if (resultDiv) {
+        resultDiv.style.color = '#10b981';
+        resultDiv.innerHTML = '✅ Test réussi : Badge IA conditionnel (visible avec count > 0, caché avec count = 0)';
+      }
+    } catch (error) {
+      if (resultDiv) {
+        resultDiv.style.color = '#ef4444';
+        resultDiv.innerHTML = `❌ Test échoué : ${error}`;
+      }
+      throw error;
+    }
+  },
+};
+
+/**
+ * Test d'interaction : Différents statuts
+ */
+export const InteractionTestStatusVariations: Story = {
+  args: {
+    name: 'Test Stock',
+    category: 'Test',
+    percentage: '50',
+    quantity: '5 unités',
+    value: '€100',
+    status: 'optimal',
+    theme: 'dark',
+  },
+  render: (args) => `
+    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+      <div style="max-width: 400px;">
+        <sh-stock-card
+          id="stock-card-test-status"
+          name="${args.name}"
+          category="${args.category}"
+          percentage="${args.percentage}"
+          quantity="${args.quantity}"
+          value="${args.value}"
+          status="${args.status}"
+          data-theme="${args.theme}"
+        ></sh-stock-card>
+      </div>
+
+      <div id="test-result" style="margin-top: 2rem; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 8px; color: white;">
+        En attente du test...
+      </div>
+    </div>
+
+    <script>
+      customElements.whenDefined('sh-stock-card').then(() => {
+        const card = document.getElementById('stock-card-test-status');
+        if (card) {
+          card.iaCount = 0;
+        }
+      });
+    </script>
+  `,
+  play: async ({ canvasElement }) => {
+    const resultDiv = canvasElement.querySelector('#test-result') as HTMLElement;
+
+    try {
+      await customElements.whenDefined('sh-stock-card');
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      const card = canvasElement.querySelector('#stock-card-test-status') as any;
+      await expect(card).toBeInTheDocument();
+
+      const statuses = ['optimal', 'low', 'critical', 'out-of-stock', 'overstocked'];
+
+      for (const status of statuses) {
+        card.status = status;
+        await new Promise(resolve => setTimeout(resolve, 100));
+
+        // Vérifier que la propriété status est changée
+        await expect(card.status).toBe(status);
+
+        // Vérifier que le badge de statut est présent
+        const statusBadge = card.shadowRoot?.querySelector('sh-status-badge');
+        await expect(statusBadge).toBeTruthy();
+        await expect(statusBadge?.getAttribute('status')).toBe(status);
+      }
+
+      if (resultDiv) {
+        resultDiv.style.color = '#10b981';
+        resultDiv.innerHTML = '✅ Test réussi : Tous les statuts (optimal, low, critical, out-of-stock, overstocked) fonctionnent correctement';
+      }
+    } catch (error) {
+      if (resultDiv) {
+        resultDiv.style.color = '#ef4444';
+        resultDiv.innerHTML = `❌ Test échoué : ${error}`;
+      }
+      throw error;
+    }
+  },
 };

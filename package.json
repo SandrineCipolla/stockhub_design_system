@@ -36,7 +36,8 @@
     "setup:dark": "npm run tokens:generate && echo '🌙 Dark mode configuré par défaut!'",
     "analyze": "cem analyze --litelement",
     "chromatic": "chromatic",
-    "audit-accessibility": "npx lighthouse http://localhost:6006 --output html --output-path ./storybook-static/lighthouse-report.html --chrome-flags=\"--headless\"",
+    "audit-accessibility": "node audit-all-accessibility.cjs",
+    "audit-single": "npx lighthouse http://localhost:6006/iframe.html?id=organisms-stock-item-card--optimal --output html --output-path ./storybook-static/lighthouse-single.html --chrome-flags=\"--headless\"",
     "lint": "eslint src --ext .ts,.tsx",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "audit:conventions": "node audit-conventions.cjs"

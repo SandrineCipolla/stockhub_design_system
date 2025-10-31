@@ -1,5 +1,25 @@
 const { execSync } = require('child_process');
 const fs = require('fs');
+const http = require('http');
+
+// Vérifier que Storybook tourne
+function checkStorybook() {
+  return new Promise((resolve) => {
+    const req = http.get('http://localhost:6006', (res) => {
+      resolve(res.statusCode === 200);
+    });
+    req.on('error', () => resolve(false));
+    req.setTimeout(5000, () => {
+      req.destroy();
+      resolve(false);
+    });
+  });
+}
+
+// Fonction sleep pour pauses entre audits
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 // Liste COMPLÈTE de tous les composants et leurs stories principales
 // Format: title--storyName en kebab-case
@@ -68,48 +88,76 @@ const stories = [
 
 // Scores agrégés
 let totalAccessibility = 0;
-let totalPerformance = 0;
 const results = [];
 const errors = [];
 
-console.log(`\n🔍 Audit Lighthouse de ${stories.length} composants...\n`);
-console.log(`📊 URL utilisée: http://localhost:6006/iframe.html (composants isolés)\n`);
+(async () => {
+  // Vérifier que Storybook est démarré
+  console.log('🔍 Vérification de Storybook...');
+  const isStorybookRunning = await checkStorybook();
 
-stories.forEach((storyId, index) => {
-  // IMPORTANT: Utiliser /iframe.html pour isoler le composant
-  const url = `http://localhost:6006/iframe.html?id=${storyId}`;
-  const reportPath = `./storybook-static/lighthouse-${storyId}.json`;
-
-  console.log(`[${index + 1}/${stories.length}] ${storyId}...`);
-
-  try {
-    execSync(
-      `npx lighthouse "${url}" --output json --output-path "${reportPath}" --chrome-flags="--headless" --quiet --only-categories=accessibility,performance`,
-      { stdio: 'pipe' }
-    );
-
-    // Lire le score
-    const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
-    const accessibility = Math.round(report.categories.accessibility.score * 100);
-    const performance = Math.round(report.categories.performance.score * 100);
-
-    results.push({ storyId, accessibility, performance });
-    totalAccessibility += accessibility;
-    totalPerformance += performance;
-
-    console.log(`  ✅ A11y: ${accessibility}% | Perf: ${performance}%`);
-  } catch (error) {
-    console.error(`  ❌ Erreur lors de l'audit`);
-    errors.push(storyId);
+  if (!isStorybookRunning) {
+    console.error('\n❌ ERREUR: Storybook ne répond pas sur http://localhost:6006');
+    console.error('👉 Lancez d\'abord Storybook avec: npm run storybook\n');
+    process.exit(1);
   }
-});
 
-// Calculer moyennes
-const avgAccessibility = Math.round(totalAccessibility / results.length);
-const avgPerformance = Math.round(totalPerformance / results.length);
+  console.log('✅ Storybook détecté!\n');
+  console.log(`\n🔍 Audit Lighthouse de ${stories.length} composants...\n`);
+  console.log(`📊 URL utilisée: http://localhost:6006/iframe.html (composants isolés)\n`);
 
-// Générer rapport HTML consolidé
-const htmlReport = `
+  for (let index = 0; index < stories.length; index++) {
+    const storyId = stories[index];
+    // IMPORTANT: Utiliser /iframe.html pour isoler le composant
+    const url = `http://localhost:6006/iframe.html?id=${storyId}`;
+    const reportPath = `./storybook-static/lighthouse-${storyId}.json`;
+
+    console.log(`[${index + 1}/${stories.length}] ${storyId}...`);
+
+    try {
+      // Flags Chrome améliorés pour stabilité sur Windows
+      const chromeFlags = [
+        '--headless=new',
+        '--disable-gpu',
+        '--no-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-software-rasterizer',
+        '--disable-extensions'
+      ].join(' ');
+
+      execSync(
+        `npx lighthouse "${url}" --output json --output-path "${reportPath}" --chrome-flags="${chromeFlags}" --quiet --only-categories=accessibility --max-wait-for-load=90000`,
+        {
+          stdio: 'pipe',
+          timeout: 120000 // 2 minutes max par audit
+        }
+      );
+
+      // Lire le score
+      const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+      const accessibility = Math.round(report.categories.accessibility.score * 100);
+
+      results.push({ storyId, accessibility });
+      totalAccessibility += accessibility;
+
+      console.log(`  ✅ A11y: ${accessibility}%`);
+
+      // Pause de 2 secondes entre chaque audit pour éviter les crashs
+      if (index < stories.length - 1) {
+        await sleep(2000);
+      }
+    } catch (error) {
+      console.error(`  ❌ Erreur: ${error.message || 'Audit échoué'}`);
+      errors.push(storyId);
+      // Continuer même en cas d'erreur
+    }
+  }
+
+  // Calculer moyenne
+  const avgAccessibility = Math.round(totalAccessibility / results.length);
+
+  // Générer rapport HTML consolidé
+  const htmlReport = `
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -298,23 +346,23 @@ const htmlReport = `
   <p class="subtitle">Audit d'accessibilité et performance des composants Web Components</p>
 
   <div class="summary">
-    <h2 style="margin-bottom: 1rem; color: #e9d5ff;">📈 Scores Moyens</h2>
+    <h2 style="margin-bottom: 1rem; color: #e9d5ff;">📈 Résultats de l'Audit</h2>
     <div class="scores">
       <div class="score-card">
-        <div class="score-label">Accessibilité</div>
+        <div class="score-label">Accessibilité Moyenne</div>
         <div class="score-value ${avgAccessibility >= 90 ? 'good' : avgAccessibility >= 70 ? 'warning' : 'bad'}">
           ${avgAccessibility}%
         </div>
       </div>
       <div class="score-card">
-        <div class="score-label">Performance</div>
-        <div class="score-value ${avgPerformance >= 75 ? 'good' : avgPerformance >= 50 ? 'warning' : 'bad'}">
-          ${avgPerformance}%
-        </div>
-      </div>
-      <div class="score-card">
         <div class="score-label">Composants Testés</div>
         <div class="score-value good">${results.length}</div>
+      </div>
+      <div class="score-card">
+        <div class="score-label">Objectif WCAG 2.1 AA</div>
+        <div class="score-value ${avgAccessibility >= 90 ? 'good' : 'warning'}">
+          ${avgAccessibility >= 90 ? '✓ Atteint' : '✗ Non atteint'}
+        </div>
       </div>
     </div>
   </div>
@@ -325,7 +373,6 @@ const htmlReport = `
       <tr>
         <th>Composant</th>
         <th style="text-align: center;">Accessibilité</th>
-        <th style="text-align: center;">Performance</th>
         <th style="text-align: center;">Statut</th>
       </tr>
     </thead>
@@ -336,12 +383,9 @@ const htmlReport = `
           <td style="text-align: center;" class="${r.accessibility >= 90 ? 'good' : r.accessibility >= 70 ? 'warning' : 'bad'}">
             ${r.accessibility}%
           </td>
-          <td style="text-align: center;" class="${r.performance >= 75 ? 'good' : r.performance >= 50 ? 'warning' : 'bad'}">
-            ${r.performance}%
-          </td>
           <td style="text-align: center;">
-            <span class="status-badge ${r.accessibility >= 90 && r.performance >= 75 ? 'excellent' : 'improve'}">
-              ${r.accessibility >= 90 && r.performance >= 75 ? '✅ Excellent' : '⚠️ À améliorer'}
+            <span class="status-badge ${r.accessibility >= 90 ? 'excellent' : 'improve'}">
+              ${r.accessibility >= 90 ? '✅ Conforme WCAG' : '⚠️ À améliorer'}
             </span>
           </td>
         </tr>
@@ -360,10 +404,10 @@ const htmlReport = `
 
   <div class="footer-box">
     <h3>🎉 Résumé</h3>
-    <p><strong>Moyenne Accessibilité:</strong> ${avgAccessibility}%</p>
-    <p><strong>Moyenne Performance:</strong> ${avgPerformance}%</p>
+    <p><strong>Score Accessibilité Moyen:</strong> ${avgAccessibility}%</p>
     <p><strong>Objectif WCAG 2.1 AA:</strong> ${avgAccessibility >= 90 ? '✅ Atteint' : '⚠️ Non atteint (minimum 90%)'}</p>
-    <p><strong>Composants excellents:</strong> ${results.filter(r => r.accessibility >= 90 && r.performance >= 75).length}/${results.length}</p>
+    <p><strong>Composants conformes:</strong> ${results.filter(r => r.accessibility >= 90).length}/${results.length}</p>
+    <p><strong>Composants à améliorer:</strong> ${results.filter(r => r.accessibility < 90).length}</p>
   </div>
 
   <div class="meta">
@@ -376,18 +420,22 @@ const htmlReport = `
 </html>
 `;
 
-fs.writeFileSync('./storybook-static/lighthouse-report.html', htmlReport);
+  fs.writeFileSync('./storybook-static/lighthouse-report.html', htmlReport);
 
-// Affichage final
-console.log(`\n${'='.repeat(60)}`);
-console.log(`✅ Rapport consolidé généré: lighthouse-report.html`);
-console.log(`📊 Composants audités: ${results.length}/${stories.length}`);
-console.log(`🎯 Accessibilité moyenne: ${avgAccessibility}%`);
-console.log(`⚡ Performance moyenne: ${avgPerformance}%`);
-if (errors.length > 0) {
-  console.log(`⚠️  Erreurs: ${errors.length} composants non audités`);
-}
-console.log(`${'='.repeat(60)}\n`);
+  // Affichage final
+  console.log(`\n${'='.repeat(60)}`);
+  console.log(`✅ Rapport consolidé généré: ./storybook-static/lighthouse-report.html`);
+  console.log(`📊 Composants audités: ${results.length}/${stories.length}`);
+  console.log(`🎯 Accessibilité moyenne: ${avgAccessibility}%`);
+  console.log(`✅ Composants conformes WCAG 2.1 AA: ${results.filter(r => r.accessibility >= 90).length}/${results.length}`);
+  if (errors.length > 0) {
+    console.log(`⚠️  Erreurs: ${errors.length} composants non audités`);
+  }
+  console.log(`${'='.repeat(60)}\n`);
 
-// Exit code basé sur le score d'accessibilité
-process.exit(avgAccessibility >= 90 ? 0 : 1);
+  // Exit code basé sur le score d'accessibilité
+  process.exit(avgAccessibility >= 90 ? 0 : 1);
+})().catch(error => {
+  console.error('❌ Erreur fatale:', error.message);
+  process.exit(1);
+});

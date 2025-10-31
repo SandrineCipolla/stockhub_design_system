@@ -47,7 +47,7 @@ jobs:
       - name: Copier le rapport Lighthouse dans docs/
         run: |
           mkdir -p docs
-          cp ./storybook-static/lighthouse-report.html ./docs/lighthouse-report.html
+          cp ./storybook-static/lighthouse-report.html ./docs/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

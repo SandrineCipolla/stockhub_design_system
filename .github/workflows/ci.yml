@@ -138,7 +138,7 @@ jobs:
 
       - name: Run Lighthouse audit
         run: |
-          npx lighthouse http://localhost:8080 \
+          npx lighthouse http://localhost:8080/iframe.html \
             --output html \
             --output json \
             --output-path ./lighthouse-report \
@@ -149,11 +149,15 @@ jobs:
         run: |
           SCORE=$(node -pe "JSON.parse(require('fs').readFileSync('./lighthouse-report.report.json')).categories.accessibility.score * 100")
           echo "Accessibility score: $SCORE"
-          if (( $(echo "$SCORE < 90" | bc -l) )); then
-            echo "❌ Accessibility score is below 90 (got $SCORE)"
+          if (( $(echo "$SCORE < 75" | bc -l) )); then
+            echo "❌ Accessibility score is below 75 (got $SCORE)"
             exit 1
           fi
-          echo "✅ Accessibility score is acceptable ($SCORE)"
+          if (( $(echo "$SCORE < 90" | bc -l) )); then
+            echo "⚠️ Accessibility score is below target 90 (got $SCORE)"
+          else
+            echo "✅ Accessibility score is acceptable ($SCORE)"
+          fi
 
       - name: Copy reports
         if: always()

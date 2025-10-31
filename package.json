@@ -39,7 +39,8 @@
     "audit-accessibility": "npx lighthouse http://localhost:3000 --output html --output-path ./storybook-static/lighthouse-report.html --chrome-flags=\"--headless\"",
     "lint": "eslint src --ext .ts,.tsx",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "audit:conventions": "node audit-conventions.cjs"
   },
   "publishConfig": {
     "access": "restricted"

@@ -39,7 +39,6 @@
     "audit-accessibility": "npx lighthouse http://localhost:3000 --output html --output-path ./storybook-static/lighthouse-report.html --chrome-flags=\"--headless\"",
     "lint": "eslint src --ext .ts,.tsx",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
-    "postinstall": "husky install",
     "audit:conventions": "node audit-conventions.cjs"
   },
   "publishConfig": {
@@ -83,7 +82,8 @@
     "storybook": "^8.6.12",
     "tsx": "^4.0.0",
     "typescript": "^5.8.3",
-    "vite": "^6.4.0"
+    "vite": "^6.4.0",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "color-contrast-checker": "^2.1.0",

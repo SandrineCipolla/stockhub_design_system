@@ -28,14 +28,14 @@ export class ShHeader extends LitElement {
      * @type {string}
      * @default 'Utilisateur'
      */
-    @property({ type: String }) userName: string = 'Utilisateur';
+    @property({ type: String, attribute: 'user-name' }) userName: string = 'Utilisateur';
 
     /**
      * Number of unread notifications
      * @type {number}
      * @default 0
      */
-    @property({ type: Number }) notificationCount: number = 0;
+    @property({ type: Number, attribute: 'notification-count' }) notificationCount: number = 0;
 
     /**
      * Current theme (light or dark)
@@ -160,7 +160,7 @@ export class ShHeader extends LitElement {
             min-width: 1rem;
             height: 1rem;
             padding: 0 0.25rem;
-            background: #ef4444;
+            background: #dc2626;
             color: white;
             font-size: 0.625rem;
             font-weight: 600;
@@ -226,7 +226,7 @@ export class ShHeader extends LitElement {
                     <div class="content">
                         <!-- Logo Section -->
                         <div class="logo-section">
-                            <sh-logo size="sm"></sh-logo>
+                            <sh-logo size="md"></sh-logo>
                         </div>
 
                         <!-- Actions Navigation -->
@@ -250,9 +250,9 @@ export class ShHeader extends LitElement {
                             <sh-button
                                 variant="ghost"
                                 size="sm"
-                                iconBefore="${this.theme === 'dark' ? 'Sun' : 'Moon'}"
+                                icon-before="${this.theme === 'dark' ? 'Sun' : 'Moon'}"
                                 @click="${this._handleThemeToggle}"
-                                aria-label="Changer vers le thème ${this.theme === 'dark' ? 'clair' : 'sombre'}"
+                                .ariaLabel="Changer vers le thème ${this.theme === 'dark' ? 'clair' : 'sombre'}"
                                 title="Changer de thème"
                             ></sh-button>
 
@@ -266,9 +266,9 @@ export class ShHeader extends LitElement {
                                     <sh-button
                                         variant="primary"
                                         size="sm"
-                                        iconBefore="User"
+                                        icon-before="LogOut"
                                         @click="${this._handleLogoutClick}"
-                                        aria-label="Se déconnecter de l'application StockHub"
+                                        .ariaLabel="Se déconnecter de l'application StockHub"
                                         title="Se déconnecter"
                                     >
                                         <span class="logout-text-desktop">Logout</span>
@@ -277,9 +277,9 @@ export class ShHeader extends LitElement {
                                     <sh-button
                                         variant="primary"
                                         size="sm"
-                                        iconBefore="LogIn"
+                                        icon-before="LogIn"
                                         @click="${this._handleLoginClick}"
-                                        aria-label="Se connecter à StockHub"
+                                        .ariaLabel="Se connecter à StockHub"
                                         title="Se connecter"
                                     >
                                         <span class="logout-text-desktop">Login</span>
@@ -305,6 +305,8 @@ export class ShHeader extends LitElement {
 
     private _handleThemeToggle() {
         const newTheme = this.theme === 'dark' ? 'light' : 'dark';
+
+        // Emit event on the component
         this.dispatchEvent(
             new CustomEvent('sh-theme-toggle', {
                 detail: {
@@ -315,6 +317,16 @@ export class ShHeader extends LitElement {
                 composed: true,
             })
         );
+
+        // Also emit on document for global theme management in React apps
+        document.dispatchEvent(
+            new CustomEvent('theme-change', {
+                detail: { theme: newTheme },
+                bubbles: true,
+                composed: true
+            })
+        );
+
         // Update internal state so icon and ARIA label reflect the change
         this.theme = newTheme;
     }

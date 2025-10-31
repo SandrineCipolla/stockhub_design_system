@@ -714,6 +714,282 @@ Tester après chaque phase.
 
 ---
 
+### Phase 3 : Composants Organisms StockHub V2 (Session 7) 🆕
+
+#### 7. StockCard (Dashboard)
+
+**Nouveau composant organism** pour afficher les cartes de stock dans le dashboard principal.
+
+**Utilisation** :
+```tsx
+<sh-stock-card
+  name="Acrylique Bleu Cobalt"
+  category="Peinture"
+  last-update="Mis à jour il y a 3i"
+  percentage="65"
+  quantity="1 tube"
+  value="€12"
+  status="optimal"
+  data-theme="dark"
+  onsh-session-click={(e: CustomEvent) => handleSessionSave(e.detail)}
+  onsh-details-click={(e: CustomEvent) => handleViewDetails(e.detail)}
+  onsh-edit-click={(e: CustomEvent) => handleEdit(e.detail)}
+  onsh-delete-click={(e: CustomEvent) => handleDelete(e.detail)}
+/>
+```
+
+**Props** :
+- `name` : Nom du stock
+- `category` : Catégorie du produit
+- `last-update` : Texte de dernière mise à jour
+- `percentage` : Pourcentage de stock (string ou number)
+- `quantity` : Sous-texte de quantité (ex: "1 tube")
+- `value` : Valeur totale
+- `status` : `'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'`
+- `ia-count` : Nombre d'alertes IA (number) - affiche badge IA si > 0
+
+**Badge IA avec JavaScript** :
+```tsx
+useEffect(() => {
+  customElements.whenDefined('sh-stock-card').then(() => {
+    const card = document.getElementById('my-stock-card');
+    if (card) {
+      card.iaCount = 2; // Doit être assigné via propriété JS, pas attribut HTML
+    }
+  });
+}, []);
+```
+
+**Événements** :
+- `sh-session-click` : Click sur "Enregistrer session"
+- `sh-details-click` : Click sur "Détails"
+- `sh-edit-click` : Click sur éditer
+- `sh-delete-click` : Click sur supprimer
+
+**Distinction avec StockItemCard** :
+- `sh-stock-card` = **Carte de stock global** (dashboard principal)
+- `sh-stock-item-card` = **Carte d'item individuel** (vue détaillée d'un stock)
+
+---
+
+### Organisation Atomic Design mise à jour
+
+**Organisms** (composants métier complexes) :
+- `sh-header` : Navigation principale
+- `sh-stock-card` : Carte de stock dashboard 🆕
+- `sh-stock-item-card` : Carte d'item inventaire
+
+**Molecules** (groupes d'atomes) :
+- `sh-button`, `sh-status-badge`, `sh-metric-card`, `sh-card` (base)
+
+**Atoms** (composants de base) :
+- `sh-icon`, `sh-input`, `sh-badge`, `sh-text`
+
+---
+
+### Phase 4 : Composants Complets StockHub V2 (Session 8) ✅
+
+Tous les composants manquants ont été créés !
+
+#### 8. Search Input (Molecule)
+
+**Nouveau composant** : Champ de recherche avec icône et bouton clear.
+
+**Utilisation** :
+```tsx
+<sh-search-input
+  placeholder="Rechercher un stock..."
+  value={searchQuery}
+  debounce={300}
+  clearable
+  data-theme="dark"
+  onsh-search={(e: CustomEvent) => handleSearch(e.detail.query)}
+  onsh-search-change={(e: CustomEvent) => handleSearchChange(e.detail.query)}
+  onsh-search-clear={() => handleClear()}
+/>
+```
+
+**Props** :
+- `placeholder` : Texte placeholder
+- `value` : Valeur du champ
+- `debounce` : Délai de debounce en ms (0 = désactivé)
+- `clearable` : Afficher le bouton X pour clear
+- `disabled` : Désactiver le champ
+
+**Événements** :
+- `sh-search` : Émis à la soumission (Enter)
+- `sh-search-change` : Émis lors de la saisie (avec debounce si configuré)
+- `sh-search-clear` : Émis lors du clic sur le bouton clear
+
+---
+
+#### 9. Footer (Organism)
+
+**Nouveau composant** : Footer avec copyright et liens légaux.
+
+**Utilisation** :
+```tsx
+<sh-footer
+  app-name="STOCK HUB"
+  year="2025"
+  data-theme="dark"
+  onsh-footer-link-click={(e: CustomEvent) => handleLinkClick(e.detail.link)}
+/>
+```
+
+**Props** :
+- `app-name` : Nom de l'application (défaut: "STOCK HUB")
+- `year` : Année du copyright (défaut: année courante)
+
+**Événements** :
+- `sh-footer-link-click` : Émis lors du clic sur un lien
+  - `e.detail.link` : `'mentions-legales' | 'politique-confidentialite' | 'cgu' | 'cookies'`
+
+**Liens intégrés** :
+- Mentions Légales
+- Politique de Confidentialité
+- CGU
+- Politique de Cookies
+
+---
+
+#### 10. IA Alert Banner (Organism)
+
+**Nouveau composant** : Bandeau d'alertes IA avec liste collapsible.
+
+**Utilisation** :
+```tsx
+<sh-ia-alert-banner
+  count={5}
+  severity="critical"
+  message="stocks nécessitent votre attention"
+  expanded={true}
+  data-theme="dark"
+  onsh-ia-alert-item-click={(e: CustomEvent) => handleAlertClick(e.detail)}
+/>
+```
+
+**Props** :
+- `count` : Nombre d'alertes
+- `severity` : `'critical' | 'warning' | 'info'`
+- `message` : Message principal
+- `expanded` : État ouvert/fermé (boolean)
+- `alerts` : Array d'objets `IaAlert[]` (doit être assigné via JS)
+
+**Interface IaAlert** :
+```typescript
+interface IaAlert {
+  product: string;
+  message: string;
+  severity: 'critical' | 'warning' | 'info';
+}
+```
+
+**Assignation des alertes (JavaScript)** :
+```tsx
+useEffect(() => {
+  customElements.whenDefined('sh-ia-alert-banner').then(() => {
+    const banner = document.getElementById('my-banner');
+    if (banner) {
+      banner.alerts = [
+        { product: 'Acrylique Jaune', message: 'Risque de rupture', severity: 'critical' },
+        { product: 'Feutrine Rouge', message: 'Stock bas', severity: 'warning' }
+      ];
+    }
+  });
+}, []);
+```
+
+**Événements** :
+- `sh-ia-alert-item-click` : Clic sur un item d'alerte
+  - `e.detail` : L'objet `IaAlert` complet
+
+**Badges de sévérité** :
+- `critical` : Badge rouge "X Critiques"
+- `warning` : Badge orange "X Attention"
+- `info` : Badge bleu "X Info"
+
+---
+
+#### 11. Header (Organism) - Déjà existant ✅
+
+Le composant Header était déjà créé et correspond au design StockHub V2.
+
+**Utilisation complète** :
+```tsx
+<sh-header
+  userName="Sandrine Cipolla"
+  notificationCount={3}
+  isLoggedIn={true}
+  data-theme="dark"
+  onsh-notification-click={(e: CustomEvent) => handleNotifications(e.detail)}
+  onsh-theme-toggle={(e: CustomEvent) => handleThemeToggle(e.detail)}
+  onsh-logout-click={(e: CustomEvent) => handleLogout(e.detail)}
+/>
+```
+
+**Fonctionnalités** :
+- Logo StockHub intégré
+- Badge de notifications avec compteur
+- Toggle thème (Sun/Moon)
+- Bouton Logout avec icône User
+- Sticky positioning avec glassmorphism
+- Responsive (nom user caché sur mobile)
+
+---
+
+### Organisation Atomic Design complète
+
+**Organisms** (composants métier complexes) :
+- `sh-header` : Navigation principale avec logo, notifications, thème ✅
+- `sh-footer` : Footer avec copyright et liens légaux ✅
+- `sh-ia-alert-banner` : Bandeau d'alertes IA collapsible ✅
+- `sh-stock-card` : Carte de stock dashboard ✅
+- `sh-stock-item-card` : Carte d'item inventaire ✅
+
+**Molecules** (groupes d'atomes) :
+- `sh-button`, `sh-status-badge`, `sh-metric-card`, `sh-card`
+- `sh-search-input` : Champ de recherche avec debounce ✅
+
+**Atoms** (composants de base) :
+- `sh-icon`, `sh-input`, `sh-badge`, `sh-logo`, `sh-text`
+
+---
+
+### Composants TypeScript declarations
+
+Mettre à jour `src/types/web-components.d.ts` :
+
+```typescript
+declare namespace JSX {
+  interface IntrinsicElements {
+    // Atoms
+    'sh-badge': any;
+    'sh-icon': any;
+    'sh-input': any;
+    'sh-logo': any;
+    'sh-text': any;
+
+    // Molecules
+    'sh-button': any;
+    'sh-card': any;
+    'sh-metric-card': any;
+    'sh-quantity-input': any;
+    'sh-search-input': any;
+    'sh-status-badge': any;
+
+    // Organisms
+    'sh-footer': any;
+    'sh-header': any;
+    'sh-ia-alert-banner': any;
+    'sh-stock-card': any;
+    'sh-stock-item-card': any;
+  }
+}
+```
+
+---
+
 **Maintenu par** : Sandrine Cipolla
-**Dernière mise à jour** : 20 Octobre 2025
-**Version** : 1.0
+**Dernière mise à jour** : 21 Octobre 2025
+**Version** : 1.2

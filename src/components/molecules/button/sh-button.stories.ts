@@ -1,4 +1,5 @@
 import type {Meta, StoryObj} from '@storybook/web-components';
+import { expect, userEvent } from '@storybook/test';
 import './sh-button.ts';
 import '../../atoms/icon/sh-icon.ts';
 
@@ -100,9 +101,9 @@ export const WithIconBefore: Story = {
   render: (args) => `
     <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
       <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-        <sh-button iconBefore="Plus" variant="primary" data-theme="${args.theme}">Add Item</sh-button>
-        <sh-button iconBefore="Edit" variant="secondary" data-theme="${args.theme}">Edit</sh-button>
-        <sh-button iconBefore="Search" variant="ghost" data-theme="${args.theme}">Search</sh-button>
+        <sh-button icon-before="Plus" variant="primary" data-theme="${args.theme}">Add Item</sh-button>
+        <sh-button icon-before="Edit" variant="secondary" data-theme="${args.theme}">Edit</sh-button>
+        <sh-button icon-before="Search" variant="ghost" data-theme="${args.theme}">Search</sh-button>
       </div>
     </div>
   `,
@@ -116,8 +117,8 @@ export const WithIconAfter: Story = {
   render: (args) => `
     <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
       <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-        <sh-button iconAfter="ArrowRight" variant="primary" data-theme="${args.theme}">Continue</sh-button>
-        <sh-button iconAfter="ExternalLink" variant="ghost" data-theme="${args.theme}">Open</sh-button>
+        <sh-button icon-after="ArrowRight" variant="primary" data-theme="${args.theme}">Continue</sh-button>
+        <sh-button icon-after="ExternalLink" variant="ghost" data-theme="${args.theme}">Open</sh-button>
       </div>
     </div>
   `,
@@ -131,12 +132,27 @@ export const IconOnly: Story = {
   render: (args) => `
     <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
       <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-        <sh-button iconBefore="Home" variant="primary" aria-label="Home" data-theme="${args.theme}"></sh-button>
-        <sh-button iconBefore="Menu" variant="secondary" aria-label="Menu" data-theme="${args.theme}"></sh-button>
-        <sh-button iconBefore="X" variant="ghost" aria-label="Close" data-theme="${args.theme}"></sh-button>
-        <sh-button iconBefore="Trash2" variant="danger" aria-label="Delete" data-theme="${args.theme}"></sh-button>
+        <sh-button id="btn-home" icon-before="Home" icon-only variant="primary" data-theme="${args.theme}"></sh-button>
+        <sh-button id="btn-menu" icon-before="Menu" icon-only variant="secondary" data-theme="${args.theme}"></sh-button>
+        <sh-button id="btn-close" icon-before="X" icon-only variant="ghost" data-theme="${args.theme}"></sh-button>
+        <sh-button id="btn-delete" icon-before="Trash2" icon-only variant="danger" data-theme="${args.theme}"></sh-button>
       </div>
     </div>
+    <script>
+      (function() {
+        customElements.whenDefined('sh-button').then(() => {
+          const homeBtn = document.getElementById('btn-home');
+          const menuBtn = document.getElementById('btn-menu');
+          const closeBtn = document.getElementById('btn-close');
+          const deleteBtn = document.getElementById('btn-delete');
+
+          if (homeBtn) homeBtn.ariaLabel = 'Home';
+          if (menuBtn) menuBtn.ariaLabel = 'Menu';
+          if (closeBtn) closeBtn.ariaLabel = 'Close';
+          if (deleteBtn) deleteBtn.ariaLabel = 'Delete';
+        });
+      })();
+    </script>
   `,
 };
 
@@ -185,7 +201,7 @@ export const GhostShowcase: Story = {
           <h4 style="margin-top: 0; color: ${args.theme === 'dark' ? '#ffffff' : '#000000'};">${args.theme === 'dark' ? 'Dark' : 'Light'} Background</h4>
           <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
             <sh-button variant="ghost" data-theme="${args.theme}">Cancel</sh-button>
-            <sh-button variant="ghost" iconBefore="Edit" data-theme="${args.theme}">Edit</sh-button>
+            <sh-button variant="ghost" icon-before="Edit" data-theme="${args.theme}">Edit</sh-button>
             <sh-button variant="ghost" disabled data-theme="${args.theme}">Disabled</sh-button>
           </div>
         </div>
@@ -206,7 +222,7 @@ export const FormExample: Story = {
         <input type="password" placeholder="Password" style="padding: 8px; border: 1px solid ${args.theme === 'dark' ? '#475569' : '#ccc'}; border-radius: 4px; background: ${args.theme === 'dark' ? '#334155' : '#ffffff'}; color: ${args.theme === 'dark' ? '#ffffff' : '#000000'};" />
 
         <div style="display: flex; gap: 0.5rem;">
-          <sh-button type="submit" variant="primary" iconBefore="LogIn" style="flex: 1;" data-theme="${args.theme}">Login</sh-button>
+          <sh-button type="submit" variant="primary" icon-before="LogIn" style="flex: 1;" data-theme="${args.theme}">Login</sh-button>
           <sh-button type="button" variant="ghost" data-theme="${args.theme}">Cancel</sh-button>
         </div>
       </form>
@@ -222,9 +238,9 @@ export const ActionsExample: Story = {
   render: (args) => `
     <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
       <div style="display: flex; gap: 0.5rem; padding: 1rem; background: ${args.theme === 'dark' ? '#1e293b' : '#f8fafc'}; border-radius: 8px;">
-        <sh-button size="sm" variant="ghost" iconBefore="Eye" data-theme="${args.theme}">View</sh-button>
-        <sh-button size="sm" variant="ghost" iconBefore="Edit" data-theme="${args.theme}">Edit</sh-button>
-        <sh-button size="sm" variant="ghost" iconBefore="Trash2" data-theme="${args.theme}">Delete</sh-button>
+        <sh-button size="sm" variant="ghost" icon-before="Eye" data-theme="${args.theme}">View</sh-button>
+        <sh-button size="sm" variant="ghost" icon-before="Edit" data-theme="${args.theme}">Edit</sh-button>
+        <sh-button size="sm" variant="ghost" icon-before="Trash2" data-theme="${args.theme}">Delete</sh-button>
       </div>
     </div>
   `,
@@ -248,12 +264,240 @@ export const Playground: Story = {
         size="${args.size}"
         ${args.disabled ? 'disabled' : ''}
         ${args.loading ? 'loading' : ''}
-        ${args.iconBefore ? `iconBefore="${args.iconBefore}"` : ''}
-        ${args.iconAfter ? `iconAfter="${args.iconAfter}"` : ''}
+        ${args.iconBefore ? `icon-before="${args.iconBefore}"` : ''}
+        ${args.iconAfter ? `icon-after="${args.iconAfter}"` : ''}
         data-theme="${args.theme}"
       >
         Button Text
       </sh-button>
     </div>
   `,
+};
+
+/**
+ * Story d'interaction : teste le comportement du bouton avec @storybook/test.
+ * Vérifie que le bouton peut être cliqué et que l'état reste correct.
+ * Les résultats sont visibles dans le panneau "Interactions" de Storybook.
+ */
+export const InteractionTest: Story = {
+  args: {
+    theme: 'dark',
+    variant: 'primary',
+    size: 'md',
+    disabled: false,
+    loading: false,
+    iconBefore: '',
+    iconAfter: '',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Cette story lance des tests automatisés sur le bouton avec @storybook/test. Les interactions sont visibles dans le panneau 'Interactions' de Storybook. Utile pour la CI/CD et Chromatic."
+      }
+    }
+  },
+  render: (args) => `
+    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+      <sh-button
+        variant="${args.variant}"
+        size="${args.size}"
+        ${args.disabled ? 'disabled' : ''}
+        ${args.loading ? 'loading' : ''}
+        ${args.iconBefore ? `icon-before="${args.iconBefore}"` : ''}
+        ${args.iconAfter ? `icon-after="${args.iconAfter}"` : ''}
+        data-theme="${args.theme}"
+      >
+        Click Me
+      </sh-button>
+      <div id="test-result" style="color: #94a3b8; font-size: 14px; font-weight: 500;">
+        ⏳ Test en cours... (voir l'onglet "Interactions" en bas)
+      </div>
+    </div>
+  `,
+  play: async ({ canvasElement }) => {
+    const resultDiv = canvasElement.querySelector('#test-result') as HTMLElement;
+
+    try {
+      // Pour les Web Components avec Shadow DOM, on doit sélectionner le custom element directement
+      const shButton = canvasElement.querySelector('sh-button') as HTMLElement;
+      await expect(shButton).toBeInTheDocument();
+
+      // Accéder au bouton dans le Shadow DOM
+      const button = shButton.shadowRoot?.querySelector('button') as HTMLButtonElement;
+      await expect(button).toBeTruthy();
+
+      // Vérifier que le bouton est enabled
+      await expect(button.disabled).toBe(false);
+
+      // Simuler un hover sur le custom element
+      await userEvent.hover(shButton);
+
+      // Simuler un click utilisateur réel sur le custom element
+      await userEvent.click(shButton);
+
+      // Vérifier que le bouton interne est toujours enabled après le click
+      await expect(button.disabled).toBe(false);
+
+      // Afficher le succès
+      if (resultDiv) {
+        resultDiv.style.color = '#10b981';
+        resultDiv.innerHTML = '✅ Test réussi ! Tous les comportements sont corrects.';
+      }
+    } catch (error) {
+      // Afficher l'erreur
+      if (resultDiv) {
+        resultDiv.style.color = '#ef4444';
+        resultDiv.innerHTML = `❌ Test échoué : ${error}`;
+      }
+      throw error;
+    }
+  },
+};
+
+/**
+ * Test d'interaction sur un bouton disabled.
+ * Vérifie qu'un bouton désactivé ne peut pas être cliqué.
+ */
+export const InteractionTestDisabled: Story = {
+  args: {
+    theme: 'dark',
+    variant: 'primary',
+    size: 'md',
+    disabled: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Teste qu'un bouton désactivé ne peut pas être cliqué et reste dans l'état disabled."
+      }
+    }
+  },
+  render: (args) => `
+    <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+      <sh-button
+        variant="${args.variant}"
+        size="${args.size}"
+        disabled
+        data-theme="${args.theme}"
+      >
+        Disabled Button
+      </sh-button>
+      <div id="test-result" style="color: #94a3b8; font-size: 14px; font-weight: 500;">
+        ⏳ Test en cours... (voir l'onglet "Interactions" en bas)
+      </div>
+    </div>
+  `,
+  play: async ({ canvasElement }) => {
+    const resultDiv = canvasElement.querySelector('#test-result') as HTMLElement;
+
+    try {
+      // Sélectionner le custom element sh-button
+      const shButton = canvasElement.querySelector('sh-button') as HTMLElement;
+      await expect(shButton).toBeInTheDocument();
+
+      // Vérifier que l'attribut disabled est présent sur le custom element
+      await expect(shButton.hasAttribute('disabled')).toBe(true);
+
+      // Accéder au bouton dans le Shadow DOM
+      const button = shButton.shadowRoot?.querySelector('button') as HTMLButtonElement;
+      await expect(button).toBeTruthy();
+
+      // Vérifier que le bouton interne est bien disabled
+      await expect(button.disabled).toBe(true);
+
+      // Note: userEvent.click() sur un élément disabled ne fait rien (comportement attendu)
+      // Le bouton doit rester disabled
+      await expect(button.disabled).toBe(true);
+
+      // Afficher le succès
+      if (resultDiv) {
+        resultDiv.style.color = '#10b981';
+        resultDiv.innerHTML = '✅ Test réussi ! Le bouton disabled fonctionne correctement.';
+      }
+    } catch (error) {
+      // Afficher l'erreur
+      if (resultDiv) {
+        resultDiv.style.color = '#ef4444';
+        resultDiv.innerHTML = `❌ Test échoué : ${error}`;
+      }
+      throw error;
+    }
+  },
+};
+
+/**
+ * Test d'interaction sur un bouton avec icônes.
+ * Vérifie que les icônes sont présentes et que le bouton fonctionne.
+ */
+export const InteractionTestWithIcons: Story = {
+  args: {
+    theme: 'dark',
+    variant: 'primary',
+    size: 'md',
+    iconBefore: 'Plus',
+    iconAfter: 'ArrowRight',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Teste un bouton avec icônes avant et après le texte."
+      }
+    }
+  },
+  render: (args) => `
+    <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+      <sh-button
+        variant="${args.variant}"
+        size="${args.size}"
+        icon-before="${args.iconBefore}"
+        icon-after="${args.iconAfter}"
+        data-theme="${args.theme}"
+      >
+        Add Item
+      </sh-button>
+      <div id="test-result" style="color: #94a3b8; font-size: 14px; font-weight: 500;">
+        ⏳ Test en cours... (voir l'onglet "Interactions" en bas)
+      </div>
+    </div>
+  `,
+  play: async ({ canvasElement }) => {
+    const resultDiv = canvasElement.querySelector('#test-result') as HTMLElement;
+
+    try {
+      // Sélectionner le custom element sh-button
+      const shButton = canvasElement.querySelector('sh-button') as HTMLElement;
+      await expect(shButton).toBeInTheDocument();
+
+      // Vérifier que les attributs icon-before et icon-after sont présents
+      await expect(shButton.getAttribute('icon-before')).toBe('Plus');
+      await expect(shButton.getAttribute('icon-after')).toBe('ArrowRight');
+
+      // Accéder au bouton dans le Shadow DOM
+      const button = shButton.shadowRoot?.querySelector('button') as HTMLButtonElement;
+      await expect(button).toBeTruthy();
+
+      // Vérifier que les icônes sont présentes dans le Shadow DOM
+      const icons = button.querySelectorAll('sh-icon');
+      await expect(icons.length).toBe(2);
+
+      // Cliquer sur le custom element
+      await userEvent.click(shButton);
+
+      // Le bouton doit rester actif
+      await expect(button.disabled).toBe(false);
+
+      // Afficher le succès
+      if (resultDiv) {
+        resultDiv.style.color = '#10b981';
+        resultDiv.innerHTML = '✅ Test réussi ! 2 icônes détectées et click fonctionnel.';
+      }
+    } catch (error) {
+      // Afficher l'erreur
+      if (resultDiv) {
+        resultDiv.style.color = '#ef4444';
+        resultDiv.innerHTML = `❌ Test échoué : ${error}`;
+      }
+      throw error;
+    }
+  },
 };

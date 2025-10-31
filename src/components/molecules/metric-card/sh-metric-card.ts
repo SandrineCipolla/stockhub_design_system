@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import '../../atoms/icon/sh-icon.js';
 
 /**
@@ -43,6 +43,9 @@ export class ShMetricCard extends LitElement {
   @property({ attribute: 'trend-value' }) trendValue?: string;
   @property({ type: Boolean }) clickable = false;
   @property({ type: String, reflect: true, attribute: 'data-theme' }) theme: 'light' | 'dark' = 'dark';
+
+  @state()
+  private displayValue: string | number = '0';
 
   static styles = css`
     :host {
@@ -105,12 +108,12 @@ export class ShMetricCard extends LitElement {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--border-radius-lg);
-      padding: var(--spacing-lg);
+      padding: var(--spacing-md);
       transition: all 0.2s ease;
       height: 100%;
       display: flex;
       flex-direction: column;
-      gap: var(--spacing-md);
+      gap: var(--spacing-sm);
     }
 
     :host([clickable]) .metric-card {
@@ -181,13 +184,21 @@ export class ShMetricCard extends LitElement {
     }
 
     .trend.increase {
-      color: var(--color-success-600);
+      color: var(--color-success-400);
       background: rgba(16, 185, 129, 0.1);
     }
 
     .trend.decrease {
-      color: var(--color-danger-600);
+      color: var(--color-danger-400);
       background: rgba(239, 68, 68, 0.1);
+    }
+
+    :host([data-theme="light"]) .trend.increase {
+      color: var(--color-success-700);
+    }
+
+    :host([data-theme="light"]) .trend.decrease {
+      color: var(--color-danger-700);
     }
 
     .trend sh-icon {
@@ -204,7 +215,7 @@ export class ShMetricCard extends LitElement {
     }
 
     .value {
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: var(--font-fontWeight-bold);
       color: var(--card-text);
       line-height: 1.2;
@@ -212,7 +223,7 @@ export class ShMetricCard extends LitElement {
     }
 
     .label {
-      font-size: var(--font-fontSize-sm);
+      font-size: 0.75rem;
       color: var(--card-text-muted);
       font-weight: var(--font-fontWeight-medium);
     }
@@ -230,6 +241,70 @@ export class ShMetricCard extends LitElement {
       }
     }
   `;
+
+  firstUpdated() {
+    // Animate only pure numeric values (no symbols/formatting)
+    const stringValue = String(this.value);
+    const isPureNumeric = /^[0-9,.\s]+$/.test(stringValue);
+
+    if (isPureNumeric) {
+      // Remove spaces and handle both comma and dot as decimal separator
+      let cleanValue = stringValue.replace(/\s/g, '');
+
+      // Detect if comma is decimal separator (French format: 45250,50)
+      // or thousands separator (English format: 45,250.50)
+      const hasComma = cleanValue.includes(',');
+      const hasDot = cleanValue.includes('.');
+
+      if (hasComma && !hasDot) {
+        // French format: replace comma with dot for parseFloat
+        cleanValue = cleanValue.replace(',', '.');
+      } else if (hasComma && hasDot) {
+        // English format: remove comma (thousands separator)
+        cleanValue = cleanValue.replace(/,/g, '');
+      }
+
+      const numericValue = parseFloat(cleanValue);
+
+      if (!isNaN(numericValue)) {
+        // Detect decimal places to preserve formatting
+        const decimalPlaces = cleanValue.includes('.') ? cleanValue.split('.')[1]?.length || 0 : 0;
+        this.animateValue(0, numericValue, 1000, decimalPlaces);
+        return;
+      }
+    }
+
+    // For formatted values (with symbols), display as-is without animation
+    this.displayValue = this.value;
+  }
+
+  private animateValue(start: number, end: number, duration: number, decimalPlaces: number = 0) {
+    const range = end - start;
+    const startTime = performance.now();
+
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      const currentValue = start + range * progress;
+
+      // Format with appropriate decimal places
+      if (decimalPlaces > 0) {
+        this.displayValue = currentValue.toFixed(decimalPlaces);
+      } else {
+        this.displayValue = Math.floor(currentValue);
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        // Ensure we end with the exact final value
+        this.displayValue = decimalPlaces > 0 ? end.toFixed(decimalPlaces) : end;
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }
 
   private _handleClick() {
     if (this.clickable) {
@@ -259,7 +334,7 @@ export class ShMetricCard extends LitElement {
         class="metric-card"
         role="${this.clickable ? 'button' : 'region'}"
         tabindex="${this.clickable ? '0' : '-1'}"
-        aria-label="${this.clickable ? `${this.label}: ${this.value}` : ''}"
+        aria-label="${this.label}: ${this.value}"
         @click="${this._handleClick}"
         @keydown="${this._handleKeyDown}"
       >
@@ -288,7 +363,7 @@ export class ShMetricCard extends LitElement {
         <!-- Corps: Valeur + Label -->
         <div class="body">
           <div class="value" aria-live="polite">
-            <slot>${this.value}</slot>
+            <slot>${this.displayValue}</slot>
           </div>
           <div class="label">${this.label}</div>
         </div>

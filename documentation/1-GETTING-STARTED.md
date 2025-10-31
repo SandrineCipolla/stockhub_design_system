@@ -236,5 +236,46 @@ npm run storybook
 
 ---
 
+## Déploiement automatique sur Chromatic via GitHub Actions
+
+Un workflow est configuré dans `.github/workflows/chromatic.yml` pour publier Storybook sur Chromatic à chaque push ou pull request sur les branches `master`, `v2` ou `feature/**`.
+
+### Prérequis
+- Ajouter le token Chromatic dans les secrets GitHub du dépôt :
+  1. Aller dans Settings → Secrets and variables → Actions.
+  2. Ajouter un secret nommé `CHROMATIC_PROJECT_TOKEN` avec la valeur du token récupéré dans les paramètres du projet Chromatic.
+
+### Fonctionnement du workflow
+- Le workflow installe les dépendances, build Storybook et publie sur Chromatic.
+- Le token est injecté via `${{ secrets.CHROMATIC_PROJECT_TOKEN }}`.
+- Les résultats sont visibles sur Chromatic et dans les checks GitHub.
+
+### Lancer Chromatic en local
+- Utiliser la commande :
+  ```bash
+  npx chromatic --project-token <YOUR_PROJECT_TOKEN>
+  ```
+- Ou via le script ajouté dans le `package.json` :
+  ```bash
+  npm run chromatic
+  ```
+
+### ⚠️ À propos de l'option autoAcceptChanges
+
+L'option `autoAcceptChanges: ${{ github.ref_name == 'master' }}` dans le workflow CI/CD Chromatic permet d'accepter automatiquement tous les changements visuels (screenshots, baselines) sur la branche `master`.
+
+- Sur les branches de feature, la validation visuelle est manuelle : tu contrôles et acceptes les changements sur Chromatic avant de merger.
+- Une fois la PR validée et mergée dans `master`, l'auto-acceptation évite une double validation : les changements déjà approuvés sont automatiquement acceptés comme nouvelle référence.
+- Ce fonctionnement accélère le déploiement tout en gardant le contrôle qualité en amont.
+
+**Bonnes pratiques :**
+- Toujours valider manuellement les changements visuels sur les branches de développement ou de feature.
+- Sur `master`, l'auto-acceptation est sûre si la revue a été faite en amont.
+- Surveille régulièrement les rapports Chromatic pour éviter toute régression non désirée.
+
+Pour plus d'infos : [Chromatic autoAcceptChanges](https://www.chromatic.com/docs/configure/#autoacceptchanges)
+
+---
+
 **Maintenu par** : Sandrine Cipolla
 **Dernière mise à jour** : 16 Octobre 2025

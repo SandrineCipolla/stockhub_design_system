@@ -1,5 +1,6 @@
-import { css, html, LitElement } from 'lit';
+import { css, html, LitElement, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import '../../atoms/icon/sh-icon.js';
 
 /**
  * Button component with multiple variants, sizes, loading state, and icon support.
@@ -51,13 +52,13 @@ export class ShButton extends LitElement {
    * Icon name to display before content
    * @type {string}
    */
-  @property({ type: String }) iconBefore?: string;
+  @property({ type: String, attribute: 'icon-before' }) iconBefore?: string;
 
   /**
    * Icon name to display after content
    * @type {string}
    */
-  @property({ type: String }) iconAfter?: string;
+  @property({ type: String, attribute: 'icon-after' }) iconAfter?: string;
 
   /**
    * Button type attribute
@@ -65,6 +66,26 @@ export class ShButton extends LitElement {
    * @default 'button'
    */
   @property({ type: String }) type: 'button' | 'submit' | 'reset' = 'button';
+
+  /**
+   * Hide button text on mobile (show only icon)
+   * @type {boolean}
+   * @default false
+   */
+  @property({ type: Boolean, attribute: 'hide-text-mobile' }) hideTextMobile = false;
+
+  /**
+   * Icon-only mode (no text, just icon)
+   * @type {boolean}
+   * @default false
+   */
+  @property({ type: Boolean, attribute: 'icon-only' }) iconOnly = false;
+
+  /**
+   * Accessible label for screen readers (required for icon-only buttons)
+   * @type {string}
+   */
+  @property({ type: String }) ariaLabel: string | null = null;
 
   static styles = css`
     :host {
@@ -128,9 +149,9 @@ export class ShButton extends LitElement {
     }
 
     :host([data-theme="dark"]) .secondary {
-      background: var(--color-surface-secondary);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--color-text-primary);
-      border-color: var(--color-neutral-700);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .secondary:hover:not(:disabled) {
@@ -139,26 +160,45 @@ export class ShButton extends LitElement {
     }
 
     :host([data-theme="dark"]) .secondary:hover:not(:disabled) {
-      background: var(--color-neutral-800);
+      background: rgba(255, 255, 255, 0.1);
       border-color: var(--color-primary-400);
     }
 
     .ghost {
-      background: transparent;
-      color: var(--color-primary-600);
-      border: none;
+      background: rgba(0, 0, 0, 0.02);
+      color: var(--color-neutral-700);
+      border: 1px solid rgba(0, 0, 0, 0.15);
     }
 
     .ghost:hover:not(:disabled) {
-      background: rgba(139, 92, 246, 0.1);
+      background: rgba(0, 0, 0, 0.05);
+      border-color: rgba(0, 0, 0, 0.25);
     }
 
     .ghost:active:not(:disabled) {
-      background: rgba(139, 92, 246, 0.2);
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    :host([data-theme="light"]) .ghost {
+      color: var(--color-neutral-700);
+      background: rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.15);
+    }
+
+    :host([data-theme="light"]) .ghost:hover:not(:disabled) {
+      background: rgba(0, 0, 0, 0.05);
+      border-color: rgba(0, 0, 0, 0.25);
     }
 
     :host([data-theme="dark"]) .ghost {
-      color: var(--color-primary-400);
+      color: white;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    :host([data-theme="dark"]) .ghost:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
     }
 
     .danger {
@@ -212,6 +252,31 @@ export class ShButton extends LitElement {
     sh-icon {
       font-size: 1.25em;
     }
+
+    /* Icon-only mode */
+    :host([icon-only]) .button-text {
+      display: none;
+    }
+
+    :host([icon-only]) button {
+      padding: var(--spacing-sm);
+      aspect-ratio: 1;
+    }
+
+    /* Responsive text hiding */
+    :host([hide-text-mobile]) .button-text {
+      display: none;
+    }
+
+    @media (min-width: 640px) {
+      :host([hide-text-mobile]) .button-text {
+        display: inline;
+      }
+    }
+
+    .button-text {
+      display: inline;
+    }
   `;
 
   render() {
@@ -222,10 +287,11 @@ export class ShButton extends LitElement {
         ?disabled="${this.disabled || this.loading}"
         @click="${this._handleClick}"
         aria-busy="${this.loading}"
+        aria-label="${this.ariaLabel || nothing}"
       >
         ${this.loading ? this._renderSpinner() : ''}
         ${!this.loading && this.iconBefore ? html`<sh-icon name="${this.iconBefore}"></sh-icon>` : ''}
-        <slot></slot>
+        <span class="button-text"><slot></slot></span>
         ${!this.loading && this.iconAfter ? html`<sh-icon name="${this.iconAfter}"></sh-icon>` : ''}
       </button>
     `;

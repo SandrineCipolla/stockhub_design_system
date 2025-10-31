@@ -153,9 +153,9 @@ export const WithDecreaseTrend: Story = {
  */
 export const MonetaryValue: Story = {
   args: {
-    icon: 'DollarSign',
+    icon: 'Euro',
     label: 'Valeur Totale',
-    value: '€45,250',
+    value: '45,250',
     variant: 'info',
     trend: 'increase',
     trendValue: '+15%',
@@ -255,9 +255,9 @@ export const AllVariants: Story = {
 
         <div style="flex: 1 1 300px; max-width: 320px;">
           <sh-metric-card
-            icon="TrendingUp"
+            icon="Euro"
             label="Info Variant"
-            value="€45,250"
+            value="45,250"
             variant="info"
             trend="increase"
             trend-value="+15%"
@@ -288,54 +288,62 @@ export const DashboardExample: Story = {
   },
   render: (args) => `
     <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 100%;">
-      <!-- Total Produits -->
-      <sh-metric-card
-        icon="Package"
-        label="Total Produits"
-        value="156"
-        variant="success"
-        trend="increase"
-        trend-value="+12"
-        data-theme="${args.theme}"
-        clickable
-      ></sh-metric-card>
+      <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
+        <!-- Total Produits -->
+        <div style="flex: 1 1 300px; max-width: 320px;">
+          <sh-metric-card
+            icon="Package"
+            label="Total Produits"
+            value="156"
+            variant="success"
+            trend="increase"
+            trend-value="+12"
+            data-theme="${args.theme}"
+            clickable
+          ></sh-metric-card>
+        </div>
 
-      <!-- Stock Faible -->
-      <sh-metric-card
-        icon="AlertTriangle"
-        label="Stock Faible"
-        value="42"
-        variant="warning"
-        trend="increase"
-        trend-value="+3"
-        data-theme="${args.theme}"
-        clickable
-      ></sh-metric-card>
+        <!-- Stock Faible -->
+        <div style="flex: 1 1 300px; max-width: 320px;">
+          <sh-metric-card
+            icon="AlertTriangle"
+            label="Stock Faible"
+            value="42"
+            variant="warning"
+            trend="increase"
+            trend-value="+3"
+            data-theme="${args.theme}"
+            clickable
+          ></sh-metric-card>
+        </div>
 
-      <!-- Stock Critique -->
-      <sh-metric-card
-        icon="AlertCircle"
-        label="Stock Critique"
-        value="3"
-        variant="danger"
-        trend="decrease"
-        trend-value="-2"
-        data-theme="${args.theme}"
-        clickable
-      ></sh-metric-card>
+        <!-- Stock Critique -->
+        <div style="flex: 1 1 300px; max-width: 320px;">
+          <sh-metric-card
+            icon="AlertCircle"
+            label="Stock Critique"
+            value="3"
+            variant="danger"
+            trend="decrease"
+            trend-value="-2"
+            data-theme="${args.theme}"
+            clickable
+          ></sh-metric-card>
+        </div>
 
-      <!-- Valeur Totale -->
-      <sh-metric-card
-        icon="DollarSign"
-        label="Valeur Totale"
-        value="€45,250"
-        variant="info"
-        trend="increase"
-        trend-value="+15%"
-        data-theme="${args.theme}"
-        clickable
-      ></sh-metric-card>
+        <!-- Valeur Totale -->
+        <div style="flex: 1 1 300px; max-width: 320px;">
+          <sh-metric-card
+            icon="Euro"
+            label="Valeur Totale"
+            value="45,250"
+            variant="info"
+            trend="increase"
+            trend-value="+15%"
+            data-theme="${args.theme}"
+            clickable
+          ></sh-metric-card>
+        </div>
       </div>
     </div>
 

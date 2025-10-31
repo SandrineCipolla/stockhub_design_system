@@ -1,213 +1,213 @@
-# Component Documentation Guide
+# Guide de Documentation des Composants
 
-## Overview
+## Vue d'ensemble
 
-All StockHub Design System components are documented using JSDoc comments and automatically generated documentation via the Custom Elements Manifest Analyzer.
+Tous les composants du Design System StockHub sont documentés avec des commentaires JSDoc et une documentation générée automatiquement via le Custom Elements Manifest Analyzer.
 
-## Documentation System
+## Système de documentation
 
-### Technology Stack
+### Stack technique
 
-- **@custom-elements-manifest/analyzer** - Analyzes Lit components and generates `custom-elements.json`
-- **Storybook autodocs** - Automatically generates documentation pages from the manifest
-- **JSDoc** - Standard JavaScript documentation format for component metadata
+- **@custom-elements-manifest/analyzer** : Analyse les composants Lit et génère le fichier `custom-elements.json`
+- **Storybook autodocs** : Génère automatiquement les pages de documentation à partir du manifest
+- **JSDoc** : Format standard de documentation JavaScript pour les métadonnées des composants
 
-### How It Works
+### Fonctionnement
 
-1. JSDoc comments are added to component classes and properties
-2. Running `npm run analyze` generates `custom-elements.json` from the source code
-3. Storybook reads the manifest and displays documentation in the **Docs** tab
-4. Documentation updates automatically when running `npm run storybook`
+1. Les commentaires JSDoc sont ajoutés aux classes et propriétés des composants
+2. La commande `npm run analyze` génère le fichier `custom-elements.json` à partir du code source
+3. Storybook lit le manifest et affiche la documentation dans l’onglet **Docs**
+4. La documentation se met à jour automatiquement lors du lancement de `npm run storybook`
 
-## Writing Component Documentation
+## Rédiger la documentation des composants
 
-### Component-Level Documentation
+### Documentation au niveau du composant
 
-Add a JSDoc block before the `@customElement` decorator:
+Ajoutez un bloc JSDoc avant le décorateur `@customElement` :
 
 ```typescript
 /**
- * Brief description of the component.
+ * Brève description du composant.
  *
- * @element component-name
+ * @element nom-du-composant
  *
- * @slot - Description of default slot
- * @slot slotName - Description of named slot
+ * @slot - Description du slot par défaut
+ * @slot nomDuSlot - Description du slot nommé
  *
- * @fires event-name - Description of custom event
+ * @fires nom-evenement - Description de l’événement custom
  *
- * @csspart partName - Description of CSS part
- * @cssproperty --var-name - Description of CSS custom property
+ * @csspart nomPartie - Description de la partie CSS
+ * @cssproperty --nom-variable - Description de la variable CSS
  *
  * @example
  * ```html
- * <component-name prop="value">Content</component-name>
+ * <nom-du-composant prop="valeur">Contenu</nom-du-composant>
  * ```
  */
-@customElement('component-name')
-export class ComponentName extends LitElement {
+@customElement('nom-du-composant')
+export class NomDuComposant extends LitElement {
 ```
 
-### Property Documentation
+### Documentation des propriétés
 
-Add JSDoc blocks for each `@property`:
+Ajoutez un bloc JSDoc pour chaque `@property` :
 
 ```typescript
 /**
- * Property description
+ * Description de la propriété
  * @type {string | 'option1' | 'option2'}
- * @default 'defaultValue'
+ * @default 'valeurParDefaut'
  */
-@property({ type: String }) propertyName = 'defaultValue';
+@property({ type: String }) nomPropriete = 'valeurParDefaut';
 ```
 
-## Documented Components
+## Composants documentés
 
-### Atoms
+### Atomes
 
-| Component | Element | Documentation |
-|-----------|---------|---------------|
-| ShBadge | `sh-badge` | ✅ Complete |
-| ShIcon | `sh-icon` | ✅ Complete |
-| ShInput | `sh-input` | ✅ Complete |
-| ShLogo | `sh-logo` | ✅ Complete |
-| ShText | `sh-text` | ✅ Complete |
+| Composant   | Élément      | Documentation |
+|-------------|--------------|---------------|
+| ShBadge     | `sh-badge`   | ✅ Complète    |
+| ShIcon      | `sh-icon`    | ✅ Complète    |
+| ShInput     | `sh-input`   | ✅ Complète    |
+| ShLogo      | `sh-logo`    | ✅ Complète    |
+| ShText      | `sh-text`    | ✅ Complète    |
 
-### Molecules
+### Molécules
 
-| Component | Element | Documentation |
-|-----------|---------|---------------|
-| ShButton | `sh-button` | ✅ Complete |
-| ShCard | `sh-card` | ✅ Complete |
-| ShStatusBadge | `sh-status-badge` | ✅ Complete |
-| ShQuantityInput | `sh-quantity-input` | ✅ Complete |
+| Composant        | Élément             | Documentation |
+|------------------|---------------------|---------------|
+| ShButton         | `sh-button`         | ✅ Complète    |
+| ShCard           | `sh-card`           | ✅ Complète    |
+| ShStatusBadge    | `sh-status-badge`   | ✅ Complète    |
+| ShQuantityInput  | `sh-quantity-input` | ✅ Complète    |
 
-### Organisms
+### Organismes
 
-| Component | Element | Documentation |
-|-----------|---------|---------------|
-| ShHeader | `sh-header` | ✅ Complete |
+| Composant   | Élément      | Documentation |
+|-------------|--------------|---------------|
+| ShHeader    | `sh-header`  | ✅ Complète    |
 
-## Viewing Documentation
+## Consulter la documentation
 
-### In Storybook
+### Dans Storybook
 
-1. Start Storybook: `npm run storybook`
-2. Navigate to any component in the sidebar
-3. Click the **Docs** tab
-4. View:
-   - Component description
-   - Property table with types, defaults, and descriptions
-   - Slots and events (if applicable)
-   - CSS parts and custom properties (if applicable)
+1. Démarrer Storybook : `npm run storybook`
+2. Naviguer vers n’importe quel composant dans la barre latérale
+3. Cliquer sur l’onglet **Docs**
+4. Voir :
+   - Description du composant
+   - Tableau des propriétés (types, valeurs par défaut, descriptions)
+   - Slots et événements (si applicables)
+   - Parties CSS et variables custom (si applicables)
 
-### In Code
+### Dans le code
 
-The `custom-elements.json` file contains the complete manifest and can be used by:
-- IDEs for autocomplete and tooltips
-- Documentation generators
-- Other development tools
+Le fichier `custom-elements.json` contient le manifest complet et peut être utilisé par :
+- Les IDE pour l’autocomplétion et les tooltips
+- Les générateurs de documentation
+- D’autres outils de développement
 
 ## Scripts
 
 ```bash
-# Generate custom elements manifest
+# Générer le manifest des custom elements
 npm run analyze
 
-# Start Storybook (auto-generates manifest first)
+# Démarrer Storybook (génère le manifest automatiquement)
 npm run storybook
 
-# Build Storybook for production (auto-generates manifest first)
+# Build Storybook pour la production (génère le manifest automatiquement)
 npm run build-storybook
 ```
 
-## Best Practices
+## Bonnes pratiques
 
-### 1. Be Descriptive
+### 1. Soyez descriptif
 
-❌ Bad:
+❌ Mauvais :
 ```typescript
-/** Size */
+/** Taille */
 @property() size = 'md';
 ```
 
-✅ Good:
+✅ Bon :
 ```typescript
 /**
- * Size of the button
+ * Taille du bouton
  * @type {'sm' | 'md' | 'lg'}
  * @default 'md'
  */
 @property() size: 'sm' | 'md' | 'lg' = 'md';
 ```
 
-### 2. Include Examples
+### 2. Ajoutez des exemples
 
-Always provide usage examples in the component-level JSDoc:
+Toujours fournir des exemples d’utilisation dans le JSDoc du composant :
 
 ```typescript
 /**
  * @example
  * ```html
- * <sh-button variant="primary">Click me</sh-button>
- * <sh-button variant="danger" iconBefore="Trash">Delete</sh-button>
+ * <sh-button variant="primary">Cliquez-moi</sh-button>
+ * <sh-button variant="danger" iconBefore="Trash">Supprimer</sh-button>
  * ```
  */
 ```
 
-### 3. Document Events
+### 3. Documentez les événements
 
-List all custom events with `@fires`:
-
-```typescript
-/**
- * @fires sh-button-click - Fired when button is clicked
- * @fires sh-input-change - Fired when input value changes
- */
-```
-
-### 4. Document Slots
-
-Document all slots, including the default slot:
+Listez tous les événements custom avec `@fires` :
 
 ```typescript
 /**
- * @slot - Button content (text or other elements)
- * @slot icon - Custom icon slot
+ * @fires sh-button-click - Émis lors du clic sur le bouton
+ * @fires sh-input-change - Émis lors du changement de valeur de l’input
  */
 ```
 
-### 5. Document CSS Parts and Custom Properties
+### 4. Documentez les slots
+
+Documentez tous les slots, y compris le slot par défaut :
 
 ```typescript
 /**
- * @csspart badge - The badge container element
- * @cssproperty --logo-size - Controls the size of the logo (default: 48px)
+ * @slot - Contenu du bouton (texte ou autres éléments)
+ * @slot icon - Slot pour une icône personnalisée
  */
 ```
 
-## Troubleshooting
+### 5. Documentez les parties CSS et variables custom
 
-### Documentation Not Updating
+```typescript
+/**
+ * @csspart badge - Élément conteneur du badge
+ * @cssproperty --logo-size - Contrôle la taille du logo (par défaut : 48px)
+ */
+```
 
-1. Stop Storybook
-2. Delete `custom-elements.json`
-3. Run `npm run analyze`
-4. Restart Storybook
+## Dépannage
 
-### Properties Not Showing
+### La documentation ne se met pas à jour
 
-- Ensure `@property()` decorator is used (not just class properties)
-- Check that JSDoc is directly above the property
-- Verify `@type` annotation matches the TypeScript type
+1. Arrêter Storybook
+2. Supprimer `custom-elements.json`
+3. Lancer `npm run analyze`
+4. Redémarrer Storybook
 
-### Missing Component
+### Les propriétés n’apparaissent pas
 
-- Check that component file is in `src/components/**/*.ts`
-- Verify it's not excluded in `custom-elements-manifest.config.mjs`
-- Component must use `@customElement()` decorator
+- Vérifier que le décorateur `@property()` est utilisé (pas seulement une propriété de classe)
+- Vérifier que le JSDoc est juste au-dessus de la propriété
+- Vérifier que l’annotation `@type` correspond au type TypeScript
 
-## Configuration Files
+### Composant manquant
+
+- Vérifier que le fichier du composant est dans `src/components/**/*.ts`
+- Vérifier qu’il n’est pas exclu dans `custom-elements-manifest.config.mjs`
+- Le composant doit utiliser le décorateur `@customElement()`
+
+## Fichiers de configuration
 
 ### custom-elements-manifest.config.mjs
 
@@ -231,13 +231,13 @@ setCustomElementsManifest(customElements);
 
 ## Maintenance
 
-- **Before each release**: Verify all components have complete documentation
-- **When adding new components**: Add JSDoc comments immediately
-- **When adding new properties**: Document them with JSDoc
-- **Weekly**: Review and improve documentation clarity
+- **Avant chaque release** : Vérifier que tous les composants ont une documentation complète
+- **À chaque ajout de composant** : Ajouter les commentaires JSDoc immédiatement
+- **À chaque ajout de propriété** : Documenter avec JSDoc
+- **Chaque semaine** : Relire et améliorer la clarté de la documentation
 
-## Resources
+## Ressources
 
 - [Custom Elements Manifest](https://custom-elements-manifest.open-wc.org/)
-- [JSDoc Reference](https://jsdoc.app/)
+- [Référence JSDoc](https://jsdoc.app/)
 - [Storybook Web Components Docs](https://storybook.js.org/docs/web-components/writing-docs/autodocs)

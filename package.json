@@ -36,7 +36,10 @@
     "setup:dark": "npm run tokens:generate && echo '🌙 Dark mode configuré par défaut!'",
     "analyze": "cem analyze --litelement",
     "chromatic": "chromatic",
-    "audit-accessibility": "npx lighthouse http://localhost:3000 --output html --output-path ./storybook-static/lighthouse-report.html --chrome-flags=\"--headless\""
+    "audit-accessibility": "npx lighthouse http://localhost:3000 --output html --output-path ./storybook-static/lighthouse-report.html --chrome-flags=\"--headless\"",
+    "lint": "eslint src --ext .ts,.tsx",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "postinstall": "husky install"
   },
   "publishConfig": {
     "access": "restricted"
@@ -69,8 +72,12 @@
     "@storybook/web-components": "^8.6.12",
     "@storybook/web-components-vite": "^8.6.12",
     "@types/node": "^24.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
     "chokidar-cli": "^3.0.0",
     "chromatic": "^13.3.2",
+    "eslint": "^9.38.0",
+    "prettier": "^3.6.2",
     "rollup": "^4.0.0",
     "storybook": "^8.6.12",
     "tsx": "^4.0.0",

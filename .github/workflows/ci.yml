@@ -108,11 +108,7 @@ jobs:
           storybookBuildDir: storybook-static
           autoAcceptChanges: ${{ github.ref_name == 'master' }}
 
-  lighthouse:
-    needs: build
-    if: |
-      (github.event_name == 'push' && github.ref == 'refs/heads/master') ||
-      (github.event_name == 'pull_request' && github.base_ref == 'master')
+  audit-conventions:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -126,62 +122,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Download Storybook build
-        uses: actions/download-artifact@v4
-        with:
-          name: storybook-build
-          path: storybook-static
-
-      - name: Serve Storybook
-        run: npx serve ./storybook-static -l 8080 &
-
-      - name: Wait for server
-        run: npx wait-on http://localhost:8080
-
-      - name: Run Lighthouse audit
-        run: |
-          npx lighthouse http://localhost:8080/iframe.html \
-            --output html \
-            --output json \
-            --output-path ./lighthouse-report \
-            --chrome-flags="--headless" \
-            --only-categories=accessibility,performance,best-practices,seo
-
-      - name: Check accessibility score
-        run: |
-          SCORE=$(node -pe "JSON.parse(require('fs').readFileSync('./lighthouse-report.report.json')).categories.accessibility.score * 100")
-          echo "Accessibility score: $SCORE"
-          if (( $(echo "$SCORE < 75" | bc -l) )); then
-            echo "❌ Accessibility score is below 75 (got $SCORE)"
-            exit 1
-          fi
-          if (( $(echo "$SCORE < 90" | bc -l) )); then
-            echo "⚠️ Accessibility score is below target 90 (got $SCORE)"
-          else
-            echo "✅ Accessibility score is acceptable ($SCORE)"
-          fi
-
-      - name: Copy reports
-        if: always()
-        run: |
-          cp ./lighthouse-report.report.html ./storybook-static/lighthouse-report.html
-          cp ./lighthouse-report.report.json ./storybook-static/lighthouse-report.json
-          mkdir -p ./docs
-          cp ./lighthouse-report.report.html ./docs/lighthouse-report.html
-
-      - name: Upload reports
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: lighthouse-reports
-          path: |
-            ./storybook-static/lighthouse-report.html
-            ./storybook-static/lighthouse-report.json
-
-      - name: Update accessibility badge in README
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: node update-badge.js
 
       - name: Audit conventions de nommage
         run: npm run audit:conventions

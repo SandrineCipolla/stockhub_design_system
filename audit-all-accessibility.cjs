@@ -422,6 +422,9 @@ const errors = [];
 
   fs.writeFileSync('./storybook-static/lighthouse-report.html', htmlReport);
 
+  // Exporter le score pour le badge (utilisé par le workflow GitHub Actions)
+  fs.writeFileSync('./storybook-static/accessibility-score.txt', avgAccessibility.toString());
+
   // Affichage final
   console.log(`\n${'='.repeat(60)}`);
   console.log(`✅ Rapport consolidé généré: ./storybook-static/lighthouse-report.html`);

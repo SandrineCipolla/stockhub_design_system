@@ -2,7 +2,7 @@
 
 [🔗 Rapport Lighthouse (accessibilité)](https://SandrineCipolla.github.io/stockhub_design_system/)
 
-![Accessibilité Lighthouse](https://img.shields.io/badge/accessibility-90%2F100-brightgreen?logo=lighthouse)
+![Accessibilité Lighthouse](https://img.shields.io/badge/accessibility-100%2F100-brightgreen?logo=lighthouse)
 
 > Design System réutilisable (web + mobile) basé sur Web Components (Lit Element)
 

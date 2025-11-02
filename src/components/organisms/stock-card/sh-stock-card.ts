@@ -47,7 +47,7 @@ export class ShStockCard extends LitElement {
   @property() percentage: string | number = '0';
   @property() quantity = ''; // Ex: "1 tube"
   @property() value = '';
-  @property() status: 'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked' = 'optimal';
+  @property({ reflect: true }) status: 'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked' = 'optimal';
   @property({ type: Number }) iaCount = 0; // Nombre d'alertes IA
   @property({ type: Boolean }) loading = false;
   @property({ type: String, reflect: true, attribute: 'data-theme' }) theme: 'light' | 'dark' = 'dark';

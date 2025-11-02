@@ -819,7 +819,7 @@ Le projet a complété **8 sessions de développement** (~17h30) permettant la c
 - **Historique complet des versions** → [CHANGELOG.md](./CHANGELOG.md)
 - **Index de la documentation** → [documentation/INDEX.md](./documentation/INDEX.md)
 - **Corrections d'intégration** → [DESIGN-SYSTEM-CORRECTIONS.md](./DESIGN-SYSTEM-CORRECTIONS.md)
-- **Rapport accessibilité** → [ACCESSIBILITY-REPORT.md](./ACCESSIBILITY-REPORT.md)
+- **Rapport accessibilité** → [10-ACCESSIBILITY-REPORT.md](./10-ACCESSIBILITY-REPORT.md)
 - **Audit Design Tokens** → [documentation/DESIGN-TOKENS-AUDIT.md](./documentation/DESIGN-TOKENS-AUDIT.md)
 
 ## 📁 Structure du Projet
@@ -829,7 +829,7 @@ La documentation est organisée selon les **standards de l'industrie open-source
 ### Fichiers à la Racine
 - **README.md** : Point d'entrée principal (affiché sur GitHub/npm)
 - **CHANGELOG.md** : Historique des versions (convention [Keep a Changelog](https://keepachangelog.com/))
-- **ACCESSIBILITY-REPORT.md** : Certification WCAG AA (badge de qualité)
+- **10-ACCESSIBILITY-REPORT.md** : Certification WCAG AA (badge de qualité)
 - **DESIGN-SYSTEM-CORRECTIONS.md** : Suivi des corrections et améliorations
 
 ### Dossier documentation/
@@ -907,18 +907,17 @@ refactor(icons): migrate to lucide icons system
 
 ## 🔄 CI/CD
 
-Le projet utilise **2 workflows GitHub Actions optimisés** pour assurer la qualité et le déploiement automatique.
+Le projet utilise **un workflow GitHub Actions optimisé** (`.github/workflows/ci.yml`) pour assurer la qualité et le déploiement automatique.
 
-### Workflow 1 : CI (`.github/workflows/ci.yml`)
-
-Pipeline de tests et validation automatique avec **4 jobs parallèles** :
+### Jobs du Workflow CI
 
 #### Job 1 : Build (Toujours)
 - Build Storybook une seule fois
 - Partage l'artifact avec les autres jobs (optimisation)
+- Évite les builds redondants
 
 #### Job 2 : Tests d'Interaction (Toujours)
-- **Déclenché sur** : `feature/**`, `master`, `v2`, et toutes les PR
+- **Déclenché sur** : Toutes les branches et PR
 - Tests Playwright + Storybook automatiques
 - Gratuit et illimité
 
@@ -927,26 +926,41 @@ Pipeline de tests et validation automatique avec **4 jobs parallèles** :
 - Visual regression testing
 - Économise les quotas sur les features
 
-#### Job 4 : Lighthouse (Conditionnel)
-- **Déclenché sur** : Push `master` et PR vers `master`
-- Audit accessibilité (score minimum 90%)
-- Génère rapports + badge automatique
+#### Job 4 : Audit Conventions (Toujours)
+- Vérifie les conventions de nommage des composants
+- S'exécute en parallèle des autres jobs
 
-### Workflow 2 : Deploy (`.github/workflows/deploy.yml`)
-
-Déploiement automatique sur GitHub Pages :
+#### Job 5 : Lighthouse Audit (Master uniquement) 🆕
 - **Déclenché sur** : Push `master` uniquement
-- **Publie uniquement le rapport Lighthouse** sur GitHub Pages
-- Accessible publiquement
+- Audite **tous les composants individuellement** (24+ stories)
+- Génère un rapport HTML consolidé avec score moyen
+- Met à jour automatiquement le badge d'accessibilité dans README
+- Réutilise le build de l'artifact (optimisation)
+
+#### Job 6 : Deploy GitHub Pages (Master uniquement) 🆕
+- **Dépend de** : Lighthouse Audit
+- Déploie le rapport Lighthouse sur GitHub Pages
+- Accessible publiquement : https://SandrineCipolla.github.io/stockhub_design_system/
 
 ### Workflow typique
 
 ```
-feature branch → push → Build + Tests d'interaction
+feature branch → push → Build + Tests + Audit conventions
        ↓
-    Ouvre PR → Build + Tests + Chromatic + Lighthouse
+    Ouvre PR → Build + Tests + Chromatic + Audit conventions
        ↓
-  Merge master → Build + Tests + Chromatic + Lighthouse + Deploy Pages
+  Merge master → Build + Tests + Chromatic + Audit conventions
+                   ↓
+              Lighthouse Audit (tous les composants)
+                   ↓
+              Update badge + Deploy GitHub Pages
 ```
+
+### Optimisations
+
+- **Build unique** : Storybook n'est build qu'une seule fois, même sur master
+- **Audit complet** : Tous les variants de composants sont audités individuellement
+- **Badge automatique** : Le score d'accessibilité se met à jour automatiquement
+- **Pause optimisée** : 1 seconde entre chaque audit (au lieu de 2)
 
 Pour plus de détails et de bonnes pratiques, voir [documentation/GETTING-STARTED.md](./documentation/GETTING-STARTED.md).

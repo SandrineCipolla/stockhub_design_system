@@ -13,7 +13,9 @@ on:
       - v2
 
 permissions:
-  contents: read
+  contents: write  # Nécessaire pour commit du badge (job lighthouse-audit)
+  pages: write     # Nécessaire pour deploy GitHub Pages
+  id-token: write  # Nécessaire pour deploy GitHub Pages
 
 jobs:
   build:
@@ -125,3 +127,86 @@ jobs:
 
       - name: Audit conventions de nommage
         run: npm run audit:conventions
+
+  lighthouse-audit:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download Storybook build
+        uses: actions/download-artifact@v4
+        with:
+          name: storybook-build
+          path: storybook-static
+
+      - name: Démarrer Storybook en arrière-plan
+        run: npm run storybook &
+        env:
+          NODE_ENV: production
+
+      - name: Attendre le démarrage de Storybook
+        run: npx wait-on http://localhost:6006
+
+      - name: Générer le rapport Lighthouse
+        run: npm run audit-accessibility
+
+      - name: Copier le rapport Lighthouse dans docs/
+        run: |
+          mkdir -p docs
+          cp ./storybook-static/lighthouse-report.html ./docs/index.html
+
+      - name: Mettre à jour le badge d'accessibilité
+        run: |
+          # Lire le score d'accessibilité
+          SCORE=$(cat ./storybook-static/accessibility-score.txt)
+          echo "📊 Score d'accessibilité: $SCORE%"
+
+          # Mettre à jour le badge dans le README
+          sed -i "s/accessibility-[0-9]*%2F100/accessibility-${SCORE}%2F100/" README.md
+
+          # Vérifier si le README a changé
+          if git diff --quiet README.md; then
+            echo "✅ Badge déjà à jour"
+          else
+            echo "🔄 Mise à jour du badge dans le README"
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add README.md
+            git commit -m "chore: update accessibility badge to ${SCORE}% [skip ci]"
+            git push
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs
+
+  deploy-pages:
+    needs: lighthouse-audit
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

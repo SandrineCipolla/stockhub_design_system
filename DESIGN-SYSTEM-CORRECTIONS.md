@@ -27,7 +27,7 @@
 ### 🔗 Voir aussi
 - **Historique des versions** → [CHANGELOG.md](./CHANGELOG.md)
 - **Sessions de développement** → [documentation/INDEX.md](./documentation/INDEX.md#-sessions-de-développement)
-- **Rapport d'accessibilité WCAG AA** → [ACCESSIBILITY-REPORT.md](./ACCESSIBILITY-REPORT.md)
+- **Rapport d'accessibilité WCAG AA** → [10-ACCESSIBILITY-REPORT.md](./10-ACCESSIBILITY-REPORT.md)
 
 ---
 

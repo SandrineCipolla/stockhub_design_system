@@ -46,7 +46,7 @@ La cohérence des conventions de nommage (props, événements, fichiers) est vé
 9- [9-CHANGELOG.md](../9-CHANGELOG.md)  
    *Historique des versions.*
 
-10- [10-ACCESSIBILITY-REPORT.md](../10-ACCESSIBILITY-REPORT.md)  
+10- [10-10-ACCESSIBILITY-REPORT.md](../10-10-ACCESSIBILITY-REPORT.md)  
     *Rapport d’accessibilité.*
 
 ---
@@ -283,7 +283,7 @@ Tracking complet de l'implémentation des tests d'interaction avec @storybook/te
 ### 🔗 Voir aussi
 - **Historique des versions** → [CHANGELOG.md](../CHANGELOG.md)
 - **Problèmes d'intégration StockHub V2** → [DESIGN-SYSTEM-CORRECTIONS.md](../DESIGN-SYSTEM-CORRECTIONS.md)
-- **Rapport d'accessibilité WCAG AA** → [ACCESSIBILITY-REPORT.md](../ACCESSIBILITY-REPORT.md)
+- **Rapport d'accessibilité WCAG AA** → [10-ACCESSIBILITY-REPORT.md](../10-ACCESSIBILITY-REPORT.md)
 
 ---
 

@@ -1,9 +1,9 @@
 # Rapport d'Accessibilité - Design System StockHub
 
-**Date** : 28 Octobre 2025
-**Branche** : `fix/accessibility-wcag-aa`
+**Dernière mise à jour** : 2 Novembre 2025
 **Standard** : WCAG 2.1 Level AA
 **Statut** : ✅ **100% Conforme**
+**Rapport public** : [GitHub Pages](https://SandrineCipolla.github.io/stockhub_design_system/)
 
 ---
 
@@ -11,15 +11,17 @@
 
 Le Design System StockHub a été audité pour l'accessibilité et a atteint une **conformité totale WCAG 2.1 Level AA**.
 
-### Résultats Globaux
+### Résultats Globaux (Audit du 2 Novembre 2025)
 
 - ✅ **Conformité WCAG AA** : 100%
 - ✅ **Violations détectées** : 0
 - ✅ **Warnings** : 0
 - ✅ **Score Lighthouse moyen** : 100/100
-- ✅ **Composants testés** : 10
+- ✅ **Stories auditées** : 24 (tous les variants de tous les composants)
+- ✅ **Audit automatisé** : Via CI/CD à chaque push sur master
 
 ### 🔗 Voir aussi
+- **Rapport détaillé** → [GitHub Pages](https://SandrineCipolla.github.io/stockhub_design_system/)
 - **Corrections détaillées** → [DESIGN-SYSTEM-CORRECTIONS.md](./DESIGN-SYSTEM-CORRECTIONS.md#-accessibilité)
 - **Historique des versions** → [CHANGELOG.md](./CHANGELOG.md#unreleased)
 - **Sessions de développement** → [documentation/INDEX.md](./documentation/INDEX.md#-sessions-de-développement)
@@ -41,9 +43,28 @@ Le Design System StockHub a été audité pour l'accessibilité et a atteint une
    - Catégorie : Accessibility uniquement
    - Standard : WCAG 2.1 Level AA
 
-### Composants Critiques Testés
+### Audit CI/CD Automatisé (Nouveau - Nov 2025)
 
-Les composants suivants ont été testés avec Lighthouse car ils contenaient des problèmes d'accessibilité avant corrections :
+Depuis le 2 novembre 2025, **tous les composants sont audités automatiquement** via GitHub Actions :
+
+- **Déclenchement** : À chaque push sur `master`
+- **Portée** : 24 stories (tous les variants de tous les composants)
+- **Outil** : Lighthouse via iframe isolé
+- **Rapport** : Généré et publié sur [GitHub Pages](https://SandrineCipolla.github.io/stockhub_design_system/)
+- **Badge** : Mise à jour automatique dans README avec le score
+
+**Scripts disponibles** :
+```bash
+# Audit complet (utilisé en CI)
+npm run audit-accessibility
+
+# Audit rapide (3 composants pour test local)
+npm run audit-accessibility:quick
+```
+
+### Composants Critiques Testés (Session Octobre 2025)
+
+Les composants suivants ont été testés avec Lighthouse lors de la session de corrections car ils contenaient des problèmes d'accessibilité :
 
 | Composant | Story | URL Testée | Score |
 |-----------|-------|------------|-------|
@@ -51,6 +72,8 @@ Les composants suivants ont été testés avec Lighthouse car ils contenaient de
 | **sh-stock-card** | Default | `/iframe.html?id=components-organisms-stock-card--default` | **100/100** ✅ |
 | **sh-metric-card** | AllVariants | `/iframe.html?id=components-molecules-metric-card--all-variants` | **100/100** ✅ |
 | **sh-card** | AddStockForm | `/iframe.html?id=components-molecules-card--add-stock-form` | **100/100** ✅ |
+
+**Note** : Depuis novembre 2025, **tous les composants** (24+ stories) sont audités automatiquement à chaque déploiement.
 
 ---
 
@@ -215,16 +238,17 @@ Les composants suivants ont été testés avec Lighthouse car ils contenaient de
 
 ### Tests Automatisés en CI/CD
 
-Pour maintenir la conformité :
+La conformité est maintenue automatiquement via `.github/workflows/ci.yml` :
 
-```yaml
-# .github/workflows/accessibility.yml
-- name: Storybook Accessibility Tests
-  run: npm run test-storybook
+**Sur toutes les branches** :
+- Tests d'interaction Storybook
+- Vérification conventions de nommage
 
-- name: Lighthouse CI
-  run: npm run lighthouse-ci
-```
+**Sur push master uniquement** :
+- Audit Lighthouse complet (24+ stories)
+- Génération rapport HTML
+- Mise à jour badge automatique
+- Déploiement GitHub Pages
 
 ---
 
@@ -249,10 +273,12 @@ Pour maintenir la conformité :
 
 Ce rapport certifie que le **Design System StockHub** respecte les critères WCAG 2.1 Level AA pour l'accessibilité web.
 
-**Audité par** : Claude Code
+**Audité par** : Claude Code + Lighthouse CI/CD
 **Validé par** : Sandrine Cipolla
-**Date de certification** : 28 Octobre 2025
+**Date de certification initiale** : 28 Octobre 2025
+**Dernière vérification** : 2 Novembre 2025
 **Statut** : ✅ **Conforme WCAG 2.1 Level AA**
+**Audit continu** : Automatisé via CI/CD à chaque déploiement
 
 ---
 

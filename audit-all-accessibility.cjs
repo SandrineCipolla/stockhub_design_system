@@ -142,9 +142,9 @@ const errors = [];
 
       console.log(`  ✅ A11y: ${accessibility}%`);
 
-      // Pause de 2 secondes entre chaque audit pour éviter les crashs
+      // Pause de 1 seconde entre chaque audit pour éviter les crashs
       if (index < stories.length - 1) {
-        await sleep(2000);
+        await sleep(1000);
       }
     } catch (error) {
       console.error(`  ❌ Erreur: ${error.message || 'Audit échoué'}`);

@@ -86,7 +86,7 @@ Derniers 15 commits (Octobre 2025):
 
 #### Housekeeping
 - [x] Créer LICENSE (ISC)
-- [ ] Nettoyer fichiers markdown dupliqués (10-ACCESSIBILITY-REPORT.md vs ACCESSIBILITY-REPORT.md)
+- [ ] Nettoyer fichiers markdown dupliqués (10-10-ACCESSIBILITY-REPORT.md vs 10-ACCESSIBILITY-REPORT.md)
 - [ ] Renommer 9-CHANGELOG.md → CHANGELOG.md si applicable
 - [ ] Déplacer 7-INTERACTION_TESTS_TRACKING.md vers docs/
 - [ ] Déplacer DESIGN-SYSTEM-CORRECTIONS.md vers docs/
@@ -314,8 +314,8 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 **Problème** :
 ```
 Racine du projet:
-├── 10-ACCESSIBILITY-REPORT.md   ❌ Nom avec préfixe numérique
-├── ACCESSIBILITY-REPORT.md      ✅ Nom standard
+├── 10-10-ACCESSIBILITY-REPORT.md   ❌ Nom avec préfixe numérique
+├── 10-ACCESSIBILITY-REPORT.md      ✅ Nom standard
 ├── 7-INTERACTION_TESTS_TRACKING.md  ❌ Devrait être dans docs/
 ├── 9-CHANGELOG.md               ❌ Devrait être CHANGELOG.md
 ├── DESIGN-SYSTEM-CORRECTIONS.md ❌ Devrait être dans docs/
@@ -329,7 +329,7 @@ Racine du projet:
 **Solution** :
 ```bash
 # Option 1: Supprimer doublons (si identiques)
-rm 10-ACCESSIBILITY-REPORT.md
+rm 10-10-ACCESSIBILITY-REPORT.md
 rm 9-CHANGELOG.md
 
 # Option 2: Déplacer dans docs/

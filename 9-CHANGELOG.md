@@ -9,6 +9,48 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Unreleased]
 
+### 🚀 CI/CD & Automatisation
+
+#### Optimisation des Workflows GitHub Actions (2 Nov 2025)
+
+**Fusion des workflows pour éviter les builds redondants** :
+
+- **Avant** : 2 workflows séparés (`ci.yml` + `deploy.yml`) = 2 builds Storybook sur master
+- **Après** : 1 workflow unifié (`ci.yml`) = 1 seul build réutilisé
+- **Gain** : ~30-60 secondes par déploiement
+
+**Nouveaux jobs dans CI workflow** :
+1. **lighthouse-audit** (master uniquement)
+   - Audite **tous les composants individuellement** (24+ stories)
+   - Génère un rapport HTML consolidé avec score moyen
+   - Met à jour automatiquement le badge d'accessibilité dans README
+   - Réutilise l'artifact du build (optimisation)
+
+2. **deploy-pages** (master uniquement)
+   - Déploie le rapport Lighthouse sur GitHub Pages
+   - URL publique : https://SandrineCipolla.github.io/stockhub_design_system/
+
+**Scripts d'audit optimisés** :
+- `audit-all-accessibility.cjs` : Pause entre audits réduite de 2s → 1s (gain ~24s)
+- Export automatique du score dans `accessibility-score.txt` pour mise à jour du badge
+- Badge d'accessibilité se met à jour automatiquement via commit bot
+
+**Fichiers modifiés** :
+- `.github/workflows/ci.yml` : Ajout jobs lighthouse-audit + deploy-pages
+- `.github/workflows/deploy.yml` : Supprimé (fusionné dans ci.yml)
+- `audit-all-accessibility.cjs` : Optimisation pause + export score
+- Permissions workflow : `contents: write` ajouté pour commit du badge
+
+**Documentation mise à jour** :
+- `README.md` : Section CI/CD réécrite (workflow unique, 6 jobs détaillés)
+- `documentation/1-GETTING-STARTED.md` : Section Lighthouse + GitHub Pages ajoutée
+- `10-ACCESSIBILITY-REPORT.md` : Audit automatisé documenté
+- `ACCESSIBILITY-REPORT.md` : Doublon supprimé, références corrigées
+
+**Statut** : ✅ Workflow optimisé, badge auto-update, rapport public
+
+---
+
 ### 🧪 Tests
 
 #### Tests d'Interaction Storybook - 100% de couverture

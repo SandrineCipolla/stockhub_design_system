@@ -236,9 +236,13 @@ npm run storybook
 
 ---
 
-## Déploiement automatique sur Chromatic via GitHub Actions
+## CI/CD via GitHub Actions
 
-Un workflow est configuré dans `.github/workflows/chromatic.yml` pour publier Storybook sur Chromatic à chaque push ou pull request sur les branches `master`, `v2` ou `feature/**`.
+Le projet utilise un workflow unique optimisé (`.github/workflows/ci.yml`) qui gère tous les aspects de qualité et déploiement.
+
+### Déploiement automatique sur Chromatic
+
+Le job Chromatic dans le workflow CI publie Storybook sur Chromatic pour le visual testing.
 
 ### Prérequis
 - Ajouter le token Chromatic dans les secrets GitHub du dépôt :
@@ -277,5 +281,36 @@ Pour plus d'infos : [Chromatic autoAcceptChanges](https://www.chromatic.com/do
 
 ---
 
+### Audit Lighthouse et déploiement GitHub Pages
+
+Sur push vers `master`, le workflow exécute également :
+
+#### 1. Lighthouse Audit (Job 5)
+- Audite **tous les composants individuellement** (24+ stories)
+- Génère un rapport HTML consolidé avec score moyen d'accessibilité
+- Met à jour automatiquement le badge d'accessibilité dans README
+- Vérifie la conformité WCAG 2.1 AA (objectif : 100%)
+
+**Scripts disponibles** :
+```bash
+# Audit complet de tous les composants (utilisé en CI)
+npm run audit-accessibility
+
+# Audit rapide de 3 composants (pour tests locaux)
+npm run audit-accessibility:quick
+```
+
+#### 2. Deploy GitHub Pages (Job 6)
+- Déploie le rapport Lighthouse sur GitHub Pages
+- URL publique : https://SandrineCipolla.github.io/stockhub_design_system/
+- Badge accessible dans le README avec lien direct vers le rapport
+
+**Optimisations** :
+- Build unique : Storybook n'est build qu'une fois, l'artifact est réutilisé
+- Pause optimisée : 1 seconde entre chaque audit
+- Badge auto-update : Évite les commits manuels
+
+---
+
 **Maintenu par** : Sandrine Cipolla
-**Dernière mise à jour** : 16 Octobre 2025
+**Dernière mise à jour** : 2 Novembre 2025

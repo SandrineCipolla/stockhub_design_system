@@ -1,16 +1,26 @@
 # Plan d'Optimisation - StockHub Design System
 
-> Document généré le 31 Octobre 2025 - Mis à jour après audit complet
-> Score global actuel : **9.0/10** ⭐
+> Document généré le 31 Octobre 2025
+> **Dernière mise à jour : 2 Novembre 2025**
+> Score global actuel : **9.2/10** ⭐ (+0.2)
 
 ## 📊 Résumé Exécutif
 
 Le projet est **excellent** avec des fondations solides et de niveau production. Les optimisations recommandées concernent principalement :
-- **Tests unitaires manquants** (haute priorité)
+- **Tests unitaires manquants** (haute priorité #1) ⚠️
+- **Cohérence FR/EN des commentaires** (nouvelle détection)
 - **Monitoring de performance** (bundle size tracking)
 - **Sécurité** (Dependabot, vulnerability scanning)
 - **Housekeeping** (maintenance et propreté du code)
 - **Mise à jour des dépendances** (migrations majeures planifiées)
+
+## 🎉 Récentes Améliorations (2 Novembre 2025)
+
+- ✅ **Lighthouse 100%** : Tous les composants auditent à 100% WCAG AA
+- ✅ **CI/CD optimisé** : Workflows fusionnés, gain de 30-60s par déploiement
+- ✅ **Badge auto-update** : Score d'accessibilité mis à jour automatiquement
+- ✅ **Audit pause** : Réduit de 2s → 1s (gain de ~24s total)
+- ✅ **Code propre** : Aucun TODO/FIXME/HACK détecté
 
 ---
 
@@ -26,11 +36,12 @@ Le projet est **excellent** avec des fondations solides et de niveau production.
 - **Atomic Design**: ✅ Parfaitement implémenté
 
 ### Tests & Qualité
-- **Tests d'interaction**: 44 tests couvrant 9 composants
-- **Accessibilité**: 100% WCAG 2.1 AA compliance ⭐
-- **Visual Testing**: Chromatic configuré
-- **CI/CD**: 2 workflows (4 jobs + deploy)
-- **Lighthouse Score**: 90%+ automatisé
+- **Tests d'interaction**: 44 tests couvrant 9 composants ✅
+- **Tests unitaires**: 0% coverage (à faire - priorité #1) ❌
+- **Accessibilité**: 100% WCAG 2.1 AA (24 composants audités) ⭐
+- **Visual Testing**: Chromatic configuré ✅
+- **CI/CD**: 1 workflow optimisé (6 jobs dont lighthouse + deploy) ✅
+- **Lighthouse Score**: 100% automatisé avec badge auto-update ✅
 
 ### Documentation
 - **README**: 950+ lignes
@@ -39,12 +50,32 @@ Le projet est **excellent** avec des fondations solides et de niveau production.
 - **Changelogs**: Maintenus à jour
 
 ### Évolution Récente
-Derniers 15 commits (Octobre 2025):
+Derniers 15 commits (Octobre-Novembre 2025):
 - ✅ Audit automatisé conventions de nommage
 - ✅ Vérification lockfile en CI
-- ✅ Lighthouse automatisé avec badge
+- ✅ Lighthouse 100% avec audit par composant (2 Nov)
+- ✅ Workflows CI/CD fusionnés et optimisés (2 Nov)
+- ✅ Badge accessibilité auto-update (2 Nov)
 - ✅ ESLint + Prettier avec pre-commit hooks
 - ✅ PR template + Sprint checklist
+
+### Cohérence du Code (Audit du 2 Novembre 2025)
+- ✅ **Code mort**: Aucun TODO/FIXME/HACK détecté
+- ⚠️ **Commentaires FR/EN**: Incohérence détectée
+  - **Phase 1** (Sessions 1-2): Composants en anglais (sh-badge, sh-button, sh-icon)
+  - **Phase 2** (Sessions 5-8): Composants en français (sh-footer, sh-metric-card, sh-stock-card)
+  - **Mixte**: sh-input (JSDoc EN + messages FR), generate-css.ts
+- ⚠️ **Commentaires CSS commentés**: sh-input.ts (lignes 58, 60, 75, 91)
+- **Recommandation**: Standardiser en français (projet français, messages déjà en FR)
+- **Effort estimé**: ~1h15 pour harmonisation complète
+
+### Design Tokens (Audit du 29 Octobre 2025)
+- ✅ **Taux d'adoption global**: 86% (363 utilisations)
+- ✅ **Composants parfaits**: 12/13 (92%) utilisent 100% tokens
+- ⚠️ **sh-badge**: ~40 valeurs hexadécimales en dur (migration Tailwind incomplète)
+- 📊 **Impact**: Cosmétique, aucun bug fonctionnel
+- 🔧 **Correction**: 30 min pour migrer sh-badge (optionnel, priorité basse)
+- 📄 **Documentation complète**: `documentation/6-DESIGN-TOKENS-AUDIT.md`
 
 ---
 
@@ -75,25 +106,32 @@ Derniers 15 commits (Octobre 2025):
 - [ ] Installer Snyk (optionnel mais recommandé)
 - [ ] Documenter politique de sécurité (SECURITY.md)
 
-#### Lighthouse Audit - CORRECTION
-- [x] Modifier `audit-all-accessibility.cjs` pour scanner composants individuels
-- [x] Créer script qui génère rapport par composant
-- [x] Mettre à jour workflow deploy.yml pour exécuter le bon script
-- [x] Configurer sortie consolidée des rapports
-- [x] Vérifier que les URLs pointent vers iframe.html (pas la page principale)
+#### Lighthouse Audit - ✅ TERMINÉ (2 Nov 2025)
+- [x] Modifier `audit-all-accessibility.cjs` pour scanner composants individuels via iframe
+- [x] Créer script qui génère rapport par composant consolidé en HTML
+- [x] Fusionner workflows (ci.yml + deploy.yml) pour éviter double build
+- [x] Export du score vers accessibility-score.txt pour badge auto-update
+- [x] Réduire pause audit de 2s → 1s (gain ~24s)
+- [x] Vérifier que les URLs pointent vers iframe.html (isolation composants)
+- [x] **Résultat**: 100% WCAG AA sur 24 composants audités automatiquement
 
 ### 🟡 PRIORITÉ MOYENNE (Sprint 2 - 3-4h)
 
 #### Housekeeping
-- [x] Créer LICENSE (ISC)
-- [ ] Nettoyer fichiers markdown dupliqués (10-10-ACCESSIBILITY-REPORT.md vs 10-ACCESSIBILITY-REPORT.md)
+- [x] Créer LICENSE (ISC) ✅
+- [ ] Nettoyer fichiers markdown dupliqués (10-10-ACCESSIBILITY-REPORT.md supprimé, reste à vérifier)
 - [ ] Renommer 9-CHANGELOG.md → CHANGELOG.md si applicable
 - [ ] Déplacer 7-INTERACTION_TESTS_TRACKING.md vers docs/
 - [ ] Déplacer DESIGN-SYSTEM-CORRECTIONS.md vers docs/
-- [ ] Corriger .gitignore (retirer package-lock.json)
-- [ ] Ajouter *.log au .gitignore
-- [ ] Créer dossier scripts/ et y déplacer utilitaires
-- [ ] Supprimer dossier .idea/ ou l'ajouter au .gitignore
+- [ ] **⚠️ package-lock.json dans .gitignore**: Situation hybride détectée
+  - ✅ Fichier est bien tracké et versionné (OK)
+  - ✅ Workflow `lockfile-check.yml` vérifie la synchronisation (OK)
+  - ⚠️ MAIS fichier est dans .gitignore (ligne 5)
+  - **À décider**: Retirer du .gitignore (bonne pratique) OU garder (force commit explicite)
+- [ ] Ajouter *.log au .gitignore (déjà présent ligne 32)
+- [ ] Créer dossier scripts/ et y déplacer utilitaires (check-contrast.js, audit-*.cjs)
+- [ ] Supprimer dossier .idea/ (déjà dans .gitignore ligne 23)
+- [ ] **NOUVEAU**: Nettoyer commentaires CSS dans sh-input.ts (lignes 58, 60, 75, 91)
 
 #### Tests Cross-Browser
 - [ ] Configurer Playwright pour Firefox
@@ -114,6 +152,37 @@ Derniers 15 commits (Octobre 2025):
 - [ ] Générer API reference (TypeDoc)
 
 ### 🟢 PRIORITÉ BASSE (Sprint 3 - Nice to have - 2-3h)
+
+#### Design Tokens - Migration sh-badge (Audit 29 Oct 2025)
+- **Statut actuel**: Taux d'adoption global **86%** (363 utilisations)
+- **Problème**: sh-badge utilise ~40 valeurs hexadécimales en dur (migration Tailwind incomplète)
+- **Tous les autres composants (12/13)**: ✅ 100% tokens
+
+**Composants parfaits:**
+- ✅ sh-button, sh-card, sh-header, sh-input, sh-stock-card
+- ✅ sh-quantity-input, sh-search-input, sh-metric-card
+- ✅ sh-status-badge, sh-page-header, sh-footer, sh-ia-alert-banner
+
+**Tâche optionnelle:**
+- [ ] Migrer sh-badge vers design tokens (30 min)
+  - Remplacer valeurs hex par var(--color-success-100), etc.
+  - Tester tous variants (success, warning, danger, info)
+  - Vérifier dark/light mode
+- **Impact**: Cosmétique uniquement, aucun bug fonctionnel
+- **Bénéfice**: Cohérence 100%, maintenance simplifiée
+- **Documentation**: Voir `documentation/6-DESIGN-TOKENS-AUDIT.md`
+
+#### Cohérence Code FR/EN (NOUVEAU - 2 Nov 2025)
+- [ ] **Standardiser JSDoc en français** (recommandé car projet français)
+  - [ ] sh-badge.ts : Traduire JSDoc EN → FR
+  - [ ] sh-button.ts : Traduire JSDoc EN → FR
+  - [ ] sh-icon.ts : Traduire JSDoc EN → FR
+  - [ ] sh-logo.ts : Traduire JSDoc EN → FR
+  - [ ] sh-text.ts : Traduire JSDoc EN → FR
+  - [ ] sh-input.ts : Harmoniser (JSDoc EN + messages FR → tout en FR)
+  - [ ] generate-css.ts : Harmoniser commentaires
+- [ ] **Alternative**: Standardiser tout en anglais (si vise publication npm internationale)
+- **Effort estimé**: ~1h15 pour harmonisation FR complète
 
 #### Mises à jour Packages (Mineures)
 - [ ] TypeScript 5.8.3 → 5.9.3
@@ -1006,51 +1075,58 @@ Le workflow `deploy.yml` appelle `npm run audit-accessibility`, donc il utiliser
 
 ## 📊 Métriques de Succès
 
-### État Actuel (Après audit complet)
+### État Actuel (2 Novembre 2025 - Après optimisations CI/CD)
 ```
-Score global:          9.0/10 ⭐
+Score global:          9.2/10 ⭐ (+0.2)
 Architecture:          ✅ Atomic Design parfait
-Accessibilité:         ✅ 100% WCAG 2.1 AA
+Accessibilité:         ✅ 100% WCAG 2.1 AA (24 composants)
 Tests interaction:     ✅ 44 tests / 9 composants
-Coverage unitaires:    ❌ 0% (à faire)
-CI/CD:                 ✅ Optimisé (2 workflows)
-Documentation:         ✅ Exhaustive
-Lighthouse:            ⚠️ À corriger (scanne page entière)
+Coverage unitaires:    ❌ 0% (priorité #1 à faire)
+CI/CD:                 ✅ Workflow unique optimisé (gain 30-60s)
+Documentation:         ✅ Exhaustive (mise à jour 2 Nov)
+Lighthouse:            ✅ 100% - Audit automatisé par composant
+Badge accessibilité:   ✅ Auto-update via GitHub Actions
+Code propre:           ✅ Aucun TODO/FIXME détecté
+Cohérence FR/EN:       ⚠️ Incohérences détectées (à standardiser)
 Bundle size tracking:  ❌ Absent
 Sécurité (Dependabot): ❌ Non configuré
 ```
 
-### Après Sprint 1 - Corrections Critiques (Target - 2h)
+### Après Sprint 1 - Tests Unitaires (Target - 6-8h)
 ```
-Score global:          9.2/10
-Lighthouse:            ✅ Corrigé (scan composants isolés)
+Score global:          9.4/10
+Lighthouse:            ✅ FAIT - 100% sur 24 composants
+CI/CD:                 ✅ FAIT - Workflow optimisé
 Tests unitaires:       ✅ Setup Vitest configuré
 Bundle size tracking:  ✅ size-limit configuré
-Sécurité:              ✅ Dependabot activé
-Coverage:              ~20% (premiers tests)
+Sécurité:              ✅ Dependabot activé + npm audit en CI
+Coverage:              ~50-70% (tests atoms + molecules)
+Cohérence FR/EN:       ⚠️ En cours (optionnel)
 ```
 
-### Après Sprint 2 - Tests & Documentation (Target - 4h)
+### Après Sprint 2 - Coverage 93% (Target - 8h)
 ```
-Score global:          9.5/10
-Coverage tests:        70-80% (unitaires)
-Housekeeping:          ✅ 0 problèmes
-Tests cross-browser:   ✅ Firefox + WebKit
-Documentation tokens:  ✅ Page de référence
+Score global:          9.6/10
+Coverage tests:        93% ✅ (objectif atteint)
+Housekeeping:          ✅ Fichiers nettoyés
+Tests cross-browser:   ✅ Firefox + WebKit (Playwright)
+Documentation tokens:  ✅ Page de référence visuelle
 CONTRIBUTING.md:       ✅ Créé
-Scripts optimisés:     ✅
+Scripts optimisés:     ✅ clean, format:check, validate
+Cohérence FR/EN:       ✅ Standardisé (si décidé)
 ```
 
-### Après Sprint 3 - Excellence (Target - 6h)
+### Après Sprint 3 - Excellence Production-Ready (Target - 6h)
 ```
-Score global:          9.7/10 🏆
-Coverage tests:        93% ✅
-Packages:              ✅ Dernières versions (mineures)
-Lighthouse:            ✅ 95%+ sur tous les composants
-Bundle size:           ✅ < budgets définis
-Documentation:         ✅ 100% à jour
-CI/CD:                 ✅ Optimal
-Sécurité:              ✅ 0 vulnérabilités
+Score global:          9.8/10 🏆
+Coverage tests:        95%+ ✅
+Packages:              ✅ Mises à jour mineures appliquées
+Lighthouse:            ✅ FAIT - 100% maintenu
+Bundle size:           ✅ Budgets définis + CI check
+Documentation:         ✅ 100% à jour avec tous les changements
+CI/CD:                 ✅ FAIT - Optimal (workflow unique)
+Sécurité:              ✅ 0 vulnérabilités (Dependabot actif)
+TypeScript:            ✅ Déclarations exportées et testées
 ```
 
 ### État Final Idéal (Après migrations majeures)
@@ -1082,35 +1158,60 @@ Figma library:         ✅ Créée (optionnel)
 
 ## ❓ FAQ
 
-### Quand faire le Sprint 1 ?
-**Maintenant !** C'est rapide (1h) et améliore immédiatement la qualité du projet.
+### Qu'est-ce qui a été fait le 2 Novembre 2025 ?
+- ✅ Lighthouse corrigé et optimisé (100% sur 24 composants)
+- ✅ CI/CD fusionné (gain 30-60s par déploiement)
+- ✅ Badge accessibilité auto-update
+- ✅ Audit complet du code (FR/EN, TODO, code mort)
+- ✅ LICENSE créé (ISC)
 
-### Dois-je tout faire d'un coup ?
-**Non.** Priorise selon tes besoins :
-- Housekeeping (Sprint 1) : Maintenant
-- Tests (Sprint 2) : Dans 1-2 semaines
-- Migrations majeures (Sprint 3) : Planifier sur 1 mois
+### Quelle est la priorité #1 maintenant ?
+**Tests Unitaires** (0% → 93% coverage). C'est le seul gros manque du projet.
 
-### Puis-je skip certaines optimisations ?
-**Oui**, sauf :
-- ❌ Ne pas skip : LICENSE, package-lock.json dans git
-- ✅ Optionnel : Migrations Lit 3 / Storybook 10 (si tout fonctionne)
+### Dois-je corriger package-lock.json dans .gitignore ?
+**À décider**. Le fichier est bien tracké et il y a un workflow de vérification, donc ça fonctionne. Mais la bonne pratique serait de le retirer du .gitignore. Choisis selon ta préférence : simplicité (retirer) ou contrôle strict (garder).
+
+### Dois-je standardiser les commentaires FR/EN ?
+**Recommandé en français** car :
+- Projet français (StockHub)
+- Messages d'erreur déjà en français
+- Meilleure compréhension par l'équipe
+**Alternative** : Tout en anglais si vise publication npm internationale
+
+### Dois-je corriger sh-badge pour utiliser les design tokens ?
+**Optionnel - Priorité basse** car :
+- Impact cosmétique uniquement (aucun bug)
+- 12/13 composants (92%) sont déjà parfaits
+- Taux d'adoption global de 86% est bon
+- Seulement 30 min pour corriger si tu veux la cohérence 100%
+**Recommandation** : Faire après les tests unitaires si tu as le temps
 
 ### Comment prioriser si peu de temps ?
-**Focus sur** :
-1. LICENSE (5 min)
-2. package-lock.json dans git (5 min)
-3. Nettoyer fichiers dupliqués (10 min)
+**Focus sur** (ordre de priorité):
+1. Tests unitaires setup (Vitest) - 1h
+2. Dependabot + npm audit en CI - 30 min
+3. Bundle size tracking (size-limit) - 30 min
 
-**Total : 20 minutes pour les critiques**
+**Total : 2h pour les plus critiques**
 
 ---
 
 ## 📝 Notes
 
 - Document créé : 31 Octobre 2025
+- **Dernière mise à jour : 2 Novembre 2025**
 - Auteur : Claude Code
-- Version : 1.0
-- Prochaine révision : Après Sprint 1
+- Version : 2.0
+- Prochaine révision : Après implémentation tests unitaires
+
+### Changelog du Document
+- **v2.0 (2 Nov 2025)** :
+  - ✅ Score global 9.0 → 9.2
+  - ✅ Marqué Lighthouse comme terminé (100%)
+  - ✅ Ajout section "Cohérence Code FR/EN"
+  - ✅ Clarification package-lock.json dans .gitignore
+  - ✅ Mise à jour métriques et objectifs
+  - ✅ FAQ actualisée avec nouvelles questions
+- **v1.0 (31 Oct 2025)** : Création initiale après audit complet
 
 **Pour questions ou clarifications** : Ouvrir une issue ou consulter la documentation.

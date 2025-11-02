@@ -1,6 +1,6 @@
 # StockHub Design System
 
-[🔗 Rapport Lighthouse (accessibilité)](https://<SandrineCipolla>.github.io/stockhub_design_system/lighthouse-report.html)
+[🔗 Rapport Lighthouse (accessibilité)](https://SandrineCipolla.github.io/stockhub_design_system/)
 
 ![Accessibilité Lighthouse](https://img.shields.io/badge/accessibility-90%2F100-brightgreen?logo=lighthouse)
 
@@ -399,7 +399,7 @@ Header de l'application.
 
 Seul le rapport Lighthouse est publié sur GitHub Pages à chaque push sur `master` :
 
-- **Rapport Lighthouse** : [lighthouse-report.html](https://<ton-utilisateur>.github.io/<repo>/lighthouse-report.html)
+- **Rapport Lighthouse** : [Voir le rapport](https://SandrineCipolla.github.io/stockhub_design_system/)
 - **Storybook** : hébergé sur Chromatic ([voir ici](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/))
 
 #### Chromatic (Visual Testing)

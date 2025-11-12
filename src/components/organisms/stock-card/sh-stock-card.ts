@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import '../../atoms/icon/sh-icon.js';
 import '../../molecules/status-badge/sh-status-badge.js';
@@ -41,17 +41,6 @@ import '../../molecules/button/sh-button.js';
  */
 @customElement('sh-stock-card')
 export class ShStockCard extends LitElement {
-  @property() name = '';
-  @property() category = '';
-  @property({ attribute: 'last-update' }) lastUpdate = '';
-  @property() percentage: string | number = '0';
-  @property() quantity = ''; // Ex: "1 tube"
-  @property() value = '';
-  @property({ reflect: true }) status: 'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked' = 'optimal';
-  @property({ type: Number }) iaCount = 0; // Nombre d'alertes IA
-  @property({ type: Boolean }) loading = false;
-  @property({ type: String, reflect: true, attribute: 'data-theme' }) theme: 'light' | 'dark' = 'dark';
-
   static styles = css`
     :host {
       display: block;
@@ -62,7 +51,7 @@ export class ShStockCard extends LitElement {
       --status-color: var(--color-success-500);
     }
 
-    :host([data-theme="light"]) {
+    :host([data-theme='light']) {
       --card-bg: var(--color-neutral-50);
       --card-border: rgba(0, 0, 0, 0.1);
       --card-text: var(--color-neutral-900);
@@ -70,23 +59,23 @@ export class ShStockCard extends LitElement {
     }
 
     /* Status colors */
-    :host([status="optimal"]) {
+    :host([status='optimal']) {
       --status-color: var(--color-success-500);
     }
 
-    :host([status="low"]) {
+    :host([status='low']) {
       --status-color: var(--color-warning-500);
     }
 
-    :host([status="critical"]) {
+    :host([status='critical']) {
       --status-color: var(--color-danger-500);
     }
 
-    :host([status="out-of-stock"]) {
+    :host([status='out-of-stock']) {
       --status-color: var(--color-neutral-700);
     }
 
-    :host([status="overstocked"]) {
+    :host([status='overstocked']) {
       --status-color: var(--color-info-600);
     }
 
@@ -121,7 +110,7 @@ export class ShStockCard extends LitElement {
       opacity: 0.1;
     }
 
-    :host([data-theme="light"]) .stock-card:hover::before {
+    :host([data-theme='light']) .stock-card:hover::before {
       opacity: 0.15;
     }
 
@@ -189,7 +178,7 @@ export class ShStockCard extends LitElement {
       align-items: center;
       gap: 4px;
       padding: 4px 8px;
-      background: var(--color-danger-600);
+      background: var(--status-color);
       color: white;
       border-radius: var(--border-radius-sm);
       font-size: var(--font-fontSize-xs);
@@ -298,51 +287,22 @@ export class ShStockCard extends LitElement {
       }
     }
   `;
-
-  private _handleSession() {
-    this.dispatchEvent(new CustomEvent('sh-session-click', {
-      bubbles: true,
-      composed: true,
-      detail: {
-        name: this.name,
-        status: this.status
-      }
-    }));
-  }
-
-  private _handleDetails() {
-    this.dispatchEvent(new CustomEvent('sh-details-click', {
-      bubbles: true,
-      composed: true,
-      detail: {
-        name: this.name,
-        category: this.category,
-        status: this.status
-      }
-    }));
-  }
-
-  private _handleEdit() {
-    this.dispatchEvent(new CustomEvent('sh-edit-click', {
-      bubbles: true,
-      composed: true,
-      detail: {
-        name: this.name,
-        status: this.status
-      }
-    }));
-  }
-
-  private _handleDelete() {
-    this.dispatchEvent(new CustomEvent('sh-delete-click', {
-      bubbles: true,
-      composed: true,
-      detail: {
-        name: this.name,
-        status: this.status
-      }
-    }));
-  }
+  @property() name = '';
+  @property() category = '';
+  @property({ attribute: 'last-update' }) lastUpdate = '';
+  @property() percentage: string | number = '0';
+  @property() quantity = '';
+  @property() value = '';
+  @property({ reflect: true }) status:
+    | 'optimal'
+    | 'low'
+    | 'critical'
+    | 'out-of-stock'
+    | 'overstocked' = 'optimal';
+  @property({ type: Number }) iaCount = 0;
+  @property({ type: Boolean }) loading = false;
+  @property({ type: String, reflect: true, attribute: 'data-theme' }) theme: 'light' | 'dark' =
+    'dark';
 
   render() {
     return html`
@@ -354,22 +314,23 @@ export class ShStockCard extends LitElement {
               <div class="name">${this.name}</div>
               <div class="meta">
                 ${this.lastUpdate ? html`<div class="last-update">${this.lastUpdate}</div>` : ''}
-                ${this.category ? html`<div class="category">Catégorie: ${this.category}</div>` : ''}
+                ${this.category
+                  ? html`<div class="category">Catégorie: ${this.category}</div>`
+                  : ''}
               </div>
             </div>
 
             <div class="badges">
-              <sh-status-badge
-                status="${this.status}"
-                size="sm"
-              ></sh-status-badge>
+              <sh-status-badge status="${this.status}" size="sm"></sh-status-badge>
 
-              ${this.iaCount > 0 ? html`
-                <div class="ia-badge">
-                  <sh-icon name="Sparkles" size="xs"></sh-icon>
-                  IA (${this.iaCount})
-                </div>
-              ` : ''}
+              ${this.iaCount > 0
+                ? html`
+                    <div class="ia-badge">
+                      <sh-icon name="Sparkles" size="xs"></sh-icon>
+                      IA (${this.iaCount})
+                    </div>
+                  `
+                : ''}
             </div>
           </div>
         </div>
@@ -447,6 +408,59 @@ export class ShStockCard extends LitElement {
         </div>
       </div>
     `;
+  }
+
+  private _handleSession() {
+    this.dispatchEvent(
+      new CustomEvent('sh-session-click', {
+        bubbles: true,
+        composed: true,
+        detail: {
+          name: this.name,
+          status: this.status,
+        },
+      })
+    );
+  }
+
+  private _handleDetails() {
+    this.dispatchEvent(
+      new CustomEvent('sh-details-click', {
+        bubbles: true,
+        composed: true,
+        detail: {
+          name: this.name,
+          category: this.category,
+          status: this.status,
+        },
+      })
+    );
+  }
+
+  private _handleEdit() {
+    this.dispatchEvent(
+      new CustomEvent('sh-edit-click', {
+        bubbles: true,
+        composed: true,
+        detail: {
+          name: this.name,
+          status: this.status,
+        },
+      })
+    );
+  }
+
+  private _handleDelete() {
+    this.dispatchEvent(
+      new CustomEvent('sh-delete-click', {
+        bubbles: true,
+        composed: true,
+        detail: {
+          name: this.name,
+          status: this.status,
+        },
+      })
+    );
   }
 }
 

@@ -501,3 +501,74 @@ export const InteractionTestWithIcons: Story = {
     }
   },
 };
+
+/**
+ * Story responsive: teste le comportement hide-text-mobile.
+ * En mode mobile (< 640px), le texte est masqué et les icônes sont centrées.
+ * En mode desktop (≥ 640px), le texte réapparaît.
+ */
+export const ResponsiveText: Story = {
+  args: {
+    theme: 'dark',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Teste le comportement responsive avec hide-text-mobile. Réduisez la fenêtre à moins de 640px pour voir les icônes centrées dans des boutons carrés. Au-dessus de 640px, le texte réapparaît."
+      }
+    }
+  },
+  render: (args) => `
+    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px;">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <h3 style="color: ${args.theme === 'dark' ? '#ffffff' : '#000000'}; margin-bottom: 1rem;">
+          🔄 Responsive Buttons (hide-text-mobile)
+        </h3>
+        <p style="color: ${args.theme === 'dark' ? '#94a3b8' : '#64748b'}; margin-bottom: 2rem; font-size: 14px;">
+          📱 Réduisez la fenêtre à &lt; 640px pour voir les icônes centrées.
+          🖥️ Agrandissez &gt; 640px pour voir le texte réapparaître.
+        </p>
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <sh-button
+            hide-text-mobile
+            icon-before="Plus"
+            variant="primary"
+            data-theme="${args.theme}">
+            Ajouter
+          </sh-button>
+
+          <sh-button
+            hide-text-mobile
+            icon-before="Edit"
+            variant="secondary"
+            data-theme="${args.theme}">
+            Modifier
+          </sh-button>
+
+          <sh-button
+            hide-text-mobile
+            icon-before="Trash2"
+            variant="danger"
+            data-theme="${args.theme}">
+            Supprimer
+          </sh-button>
+
+          <sh-button
+            hide-text-mobile
+            icon-before="Search"
+            variant="ghost"
+            data-theme="${args.theme}">
+            Rechercher
+          </sh-button>
+        </div>
+
+        <div style="margin-top: 2rem; padding: 1rem; background: ${args.theme === 'dark' ? 'rgba(15, 23, 42, 0.5)' : 'rgba(248, 250, 252, 0.5)'}; border-radius: 8px; border: 1px solid ${args.theme === 'dark' ? '#334155' : '#e2e8f0'};">
+          <p style="color: ${args.theme === 'dark' ? '#94a3b8' : '#64748b'}; font-size: 13px; margin: 0;">
+            💡 <strong>Astuce</strong> : Utilisez les outils de développement (F12) et activez le mode responsive pour tester différentes largeurs d'écran.
+          </p>
+        </div>
+      </div>
+    </div>
+  `,
+};

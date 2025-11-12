@@ -41,7 +41,7 @@ const meta: Meta = {
     },
     iaCount: {
       control: 'number',
-      description: "Nombre d'alertes IA (0 = pas de badge)",
+      description: "Nombre d'alertes IA (0 = pas de badge). Le badge hérite automatiquement de la couleur du statut.",
       table: {
         defaultValue: { summary: '0' }
       }
@@ -1085,4 +1085,128 @@ export const InteractionTestStatusVariations: Story = {
       throw error;
     }
   },
+};
+
+/**
+ * Badge IA adaptatif - Hérite automatiquement de la couleur du statut
+ */
+export const IaBadgeColorInheritance: Story = {
+  args: {
+    theme: 'dark',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Le badge IA hérite automatiquement de la couleur du statut du stock, créant une cohérence visuelle : vert (optimal), orange (low), rouge (critical). Le frontend n'a plus besoin de calculer une sévérité séparée."
+      }
+    }
+  },
+  render: (args) => `
+    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; font-family: system-ui; margin-bottom: 1rem;">
+          🎨 Badge IA Adaptatif - Cohérence avec le Statut
+        </h2>
+        <p style="color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'}; font-family: system-ui; margin-bottom: 2rem; max-width: 800px;">
+          Le badge IA utilise automatiquement la même couleur que le statut du stock :
+          <strong style="color: var(--color-success-400)">Vert (optimal)</strong>,
+          <strong style="color: var(--color-warning-400)">Orange (low)</strong>,
+          <strong style="color: var(--color-danger-400)">Rouge (critical)</strong>.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+          <!-- Optimal (Vert) -->
+          <div>
+            <h3 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; font-family: system-ui; font-size: 1rem; margin-bottom: 1rem;">
+              ✅ Optimal - Badge Vert
+            </h3>
+            <sh-stock-card
+              id="ia-badge-optimal"
+              name="Acrylique Bleu Cobalt"
+              category="Peinture"
+              last-update="Mis à jour il y a 3h"
+              percentage="65"
+              quantity="1 tube"
+              value="€12"
+              status="optimal"
+              data-theme="${args.theme}"
+            ></sh-stock-card>
+            <p style="color: ${args.theme === 'dark' ? '#94a3b8' : '#64748b'}; font-size: 0.875rem; margin-top: 1rem; font-family: system-ui;">
+              Stock sain avec suggestions IA préventives
+            </p>
+          </div>
+
+          <!-- Low (Orange) -->
+          <div>
+            <h3 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; font-family: system-ui; font-size: 1rem; margin-bottom: 1rem;">
+              ⚠️ Low - Badge Orange
+            </h3>
+            <sh-stock-card
+              id="ia-badge-low"
+              name="Acrylique Rouge Vermillon"
+              category="Peinture"
+              last-update="Mis à jour il y a 1sem"
+              percentage="25"
+              quantity="1 tube"
+              value="€12"
+              status="low"
+              data-theme="${args.theme}"
+            ></sh-stock-card>
+            <p style="color: ${args.theme === 'dark' ? '#94a3b8' : '#64748b'}; font-size: 0.875rem; margin-top: 1rem; font-family: system-ui;">
+              Stock faible avec alertes IA d'attention
+            </p>
+          </div>
+
+          <!-- Critical (Rouge) -->
+          <div>
+            <h3 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; font-family: system-ui; font-size: 1rem; margin-bottom: 1rem;">
+              🚨 Critical - Badge Rouge
+            </h3>
+            <sh-stock-card
+              id="ia-badge-critical"
+              name="Acrylique Jaune Cadmium"
+              category="Peinture"
+              last-update="Mis à jour il y a 2j"
+              percentage="5"
+              quantity="2 tubes"
+              value="€24"
+              status="critical"
+              data-theme="${args.theme}"
+            ></sh-stock-card>
+            <p style="color: ${args.theme === 'dark' ? '#94a3b8' : '#64748b'}; font-size: 0.875rem; margin-top: 1rem; font-family: system-ui;">
+              Stock critique avec alertes IA urgentes
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top: 3rem; padding: 1.5rem; background: ${args.theme === 'dark' ? 'rgba(15, 23, 42, 0.5)' : 'rgba(248, 250, 252, 0.5)'}; border-radius: 12px; border: 1px solid ${args.theme === 'dark' ? '#334155' : '#e2e8f0'};">
+          <h4 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; font-family: system-ui; font-size: 0.95rem; margin: 0 0 0.75rem 0;">
+            💡 Intégration Frontend Simplifiée
+          </h4>
+          <p style="color: ${args.theme === 'dark' ? '#94a3b8' : '#64748b'}; font-size: 0.875rem; margin: 0; font-family: system-ui; line-height: 1.6;">
+            Le badge IA hérite automatiquement de la couleur du statut. Aucune prop supplémentaire requise :
+          </p>
+          <pre style="background: ${args.theme === 'dark' ? '#0f172a' : '#ffffff'}; padding: 1rem; border-radius: 8px; margin-top: 1rem; overflow-x: auto;"><code style="color: ${args.theme === 'dark' ? '#e2e8f0' : '#1e293b'}; font-size: 0.8rem; font-family: 'Courier New', monospace;">&lt;sh-stock-card
+  status="critical"           <!-- détermine la couleur du badge -->
+  ia-suggestions-count="3"    <!-- affiche le badge si > 0 -->
+/&gt;</code></pre>
+          <p style="color: ${args.theme === 'dark' ? '#94a3b8' : '#64748b'}; font-size: 0.75rem; margin: 1rem 0 0 0; font-family: system-ui; font-style: italic;">
+            ✨ Avantage : Cohérence visuelle automatique entre le statut et le badge IA
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      customElements.whenDefined('sh-stock-card').then(() => {
+        const cardOptimal = document.getElementById('ia-badge-optimal');
+        const cardLow = document.getElementById('ia-badge-low');
+        const cardCritical = document.getElementById('ia-badge-critical');
+
+        if (cardOptimal) cardOptimal.iaCount = 1;
+        if (cardLow) cardLow.iaCount = 2;
+        if (cardCritical) cardCritical.iaCount = 3;
+      });
+    </script>
+  `,
 };

@@ -9,6 +9,41 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/lang/fr/).
 
 ## [Unreleased]
 
+### 🐛 Bug Fixes
+
+#### Améliorations UX/UI (12 Nov 2025)
+
+**sh-button : Padding insuffisant (Issue #9)**
+- Augmentation du padding `md` : `8px 12px` → `10px 16px`
+- +2px vertical, +4px horizontal pour meilleure présence visuelle
+- Commit : `8a1e833`
+
+**sh-button : Centrage icônes en mode mobile (Issue #12)**
+- Ajout `justify-content: center` pour attribut `hide-text-mobile`
+- Boutons carrés en mobile avec `min-width` égal à la hauteur
+- Retour à l'alignement normal en desktop (≥640px)
+- Nouvelle story `ResponsiveText` pour démonstration
+- Commit : `06bc9ba`
+
+**sh-stock-card : Badge IA couleur adaptative (Issue #10)**
+- Badge IA hérite automatiquement de la couleur du statut du stock
+- `optimal` → vert, `low` → orange, `critical` → rouge
+- Simplifie l'intégration frontend (aucune prop supplémentaire)
+- Cohérence visuelle garantie entre statut et badge IA
+- Nouvelle story `IaBadgeColorInheritance` pour démonstration
+- Commit : `ec7b737`
+
+**Fichiers modifiés** :
+- `src/tokens/design-tokens.css`
+- `src/components/molecules/button/sh-button.ts`
+- `src/components/molecules/button/sh-button.stories.ts`
+- `src/components/organisms/stock-card/sh-stock-card.ts`
+- `src/components/organisms/stock-card/sh-stock-card.stories.ts`
+
+**Statut** : ✅ 3 fixes en Review, en attente de validation dans StockHub V2
+
+---
+
 ### 🚀 CI/CD & Automatisation
 
 #### Optimisation des Workflows GitHub Actions (2 Nov 2025)

@@ -112,6 +112,75 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/atoms/logo/sh-logo.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Logo component displaying the StockHub brand with icon and text.",
+          "name": "ShLogo",
+          "cssProperties": [
+            {
+              "description": "Controls the size of the logo icon (default: 40px)",
+              "name": "--logo-icon-size"
+            },
+            {
+              "description": "Controls the size of the logo text (default: 20px)",
+              "name": "--logo-text-size"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Logo size variant",
+              "attribute": "size",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Logo size variant",
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-logo",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShLogo",
+          "declaration": {
+            "name": "ShLogo",
+            "module": "src/components/atoms/logo/sh-logo.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-logo",
+          "declaration": {
+            "name": "ShLogo",
+            "module": "src/components/atoms/logo/sh-logo.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/atoms/icon/sh-icon.ts",
       "declarations": [
         {
@@ -268,230 +337,6 @@
           "declaration": {
             "name": "ShIcon",
             "module": "src/components/atoms/icon/sh-icon.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/atoms/logo/sh-logo.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Logo component displaying the StockHub brand with icon and text.",
-          "name": "ShLogo",
-          "cssProperties": [
-            {
-              "description": "Controls the size of the logo icon (default: 40px)",
-              "name": "--logo-icon-size"
-            },
-            {
-              "description": "Controls the size of the logo text (default: 20px)",
-              "name": "--logo-text-size"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Logo size variant",
-              "attribute": "size",
-              "reflects": true
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Logo size variant",
-              "fieldName": "size"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-logo",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShLogo",
-          "declaration": {
-            "name": "ShLogo",
-            "module": "src/components/atoms/logo/sh-logo.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-logo",
-          "declaration": {
-            "name": "ShLogo",
-            "module": "src/components/atoms/logo/sh-logo.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/atoms/text/sh-text.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Text component for rendering headings and paragraphs with custom styling.",
-          "name": "ShText",
-          "members": [
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "'title' | 'paragraph'"
-              },
-              "default": "'paragraph'",
-              "description": "Type of text element",
-              "attribute": "type"
-            },
-            {
-              "kind": "field",
-              "name": "content",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Text content to display",
-              "attribute": "content"
-            },
-            {
-              "kind": "field",
-              "name": "tag",
-              "type": {
-                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
-              },
-              "default": "'h1'",
-              "description": "HTML tag to use when type is 'title'",
-              "attribute": "tag"
-            },
-            {
-              "kind": "field",
-              "name": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "'inherit'",
-              "description": "Text color (overrides theme colors)",
-              "attribute": "color"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "description": "Theme variant",
-              "attribute": "data-theme",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "renderWithTag",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "tag",
-                  "type": {
-                    "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'"
-                  }
-                },
-                {
-                  "name": "content",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "data-theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "description": "Theme variant",
-              "fieldName": "theme",
-              "attribute": "data-theme"
-            },
-            {
-              "name": "type",
-              "type": {
-                "text": "'title' | 'paragraph'"
-              },
-              "default": "'paragraph'",
-              "description": "Type of text element",
-              "fieldName": "type"
-            },
-            {
-              "name": "content",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Text content to display",
-              "fieldName": "content"
-            },
-            {
-              "name": "tag",
-              "type": {
-                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
-              },
-              "default": "'h1'",
-              "description": "HTML tag to use when type is 'title'",
-              "fieldName": "tag"
-            },
-            {
-              "name": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "'inherit'",
-              "description": "Text color (overrides theme colors)",
-              "fieldName": "color"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-text",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShText",
-          "declaration": {
-            "name": "ShText",
-            "module": "src/components/atoms/text/sh-text.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-text",
-          "declaration": {
-            "name": "ShText",
-            "module": "src/components/atoms/text/sh-text.ts"
           }
         }
       ]
@@ -830,26 +675,629 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/organisms/footer/sh-footer.ts",
+      "path": "src/components/molecules/button/sh-button.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Button component with multiple variants, sizes, loading state, and icon support.",
+          "name": "ShButton",
+          "slots": [
+            {
+              "description": "Button content (text or other elements)",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "'primary' | 'secondary' | 'ghost' | 'danger'"
+              },
+              "default": "'primary'",
+              "description": "Visual variant of the button",
+              "attribute": "variant"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the button",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Disable the button",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Show loading spinner",
+              "attribute": "loading"
+            },
+            {
+              "kind": "field",
+              "name": "iconBefore",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon name to display before content",
+              "attribute": "icon-before"
+            },
+            {
+              "kind": "field",
+              "name": "iconAfter",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon name to display after content",
+              "attribute": "icon-after"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "'button' | 'submit' | 'reset'"
+              },
+              "default": "'button'",
+              "description": "Button type attribute",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "hideTextMobile",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide button text on mobile (show only icon)",
+              "attribute": "hide-text-mobile"
+            },
+            {
+              "kind": "field",
+              "name": "iconOnly",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Icon-only mode (no text, just icon)",
+              "attribute": "icon-only"
+            },
+            {
+              "kind": "field",
+              "name": "ariaLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "null",
+              "description": "Accessible label for screen readers (required for icon-only buttons)",
+              "attribute": "ariaLabel"
+            },
+            {
+              "kind": "method",
+              "name": "_renderSpinner",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-button-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when button is clicked"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "'primary' | 'secondary' | 'ghost' | 'danger'"
+              },
+              "default": "'primary'",
+              "description": "Visual variant of the button",
+              "fieldName": "variant"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the button",
+              "fieldName": "size"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Disable the button",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Show loading spinner",
+              "fieldName": "loading"
+            },
+            {
+              "name": "icon-before",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon name to display before content",
+              "fieldName": "iconBefore"
+            },
+            {
+              "name": "icon-after",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon name to display after content",
+              "fieldName": "iconAfter"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "'button' | 'submit' | 'reset'"
+              },
+              "default": "'button'",
+              "description": "Button type attribute",
+              "fieldName": "type"
+            },
+            {
+              "name": "hide-text-mobile",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide button text on mobile (show only icon)",
+              "fieldName": "hideTextMobile"
+            },
+            {
+              "name": "icon-only",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Icon-only mode (no text, just icon)",
+              "fieldName": "iconOnly"
+            },
+            {
+              "name": "ariaLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "null",
+              "description": "Accessible label for screen readers (required for icon-only buttons)",
+              "fieldName": "ariaLabel"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShButton",
+          "declaration": {
+            "name": "ShButton",
+            "module": "src/components/molecules/button/sh-button.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-button",
+          "declaration": {
+            "name": "ShButton",
+            "module": "src/components/molecules/button/sh-button.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/atoms/text/sh-text.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Text component for rendering headings and paragraphs with custom styling.",
+          "name": "ShText",
+          "members": [
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "'title' | 'paragraph'"
+              },
+              "default": "'paragraph'",
+              "description": "Type of text element",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "content",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Text content to display",
+              "attribute": "content"
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "type": {
+                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
+              },
+              "default": "'h1'",
+              "description": "HTML tag to use when type is 'title'",
+              "attribute": "tag"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "'inherit'",
+              "description": "Text color (overrides theme colors)",
+              "attribute": "color"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "description": "Theme variant",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "renderWithTag",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "tag",
+                  "type": {
+                    "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'"
+                  }
+                },
+                {
+                  "name": "content",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "description": "Theme variant",
+              "fieldName": "theme",
+              "attribute": "data-theme"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "'title' | 'paragraph'"
+              },
+              "default": "'paragraph'",
+              "description": "Type of text element",
+              "fieldName": "type"
+            },
+            {
+              "name": "content",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Text content to display",
+              "fieldName": "content"
+            },
+            {
+              "name": "tag",
+              "type": {
+                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
+              },
+              "default": "'h1'",
+              "description": "HTML tag to use when type is 'title'",
+              "fieldName": "tag"
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "'inherit'",
+              "description": "Text color (overrides theme colors)",
+              "fieldName": "color"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-text",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShText",
+          "declaration": {
+            "name": "ShText",
+            "module": "src/components/atoms/text/sh-text.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-text",
+          "declaration": {
+            "name": "ShText",
+            "module": "src/components/atoms/text/sh-text.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/molecules/card/sh-card.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Card component with glassmorphism effect, customizable padding, and interactive states.",
+          "name": "ShCard",
+          "slots": [
+            {
+              "description": "Main card content",
+              "name": ""
+            },
+            {
+              "description": "Optional header content",
+              "name": "header"
+            },
+            {
+              "description": "Optional footer content",
+              "name": "footer"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "hover",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Enable hover effects",
+              "attribute": "hover"
+            },
+            {
+              "kind": "field",
+              "name": "clickable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Make card clickable",
+              "attribute": "clickable"
+            },
+            {
+              "kind": "field",
+              "name": "padding",
+              "type": {
+                "text": "'none' | 'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Padding size",
+              "attribute": "padding"
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeyDown",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-card-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when clickable card is clicked"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "hover",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Enable hover effects",
+              "fieldName": "hover"
+            },
+            {
+              "name": "clickable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Make card clickable",
+              "fieldName": "clickable"
+            },
+            {
+              "name": "padding",
+              "type": {
+                "text": "'none' | 'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Padding size",
+              "fieldName": "padding"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-card",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShCard",
+          "declaration": {
+            "name": "ShCard",
+            "module": "src/components/molecules/card/sh-card.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-card",
+          "declaration": {
+            "name": "ShCard",
+            "module": "src/components/molecules/card/sh-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/molecules/metric-card/sh-metric-card.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "ShFooter",
+          "name": "ShMetricCard",
+          "slots": [
+            {
+              "description": "Contenu personnalisé (remplace la valeur par défaut)",
+              "name": ""
+            }
+          ],
           "members": [
             {
               "kind": "field",
-              "name": "appName",
+              "name": "icon",
               "type": {
                 "text": "string"
               },
-              "default": "'STOCK HUB'",
-              "attribute": "app-name"
+              "default": "'TrendingUp'",
+              "attribute": "icon"
             },
             {
               "kind": "field",
-              "name": "year",
-              "attribute": "year"
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | number"
+              },
+              "default": "'0'",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "'default' | 'success' | 'warning' | 'danger' | 'info'"
+              },
+              "default": "'default'",
+              "attribute": "variant"
+            },
+            {
+              "kind": "field",
+              "name": "trend",
+              "type": {
+                "text": "'increase' | 'decrease' | undefined"
+              },
+              "attribute": "trend"
+            },
+            {
+              "kind": "field",
+              "name": "trendValue",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "trend-value"
+            },
+            {
+              "kind": "field",
+              "name": "clickable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "clickable"
             },
             {
               "kind": "field",
@@ -862,20 +1310,60 @@
               "reflects": true
             },
             {
+              "kind": "field",
+              "name": "displayValue",
+              "type": {
+                "text": "string | number"
+              },
+              "privacy": "private",
+              "default": "'0'"
+            },
+            {
               "kind": "method",
-              "name": "_handleLinkClick",
+              "name": "animateValue",
               "privacy": "private",
               "parameters": [
                 {
-                  "name": "linkName",
+                  "name": "start",
                   "type": {
-                    "text": "string"
+                    "text": "number"
                   }
                 },
                 {
+                  "name": "end",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "duration",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "decimalPlaces",
+                  "default": "0",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeyDown",
+              "privacy": "private",
+              "parameters": [
+                {
                   "name": "e",
                   "type": {
-                    "text": "Event"
+                    "text": "KeyboardEvent"
                   }
                 }
               ]
@@ -883,25 +1371,67 @@
           ],
           "events": [
             {
-              "name": "sh-footer-link-click",
+              "name": "sh-metric-click",
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Émis lors du clic sur un lien"
+              "description": "Émis au clic sur la carte (si clickable)"
             }
           ],
           "attributes": [
             {
-              "name": "app-name",
+              "name": "icon",
               "type": {
                 "text": "string"
               },
-              "default": "'STOCK HUB'",
-              "fieldName": "appName"
+              "default": "'TrendingUp'",
+              "fieldName": "icon"
             },
             {
-              "name": "year",
-              "fieldName": "year"
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "label"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string | number"
+              },
+              "default": "'0'",
+              "fieldName": "value"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "'default' | 'success' | 'warning' | 'danger' | 'info'"
+              },
+              "default": "'default'",
+              "fieldName": "variant"
+            },
+            {
+              "name": "trend",
+              "type": {
+                "text": "'increase' | 'decrease' | undefined"
+              },
+              "fieldName": "trend"
+            },
+            {
+              "name": "trend-value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "trendValue"
+            },
+            {
+              "name": "clickable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "clickable"
             },
             {
               "name": "data-theme",
@@ -916,26 +1446,350 @@
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "sh-footer",
+          "tagName": "sh-metric-card",
           "customElement": true,
-          "summary": "Footer de l'application avec copyright et liens légaux"
+          "summary": "Carte métrique avec icône, valeur et indicateur de tendance"
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "ShFooter",
+          "name": "ShMetricCard",
           "declaration": {
-            "name": "ShFooter",
-            "module": "src/components/organisms/footer/sh-footer.ts"
+            "name": "ShMetricCard",
+            "module": "src/components/molecules/metric-card/sh-metric-card.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "sh-footer",
+          "name": "sh-metric-card",
           "declaration": {
-            "name": "ShFooter",
-            "module": "src/components/organisms/footer/sh-footer.ts"
+            "name": "ShMetricCard",
+            "module": "src/components/molecules/metric-card/sh-metric-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/molecules/quantity-input/sh-quantity-input.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Quantity input component with sync button for inventory management.",
+          "name": "ShQuantityInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Current quantity value",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "dirty",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates if value has changed",
+              "attribute": "dirty"
+            },
+            {
+              "kind": "field",
+              "name": "hideArrows",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide number input arrows",
+              "attribute": "hideArrows"
+            },
+            {
+              "kind": "method",
+              "name": "handleInputChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "CustomEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleSync",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "sync",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "description": "Fired when sync button is clicked with updated value",
+              "name": "sh-sync"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Current quantity value",
+              "fieldName": "value"
+            },
+            {
+              "name": "dirty",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates if value has changed",
+              "fieldName": "dirty"
+            },
+            {
+              "name": "hideArrows",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide number input arrows",
+              "fieldName": "hideArrows"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-quantity-input",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShQuantityInput",
+          "declaration": {
+            "name": "ShQuantityInput",
+            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-quantity-input",
+          "declaration": {
+            "name": "ShQuantityInput",
+            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/molecules/search-input/sh-search-input.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ShSearchInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Rechercher...'",
+              "attribute": "placeholder"
+            },
+            {
+              "kind": "field",
+              "name": "debounce",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "debounce"
+            },
+            {
+              "kind": "field",
+              "name": "clearable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "clearable"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_debounceTimer",
+              "type": {
+                "text": "number | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "_handleInput",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_emitSearch",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleClear",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-search-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis à chaque changement de valeur"
+            },
+            {
+              "name": "sh-search",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis lors de la recherche (avec debounce si activé)"
+            },
+            {
+              "name": "sh-search-clear",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis lors du clic sur clear (si clearable)"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "value"
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Rechercher...'",
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "debounce",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "debounce"
+            },
+            {
+              "name": "clearable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "clearable"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "fieldName": "theme"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-search-input",
+          "customElement": true,
+          "summary": "Input de recherche avec icône pour la recherche de produits"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShSearchInput",
+          "declaration": {
+            "name": "ShSearchInput",
+            "module": "src/components/molecules/search-input/sh-search-input.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-search-input",
+          "declaration": {
+            "name": "ShSearchInput",
+            "module": "src/components/molecules/search-input/sh-search-input.ts"
           }
         }
       ]
@@ -1102,6 +1956,212 @@
           "declaration": {
             "name": "ShHeader",
             "module": "src/components/organisms/header/sh-header.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/molecules/status-badge/sh-status-badge.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Status badge component for displaying stock status with icons and animations.",
+          "name": "ShStatusBadge",
+          "members": [
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
+              },
+              "default": "'optimal'",
+              "description": "Stock status type",
+              "attribute": "status"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Custom label override",
+              "attribute": "label"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "status",
+              "type": {
+                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
+              },
+              "default": "'optimal'",
+              "description": "Stock status type",
+              "fieldName": "status"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "fieldName": "size"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Custom label override",
+              "fieldName": "label"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-status-badge",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShStatusBadge",
+          "declaration": {
+            "name": "ShStatusBadge",
+            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-status-badge",
+          "declaration": {
+            "name": "ShStatusBadge",
+            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/organisms/footer/sh-footer.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ShFooter",
+          "members": [
+            {
+              "kind": "field",
+              "name": "appName",
+              "type": {
+                "text": "string"
+              },
+              "default": "'STOCK HUB'",
+              "attribute": "app-name"
+            },
+            {
+              "kind": "field",
+              "name": "year",
+              "attribute": "year"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleLinkClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "linkName",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-footer-link-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis lors du clic sur un lien"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "app-name",
+              "type": {
+                "text": "string"
+              },
+              "default": "'STOCK HUB'",
+              "fieldName": "appName"
+            },
+            {
+              "name": "year",
+              "fieldName": "year"
+            },
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "fieldName": "theme"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-footer",
+          "customElement": true,
+          "summary": "Footer de l'application avec copyright et liens légaux"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShFooter",
+          "declaration": {
+            "name": "ShFooter",
+            "module": "src/components/organisms/footer/sh-footer.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-footer",
+          "declaration": {
+            "name": "ShFooter",
+            "module": "src/components/organisms/footer/sh-footer.ts"
           }
         }
       ]
@@ -1951,1066 +3011,6 @@
           "declaration": {
             "name": "ShStockItemCard",
             "module": "src/components/organisms/stock-item-card/sh-stock-item-card.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/molecules/button/sh-button.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Button component with multiple variants, sizes, loading state, and icon support.",
-          "name": "ShButton",
-          "slots": [
-            {
-              "description": "Button content (text or other elements)",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "'primary' | 'secondary' | 'ghost' | 'danger'"
-              },
-              "default": "'primary'",
-              "description": "Visual variant of the button",
-              "attribute": "variant"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the button",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Disable the button",
-              "attribute": "disabled"
-            },
-            {
-              "kind": "field",
-              "name": "loading",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Show loading spinner",
-              "attribute": "loading"
-            },
-            {
-              "kind": "field",
-              "name": "iconBefore",
-              "type": {
-                "text": "string"
-              },
-              "description": "Icon name to display before content",
-              "attribute": "icon-before"
-            },
-            {
-              "kind": "field",
-              "name": "iconAfter",
-              "type": {
-                "text": "string"
-              },
-              "description": "Icon name to display after content",
-              "attribute": "icon-after"
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "'button' | 'submit' | 'reset'"
-              },
-              "default": "'button'",
-              "description": "Button type attribute",
-              "attribute": "type"
-            },
-            {
-              "kind": "field",
-              "name": "hideTextMobile",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hide button text on mobile (show only icon)",
-              "attribute": "hide-text-mobile"
-            },
-            {
-              "kind": "field",
-              "name": "iconOnly",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Icon-only mode (no text, just icon)",
-              "attribute": "icon-only"
-            },
-            {
-              "kind": "field",
-              "name": "ariaLabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "null",
-              "description": "Accessible label for screen readers (required for icon-only buttons)",
-              "attribute": "ariaLabel"
-            },
-            {
-              "kind": "method",
-              "name": "_renderSpinner",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleClick",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "name": "sh-button-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when button is clicked"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "'primary' | 'secondary' | 'ghost' | 'danger'"
-              },
-              "default": "'primary'",
-              "description": "Visual variant of the button",
-              "fieldName": "variant"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the button",
-              "fieldName": "size"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Disable the button",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "loading",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Show loading spinner",
-              "fieldName": "loading"
-            },
-            {
-              "name": "icon-before",
-              "type": {
-                "text": "string"
-              },
-              "description": "Icon name to display before content",
-              "fieldName": "iconBefore"
-            },
-            {
-              "name": "icon-after",
-              "type": {
-                "text": "string"
-              },
-              "description": "Icon name to display after content",
-              "fieldName": "iconAfter"
-            },
-            {
-              "name": "type",
-              "type": {
-                "text": "'button' | 'submit' | 'reset'"
-              },
-              "default": "'button'",
-              "description": "Button type attribute",
-              "fieldName": "type"
-            },
-            {
-              "name": "hide-text-mobile",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hide button text on mobile (show only icon)",
-              "fieldName": "hideTextMobile"
-            },
-            {
-              "name": "icon-only",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Icon-only mode (no text, just icon)",
-              "fieldName": "iconOnly"
-            },
-            {
-              "name": "ariaLabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "null",
-              "description": "Accessible label for screen readers (required for icon-only buttons)",
-              "fieldName": "ariaLabel"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-button",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShButton",
-          "declaration": {
-            "name": "ShButton",
-            "module": "src/components/molecules/button/sh-button.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-button",
-          "declaration": {
-            "name": "ShButton",
-            "module": "src/components/molecules/button/sh-button.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/molecules/card/sh-card.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Card component with glassmorphism effect, customizable padding, and interactive states.",
-          "name": "ShCard",
-          "slots": [
-            {
-              "description": "Main card content",
-              "name": ""
-            },
-            {
-              "description": "Optional header content",
-              "name": "header"
-            },
-            {
-              "description": "Optional footer content",
-              "name": "footer"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "hover",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Enable hover effects",
-              "attribute": "hover"
-            },
-            {
-              "kind": "field",
-              "name": "clickable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Make card clickable",
-              "attribute": "clickable"
-            },
-            {
-              "kind": "field",
-              "name": "padding",
-              "type": {
-                "text": "'none' | 'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Padding size",
-              "attribute": "padding"
-            },
-            {
-              "kind": "method",
-              "name": "_handleClick",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleKeyDown",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "name": "sh-card-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when clickable card is clicked"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "hover",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Enable hover effects",
-              "fieldName": "hover"
-            },
-            {
-              "name": "clickable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Make card clickable",
-              "fieldName": "clickable"
-            },
-            {
-              "name": "padding",
-              "type": {
-                "text": "'none' | 'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Padding size",
-              "fieldName": "padding"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-card",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShCard",
-          "declaration": {
-            "name": "ShCard",
-            "module": "src/components/molecules/card/sh-card.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-card",
-          "declaration": {
-            "name": "ShCard",
-            "module": "src/components/molecules/card/sh-card.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/molecules/metric-card/sh-metric-card.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "ShMetricCard",
-          "slots": [
-            {
-              "description": "Contenu personnalisé (remplace la valeur par défaut)",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "icon",
-              "type": {
-                "text": "string"
-              },
-              "default": "'TrendingUp'",
-              "attribute": "icon"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "label"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string | number"
-              },
-              "default": "'0'",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "'default' | 'success' | 'warning' | 'danger' | 'info'"
-              },
-              "default": "'default'",
-              "attribute": "variant"
-            },
-            {
-              "kind": "field",
-              "name": "trend",
-              "type": {
-                "text": "'increase' | 'decrease' | undefined"
-              },
-              "attribute": "trend"
-            },
-            {
-              "kind": "field",
-              "name": "trendValue",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "trend-value"
-            },
-            {
-              "kind": "field",
-              "name": "clickable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "clickable"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "attribute": "data-theme",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "displayValue",
-              "type": {
-                "text": "string | number"
-              },
-              "privacy": "private",
-              "default": "'0'"
-            },
-            {
-              "kind": "method",
-              "name": "animateValue",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "start",
-                  "type": {
-                    "text": "number"
-                  }
-                },
-                {
-                  "name": "end",
-                  "type": {
-                    "text": "number"
-                  }
-                },
-                {
-                  "name": "duration",
-                  "type": {
-                    "text": "number"
-                  }
-                },
-                {
-                  "name": "decimalPlaces",
-                  "default": "0",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_handleClick",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleKeyDown",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "name": "sh-metric-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis au clic sur la carte (si clickable)"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "icon",
-              "type": {
-                "text": "string"
-              },
-              "default": "'TrendingUp'",
-              "fieldName": "icon"
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "label"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string | number"
-              },
-              "default": "'0'",
-              "fieldName": "value"
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "'default' | 'success' | 'warning' | 'danger' | 'info'"
-              },
-              "default": "'default'",
-              "fieldName": "variant"
-            },
-            {
-              "name": "trend",
-              "type": {
-                "text": "'increase' | 'decrease' | undefined"
-              },
-              "fieldName": "trend"
-            },
-            {
-              "name": "trend-value",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "trendValue"
-            },
-            {
-              "name": "clickable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "clickable"
-            },
-            {
-              "name": "data-theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "fieldName": "theme"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-metric-card",
-          "customElement": true,
-          "summary": "Carte métrique avec icône, valeur et indicateur de tendance"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShMetricCard",
-          "declaration": {
-            "name": "ShMetricCard",
-            "module": "src/components/molecules/metric-card/sh-metric-card.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-metric-card",
-          "declaration": {
-            "name": "ShMetricCard",
-            "module": "src/components/molecules/metric-card/sh-metric-card.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/molecules/quantity-input/sh-quantity-input.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Quantity input component with sync button for inventory management.",
-          "name": "ShQuantityInput",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Current quantity value",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "dirty",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Indicates if value has changed",
-              "attribute": "dirty"
-            },
-            {
-              "kind": "field",
-              "name": "hideArrows",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hide number input arrows",
-              "attribute": "hideArrows"
-            },
-            {
-              "kind": "method",
-              "name": "handleInputChange",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "CustomEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleSync",
-              "privacy": "private"
-            }
-          ],
-          "events": [
-            {
-              "name": "sync",
-              "type": {
-                "text": "CustomEvent"
-              }
-            },
-            {
-              "description": "Fired when sync button is clicked with updated value",
-              "name": "sh-sync"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Current quantity value",
-              "fieldName": "value"
-            },
-            {
-              "name": "dirty",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Indicates if value has changed",
-              "fieldName": "dirty"
-            },
-            {
-              "name": "hideArrows",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hide number input arrows",
-              "fieldName": "hideArrows"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-quantity-input",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShQuantityInput",
-          "declaration": {
-            "name": "ShQuantityInput",
-            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-quantity-input",
-          "declaration": {
-            "name": "ShQuantityInput",
-            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/molecules/status-badge/sh-status-badge.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Status badge component for displaying stock status with icons and animations.",
-          "name": "ShStatusBadge",
-          "members": [
-            {
-              "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
-              },
-              "default": "'optimal'",
-              "description": "Stock status type",
-              "attribute": "status"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Custom label override",
-              "attribute": "label"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "status",
-              "type": {
-                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
-              },
-              "default": "'optimal'",
-              "description": "Stock status type",
-              "fieldName": "status"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "fieldName": "size"
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Custom label override",
-              "fieldName": "label"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-status-badge",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShStatusBadge",
-          "declaration": {
-            "name": "ShStatusBadge",
-            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-status-badge",
-          "declaration": {
-            "name": "ShStatusBadge",
-            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/molecules/search-input/sh-search-input.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "ShSearchInput",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Rechercher...'",
-              "attribute": "placeholder"
-            },
-            {
-              "kind": "field",
-              "name": "debounce",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "attribute": "debounce"
-            },
-            {
-              "kind": "field",
-              "name": "clearable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "clearable"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "disabled"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "attribute": "data-theme",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "_debounceTimer",
-              "type": {
-                "text": "number | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "method",
-              "name": "_handleInput",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_emitSearch",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleClear",
-              "privacy": "private"
-            }
-          ],
-          "events": [
-            {
-              "name": "sh-search-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis à chaque changement de valeur"
-            },
-            {
-              "name": "sh-search",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis lors de la recherche (avec debounce si activé)"
-            },
-            {
-              "name": "sh-search-clear",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis lors du clic sur clear (si clearable)"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "value"
-            },
-            {
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Rechercher...'",
-              "fieldName": "placeholder"
-            },
-            {
-              "name": "debounce",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "fieldName": "debounce"
-            },
-            {
-              "name": "clearable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "clearable"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "data-theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "fieldName": "theme"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-search-input",
-          "customElement": true,
-          "summary": "Input de recherche avec icône pour la recherche de produits"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShSearchInput",
-          "declaration": {
-            "name": "ShSearchInput",
-            "module": "src/components/molecules/search-input/sh-search-input.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-search-input",
-          "declaration": {
-            "name": "ShSearchInput",
-            "module": "src/components/molecules/search-input/sh-search-input.ts"
           }
         }
       ]

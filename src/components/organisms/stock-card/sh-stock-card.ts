@@ -189,7 +189,7 @@ export class ShStockCard extends LitElement {
       align-items: center;
       gap: 4px;
       padding: 4px 8px;
-      background: var(--color-danger-600);
+      background: var(--status-color); /* Hérite de la couleur du statut */
       color: white;
       border-radius: var(--border-radius-sm);
       font-size: var(--font-fontSize-xs);

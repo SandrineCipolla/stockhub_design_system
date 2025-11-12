@@ -116,11 +116,54 @@ git commit -m "fix(button): center icons properly in mobile mode with hide-text-
 
 ---
 
+### Issue #10 - Badge IA couleur adaptative 🔄 EN REVIEW
+
+**Date résolution** : 12 Novembre 2025
+**Temps réel** : 45 min (exploration + implémentation simplifiée)
+**Status** : 🔄 Fixed in Design System - En attente de validation
+
+#### 🔍 Problème
+Le badge IA avait une couleur rouge fixe, peu importe la priorité ou le statut du stock.
+Manque de cohérence visuelle entre le statut du stock et le badge IA.
+
+#### ✅ Solution appliquée (simplifiée après discussion)
+**Approche initiale envisagée** : Prop `ia-severity` séparée avec 3 couleurs (info/warning/critical)
+**Approche finale retenue** : Le badge hérite automatiquement de la couleur du statut
+
+**Fichier modifié** : `src/components/organisms/stock-card/sh-stock-card.ts`
+- Ligne 192 : `.ia-badge { background: var(--status-color); }` (hérite du statut)
+- Suppression de la prop `ia-severity` initialement prévue
+
+**Story ajoutée** : `src/components/organisms/stock-card/sh-stock-card.stories.ts`
+- Nouvelle story `IaBadgeColorInheritance` montrant les 3 variantes
+
+**Résultat** :
+- `optimal` → Badge vert
+- `low` → Badge orange
+- `critical` → Badge rouge
+- Cohérence visuelle automatique
+- Intégration frontend simplifiée (aucune prop supplémentaire)
+
+#### 📝 Commit
+```bash
+git commit -m "feat(stock-card): IA badge inherits color from stock status"
+# Commit: ec7b737
+```
+
+#### 🔗 Issue GitHub
+- Commentée : https://github.com/SandrineCipolla/stockhub_design_system/issues/10
+
+#### 🎯 Apprentissages
+- Simplicité > Complexité : Hériter du statut est plus simple qu'une prop séparée
+- Cohérence visuelle automatique garantie
+- Moins de props = intégration frontend facilitée
+
+---
+
 ## 📊 Vue d'Ensemble
 
 **Issues à traiter** : 5
-- 🔄 **3 issues en review** (#11, #9, #12)
-- 🔴 **1 issue active** (#10)
+- 🔄 **4 issues en review** (#11, #9, #12, #10)
 - ⚠️ **1 audit à planifier** (#13)
 
 **Temps total estimé** :

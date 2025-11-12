@@ -268,9 +268,19 @@ export class ShButton extends LitElement {
       display: none;
     }
 
+    :host([hide-text-mobile]) button {
+      justify-content: center;
+      min-width: var(--component-button-height-md); /* Assure un bouton carré */
+    }
+
     @media (min-width: 640px) {
       :host([hide-text-mobile]) .button-text {
         display: inline;
+      }
+
+      :host([hide-text-mobile]) button {
+        justify-content: flex-start; /* Retour à l'alignement normal */
+        min-width: auto;
       }
     }
 

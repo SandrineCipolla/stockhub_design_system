@@ -6,13 +6,13 @@
 
 ---
 
-## ✅ ISSUES RÉSOLUES
+## 🔄 ISSUES EN REVIEW (Fixes appliqués, validation en attente)
 
-### Issue #11 - Doublon d'icônes bannière IA ✅ FERMÉE
+### Issue #11 - Doublon d'icônes bannière IA 🔄 EN REVIEW
 
 **Date résolution** : 11 Novembre 2025
 **Temps réel** : 30 min (investigation + fix)
-**Status** : ✅ Fixed in stockhub_v2_front
+**Status** : 🔄 Fixed in stockhub_v2_front - En attente de validation
 
 #### 🔍 Diagnostic initial (erroné)
 L'issue suggérait que le doublon venait de :
@@ -56,11 +56,71 @@ git commit -m "fix: remove duplicate warning emoji from IA alert titles"
 
 ---
 
+### Issue #9 - Padding bouton insuffisant 🔄 EN REVIEW
+
+**Date résolution** : 12 Novembre 2025
+**Temps réel** : 5 min
+**Status** : 🔄 Fixed in Design System - En attente de validation
+
+#### 🔍 Problème
+Le padding des boutons taille `md` était insuffisant, donnant une impression visuelle trop compacte.
+Le bouton `size="md"` n'avait pas assez de présence visuelle.
+
+#### ✅ Solution appliquée
+**Fichier modifié** : `src/tokens/design-tokens.css`
+- Ligne 164 : `--component-button-padding-md: 8px 12px;` → `--component-button-padding-md: 10px 16px;`
+- **Amélioration** : +2px vertical et +4px horizontal
+
+**Résultat** : Meilleure présence visuelle des boutons md sans nécessiter `size="lg"`
+
+#### 📝 Commit
+```bash
+git commit -m "fix(button): increase md size padding for better visual presence"
+# Commit: 8a1e833
+```
+
+#### 🔗 Issue GitHub
+- Commentée et fermée : https://github.com/SandrineCipolla/stockhub_design_system/issues/9
+
+---
+
+### Issue #12 - Centrage icônes en mode mobile 🔄 EN REVIEW
+
+**Date résolution** : 12 Novembre 2025
+**Temps réel** : 15 min (fix + story)
+**Status** : 🔄 Fixed in Design System - En attente de validation
+
+#### 🔍 Problème
+En mode mobile avec `hide-text-mobile`, les icônes n'étaient pas parfaitement centrées dans les boutons.
+Le texte disparaissait mais l'icône restait alignée à gauche.
+
+#### ✅ Solution appliquée
+**Fichier modifié** : `src/components/molecules/button/sh-button.ts`
+- Lignes 271-285 : Ajout de styles responsive pour `hide-text-mobile`
+- En mobile (< 640px) : `justify-content: center` + `min-width` pour bouton carré
+- En desktop (≥ 640px) : Retour à l'alignement normal
+
+**Story ajoutée** : `src/components/molecules/button/sh-button.stories.ts`
+- Nouvelle story `ResponsiveText` pour tester visuellement le comportement
+
+**Résultat** : Icônes parfaitement centrées dans des boutons carrés en mode mobile
+
+#### 📝 Commit
+```bash
+git commit -m "fix(button): center icons properly in mobile mode with hide-text-mobile"
+# Commit: 06bc9ba
+```
+
+#### 🔗 Issue GitHub
+- Commentée : https://github.com/SandrineCipolla/stockhub_design_system/issues/12
+
+---
+
 ## 📊 Vue d'Ensemble
 
 **Issues à traiter** : 5
-- ✅ **1 issue fermée** (#11)
-- 🔴 **3 issues actives** (#9, #10, #12)
+- 🔄 **3 issues en review** (#11, #9, #12)
+- 🔴 **1 issue active** (#10)
 - ⚠️ **1 audit à planifier** (#13)
 
 **Temps total estimé** :

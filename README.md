@@ -55,18 +55,19 @@ src/
 │   │   ├── quantity-input/      # sh-quantity-input
 │   │   ├── search-input/        # sh-search-input ✨ NEW
 │   │   └── status-badge/        # sh-status-badge
-│   └── organisms/                # Composants complexes (5)
+│   └── organisms/                # Composants complexes (6)
 │       ├── footer/              # sh-footer ✨ NEW
 │       ├── header/              # sh-header
 │       ├── ia-alert-banner/     # sh-ia-alert-banner ✨ NEW
 │       ├── stock-card/          # sh-stock-card
-│       └── stock-item-card/     # sh-stock-item-card
+│       ├── stock-item-card/     # sh-stock-item-card
+│       └── stock-prediction-card/ # sh-stock-prediction-card ✨ NEW
 ├── tokens/                       # Design tokens (colors, spacing, etc.)
 ├── icons/                        # DEPRECATED: Remplacé par Lucide
 └── styles/                       # Global styles et CSS utilities
 ```
 
-**Total : 16 composants Web Components**
+**Total : 17 composants Web Components**
 
 ### Convention de Nommage
 Tous les composants utilisent le préfixe `sh-` (StockHub) :
@@ -384,6 +385,77 @@ Input numérique avec boutons +/-.
 ```
 
 ### Organisms (Complexes)
+
+#### `<sh-stock-prediction-card>` 🆕 NOUVEAU
+Carte de prédiction ML pour afficher les ruptures de stock prévues avec analyse d'intelligence artificielle.
+
+**Props** :
+- `stock-name`: string - Nom du produit
+- `stock-id`: string - Identifiant unique du stock
+- `risk-level`: `"critical"` | `"high"` | `"medium"` | `"low"` - Niveau de risque
+- `days-until-rupture`: number | null - Jours avant rupture (null = aucun risque)
+- `date-of-rupture`: string - Date de rupture estimée (ISO)
+- `confidence`: number - Confiance ML (0-100%)
+- `daily-consumption-rate`: number - Consommation quotidienne
+- `current-quantity`: number - Quantité actuelle
+- `days-until-rupture-pessimistic`: number | null - Estimation pessimiste
+- `days-until-rupture-optimistic`: number | null - Estimation optimiste
+- `recommended-reorder-date`: string - Date recommandée pour commander
+- `recommended-reorder-quantity`: number - Quantité recommandée
+- `show-details`: boolean - Afficher la section détails
+- `clickable`: boolean - Carte cliquable
+- `theme`: `"light"` | `"dark"` - Thème de couleur
+
+**Événements** :
+- `sh-stock-prediction-click` - Émis au clic (si `clickable`)
+
+**Caractéristiques** :
+- **Bordure colorée** selon le niveau de risque (critical=rouge, high=orange, medium=orange clair, low=vert)
+- **Badge de confiance ML** avec fond coloré adaptatif (contraste WCAG AA garanti)
+- **Barre de progression** du niveau de risque avec intervalle de confiance
+- **Détails conditionnels** : consommation moyenne, date de rupture, recommandations
+- **Background coloré au hover** uniquement (carte cliquable)
+- **100% WCAG AA compliant** - tous les textes ont un contraste ≥ 4.5:1
+
+```html
+<!-- Rupture critique -->
+<sh-stock-prediction-card
+  stock-name="Café Arabica Bio"
+  stock-id="stock-001"
+  risk-level="critical"
+  days-until-rupture="2"
+  date-of-rupture="2025-11-16T00:00:00.000Z"
+  confidence="92"
+  daily-consumption-rate="15.5"
+  current-quantity="31"
+  days-until-rupture-pessimistic="1"
+  days-until-rupture-optimistic="4"
+  recommended-reorder-date="2025-11-15T00:00:00.000Z"
+  recommended-reorder-quantity="100"
+  show-details
+></sh-stock-prediction-card>
+
+<!-- Aucun risque détecté -->
+<sh-stock-prediction-card
+  stock-name="Chocolat Noir 70%"
+  stock-id="stock-005"
+  risk-level="low"
+  confidence="95"
+  daily-consumption-rate="3.1"
+  current-quantity="150"
+></sh-stock-prediction-card>
+
+<!-- Carte cliquable -->
+<sh-stock-prediction-card
+  stock-name="Thé Vert Matcha"
+  stock-id="stock-002"
+  risk-level="high"
+  days-until-rupture="5"
+  confidence="88"
+  clickable
+  @sh-stock-prediction-click="${(e) => console.log(e.detail)}"
+></sh-stock-prediction-card>
+```
 
 #### `<sh-header>`
 Header de l'application.

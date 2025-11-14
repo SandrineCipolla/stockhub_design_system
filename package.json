@@ -8,9 +8,9 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/stockhub-design-system.es.js",
-      "require": "./dist/stockhub-design-system.umd.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/stockhub-design-system.umd.js"
     },
     "./dist/tokens/design-tokens.css": "./dist/tokens/design-tokens.css"
   },

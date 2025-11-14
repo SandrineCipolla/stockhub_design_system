@@ -23,3 +23,4 @@ export * from './components/organisms/page-header/sh-page-header';
 export * from './components/organisms/ia-alert-banner/sh-ia-alert-banner';
 export * from './components/organisms/stock-card/sh-stock-card';
 export * from './components/organisms/stock-item-card/sh-stock-item-card';
+export * from './components/organisms/stock-prediction-card/sh-stock-prediction-card';

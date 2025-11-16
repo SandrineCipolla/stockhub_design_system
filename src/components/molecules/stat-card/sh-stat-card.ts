@@ -99,7 +99,7 @@ export class ShStatCard extends LitElement {
       background: var(--card-bg);
       border: 2px solid var(--card-border);
       border-radius: var(--border-radius-lg);
-      padding: var(--spacing-md) var(--spacing-sm);
+      padding: var(--spacing-xs) var(--spacing-sm);
       text-align: center;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -108,14 +108,14 @@ export class ShStatCard extends LitElement {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: var(--spacing-xs);
-      min-height: 88px;
+      gap: var(--spacing-2xs);
+      min-height: 72px;
     }
 
     .stat-card:hover {
-      background: var(--card-hover-bg);
+      border-color: var(--color-primary-400);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
     }
 
     /* Selected state styling */

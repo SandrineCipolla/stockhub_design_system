@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.1] - 2025-01-16
+
+### Changed
+- **sh-stat-card**: Amélioration de l'UX et du design
+  - Effet hover : bordure primary au lieu de changement de background (plus cohérent avec les autres composants)
+  - Hauteur réduite : `min-height: 72px` (vs 88px) pour meilleur centrage dans NavSection
+  - Padding optimisé : `var(--spacing-xs) var(--spacing-sm)` pour un design plus compact
+  - Gap réduit entre valeur et label : `var(--spacing-2xs)` pour meilleure lisibilité
+
+## [1.3.0] - 2025-01-16
+
 ### Added
 - **sh-stat-card**: Nouveau composant molecule pour filtrage interactif des prédictions par niveau de risque
   - Design minimaliste pour affichage de statistiques (valeur + label)

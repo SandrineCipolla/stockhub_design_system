@@ -15,6 +15,7 @@ export * from './components/molecules/search-input/sh-search-input';
 export * from './components/molecules/status-badge/sh-status-badge';
 export * from './components/molecules/card/sh-card';
 export * from './components/molecules/metric-card/sh-metric-card';
+export * from './components/molecules/stat-card/sh-stat-card';
 
 // Organisms
 export * from './components/organisms/header/sh-header';

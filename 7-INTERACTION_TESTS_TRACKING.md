@@ -9,11 +9,11 @@
 
 ## 📊 Vue d'ensemble
 
-**Progression totale:** 9/9 composants testés (100%) ✅ **PROJET TERMINÉ !**
+**Progression totale:** 10/10 composants testés (100%) ✅ **PROJET TERMINÉ !**
 
 | Statut | Nombre | Composants |
 |--------|--------|------------|
-| ✅ Complété | 9 | sh-button, sh-quantity-input, sh-search-input, sh-input, sh-card, sh-header, sh-ia-alert-banner, sh-stock-card, sh-stock-item-card |
+| ✅ Complété | 10 | sh-button, sh-quantity-input, sh-search-input, sh-input, sh-card, sh-header, sh-ia-alert-banner, sh-stock-card, sh-stock-item-card, sh-stock-prediction-card |
 | 🔴 Priorité 1 | 0 | - |
 | 🟡 Priorité 2 | 0 | - |
 | 🟢 Priorité 3 | 0 | - |
@@ -138,6 +138,16 @@
   - `InteractionTestOptionalFields` : Champs optionnels (value, location) affichés conditionnellement
 - **Événements testés:** `sh-view-click`, `sh-edit-click`, `sh-delete-click`
 - **Notes:** Tests avec Shadow DOM imbriqué (sh-stock-item-card → sh-button → button natif). 3 boutons d'action. Métriques conditionnelles (value et location optionnels). Grid adaptatif de métriques.
+
+#### 10. **sh-stock-prediction-card** ✅
+- **Fichier:** `src/components/organisms/stock-prediction-card/sh-stock-prediction-card.stories.ts`
+- **Date:** 14 novembre 2025
+- **Tests implémentés:**
+  - `InteractionTestClickable` : Click sur carte cliquable + vérification événement et payload (stockId, stockName, riskLevel, daysUntilRupture)
+  - `InteractionTestShowDetails` : Affichage conditionnel de la section détails + éléments de détails + recommandation
+  - `InteractionTestRiskLevels` : Vérification niveau de risque (critical) + icône (AlertTriangle) + barre progression + badge confiance (92%)
+- **Événements testés:** `sh-stock-prediction-click`
+- **Notes:** Tests avec Shadow DOM. Carte ML pour prédictions de rupture de stock. Badge de confiance coloré adaptatif (contraste WCAG AA). 4 niveaux de risque (critical/high/medium/low). Section détails conditionnelle avec métriques et recommandations.
 
 ---
 
@@ -480,9 +490,16 @@ await expect(shCard.clickable).toBe(false);
 - 🎉 **Priorité 3 terminée !** (2/2)
 - 🎊 **PROJET TERMINÉ !** 9/9 composants (100%)
 
+### 2025-11-14
+- ✅ **sh-stock-prediction-card** : Nouveau composant ML pour prédictions de rupture de stock
+- ✅ **Tests d'interaction** : Ajout de 3 tests (clickable, show details, risk levels)
+- ✅ **Accessibilité WCAG AA** : Tous les contrastes ≥ 4.5:1 (badge adaptatif, textes neutres)
+- ✅ **Tous les tests sh-stock-prediction-card passent** (3/3)
+- 🎊 **PROJET MIS À JOUR !** 10/10 composants (100%)
+
 ---
 
-**Dernière mise à jour:** 30 octobre 2025
+**Dernière mise à jour:** 14 novembre 2025
 
 ---
 
@@ -492,7 +509,7 @@ await expect(shCard.clickable).toBe(false);
 
 ### Récapitulatif final
 
-**Total : 9 composants, 44 tests d'interaction**
+**Total : 10 composants, 47 tests d'interaction**
 
 | Composant | Tests | Événements testés |
 |-----------|-------|-------------------|
@@ -505,6 +522,7 @@ await expect(shCard.clickable).toBe(false);
 | sh-ia-alert-banner | 5 | sh-ia-alert-toggle, sh-ia-alert-item-click |
 | sh-stock-card | 4 | sh-session-click, sh-details-click, sh-edit-click, sh-delete-click |
 | sh-stock-item-card | 4 | sh-view-click, sh-edit-click, sh-delete-click |
+| sh-stock-prediction-card | 3 | sh-stock-prediction-click |
 
 ### Points clés appris
 
@@ -526,4 +544,4 @@ await expect(shCard.clickable).toBe(false);
 
 ---
 
-**Dernière mise à jour:** 30 octobre 2025
+**Dernière mise à jour:** 14 novembre 2025

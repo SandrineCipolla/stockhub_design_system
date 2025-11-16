@@ -9,11 +9,11 @@
 
 ## 📊 Vue d'ensemble
 
-**Progression totale:** 10/10 composants testés (100%) ✅ **PROJET TERMINÉ !**
+**Progression totale:** 11/11 composants testés (100%) ✅ **PROJET TERMINÉ !**
 
 | Statut | Nombre | Composants |
 |--------|--------|------------|
-| ✅ Complété | 10 | sh-button, sh-quantity-input, sh-search-input, sh-input, sh-card, sh-header, sh-ia-alert-banner, sh-stock-card, sh-stock-item-card, sh-stock-prediction-card |
+| ✅ Complété | 11 | sh-button, sh-quantity-input, sh-search-input, sh-input, sh-card, sh-header, sh-ia-alert-banner, sh-stock-card, sh-stock-item-card, sh-stock-prediction-card, sh-stat-card |
 | 🔴 Priorité 1 | 0 | - |
 | 🟡 Priorité 2 | 0 | - |
 | 🟢 Priorité 3 | 0 | - |
@@ -497,9 +497,16 @@ await expect(shCard.clickable).toBe(false);
 - ✅ **Tous les tests sh-stock-prediction-card passent** (3/3)
 - 🎊 **PROJET MIS À JOUR !** 10/10 composants (100%)
 
+### 2025-11-16
+- ✅ **sh-stat-card** : Nouveau composant molecule pour filtrage interactif avec état sélectionné
+- ✅ **Tests d'interaction** : Ajout de 3 tests (default rendering, selected state, analytics filters interaction)
+- ✅ **Accessibilité WCAG AA** : Support clavier, aria-pressed, aria-label
+- ✅ **Tous les tests sh-stat-card passent** (3/3)
+- 🎊 **PROJET MIS À JOUR !** 11/11 composants (100%)
+
 ---
 
-**Dernière mise à jour:** 14 novembre 2025
+**Dernière mise à jour:** 16 novembre 2025
 
 ---
 
@@ -509,7 +516,7 @@ await expect(shCard.clickable).toBe(false);
 
 ### Récapitulatif final
 
-**Total : 10 composants, 47 tests d'interaction**
+**Total : 11 composants, 50 tests d'interaction**
 
 | Composant | Tests | Événements testés |
 |-----------|-------|-------------------|
@@ -523,6 +530,7 @@ await expect(shCard.clickable).toBe(false);
 | sh-stock-card | 4 | sh-session-click, sh-details-click, sh-edit-click, sh-delete-click |
 | sh-stock-item-card | 4 | sh-view-click, sh-edit-click, sh-delete-click |
 | sh-stock-prediction-card | 3 | sh-stock-prediction-click |
+| sh-stat-card | 3 | sh-stat-click, selected state, analytics filters |
 
 ### Points clés appris
 
@@ -544,4 +552,4 @@ await expect(shCard.clickable).toBe(false);
 
 ---
 
-**Dernière mise à jour:** 14 novembre 2025
+**Dernière mise à jour:** 16 novembre 2025

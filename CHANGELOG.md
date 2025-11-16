@@ -8,20 +8,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- **sh-stock-prediction-card**: New organism component for displaying ML stock rupture predictions with detailed metrics, confidence indicators, and interactive features ([#18](https://github.com/SandrineCipolla/stockhub_design_system/issues/18))
-  - 4 risk levels: critical, high, medium, low
-  - Confidence badge with adaptive colors for WCAG AA compliance
-  - Progress bar with confidence interval
-  - Detailed metrics (consumption rate, rupture date)
-  - Action recommendations (reorder date and quantity)
-  - Light/dark theme support
-  - Clickable mode with custom event emission
-  - 9 Storybook stories and 3 interaction tests
-  - 100% WCAG AA accessibility compliance
-- Complete technical documentation in `documentation/STOCK-PREDICTION-CARD-IMPLEMENTATION.md`
+- **sh-stat-card**: Nouveau composant molecule pour filtrage interactif des prédictions par niveau de risque
+  - Design minimaliste pour affichage de statistiques (valeur + label)
+  - Layout centré vertical
+  - 5 niveaux de risque alignés avec `sh-stock-prediction-card` : default, critical, high, medium, low
+  - Couleurs différenciées pour meilleure distinction visuelle (high/medium utilisent warning-500/400)
+  - État sélectionné avec bordure primary pour indiquer le filtre actif
+  - Support thème clair/sombre avec couleurs adaptées pour contraste WCAG AA
+  - Cliquable avec émission d'événement personnalisé (`sh-stat-click`)
+  - 7 stories Storybook incluant le cas d'usage réel des filtres Analytics avec tests d'interaction
+  - Conformité WCAG AA avec attributs ARIA appropriés (role="button", aria-pressed, aria-label)
+- **sh-stock-prediction-card**: Nouveau composant organism pour afficher les prédictions ML de rupture de stock avec métriques détaillées, indicateurs de confiance et fonctionnalités interactives ([#18](https://github.com/SandrineCipolla/stockhub_design_system/issues/18))
+  - 4 niveaux de risque : critique, élevé, moyen, faible
+  - Badge de confiance avec couleurs adaptatives pour conformité WCAG AA
+  - Barre de progression avec intervalle de confiance
+  - Métriques détaillées (taux de consommation, date de rupture)
+  - Recommandations d'action (date et quantité de réapprovisionnement)
+  - Support thème clair/sombre
+  - Mode cliquable avec émission d'événements personnalisés
+  - 9 stories Storybook et 3 tests d'interaction
+  - Conformité accessibilité WCAG AA à 100%
+- Documentation technique complète dans `documentation/STOCK-PREDICTION-CARD-IMPLEMENTATION.md`
 
 ### Fixed
-- package.json: Reordered exports to place "types" condition first, eliminating TypeScript warning
+- package.json: Réorganisation des exports pour placer la condition "types" en premier, éliminant l'avertissement TypeScript
 
 ## [1.2.2] - 2025-11-XX
 

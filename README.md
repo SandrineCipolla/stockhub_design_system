@@ -10,10 +10,10 @@
 
 Ce Design System a été créé pour **StockHub V2**, une application de gestion de stock avec intelligence artificielle.
 
-Le projet contient **16 composants Web Components réutilisables** couvrant tous les besoins de l'application :
+Le projet contient **18 composants Web Components réutilisables** couvrant tous les besoins de l'application :
 - **Composants de base (atoms)** : badges, icônes Lucide, inputs, logo, texte
-- **Composants composés (molecules)** : buttons, cards, metric-card, search, status-badge, quantity-input
-- **Composants complexes (organisms)** : header, footer, page-header, ia-alert-banner, stock-card, stock-item-card
+- **Composants composés (molecules)** : buttons, cards, metric-card, search, status-badge, quantity-input, stat-card
+- **Composants complexes (organisms)** : header, footer, page-header, ia-alert-banner, stock-card, stock-item-card, stock-prediction-card
 
 Développé selon la **méthodologie Atomic Design** avec une approche progressive et itérative. Le projet évolue continuellement en fonction des besoins de StockHub V2.
 
@@ -48,14 +48,15 @@ src/
 │   │   ├── input/               # sh-input
 │   │   ├── logo/                # sh-logo
 │   │   └── text/                # sh-text
-│   ├── molecules/                # Combinaisons d'atoms (6)
+│   ├── molecules/                # Combinaisons d'atoms (7)
 │   │   ├── button/              # sh-button (ghost, loading, icons)
 │   │   ├── card/                # sh-card (base)
 │   │   ├── metric-card/         # sh-metric-card
 │   │   ├── quantity-input/      # sh-quantity-input
-│   │   ├── search-input/        # sh-search-input ✨ NEW
+│   │   ├── search-input/        # sh-search-input
+│   │   ├── stat-card/           # sh-stat-card ✨ NEW
 │   │   └── status-badge/        # sh-status-badge
-│   └── organisms/                # Composants complexes (6)
+│   └── organisms/                # Composants complexes (7)
 │       ├── footer/              # sh-footer ✨ NEW
 │       ├── header/              # sh-header
 │       ├── ia-alert-banner/     # sh-ia-alert-banner ✨ NEW
@@ -67,7 +68,7 @@ src/
 └── styles/                       # Global styles et CSS utilities
 ```
 
-**Total : 17 composants Web Components**
+**Total : 18 composants Web Components**
 
 ### Convention de Nommage
 Tous les composants utilisent le préfixe `sh-` (StockHub) :

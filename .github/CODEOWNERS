@@ -1,0 +1,40 @@
+# CODEOWNERS — StockHub Design System
+# Documentation : https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# ---------------------------------------------------------------
+# Par défaut : Sandrine est owner de tout le repo
+# ---------------------------------------------------------------
+* @SandrineCipolla
+
+# ---------------------------------------------------------------
+# Review mentor obligatoire — Tokens & architecture du DS
+# (impacts sur les 3 repos si modifié)
+# ---------------------------------------------------------------
+
+# Tokens CSS (tout changement impacte front + back)
+/src/tokens/ @SandrineCipolla @macreiben-dev
+
+# Styles globaux
+/src/style/ @SandrineCipolla @macreiben-dev
+
+# Configuration Storybook
+/.storybook/ @SandrineCipolla @macreiben-dev
+
+# Workflows CI/CD
+/.github/workflows/ @SandrineCipolla @macreiben-dev
+
+# ---------------------------------------------------------------
+# Review mentor obligatoire — Organisms
+# (composants complexes, forte valeur métier)
+# ---------------------------------------------------------------
+
+/src/components/organisms/ @SandrineCipolla @macreiben-dev
+
+# ---------------------------------------------------------------
+# Sandrine seule — Atoms & Molecules
+# (composants simples, itérations fréquentes)
+# ---------------------------------------------------------------
+
+/src/components/atoms/ @SandrineCipolla
+/src/components/molecules/ @SandrineCipolla
+/src/icons/ @SandrineCipolla

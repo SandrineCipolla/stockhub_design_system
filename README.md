@@ -6,6 +6,8 @@
 
 > Design System réutilisable (web + mobile) basé sur Web Components (Lit Element)
 
+📚 **[Documentation complète du projet](https://github.com/SandrineCipolla/stockHub_V2_front/wiki)** — Architecture, guides techniques, métriques
+
 ## 📋 Contexte
 
 Ce Design System a été créé pour **StockHub V2**, une application de gestion de stock avec intelligence artificielle.

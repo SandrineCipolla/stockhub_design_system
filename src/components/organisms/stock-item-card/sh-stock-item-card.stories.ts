@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { expect, userEvent } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import { expect, userEvent } from 'storybook/test';
 import './sh-stock-item-card';
 
 const meta: Meta = {
@@ -59,10 +59,6 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-// Background helper
-const getBackground = (theme: string) => theme === 'dark'
-  ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)'
-  : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)';
 
 /**
  * Carte de produit en stock optimal
@@ -77,7 +73,7 @@ export const Optimal: Story = {
     status: 'optimal',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-item-card
           name="${args.name}"
@@ -125,7 +121,7 @@ export const LowStock: Story = {
     status: 'low',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-item-card
           name="${args.name}"
@@ -154,7 +150,7 @@ export const CriticalStock: Story = {
     status: 'critical',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-item-card
           name="${args.name}"
@@ -183,7 +179,7 @@ export const OutOfStock: Story = {
     status: 'out-of-stock',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-item-card
           name="${args.name}"
@@ -212,7 +208,7 @@ export const Overstocked: Story = {
     status: 'overstocked',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-item-card
           name="${args.name}"
@@ -239,7 +235,7 @@ export const Minimal: Story = {
     status: 'optimal',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-item-card
           name="${args.name}"
@@ -267,7 +263,7 @@ export const Loading: Story = {
     loading: true,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-item-card
           name="${args.name}"
@@ -292,7 +288,7 @@ export const AllStatuses: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; max-width: 100%;">
         <sh-stock-item-card
           name="Peinture Acrylique 500ml - Bleu Cobalt"
@@ -356,7 +352,7 @@ export const InventoryGrid: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <h2 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; margin-bottom: 1.5rem; font-family: system-ui;">Inventaire - Matériel Créatif</h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem; max-width: 100%;">
         <sh-stock-item-card
@@ -471,7 +467,7 @@ export const InteractionTestAllButtons: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-item-card
           id="item-card-test-all"
@@ -586,7 +582,7 @@ export const InteractionTestLoadingState: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-item-card
           id="item-card-test-loading"
@@ -663,7 +659,7 @@ export const InteractionTestStatusVariations: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-item-card
           id="item-card-test-status"
@@ -733,7 +729,7 @@ export const InteractionTestOptionalFields: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-item-card
           id="item-card-test-optional"

@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { expect, userEvent, within } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import { expect, userEvent, within } from 'storybook/test';
 import './sh-stock-prediction-card';
 
 const meta: Meta = {
@@ -78,10 +78,6 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-// Background helper
-const getBackground = (theme: string) => theme === 'dark'
-  ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)'
-  : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)';
 
 // Helper pour générer une date dans le futur
 const getFutureDate = (days: number): string => {
@@ -109,7 +105,7 @@ export const Critical: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-prediction-card
           stock-name="${args.stockName}"
@@ -152,7 +148,7 @@ export const High: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-prediction-card
           stock-name="${args.stockName}"
@@ -195,7 +191,7 @@ export const Medium: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-prediction-card
           stock-name="${args.stockName}"
@@ -238,7 +234,7 @@ export const Low: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-prediction-card
           stock-name="${args.stockName}"
@@ -281,7 +277,7 @@ export const NoRuptureDetected: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-prediction-card
           stock-name="${args.stockName}"
@@ -318,7 +314,7 @@ export const WithoutDetails: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-prediction-card
           stock-name="${args.stockName}"
@@ -359,7 +355,7 @@ export const DarkMode: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-prediction-card
           stock-name="${args.stockName}"
@@ -402,7 +398,7 @@ export const Clickable: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-prediction-card
           stock-name="${args.stockName}"
@@ -437,7 +433,7 @@ export const Grid: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem;">
         <sh-stock-prediction-card
           stock-name="Café Arabica Bio"
@@ -520,7 +516,7 @@ export const InteractionTestClickable: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-prediction-card
           id="stock-prediction-test-click"
@@ -615,7 +611,7 @@ export const InteractionTestShowDetails: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-prediction-card
           id="stock-prediction-test-details"
@@ -696,7 +692,7 @@ export const InteractionTestRiskLevels: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-prediction-card
           id="stock-prediction-test-risk"

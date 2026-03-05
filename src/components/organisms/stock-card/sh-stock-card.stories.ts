@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { expect, userEvent } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import { expect, userEvent } from 'storybook/test';
 import './sh-stock-card';
 
 const meta: Meta = {
@@ -70,11 +70,6 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-// Background helper
-const getBackground = (theme: string) => theme === 'dark'
-  ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)'
-  : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)';
-
 /**
  * Stock optimal - comme dans StockHub V2
  */
@@ -90,8 +85,7 @@ export const Optimal: Story = {
     iaCount: 0,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
+    <div style="max-width: 400px; padding: 2rem;">
         <sh-stock-card
           id="stock-card-optimal"
           name="${args.name}"
@@ -152,8 +146,7 @@ export const LowWithIA: Story = {
     iaCount: 1,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
+    <div style="max-width: 400px; padding: 2rem;">
         <sh-stock-card
           id="stock-card-low"
           name="${args.name}"
@@ -194,8 +187,7 @@ export const Critical: Story = {
     iaCount: 2,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
+    <div style="max-width: 400px; padding: 2rem;">
         <sh-stock-card
           id="stock-card-critical"
           name="${args.name}"
@@ -236,8 +228,7 @@ export const OutOfStock: Story = {
     iaCount: 1,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
+    <div style="max-width: 400px; padding: 2rem;">
         <sh-stock-card
           id="stock-card-out"
           name="${args.name}"
@@ -278,8 +269,7 @@ export const Overstocked: Story = {
     iaCount: 0,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
+    <div style="max-width: 400px; padding: 2rem;">
         <sh-stock-card
           id="stock-card-over"
           name="${args.name}"
@@ -317,8 +307,7 @@ export const Minimal: Story = {
     status: 'optimal',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
+    <div style="max-width: 400px; padding: 2rem;">
         <sh-stock-card
           id="stock-card-minimal"
           name="${args.name}"
@@ -357,8 +346,7 @@ export const Loading: Story = {
     loading: true,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
+    <div style="max-width: 400px; padding: 2rem;">
         <sh-stock-card
           id="stock-card-loading"
           name="${args.name}"
@@ -393,7 +381,7 @@ export const Dashboard: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="margin-bottom: 2rem;">
         <h1 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; font-family: system-ui; margin: 0 0 0.5rem 0;">Mes Stocks Récents (18)</h1>
         <button style="background: var(--color-primary-500); color: white; border: none; padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600;">
@@ -528,7 +516,7 @@ export const InteractiveEvents: Story = {
     iaCount: 1,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 800px; margin: 0 auto;">
         <h2 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; font-family: system-ui; margin-bottom: 1.5rem;">
           📦 Enregistrer une Session Créative
@@ -696,7 +684,7 @@ export const InteractionTestAllButtons: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-card
           id="stock-card-test-all"
@@ -843,7 +831,7 @@ export const InteractionTestLoadingState: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-card
           id="stock-card-test-loading"
@@ -932,7 +920,7 @@ export const InteractionTestIaBadge: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-card
           id="stock-card-test-ia"
@@ -1020,7 +1008,7 @@ export const InteractionTestStatusVariations: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-card
           id="stock-card-test-status"
@@ -1102,7 +1090,7 @@ export const IaBadgeColorInheritance: Story = {
     }
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 1200px; margin: 0 auto;">
         <h2 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; font-family: system-ui; margin-bottom: 1rem;">
           🎨 Badge IA Adaptatif - Cohérence avec le Statut

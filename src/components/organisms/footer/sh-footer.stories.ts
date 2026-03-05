@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import './sh-footer';
 
 const meta: Meta = {
@@ -28,10 +28,6 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-const getBackground = (theme: string) => theme === 'dark'
-  ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)'
-  : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)';
-
 /**
  * Footer par défaut
  */
@@ -41,7 +37,7 @@ export const Default: Story = {
     year: '2025',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; min-height: 100vh; display: flex; flex-direction: column;">
+    <div style="min-height: 100vh; display: flex; flex-direction: column;">
       <div style="flex: 1; padding: 2rem; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
         <h1>Page Content</h1>
         <p>Le footer est en bas de la page...</p>
@@ -77,13 +73,11 @@ export const Isolated: Story = {
     year: '2025',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem;">
-      <sh-footer
-        app-name="${args.appName}"
-        year="${args.year}"
-        data-theme="${args.theme}"
-      ></sh-footer>
-    </div>
+    <sh-footer
+      app-name="${args.appName}"
+      year="${args.year}"
+      data-theme="${args.theme}"
+    ></sh-footer>
 
     <script>
       customElements.whenDefined('sh-footer').then(() => {
@@ -108,7 +102,7 @@ export const LightTheme: Story = {
     theme: 'light',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; min-height: 100vh; display: flex; flex-direction: column;">
+    <div style="min-height: 100vh; display: flex; flex-direction: column;">
       <div style="flex: 1; padding: 2rem; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
         <h1>Page Content (Light Theme)</h1>
         <p>Le footer s'adapte au thème clair...</p>
@@ -132,13 +126,11 @@ export const CustomAppName: Story = {
     year: '2025',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem;">
-      <sh-footer
-        app-name="${args.appName}"
-        year="${args.year}"
-        data-theme="${args.theme}"
-      ></sh-footer>
-    </div>
+    <sh-footer
+      app-name="${args.appName}"
+      year="${args.year}"
+      data-theme="${args.theme}"
+    ></sh-footer>
   `,
 };
 
@@ -151,7 +143,7 @@ export const Mobile: Story = {
     year: '2025',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem;">
+    <div style="padding: 2rem;">
       <div style="max-width: 375px; margin: 0 auto; border: 2px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'}; border-radius: 8px; overflow: hidden;">
         <div style="padding: 2rem; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
           <h2 style="margin: 0 0 0.5rem 0; font-size: 1.25rem;">Mobile View</h2>
@@ -178,7 +170,7 @@ export const Playground: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; min-height: 100vh; display: flex; flex-direction: column;">
+    <div style="min-height: 100vh; display: flex; flex-direction: column;">
       <div style="flex: 1; padding: 2rem; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
         <p>Configurez le footer avec les contrôles ci-dessous</p>
       </div>

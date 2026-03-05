@@ -1,5 +1,5 @@
-import type {Meta, StoryObj} from "@storybook/web-components"
-import { expect, userEvent } from '@storybook/test';
+import type {Meta, StoryObj} from "@storybook/web-components-vite"
+import { expect, userEvent } from 'storybook/test';
 import "./sh-input.ts"
 
 const meta = {
@@ -81,20 +81,18 @@ export const Default: Story = {
         theme: "dark",
     },
     render: (args) => `
-        <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-            <sh-input
-                type="${args.type}"
-                placeholder="${args.placeholder}"
-                size="${args.size}"
-                ?error="${args.error}"
-                error-message="${args.errorMessage || ''}"
-                ?hide-arrows="${args.hideArrows}"
-                ?disabled="${args.disabled}"
-                ?required="${args.required}"
-                name="${args.name}"
-                data-theme="${args.theme}"
-            ></sh-input>
-        </div>
+        <sh-input
+            type="${args.type}"
+            placeholder="${args.placeholder}"
+            size="${args.size}"
+            ?error="${args.error}"
+            error-message="${args.errorMessage || ''}"
+            ?hide-arrows="${args.hideArrows}"
+            ?disabled="${args.disabled}"
+            ?required="${args.required}"
+            name="${args.name}"
+            data-theme="${args.theme}"
+        ></sh-input>
     `,
 }
 
@@ -217,7 +215,7 @@ export const InteractionTest: Story = {
         }
     },
     render: (args) => `
-        <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 250px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+        <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 2rem;">
             <sh-input
                 type="text"
                 placeholder="${args.placeholder}"
@@ -312,7 +310,7 @@ export const InteractionTestEmailValidation: Story = {
         }
     },
     render: (args) => `
-        <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 300px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+        <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 2rem;">
             <sh-input
                 type="email"
                 placeholder="email@example.com"
@@ -395,7 +393,7 @@ export const InteractionTestDisabled: Story = {
         }
     },
     render: (args) => `
-        <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 250px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+        <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 2rem;">
             <sh-input
                 type="text"
                 placeholder="Input désactivé"
@@ -469,7 +467,7 @@ export const InteractionTestErrorClearing: Story = {
         }
     },
     render: (args) => `
-        <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 300px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+        <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 2rem;">
             <sh-input
                 type="text"
                 placeholder="Champ requis"
@@ -545,7 +543,7 @@ export const InteractionTestRequired: Story = {
         }
     },
     render: (args) => `
-        <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 300px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+        <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 2rem;">
             <sh-input
                 type="text"
                 placeholder="Champ requis"

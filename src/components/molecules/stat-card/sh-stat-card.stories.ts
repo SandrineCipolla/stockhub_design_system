@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { expect, userEvent } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import { expect, userEvent } from 'storybook/test';
 import './sh-stat-card';
 
 const meta: Meta = {
@@ -47,11 +47,6 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-// Background helper
-const getBackground = (theme: string) => theme === 'dark'
-  ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)'
-  : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)';
-
 // Solid background for accessibility tests (no gradient)
 const getSolidBackground = (theme: string) => theme === 'dark'
   ? '#0f172a'
@@ -67,7 +62,7 @@ export const Default: Story = {
     riskLevel: 'default',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; max-width: 200px;">
+    <div style="padding: 2rem; max-width: 200px;">
       <sh-stat-card
         label="${args.label}"
         value="${args.value}"
@@ -90,7 +85,7 @@ export const Selected: Story = {
     selected: true,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; max-width: 200px;">
+    <div style="padding: 2rem; max-width: 200px;">
       <sh-stat-card
         label="${args.label}"
         value="${args.value}"
@@ -110,8 +105,7 @@ export const AllRiskLevels: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem;">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; padding: 2rem;">
         <sh-stat-card
           label="Total Stocks"
           value="156"
@@ -146,7 +140,6 @@ export const AllRiskLevels: Story = {
           risk-level="low"
           data-theme="${args.theme}"
         ></sh-stat-card>
-      </div>
     </div>
   `,
 };
@@ -161,7 +154,7 @@ export const CustomSlot: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; max-width: 200px;">
+    <div style="padding: 2rem; max-width: 200px;">
       <sh-stat-card
         label="${args.label}"
         risk-level="${args.riskLevel}"

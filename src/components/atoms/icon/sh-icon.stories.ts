@@ -1,4 +1,4 @@
-import type {Meta, StoryObj} from "@storybook/web-components"
+import type {Meta, StoryObj} from "@storybook/web-components-vite"
 import "./sh-icon.ts"
 
 const meta: Meta = {
@@ -83,9 +83,7 @@ export const Default: Story = {
         theme: "dark",
     },
     render: (args) => `
-        <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-            <sh-icon name="${args.name}" size="${args.size}" color="${args.color}" ?clickable="${args.clickable}" ?spin="${args.spin}" data-theme="${args.theme}"></sh-icon>
-        </div>
+        <sh-icon name="${args.name}" size="${args.size}" color="${args.color}" ?clickable="${args.clickable}" ?spin="${args.spin}" data-theme="${args.theme}"></sh-icon>
     `,
 }
 
@@ -97,14 +95,12 @@ export const AllIcons: Story = {
     render: (args) => {
         const icons = ["Package", "TrendingUp", "AlertTriangle", "Plus", "Search", "BarChart", "Eye", "Edit", "Trash2", "Bell", "User", "Home", "Settings", "Download", "RefreshCw", "Filter", "MoreVertical", "ChevronRight", "ArrowUpRight", "ArrowDownRight", "Minus", "Calendar", "MapPin"];
         return `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 400px;">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 16px; padding: 16px; background: ${args.theme === 'dark' ? '#1e293b' : '#ffffff'}; border-radius: 12px;">
         ${icons.map(icon => `
         <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px; background: ${args.theme === 'dark' ? '#334155' : '#f1f5f9'}; border-radius: 8px; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};">
           <sh-icon name="${icon}" size="lg" color="primary" data-theme="${args.theme}"></sh-icon>
           <span style="font-size: 12px; text-align: center; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">${icon}</span>
         </div>`).join('')}
-    </div>
     </div>
   `;
     }
@@ -116,7 +112,6 @@ export const Sizes: Story = {
         theme: "dark",
     },
     render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
     <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: ${args.theme === 'dark' ? '#1e293b' : '#ffffff'}; border-radius: 12px;">
       <div style="text-align: center; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};">
         <sh-icon name="Package" size="xs" color="primary" data-theme="${args.theme}"></sh-icon>
@@ -139,7 +134,6 @@ export const Sizes: Story = {
         <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">XL</p>
       </div>
     </div>
-    </div>
   `,
 }
 
@@ -149,7 +143,6 @@ export const Colors: Story = {
         theme: "dark",
     },
     render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
     <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: ${args.theme === 'dark' ? '#1e293b' : '#ffffff'}; border-radius: 12px;">
       <div style="text-align: center;">
         <sh-icon name="Package" size="lg" color="inherit" style="color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};" data-theme="${args.theme}"></sh-icon>
@@ -176,7 +169,6 @@ export const Colors: Story = {
         <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">Muted</p>
       </div>
     </div>
-    </div>
   `,
 }
 
@@ -186,7 +178,6 @@ export const Interactive: Story = {
         theme: "dark",
     },
     render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
     <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: ${args.theme === 'dark' ? '#1e293b' : '#ffffff'}; border-radius: 12px;">
       <div style="text-align: center;">
         <sh-icon name="Settings" size="lg" color="primary" clickable data-theme="${args.theme}"></sh-icon>
@@ -201,7 +192,6 @@ export const Interactive: Story = {
         <p style="margin: 8px 0 0 0; font-size: 12px; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">Notification</p>
       </div>
     </div>
-    </div>
   `,
 }
 
@@ -211,7 +201,6 @@ export const StockHubUsage: Story = {
         theme: "dark",
     },
     render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 400px;">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; padding: 16px;">
       <!-- Métriques -->
       <div style="background: ${args.theme === 'dark' ? '#334155' : '#ffffff'}; padding: 16px; border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.1);">
@@ -253,7 +242,6 @@ export const StockHubUsage: Story = {
           </div>
         </div>
       </div>
-    </div>
     </div>
   `,
 }

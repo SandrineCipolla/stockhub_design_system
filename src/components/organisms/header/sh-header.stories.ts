@@ -1,6 +1,6 @@
 import './sh-header.ts';
-import type {Meta, StoryObj} from "@storybook/web-components";
-import { expect, userEvent } from '@storybook/test';
+import type {Meta, StoryObj} from "@storybook/web-components-vite";
+import { expect, userEvent } from 'storybook/test';
 
 const meta: Meta = {
     title: 'Components/Organisms/Header',
@@ -35,13 +35,8 @@ type Story = StoryObj;
 
 // Helper function to create wrapper with theme listener
 const createStoryWithThemeListener = (id: string, content: string, extraScript = '', initialTheme: 'light' | 'dark' = 'dark') => {
-    const bgColor = initialTheme === 'dark'
-        ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)'
-        : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)';
-    const textColor = initialTheme === 'dark' ? '#ffffff' : '#1e293b';
-
     return `
-    <div id="wrapper-${id}" style="background: ${bgColor}; min-height: 100vh; color: ${textColor};">
+    <div id="wrapper-${id}" style="min-height: 100vh;">
         ${content}
     </div>
     <script>
@@ -49,30 +44,12 @@ const createStoryWithThemeListener = (id: string, content: string, extraScript =
             const wrapper = document.getElementById('wrapper-${id}');
             const header = document.getElementById('header-${id}');
 
-            // Update wrapper theme based on header's data-theme
-            function updateWrapperTheme() {
-                const theme = header?.getAttribute('data-theme') || 'dark';
-                if (wrapper) {
-                    if (theme === 'dark') {
-                        wrapper.style.background = 'linear-gradient(to bottom right, #0f172a, #1e1b4b)';
-                        wrapper.style.color = '#ffffff';
-                    } else {
-                        wrapper.style.background = 'linear-gradient(to bottom right, #f8fafc, #f0ebff)';
-                        wrapper.style.color = '#1e293b';
-                    }
-                }
-            }
-
             // Wait for web component to be fully defined before reading attributes
             customElements.whenDefined('sh-header').then(() => {
                 // Force initial theme if specified
                 if (header && '${initialTheme}' === 'light') {
                     header.theme = 'light';
                 }
-                // Small delay to ensure attributes are set
-                setTimeout(() => {
-                    updateWrapperTheme();
-                }, 0);
             });
 
             // Listen for global theme change from header
@@ -81,7 +58,6 @@ const createStoryWithThemeListener = (id: string, content: string, extraScript =
                 if (header) {
                     header.setAttribute('data-theme', newTheme);
                 }
-                updateWrapperTheme();
             });
 
             ${extraScript}
@@ -326,7 +302,7 @@ export const InteractionTestNotificationClick: Story = {
         }
     },
     render: (args) => `
-        <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 400px; color: #ffffff;">
+        <div style="padding: 2rem; min-height: 400px;">
             <sh-header
                 id="test-notification-header"
                 user-name="${args.userName}"
@@ -409,7 +385,7 @@ export const InteractionTestThemeToggle: Story = {
         }
     },
     render: (args) => `
-        <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 400px; color: #ffffff;">
+        <div style="padding: 2rem; min-height: 400px;">
             <sh-header
                 id="test-theme-header"
                 user-name="${args.userName}"
@@ -515,7 +491,7 @@ export const InteractionTestLogoutClick: Story = {
         }
     },
     render: (args) => `
-        <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 400px; color: #ffffff;">
+        <div style="padding: 2rem; min-height: 400px;">
             <sh-header
                 id="test-logout-header"
                 user-name="${args.userName}"
@@ -598,7 +574,7 @@ export const InteractionTestLoginClick: Story = {
         }
     },
     render: (args) => `
-        <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 400px; color: #ffffff;">
+        <div style="padding: 2rem; min-height: 400px;">
             <sh-header
                 id="test-login-header"
                 user-name="${args.userName}"
@@ -689,7 +665,7 @@ export const InteractionTestNotificationBadge99Plus: Story = {
         }
     },
     render: (args) => `
-        <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 400px; color: #ffffff;">
+        <div style="padding: 2rem; min-height: 400px;">
             <sh-header
                 id="test-badge-header"
                 user-name="${args.userName}"

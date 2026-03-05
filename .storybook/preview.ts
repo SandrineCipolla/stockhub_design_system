@@ -1,6 +1,6 @@
-import type { Preview } from '@storybook/web-components';
+import type { Preview } from '@storybook/web-components-vite';
 // Import custom elements manifest for documentation
-import { setCustomElementsManifest } from '@storybook/web-components';
+import { setCustomElementsManifest } from '@storybook/web-components-vite';
 import 'lit/polyfill-support.js'; // recommandé
 // ⭐️ IMPORTANT: S'assurer que ce chemin est correct
 import '../src/tokens/design-tokens.css';
@@ -36,17 +36,17 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      default: 'stockhub-dark',
-      values: [
-        {
+      options: {
+        "stockhub-dark": {
           name: 'stockhub-dark',
           value: 'linear-gradient(to br, #0f172a, #1e1b4b)',
         },
-        {
+
+        "stockhub-light": {
           name: 'stockhub-light',
           value: 'linear-gradient(to br, #f8fafc, #f0ebff)',
-        },
-      ],
+        }
+      }
     },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
@@ -59,6 +59,7 @@ const preview: Preview = {
       codePanel: true,
     },
   },
+
   globalTypes: {
     theme: {
       defaultValue: 'dark',
@@ -72,6 +73,7 @@ const preview: Preview = {
       },
     },
   },
+
   decorators: [
     (story, context) => {
       const theme = context.globals.theme || 'dark';
@@ -105,7 +107,25 @@ const preview: Preview = {
         }
       `;
 
-      // Apply theme to all sh-* components after story renders
+      // Apply background/color to the preview body (avoids wrapper div in code panel)
+      const bgStyleId = 'storybook-preview-bg';
+      let bgStyle = document.getElementById(bgStyleId) as HTMLStyleElement;
+      if (!bgStyle) {
+        bgStyle = document.createElement('style');
+        bgStyle.id = bgStyleId;
+        document.head.appendChild(bgStyle);
+      }
+      bgStyle.textContent = `
+        body {
+          min-height: 100vh;
+          padding: 20px;
+          margin: 0;
+          background: ${theme === 'dark' ? 'linear-gradient(135deg, #0f172a, #1e1b4b)' : 'linear-gradient(135deg, #f8fafc, #f0ebff)'};
+          color: ${theme === 'dark' ? '#f8fafc' : '#1e293b'};
+        }
+      `;
+
+      // Apply data-theme to all sh-* components after story renders
       setTimeout(() => {
         const allComponents = document.querySelectorAll(
           '[data-theme], sh-badge, sh-card, sh-button, sh-icon, sh-input, sh-logo, sh-text, sh-status-badge, sh-quantity-input, sh-header'
@@ -115,18 +135,16 @@ const preview: Preview = {
         });
       }, 0);
 
-      return `
-        <div data-theme="${theme}" style="
-          min-height: 100vh;
-          padding: 20px;
-          background: ${theme === 'dark' ? 'linear-gradient(to br, #0f172a, #1e1b4b)' : 'linear-gradient(to br, #f8fafc, #f0ebff)'};
-          color: ${theme === 'dark' ? '#f8fafc' : '#1e293b'};
-        ">
-          ${story()}
-        </div>
-      `;
+      // Return story directly — no wrapper div so code panel shows clean component HTML
+      return story();
     },
   ],
+
+  initialGlobals: {
+    backgrounds: {
+      value: 'stockhub-dark'
+    }
+  }
 };
 
 export default preview;

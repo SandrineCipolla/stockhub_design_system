@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { expect, userEvent } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import { expect, userEvent } from 'storybook/test';
 import './sh-stock-card';
 
 const meta: Meta = {
@@ -70,15 +70,13 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-// Background helper
-const getBackground = (theme: string) => theme === 'dark'
-  ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)'
-  : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)';
+const singleCard = [(story: () => string) => `<div style="max-width: 400px; padding: 2rem;">${story()}</div>`];
 
 /**
  * Stock optimal - comme dans StockHub V2
  */
 export const Optimal: Story = {
+  decorators: singleCard,
   args: {
     name: 'Acrylique Bleu Cobalt',
     category: 'Peinture',
@@ -90,50 +88,17 @@ export const Optimal: Story = {
     iaCount: 0,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
-        <sh-stock-card
-          id="stock-card-optimal"
-          name="${args.name}"
-          category="${args.category}"
-          last-update="${args.lastUpdate}"
-          percentage="${args.percentage}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-          ${args.loading ? 'loading' : ''}
-        ></sh-stock-card>
-      </div>
-    </div>
-
-    <script>
-      customElements.whenDefined('sh-stock-card').then(() => {
-        const card = document.getElementById('stock-card-optimal');
-        if (card) {
-          card.iaCount = ${args.iaCount || 0};
-
-          card.addEventListener('sh-session-click', (e) => {
-            console.log('Session clicked:', e.detail);
-            alert('Enregistrer session: ' + e.detail.name);
-          });
-          card.addEventListener('sh-details-click', (e) => {
-            console.log('Details clicked:', e.detail);
-            alert('Voir détails: ' + e.detail.name);
-          });
-          card.addEventListener('sh-edit-click', (e) => {
-            console.log('Edit clicked:', e.detail);
-            alert('Éditer: ' + e.detail.name);
-          });
-          card.addEventListener('sh-delete-click', (e) => {
-            console.log('Delete clicked:', e.detail);
-            if (confirm('Supprimer ' + e.detail.name + ' ?')) {
-              console.log('Deleted!');
-            }
-          });
-        }
-      });
-    </script>
+    <sh-stock-card
+      name="${args.name}"
+      category="${args.category}"
+      last-update="${args.lastUpdate}"
+      percentage="${args.percentage}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+      ${args.loading ? 'loading' : ''}
+    ></sh-stock-card>
   `,
 };
 
@@ -141,6 +106,7 @@ export const Optimal: Story = {
  * Stock faible avec alerte IA
  */
 export const LowWithIA: Story = {
+  decorators: singleCard,
   args: {
     name: 'Acrylique Rouge Vermillon',
     category: 'Peinture',
@@ -152,28 +118,20 @@ export const LowWithIA: Story = {
     iaCount: 1,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
-        <sh-stock-card
-          id="stock-card-low"
-          name="${args.name}"
-          category="${args.category}"
-          last-update="${args.lastUpdate}"
-          percentage="${args.percentage}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-card>
-      </div>
-    </div>
-
+    <sh-stock-card
+      name="${args.name}"
+      category="${args.category}"
+      last-update="${args.lastUpdate}"
+      percentage="${args.percentage}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-card>
     <script>
       customElements.whenDefined('sh-stock-card').then(() => {
-        const card = document.getElementById('stock-card-low');
-        if (card) {
-          card.iaCount = ${args.iaCount || 0};
-        }
+        const card = document.querySelector('sh-stock-card');
+        if (card) card.iaCount = ${args.iaCount || 0};
       });
     </script>
   `,
@@ -183,6 +141,7 @@ export const LowWithIA: Story = {
  * Stock critique
  */
 export const Critical: Story = {
+  decorators: singleCard,
   args: {
     name: 'Peinture Acrylique Jaune Cadmium',
     category: 'Peinture',
@@ -194,28 +153,20 @@ export const Critical: Story = {
     iaCount: 2,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
-        <sh-stock-card
-          id="stock-card-critical"
-          name="${args.name}"
-          category="${args.category}"
-          last-update="${args.lastUpdate}"
-          percentage="${args.percentage}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-card>
-      </div>
-    </div>
-
+    <sh-stock-card
+      name="${args.name}"
+      category="${args.category}"
+      last-update="${args.lastUpdate}"
+      percentage="${args.percentage}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-card>
     <script>
       customElements.whenDefined('sh-stock-card').then(() => {
-        const card = document.getElementById('stock-card-critical');
-        if (card) {
-          card.iaCount = ${args.iaCount || 0};
-        }
+        const card = document.querySelector('sh-stock-card');
+        if (card) card.iaCount = ${args.iaCount || 0};
       });
     </script>
   `,
@@ -225,6 +176,7 @@ export const Critical: Story = {
  * Rupture de stock
  */
 export const OutOfStock: Story = {
+  decorators: singleCard,
   args: {
     name: 'Feutrine Rouge',
     category: 'Textile',
@@ -236,28 +188,20 @@ export const OutOfStock: Story = {
     iaCount: 1,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
-        <sh-stock-card
-          id="stock-card-out"
-          name="${args.name}"
-          category="${args.category}"
-          last-update="${args.lastUpdate}"
-          percentage="${args.percentage}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-card>
-      </div>
-    </div>
-
+    <sh-stock-card
+      name="${args.name}"
+      category="${args.category}"
+      last-update="${args.lastUpdate}"
+      percentage="${args.percentage}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-card>
     <script>
       customElements.whenDefined('sh-stock-card').then(() => {
-        const card = document.getElementById('stock-card-out');
-        if (card) {
-          card.iaCount = ${args.iaCount || 0};
-        }
+        const card = document.querySelector('sh-stock-card');
+        if (card) card.iaCount = ${args.iaCount || 0};
       });
     </script>
   `,
@@ -267,6 +211,7 @@ export const OutOfStock: Story = {
  * Surstock
  */
 export const Overstocked: Story = {
+  decorators: singleCard,
   args: {
     name: 'Pinceaux Synthétiques',
     category: 'Outils',
@@ -278,30 +223,16 @@ export const Overstocked: Story = {
     iaCount: 0,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
-        <sh-stock-card
-          id="stock-card-over"
-          name="${args.name}"
-          category="${args.category}"
-          last-update="${args.lastUpdate}"
-          percentage="${args.percentage}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-card>
-      </div>
-    </div>
-
-    <script>
-      customElements.whenDefined('sh-stock-card').then(() => {
-        const card = document.getElementById('stock-card-over');
-        if (card) {
-          card.iaCount = ${args.iaCount || 0};
-        }
-      });
-    </script>
+    <sh-stock-card
+      name="${args.name}"
+      category="${args.category}"
+      last-update="${args.lastUpdate}"
+      percentage="${args.percentage}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-card>
   `,
 };
 
@@ -309,6 +240,7 @@ export const Overstocked: Story = {
  * Minimal (sans catégorie ni mise à jour)
  */
 export const Minimal: Story = {
+  decorators: singleCard,
   args: {
     name: 'Gomme Mie de Pain',
     percentage: '80',
@@ -317,28 +249,14 @@ export const Minimal: Story = {
     status: 'optimal',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
-        <sh-stock-card
-          id="stock-card-minimal"
-          name="${args.name}"
-          percentage="${args.percentage}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-card>
-      </div>
-    </div>
-
-    <script>
-      customElements.whenDefined('sh-stock-card').then(() => {
-        const card = document.getElementById('stock-card-minimal');
-        if (card) {
-          card.iaCount = 0;
-        }
-      });
-    </script>
+    <sh-stock-card
+      name="${args.name}"
+      percentage="${args.percentage}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-card>
   `,
 };
 
@@ -346,6 +264,7 @@ export const Minimal: Story = {
  * État de chargement
  */
 export const Loading: Story = {
+  decorators: singleCard,
   args: {
     name: 'Acrylique Bleu Cobalt',
     category: 'Peinture',
@@ -357,31 +276,17 @@ export const Loading: Story = {
     loading: true,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
-        <sh-stock-card
-          id="stock-card-loading"
-          name="${args.name}"
-          category="${args.category}"
-          last-update="${args.lastUpdate}"
-          percentage="${args.percentage}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-          ${args.loading ? 'loading' : ''}
-        ></sh-stock-card>
-      </div>
-    </div>
-
-    <script>
-      customElements.whenDefined('sh-stock-card').then(() => {
-        const card = document.getElementById('stock-card-loading');
-        if (card) {
-          card.iaCount = 0;
-        }
-      });
-    </script>
+    <sh-stock-card
+      name="${args.name}"
+      category="${args.category}"
+      last-update="${args.lastUpdate}"
+      percentage="${args.percentage}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+      ${args.loading ? 'loading' : ''}
+    ></sh-stock-card>
   `,
 };
 
@@ -393,7 +298,7 @@ export const Dashboard: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="margin-bottom: 2rem;">
         <h1 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; font-family: system-ui; margin: 0 0 0.5rem 0;">Mes Stocks Récents (18)</h1>
         <button style="background: var(--color-primary-500); color: white; border: none; padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600;">
@@ -528,7 +433,7 @@ export const InteractiveEvents: Story = {
     iaCount: 1,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 800px; margin: 0 auto;">
         <h2 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; font-family: system-ui; margin-bottom: 1.5rem;">
           📦 Enregistrer une Session Créative
@@ -696,7 +601,7 @@ export const InteractionTestAllButtons: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-card
           id="stock-card-test-all"
@@ -843,7 +748,7 @@ export const InteractionTestLoadingState: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-card
           id="stock-card-test-loading"
@@ -932,7 +837,7 @@ export const InteractionTestIaBadge: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-card
           id="stock-card-test-ia"
@@ -1020,7 +925,7 @@ export const InteractionTestStatusVariations: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-card
           id="stock-card-test-status"
@@ -1102,7 +1007,7 @@ export const IaBadgeColorInheritance: Story = {
     }
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
+    <div style="padding: 2rem;">
       <div style="max-width: 1200px; margin: 0 auto;">
         <h2 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; font-family: system-ui; margin-bottom: 1rem;">
           🎨 Badge IA Adaptatif - Cohérence avec le Statut

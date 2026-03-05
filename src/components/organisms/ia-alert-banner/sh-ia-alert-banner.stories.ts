@@ -1,5 +1,5 @@
-import type {Meta, StoryObj} from '@storybook/web-components';
-import {expect, userEvent} from '@storybook/test';
+import type {Meta, StoryObj} from '@storybook/web-components-vite';
+import {expect, userEvent} from 'storybook/test';
 import './sh-ia-alert-banner';
 
 const meta: Meta = {
@@ -38,10 +38,6 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-const getBackground = (theme: string) => theme === 'dark'
-  ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)'
-  : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)';
-
 const sampleAlerts = [
   { product: 'Acrylique Jaune Cadmium', message: 'Risque de rupture détecté', severity: 'critical' },
   { product: 'Feutrine Rouge', message: 'Risque de rupture détecté', severity: 'critical' },
@@ -61,7 +57,7 @@ export const Critical: Story = {
     expanded: true,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 400px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+    <div style="padding: 2rem;">
       <sh-ia-alert-banner
         id="alert-critical"
         count="${args.count}"
@@ -99,7 +95,7 @@ export const Warning: Story = {
     expanded: true,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 400px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+    <div style="padding: 2rem;">
       <sh-ia-alert-banner
         id="alert-warning"
         count="${args.count}"
@@ -132,7 +128,7 @@ export const Info: Story = {
     expanded: true,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 400px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+    <div style="padding: 2rem;">
       <sh-ia-alert-banner
         id="alert-info"
         count="${args.count}"
@@ -165,7 +161,7 @@ export const Collapsed: Story = {
     expanded: false,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 200px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+    <div style="padding: 2rem;">
       <sh-ia-alert-banner
         id="alert-collapsed"
         count="${args.count}"
@@ -198,7 +194,7 @@ export const NoDetails: Story = {
     expanded: true,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 200px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+    <div style="padding: 2rem;">
       <sh-ia-alert-banner
         count="${args.count}"
         severity="${args.severity}"
@@ -221,7 +217,7 @@ export const InPage: Story = {
     expanded: true,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+    <div style="padding: 2rem;">
       <h1 style="margin: 0 0 1.5rem 0;">Dashboard</h1>
 
       <sh-ia-alert-banner
@@ -268,7 +264,7 @@ export const Playground: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 400px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+    <div style="padding: 2rem;">
       <sh-ia-alert-banner
         id="alert-playground"
         count="${args.count}"
@@ -302,7 +298,7 @@ export const InteractionTestHeaderClick: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 500px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+    <div style="padding: 2rem;">
       <sh-ia-alert-banner
         id="alert-header-test"
         count="${args.count}"
@@ -405,7 +401,7 @@ export const InteractionTestToggleButton: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 500px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+    <div style="padding: 2rem;">
       <sh-ia-alert-banner
         id="alert-toggle-test"
         count="${args.count}"
@@ -505,7 +501,7 @@ export const InteractionTestItemClick: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 500px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+    <div style="padding: 2rem;">
       <sh-ia-alert-banner
         id="alert-item-test"
         count="${args.count}"
@@ -609,7 +605,7 @@ export const InteractionTestCollapsedState: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 500px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+    <div style="padding: 2rem;">
       <sh-ia-alert-banner
         id="alert-collapsed-test"
         count="${args.count}"
@@ -696,7 +692,7 @@ export const InteractionTestHoverItems: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 500px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+    <div style="padding: 2rem;">
       <sh-ia-alert-banner
         id="alert-hover-test"
         count="${args.count}"

@@ -1,5 +1,5 @@
-import type {Meta, StoryObj} from '@storybook/web-components';
-import { expect, userEvent } from '@storybook/test';
+import type {Meta, StoryObj} from '@storybook/web-components-vite';
+import { expect, userEvent } from 'storybook/test';
 import './sh-quantity-input.ts';
 
 const meta: Meta = {
@@ -30,9 +30,7 @@ export const Default: Story = {
         theme: 'dark',
     },
     render: (args) => `
-        <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-            <sh-quantity-input value="${args.value}" ${args.dirty ? 'dirty' : ''} ${args.hideArrows ? 'hideArrows' : ''} data-theme="${args.theme}"></sh-quantity-input>
-        </div>
+        <sh-quantity-input value="${args.value}" ${args.dirty ? 'dirty' : ''} ${args.hideArrows ? 'hideArrows' : ''} data-theme="${args.theme}"></sh-quantity-input>
     `,
 };
 
@@ -42,8 +40,7 @@ export const DifferentValues: Story = {
         theme: 'dark',
     },
     render: (args) => `
-        <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px;">
-            <div style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center; padding: 2rem;">
                 <div style="text-align: center;">
                     <p style="margin-bottom: 0.5rem; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">Quantité: 0</p>
                     <sh-quantity-input value="0" data-theme="${args.theme}"></sh-quantity-input>
@@ -56,7 +53,6 @@ export const DifferentValues: Story = {
                     <p style="margin-bottom: 0.5rem; color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'};">Quantité: 100</p>
                     <sh-quantity-input value="100" data-theme="${args.theme}"></sh-quantity-input>
                 </div>
-            </div>
         </div>
     `,
 };
@@ -67,7 +63,7 @@ export const DirtyState: Story = {
         theme: 'dark',
     },
     render: (args) => `
-        <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 400px;">
+        <div style="padding: 2rem;">
             <h3 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; text-align: center; margin-bottom: 1rem;">Dirty State Indicator</h3>
             <p style="color: ${args.theme === 'dark' ? '#cbd5e1' : '#64748b'}; text-align: center; max-width: 600px; margin: 0 auto 2rem;">
                 L'attribut <code style="background: ${args.theme === 'dark' ? 'rgba(139, 92, 246, 0.2)' : 'rgba(139, 92, 246, 0.1)'}; padding: 2px 6px; border-radius: 4px;">dirty</code> indique qu'une valeur a été modifiée par l'utilisateur.
@@ -94,9 +90,7 @@ export const WithoutArrows: Story = {
         theme: 'dark',
     },
     render: (args) => `
-        <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-            <sh-quantity-input value="10" hideArrows data-theme="${args.theme}"></sh-quantity-input>
-        </div>
+        <sh-quantity-input value="10" hideArrows data-theme="${args.theme}"></sh-quantity-input>
     `,
 };
 
@@ -106,7 +100,7 @@ export const InContext: Story = {
         theme: 'dark',
     },
     render: (args) => `
-        <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 400px;">
+        <div style="padding: 2rem;">
             <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 600px; margin: 0 auto;">
                 <h3 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; margin: 0 0 1rem 0;">Produits en stock</h3>
 
@@ -150,14 +144,12 @@ export const Playground: Story = {
         theme: 'dark',
     },
     render: (args) => `
-        <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-            <sh-quantity-input
-                value="${args.value}"
-                ${args.dirty ? 'dirty' : ''}
-                ${args.hideArrows ? 'hideArrows' : ''}
-                data-theme="${args.theme}">
-            </sh-quantity-input>
-        </div>
+        <sh-quantity-input
+            value="${args.value}"
+            ${args.dirty ? 'dirty' : ''}
+            ${args.hideArrows ? 'hideArrows' : ''}
+            data-theme="${args.theme}">
+        </sh-quantity-input>
     `,
 };
 
@@ -178,7 +170,7 @@ export const InteractionTest: Story = {
         }
     },
     render: (args) => `
-        <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 250px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+        <div style="padding: 2rem; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
             <sh-quantity-input
                 value="${args.value}"
                 data-theme="${args.theme}">
@@ -282,7 +274,7 @@ export const InteractionTestSyncDisabled: Story = {
         }
     },
     render: (args) => `
-        <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 250px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+        <div style="padding: 2rem; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
             <sh-quantity-input
                 value="${args.value}"
                 data-theme="${args.theme}">
@@ -343,7 +335,7 @@ export const InteractionTestDirtyState: Story = {
         }
     },
     render: (args) => `
-        <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 250px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+        <div style="padding: 2rem; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
             <sh-quantity-input
                 value="${args.value}"
                 ${args.dirty ? 'dirty' : ''}

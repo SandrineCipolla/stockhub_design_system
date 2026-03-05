@@ -1,4 +1,4 @@
-import type {Meta, StoryObj} from '@storybook/web-components';
+import type {Meta, StoryObj} from '@storybook/web-components-vite';
 import './sh-status-badge.ts';
 
 const meta: Meta = {
@@ -40,14 +40,12 @@ export const AllStatusTypes: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-        <sh-status-badge status="optimal" data-theme="${args.theme}"></sh-status-badge>
-        <sh-status-badge status="low" data-theme="${args.theme}"></sh-status-badge>
-        <sh-status-badge status="critical" data-theme="${args.theme}"></sh-status-badge>
-        <sh-status-badge status="out-of-stock" data-theme="${args.theme}"></sh-status-badge>
-        <sh-status-badge status="overstocked" data-theme="${args.theme}"></sh-status-badge>
-      </div>
+    <div style="display: flex; flex-direction: column; gap: 0.75rem; padding: 2rem;">
+      <sh-status-badge status="optimal" data-theme="${args.theme}"></sh-status-badge>
+      <sh-status-badge status="low" data-theme="${args.theme}"></sh-status-badge>
+      <sh-status-badge status="critical" data-theme="${args.theme}"></sh-status-badge>
+      <sh-status-badge status="out-of-stock" data-theme="${args.theme}"></sh-status-badge>
+      <sh-status-badge status="overstocked" data-theme="${args.theme}"></sh-status-badge>
     </div>
   `,
 };
@@ -58,8 +56,7 @@ export const AllSizes: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 400px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <div style="display: flex; flex-direction: column; gap: 1rem;">
+    <div style="display: flex; flex-direction: column; gap: 1rem; padding: 2rem;">
         <div>
           <h4 style="margin: 0 0 0.5rem 0;">Small</h4>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
@@ -86,7 +83,6 @@ export const AllSizes: Story = {
             <sh-status-badge status="critical" size="lg" data-theme="${args.theme}"></sh-status-badge>
           </div>
         </div>
-      </div>
     </div>
   `,
 };
@@ -97,14 +93,12 @@ export const CustomLabels: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-        <sh-status-badge status="optimal" label="Stock Optimal" data-theme="${args.theme}"></sh-status-badge>
-        <sh-status-badge status="low" label="Low Stock" data-theme="${args.theme}"></sh-status-badge>
-        <sh-status-badge status="critical" label="Critical Level" data-theme="${args.theme}"></sh-status-badge>
-        <sh-status-badge status="out-of-stock" label="Unavailable" data-theme="${args.theme}"></sh-status-badge>
-        <sh-status-badge status="overstocked" label="Overstock" data-theme="${args.theme}"></sh-status-badge>
-      </div>
+    <div style="display: flex; flex-direction: column; gap: 0.75rem; padding: 2rem;">
+      <sh-status-badge status="optimal" label="Stock Optimal" data-theme="${args.theme}"></sh-status-badge>
+      <sh-status-badge status="low" label="Low Stock" data-theme="${args.theme}"></sh-status-badge>
+      <sh-status-badge status="critical" label="Critical Level" data-theme="${args.theme}"></sh-status-badge>
+      <sh-status-badge status="out-of-stock" label="Unavailable" data-theme="${args.theme}"></sh-status-badge>
+      <sh-status-badge status="overstocked" label="Overstock" data-theme="${args.theme}"></sh-status-badge>
     </div>
   `,
 };
@@ -115,8 +109,7 @@ export const InContext: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 500px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <div style="display: flex; flex-direction: column; gap: 1rem; width: 300px;">
+    <div style="display: flex; flex-direction: column; gap: 1rem; width: 300px; padding: 2rem;">
         <!-- Product Card 1 - Optimal -->
         <div style="padding: 1rem; border: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.1)' : '#e5e7eb'}; border-radius: 8px; background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.05)' : '#ffffff'};">
           <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
@@ -171,7 +164,6 @@ export const InContext: Story = {
             Quantity: 500 units
           </p>
         </div>
-      </div>
     </div>
   `,
 };
@@ -182,7 +174,7 @@ export const InTable: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 400px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+    <div style="padding: 2rem;">
       <table style="border-collapse: collapse; width: 100%; min-width: 600px; background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.05)' : '#ffffff'}; border-radius: 8px; overflow: hidden;">
         <thead>
           <tr style="background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.1)' : '#f9fafb'}; border-bottom: 2px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.2)' : '#e5e7eb'};">
@@ -239,8 +231,7 @@ export const PulseAnimation: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+    <div style="display: flex; flex-direction: column; gap: 1.5rem; padding: 2rem;">
         <div>
           <h4 style="margin: 0 0 0.5rem 0;">Animated (Critical & Out of Stock)</h4>
           <div style="display: flex; gap: 0.5rem;">
@@ -257,7 +248,6 @@ export const PulseAnimation: Story = {
             <sh-status-badge status="overstocked" data-theme="${args.theme}"></sh-status-badge>
           </div>
         </div>
-      </div>
     </div>
   `,
 };
@@ -271,13 +261,11 @@ export const Playground: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <sh-status-badge
-        status="${args.status}"
-        size="${args.size}"
-        label="${args.label || undefined}"
-        data-theme="${args.theme}"
-      ></sh-status-badge>
-    </div>
+    <sh-status-badge
+      status="${args.status}"
+      size="${args.size}"
+      label="${args.label || undefined}"
+      data-theme="${args.theme}"
+    ></sh-status-badge>
   `,
 };

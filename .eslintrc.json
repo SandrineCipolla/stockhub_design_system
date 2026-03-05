@@ -5,17 +5,29 @@
     "es2021": true
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:storybook/recommended"
   ],
   "rules": {
-    "camelcase": ["error", { "properties": "never" }],
+    "camelcase": [
+      "error",
+      {
+        "properties": "never"
+      }
+    ],
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "warn",
     "no-console": "warn"
   },
-  "ignorePatterns": ["dist/", "node_modules/", "storybook-static/"]
+  "ignorePatterns": [
+    "dist/",
+    "node_modules/",
+    "storybook-static/"
+  ]
 }

@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { expect, userEvent } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import { expect, userEvent } from 'storybook/test';
 import './sh-stock-item-card';
 
 const meta: Meta = {
@@ -59,15 +59,13 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-// Background helper
-const getBackground = (theme: string) => theme === 'dark'
-  ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)'
-  : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)';
+const singleCard = [(story: () => string) => `<div style="max-width: 400px; padding: 2rem;">${story()}</div>`];
 
 /**
  * Carte de produit en stock optimal
  */
 export const Optimal: Story = {
+  decorators: singleCard,
   args: {
     name: 'Peinture Acrylique 500ml - Bleu Cobalt',
     sku: 'PNT-001',
@@ -77,38 +75,16 @@ export const Optimal: Story = {
     status: 'optimal',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
-        <sh-stock-item-card
-          name="${args.name}"
-          sku="${args.sku}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          location="${args.location}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-          ${args.loading ? 'loading' : ''}
-        ></sh-stock-item-card>
-      </div>
-    </div>
-
-    <script>
-      const card = document.querySelector('sh-stock-item-card');
-      card.addEventListener('sh-view-click', (e) => {
-        console.log('View clicked:', e.detail);
-        alert('Voir les détails: ' + e.detail.name);
-      });
-      card.addEventListener('sh-edit-click', (e) => {
-        console.log('Edit clicked:', e.detail);
-        alert('Éditer: ' + e.detail.name);
-      });
-      card.addEventListener('sh-delete-click', (e) => {
-        console.log('Delete clicked:', e.detail);
-        if (confirm('Supprimer ' + e.detail.name + ' ?')) {
-          console.log('Deleted!');
-        }
-      });
-    </script>
+    <sh-stock-item-card
+      name="${args.name}"
+      sku="${args.sku}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      location="${args.location}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+      ${args.loading ? 'loading' : ''}
+    ></sh-stock-item-card>
   `,
 };
 
@@ -116,6 +92,7 @@ export const Optimal: Story = {
  * Stock faible (warning)
  */
 export const LowStock: Story = {
+  decorators: singleCard,
   args: {
     name: 'Crayons Aquarelle (Boîte de 24)',
     sku: 'CRY-042',
@@ -125,19 +102,15 @@ export const LowStock: Story = {
     status: 'low',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
-        <sh-stock-item-card
-          name="${args.name}"
-          sku="${args.sku}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          location="${args.location}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-item-card>
-      </div>
-    </div>
+    <sh-stock-item-card
+      name="${args.name}"
+      sku="${args.sku}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      location="${args.location}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-item-card>
   `,
 };
 
@@ -145,6 +118,7 @@ export const LowStock: Story = {
  * Stock critique (danger)
  */
 export const CriticalStock: Story = {
+  decorators: singleCard,
   args: {
     name: 'Tissu Coton Bio - Blanc Écru (10m)',
     sku: 'TSU-088',
@@ -154,19 +128,15 @@ export const CriticalStock: Story = {
     status: 'critical',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
-        <sh-stock-item-card
-          name="${args.name}"
-          sku="${args.sku}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          location="${args.location}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-item-card>
-      </div>
-    </div>
+    <sh-stock-item-card
+      name="${args.name}"
+      sku="${args.sku}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      location="${args.location}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-item-card>
   `,
 };
 
@@ -174,6 +144,7 @@ export const CriticalStock: Story = {
  * Rupture de stock
  */
 export const OutOfStock: Story = {
+  decorators: singleCard,
   args: {
     name: 'Papier Aquarelle 300g - Format A3',
     sku: 'PAP-156',
@@ -183,19 +154,15 @@ export const OutOfStock: Story = {
     status: 'out-of-stock',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
-        <sh-stock-item-card
-          name="${args.name}"
-          sku="${args.sku}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          location="${args.location}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-item-card>
-      </div>
-    </div>
+    <sh-stock-item-card
+      name="${args.name}"
+      sku="${args.sku}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      location="${args.location}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-item-card>
   `,
 };
 
@@ -203,6 +170,7 @@ export const OutOfStock: Story = {
  * Surstock
  */
 export const Overstocked: Story = {
+  decorators: singleCard,
   args: {
     name: 'Pinceaux Synthétiques (Set de 5)',
     sku: 'PIN-201',
@@ -212,19 +180,15 @@ export const Overstocked: Story = {
     status: 'overstocked',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
-        <sh-stock-item-card
-          name="${args.name}"
-          sku="${args.sku}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          location="${args.location}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-item-card>
-      </div>
-    </div>
+    <sh-stock-item-card
+      name="${args.name}"
+      sku="${args.sku}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      location="${args.location}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-item-card>
   `,
 };
 
@@ -232,6 +196,7 @@ export const Overstocked: Story = {
  * Sans valeur ni emplacement (minimal)
  */
 export const Minimal: Story = {
+  decorators: singleCard,
   args: {
     name: 'Gomme Mie de Pain',
     sku: 'GOM-999',
@@ -239,17 +204,13 @@ export const Minimal: Story = {
     status: 'optimal',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
-        <sh-stock-item-card
-          name="${args.name}"
-          sku="${args.sku}"
-          quantity="${args.quantity}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-item-card>
-      </div>
-    </div>
+    <sh-stock-item-card
+      name="${args.name}"
+      sku="${args.sku}"
+      quantity="${args.quantity}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-item-card>
   `,
 };
 
@@ -257,6 +218,7 @@ export const Minimal: Story = {
  * État de chargement
  */
 export const Loading: Story = {
+  decorators: singleCard,
   args: {
     name: 'Laptop Dell XPS 15',
     sku: 'LAP-001',
@@ -267,20 +229,16 @@ export const Loading: Story = {
     loading: true,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="max-width: 400px;">
-        <sh-stock-item-card
-          name="${args.name}"
-          sku="${args.sku}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          location="${args.location}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-          ${args.loading ? 'loading' : ''}
-        ></sh-stock-item-card>
-      </div>
-    </div>
+    <sh-stock-item-card
+      name="${args.name}"
+      sku="${args.sku}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      location="${args.location}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+      ${args.loading ? 'loading' : ''}
+    ></sh-stock-item-card>
   `,
 };
 
@@ -292,10 +250,9 @@ export const AllStatuses: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; max-width: 100%;">
-        <sh-stock-item-card
-          name="Peinture Acrylique 500ml - Bleu Cobalt"
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; padding: 2rem;">
+      <sh-stock-item-card
+        name="Peinture Acrylique 500ml - Bleu Cobalt"
           sku="PNT-001"
           quantity="45"
           value="€675"
@@ -343,7 +300,6 @@ export const AllStatuses: Story = {
           status="overstocked"
           data-theme="${args.theme}"
         ></sh-stock-item-card>
-      </div>
     </div>
   `,
 };
@@ -356,9 +312,8 @@ export const InventoryGrid: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <h2 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; margin-bottom: 1.5rem; font-family: system-ui;">Inventaire - Matériel Créatif</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem; max-width: 100%;">
+    <h2 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; margin: 2rem 2rem 1.5rem; font-family: system-ui;">Inventaire - Matériel Créatif</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem; padding: 0 2rem 2rem;">
         <sh-stock-item-card
           name="Peinture Acrylique 500ml - Bleu Cobalt"
           sku="PNT-001"
@@ -438,22 +393,7 @@ export const InventoryGrid: Story = {
           status="overstocked"
           data-theme="${args.theme}"
         ></sh-stock-item-card>
-      </div>
     </div>
-
-    <script>
-      document.querySelectorAll('sh-stock-item-card').forEach(card => {
-        card.addEventListener('sh-view-click', (e) => {
-          console.log('View:', e.detail);
-        });
-        card.addEventListener('sh-edit-click', (e) => {
-          console.log('Edit:', e.detail);
-        });
-        card.addEventListener('sh-delete-click', (e) => {
-          console.log('Delete:', e.detail);
-        });
-      });
-    </script>
   `,
 };
 
@@ -471,7 +411,7 @@ export const InteractionTestAllButtons: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-item-card
           id="item-card-test-all"
@@ -586,7 +526,7 @@ export const InteractionTestLoadingState: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-item-card
           id="item-card-test-loading"
@@ -663,7 +603,7 @@ export const InteractionTestStatusVariations: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-item-card
           id="item-card-test-status"
@@ -733,7 +673,7 @@ export const InteractionTestOptionalFields: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 600px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 400px;">
         <sh-stock-item-card
           id="item-card-test-optional"

@@ -1,5 +1,5 @@
-import type {Meta, StoryObj} from '@storybook/web-components';
-import { expect, userEvent } from '@storybook/test';
+import type {Meta, StoryObj} from '@storybook/web-components-vite';
+import { expect, userEvent } from 'storybook/test';
 import './sh-button.ts';
 import '../../atoms/icon/sh-icon.ts';
 
@@ -54,9 +54,7 @@ export const Primary: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-      <sh-button variant="primary" data-theme="${args.theme}">Primary Button</sh-button>
-    </div>
+    <sh-button variant="primary" data-theme="${args.theme}">Primary Button</sh-button>
   `,
 };
 
@@ -66,13 +64,11 @@ export const AllVariants: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-        <sh-button variant="primary" data-theme="${args.theme}">Primary</sh-button>
-        <sh-button variant="secondary" data-theme="${args.theme}">Secondary</sh-button>
-        <sh-button variant="ghost" data-theme="${args.theme}">Ghost</sh-button>
-        <sh-button variant="danger" data-theme="${args.theme}">Danger</sh-button>
-      </div>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <sh-button variant="primary" data-theme="${args.theme}">Primary</sh-button>
+      <sh-button variant="secondary" data-theme="${args.theme}">Secondary</sh-button>
+      <sh-button variant="ghost" data-theme="${args.theme}">Ghost</sh-button>
+      <sh-button variant="danger" data-theme="${args.theme}">Danger</sh-button>
     </div>
   `,
 };
@@ -83,12 +79,10 @@ export const AllSizes: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-      <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-        <sh-button size="sm" data-theme="${args.theme}">Small</sh-button>
-        <sh-button size="md" data-theme="${args.theme}">Medium</sh-button>
-        <sh-button size="lg" data-theme="${args.theme}">Large</sh-button>
-      </div>
+    <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+      <sh-button size="sm" data-theme="${args.theme}">Small</sh-button>
+      <sh-button size="md" data-theme="${args.theme}">Medium</sh-button>
+      <sh-button size="lg" data-theme="${args.theme}">Large</sh-button>
     </div>
   `,
 };
@@ -99,12 +93,10 @@ export const WithIconBefore: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-        <sh-button icon-before="Plus" variant="primary" data-theme="${args.theme}">Add Item</sh-button>
-        <sh-button icon-before="Edit" variant="secondary" data-theme="${args.theme}">Edit</sh-button>
-        <sh-button icon-before="Search" variant="ghost" data-theme="${args.theme}">Search</sh-button>
-      </div>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <sh-button icon-before="Plus" variant="primary" data-theme="${args.theme}">Add Item</sh-button>
+      <sh-button icon-before="Edit" variant="secondary" data-theme="${args.theme}">Edit</sh-button>
+      <sh-button icon-before="Search" variant="ghost" data-theme="${args.theme}">Search</sh-button>
     </div>
   `,
 };
@@ -115,11 +107,9 @@ export const WithIconAfter: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-        <sh-button icon-after="ArrowRight" variant="primary" data-theme="${args.theme}">Continue</sh-button>
-        <sh-button icon-after="ExternalLink" variant="ghost" data-theme="${args.theme}">Open</sh-button>
-      </div>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <sh-button icon-after="ArrowRight" variant="primary" data-theme="${args.theme}">Continue</sh-button>
+      <sh-button icon-after="ExternalLink" variant="ghost" data-theme="${args.theme}">Open</sh-button>
     </div>
   `,
 };
@@ -130,13 +120,11 @@ export const IconOnly: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-        <sh-button id="btn-home" icon-before="Home" icon-only variant="primary" data-theme="${args.theme}"></sh-button>
-        <sh-button id="btn-menu" icon-before="Menu" icon-only variant="secondary" data-theme="${args.theme}"></sh-button>
-        <sh-button id="btn-close" icon-before="X" icon-only variant="ghost" data-theme="${args.theme}"></sh-button>
-        <sh-button id="btn-delete" icon-before="Trash2" icon-only variant="danger" data-theme="${args.theme}"></sh-button>
-      </div>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <sh-button id="btn-home" icon-before="Home" icon-only variant="primary" data-theme="${args.theme}"></sh-button>
+      <sh-button id="btn-menu" icon-before="Menu" icon-only variant="secondary" data-theme="${args.theme}"></sh-button>
+      <sh-button id="btn-close" icon-before="X" icon-only variant="ghost" data-theme="${args.theme}"></sh-button>
+      <sh-button id="btn-delete" icon-before="Trash2" icon-only variant="danger" data-theme="${args.theme}"></sh-button>
     </div>
     <script>
       (function() {
@@ -162,12 +150,10 @@ export const Loading: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-        <sh-button loading variant="primary" data-theme="${args.theme}">Loading...</sh-button>
-        <sh-button loading variant="secondary" data-theme="${args.theme}">Processing</sh-button>
-        <sh-button loading variant="ghost" data-theme="${args.theme}">Saving</sh-button>
-      </div>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <sh-button loading variant="primary" data-theme="${args.theme}">Loading...</sh-button>
+      <sh-button loading variant="secondary" data-theme="${args.theme}">Processing</sh-button>
+      <sh-button loading variant="ghost" data-theme="${args.theme}">Saving</sh-button>
     </div>
   `,
 };
@@ -178,13 +164,11 @@ export const Disabled: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-        <sh-button disabled variant="primary" data-theme="${args.theme}">Disabled Primary</sh-button>
-        <sh-button disabled variant="secondary" data-theme="${args.theme}">Disabled Secondary</sh-button>
-        <sh-button disabled variant="ghost" data-theme="${args.theme}">Disabled Ghost</sh-button>
-        <sh-button disabled variant="danger" data-theme="${args.theme}">Disabled Danger</sh-button>
-      </div>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <sh-button disabled variant="primary" data-theme="${args.theme}">Disabled Primary</sh-button>
+      <sh-button disabled variant="secondary" data-theme="${args.theme}">Disabled Secondary</sh-button>
+      <sh-button disabled variant="ghost" data-theme="${args.theme}">Disabled Ghost</sh-button>
+      <sh-button disabled variant="danger" data-theme="${args.theme}">Disabled Danger</sh-button>
     </div>
   `,
 };
@@ -195,15 +179,13 @@ export const GhostShowcase: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 400px;">
-      <div style="display: flex; gap: 1rem; flex-direction: column; align-items: flex-start;">
-        <div style="padding: 2rem; background: ${args.theme === 'dark' ? '#1e293b' : 'white'}; border-radius: 8px; max-width: 100%;">
-          <h4 style="margin-top: 0; color: ${args.theme === 'dark' ? '#ffffff' : '#000000'};">${args.theme === 'dark' ? 'Dark' : 'Light'} Background</h4>
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <sh-button variant="ghost" data-theme="${args.theme}">Cancel</sh-button>
-            <sh-button variant="ghost" icon-before="Edit" data-theme="${args.theme}">Edit</sh-button>
-            <sh-button variant="ghost" disabled data-theme="${args.theme}">Disabled</sh-button>
-          </div>
+    <div style="display: flex; gap: 1rem; flex-direction: column; align-items: flex-start;">
+      <div style="padding: 2rem; background: ${args.theme === 'dark' ? '#1e293b' : 'white'}; border-radius: 8px; max-width: 100%;">
+        <h4 style="margin-top: 0; color: ${args.theme === 'dark' ? '#ffffff' : '#000000'};">${args.theme === 'dark' ? 'Dark' : 'Light'} Background</h4>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <sh-button variant="ghost" data-theme="${args.theme}">Cancel</sh-button>
+          <sh-button variant="ghost" icon-before="Edit" data-theme="${args.theme}">Edit</sh-button>
+          <sh-button variant="ghost" disabled data-theme="${args.theme}">Disabled</sh-button>
         </div>
       </div>
     </div>
@@ -216,17 +198,15 @@ export const FormExample: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px; display: flex; align-items: center; justify-content: center;">
-      <form style="display: flex; flex-direction: column; gap: 1rem; max-width: 300px; width: 100%; padding: 2rem; background: ${args.theme === 'dark' ? '#1e293b' : '#ffffff'}; border-radius: 8px;">
-        <input type="text" placeholder="Username" style="padding: 8px; border: 1px solid ${args.theme === 'dark' ? '#475569' : '#ccc'}; border-radius: 4px; background: ${args.theme === 'dark' ? '#334155' : '#ffffff'}; color: ${args.theme === 'dark' ? '#ffffff' : '#000000'};" />
-        <input type="password" placeholder="Password" style="padding: 8px; border: 1px solid ${args.theme === 'dark' ? '#475569' : '#ccc'}; border-radius: 4px; background: ${args.theme === 'dark' ? '#334155' : '#ffffff'}; color: ${args.theme === 'dark' ? '#ffffff' : '#000000'};" />
+    <form style="display: flex; flex-direction: column; gap: 1rem; max-width: 300px; width: 100%; padding: 2rem; background: ${args.theme === 'dark' ? '#1e293b' : '#ffffff'}; border-radius: 8px;">
+      <input type="text" placeholder="Username" style="padding: 8px; border: 1px solid ${args.theme === 'dark' ? '#475569' : '#ccc'}; border-radius: 4px; background: ${args.theme === 'dark' ? '#334155' : '#ffffff'}; color: ${args.theme === 'dark' ? '#ffffff' : '#000000'};" />
+      <input type="password" placeholder="Password" style="padding: 8px; border: 1px solid ${args.theme === 'dark' ? '#475569' : '#ccc'}; border-radius: 4px; background: ${args.theme === 'dark' ? '#334155' : '#ffffff'}; color: ${args.theme === 'dark' ? '#ffffff' : '#000000'};" />
 
-        <div style="display: flex; gap: 0.5rem;">
-          <sh-button type="submit" variant="primary" icon-before="LogIn" style="flex: 1;" data-theme="${args.theme}">Login</sh-button>
-          <sh-button type="button" variant="ghost" data-theme="${args.theme}">Cancel</sh-button>
-        </div>
-      </form>
-    </div>
+      <div style="display: flex; gap: 0.5rem;">
+        <sh-button type="submit" variant="primary" icon-before="LogIn" style="flex: 1;" data-theme="${args.theme}">Login</sh-button>
+        <sh-button type="button" variant="ghost" data-theme="${args.theme}">Cancel</sh-button>
+      </div>
+    </form>
   `,
 };
 
@@ -236,12 +216,10 @@ export const ActionsExample: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-      <div style="display: flex; gap: 0.5rem; padding: 1rem; background: ${args.theme === 'dark' ? '#1e293b' : '#f8fafc'}; border-radius: 8px;">
-        <sh-button size="sm" variant="ghost" icon-before="Eye" data-theme="${args.theme}">View</sh-button>
-        <sh-button size="sm" variant="ghost" icon-before="Edit" data-theme="${args.theme}">Edit</sh-button>
-        <sh-button size="sm" variant="ghost" icon-before="Trash2" data-theme="${args.theme}">Delete</sh-button>
-      </div>
+    <div style="display: flex; gap: 0.5rem; padding: 1rem; background: ${args.theme === 'dark' ? '#1e293b' : '#f8fafc'}; border-radius: 8px;">
+      <sh-button size="sm" variant="ghost" icon-before="Eye" data-theme="${args.theme}">View</sh-button>
+      <sh-button size="sm" variant="ghost" icon-before="Edit" data-theme="${args.theme}">Edit</sh-button>
+      <sh-button size="sm" variant="ghost" icon-before="Trash2" data-theme="${args.theme}">Delete</sh-button>
     </div>
   `,
 };
@@ -258,19 +236,17 @@ export const Playground: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-      <sh-button
-        variant="${args.variant}"
-        size="${args.size}"
-        ${args.disabled ? 'disabled' : ''}
-        ${args.loading ? 'loading' : ''}
-        ${args.iconBefore ? `icon-before="${args.iconBefore}"` : ''}
-        ${args.iconAfter ? `icon-after="${args.iconAfter}"` : ''}
-        data-theme="${args.theme}"
-      >
-        Button Text
-      </sh-button>
-    </div>
+    <sh-button
+      variant="${args.variant}"
+      size="${args.size}"
+      ${args.disabled ? 'disabled' : ''}
+      ${args.loading ? 'loading' : ''}
+      ${args.iconBefore ? `icon-before="${args.iconBefore}"` : ''}
+      ${args.iconAfter ? `icon-after="${args.iconAfter}"` : ''}
+      data-theme="${args.theme}"
+    >
+      Button Text
+    </sh-button>
   `,
 };
 
@@ -297,7 +273,7 @@ export const InteractionTest: Story = {
     }
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 2rem;">
       <sh-button
         variant="${args.variant}"
         size="${args.size}"
@@ -373,7 +349,7 @@ export const InteractionTestDisabled: Story = {
     }
   },
   render: (args) => `
-    <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 2rem;">
       <sh-button
         variant="${args.variant}"
         size="${args.size}"
@@ -445,7 +421,7 @@ export const InteractionTestWithIcons: Story = {
     }
   },
   render: (args) => `
-    <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 200px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 2rem;">
       <sh-button
         variant="${args.variant}"
         size="${args.size}"
@@ -519,7 +495,7 @@ export const ResponsiveText: Story = {
     }
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px;">
+    <div style="padding: 2rem;">
       <div style="max-width: 1200px; margin: 0 auto;">
         <h3 style="color: ${args.theme === 'dark' ? '#ffffff' : '#000000'}; margin-bottom: 1rem;">
           🔄 Responsive Buttons (hide-text-mobile)

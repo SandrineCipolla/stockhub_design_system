@@ -85,49 +85,17 @@ export const Optimal: Story = {
     iaCount: 0,
   },
   render: (args) => `
-    <div style="max-width: 400px; padding: 2rem;">
-        <sh-stock-card
-          id="stock-card-optimal"
-          name="${args.name}"
-          category="${args.category}"
-          last-update="${args.lastUpdate}"
-          percentage="${args.percentage}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-          ${args.loading ? 'loading' : ''}
-        ></sh-stock-card>
-      </div>
-    </div>
-
-    <script>
-      customElements.whenDefined('sh-stock-card').then(() => {
-        const card = document.getElementById('stock-card-optimal');
-        if (card) {
-          card.iaCount = ${args.iaCount || 0};
-
-          card.addEventListener('sh-session-click', (e) => {
-            console.log('Session clicked:', e.detail);
-            alert('Enregistrer session: ' + e.detail.name);
-          });
-          card.addEventListener('sh-details-click', (e) => {
-            console.log('Details clicked:', e.detail);
-            alert('Voir détails: ' + e.detail.name);
-          });
-          card.addEventListener('sh-edit-click', (e) => {
-            console.log('Edit clicked:', e.detail);
-            alert('Éditer: ' + e.detail.name);
-          });
-          card.addEventListener('sh-delete-click', (e) => {
-            console.log('Delete clicked:', e.detail);
-            if (confirm('Supprimer ' + e.detail.name + ' ?')) {
-              console.log('Deleted!');
-            }
-          });
-        }
-      });
-    </script>
+    <sh-stock-card
+      name="${args.name}"
+      category="${args.category}"
+      last-update="${args.lastUpdate}"
+      percentage="${args.percentage}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+      ${args.loading ? 'loading' : ''}
+    ></sh-stock-card>
   `,
 };
 
@@ -146,27 +114,20 @@ export const LowWithIA: Story = {
     iaCount: 1,
   },
   render: (args) => `
-    <div style="max-width: 400px; padding: 2rem;">
-        <sh-stock-card
-          id="stock-card-low"
-          name="${args.name}"
-          category="${args.category}"
-          last-update="${args.lastUpdate}"
-          percentage="${args.percentage}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-card>
-      </div>
-    </div>
-
+    <sh-stock-card
+      name="${args.name}"
+      category="${args.category}"
+      last-update="${args.lastUpdate}"
+      percentage="${args.percentage}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-card>
     <script>
       customElements.whenDefined('sh-stock-card').then(() => {
-        const card = document.getElementById('stock-card-low');
-        if (card) {
-          card.iaCount = ${args.iaCount || 0};
-        }
+        const card = document.querySelector('sh-stock-card');
+        if (card) card.iaCount = ${args.iaCount || 0};
       });
     </script>
   `,
@@ -187,27 +148,20 @@ export const Critical: Story = {
     iaCount: 2,
   },
   render: (args) => `
-    <div style="max-width: 400px; padding: 2rem;">
-        <sh-stock-card
-          id="stock-card-critical"
-          name="${args.name}"
-          category="${args.category}"
-          last-update="${args.lastUpdate}"
-          percentage="${args.percentage}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-card>
-      </div>
-    </div>
-
+    <sh-stock-card
+      name="${args.name}"
+      category="${args.category}"
+      last-update="${args.lastUpdate}"
+      percentage="${args.percentage}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-card>
     <script>
       customElements.whenDefined('sh-stock-card').then(() => {
-        const card = document.getElementById('stock-card-critical');
-        if (card) {
-          card.iaCount = ${args.iaCount || 0};
-        }
+        const card = document.querySelector('sh-stock-card');
+        if (card) card.iaCount = ${args.iaCount || 0};
       });
     </script>
   `,
@@ -228,27 +182,20 @@ export const OutOfStock: Story = {
     iaCount: 1,
   },
   render: (args) => `
-    <div style="max-width: 400px; padding: 2rem;">
-        <sh-stock-card
-          id="stock-card-out"
-          name="${args.name}"
-          category="${args.category}"
-          last-update="${args.lastUpdate}"
-          percentage="${args.percentage}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-card>
-      </div>
-    </div>
-
+    <sh-stock-card
+      name="${args.name}"
+      category="${args.category}"
+      last-update="${args.lastUpdate}"
+      percentage="${args.percentage}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-card>
     <script>
       customElements.whenDefined('sh-stock-card').then(() => {
-        const card = document.getElementById('stock-card-out');
-        if (card) {
-          card.iaCount = ${args.iaCount || 0};
-        }
+        const card = document.querySelector('sh-stock-card');
+        if (card) card.iaCount = ${args.iaCount || 0};
       });
     </script>
   `,
@@ -269,29 +216,16 @@ export const Overstocked: Story = {
     iaCount: 0,
   },
   render: (args) => `
-    <div style="max-width: 400px; padding: 2rem;">
-        <sh-stock-card
-          id="stock-card-over"
-          name="${args.name}"
-          category="${args.category}"
-          last-update="${args.lastUpdate}"
-          percentage="${args.percentage}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-card>
-      </div>
-    </div>
-
-    <script>
-      customElements.whenDefined('sh-stock-card').then(() => {
-        const card = document.getElementById('stock-card-over');
-        if (card) {
-          card.iaCount = ${args.iaCount || 0};
-        }
-      });
-    </script>
+    <sh-stock-card
+      name="${args.name}"
+      category="${args.category}"
+      last-update="${args.lastUpdate}"
+      percentage="${args.percentage}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-card>
   `,
 };
 
@@ -307,27 +241,14 @@ export const Minimal: Story = {
     status: 'optimal',
   },
   render: (args) => `
-    <div style="max-width: 400px; padding: 2rem;">
-        <sh-stock-card
-          id="stock-card-minimal"
-          name="${args.name}"
-          percentage="${args.percentage}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-card>
-      </div>
-    </div>
-
-    <script>
-      customElements.whenDefined('sh-stock-card').then(() => {
-        const card = document.getElementById('stock-card-minimal');
-        if (card) {
-          card.iaCount = 0;
-        }
-      });
-    </script>
+    <sh-stock-card
+      name="${args.name}"
+      percentage="${args.percentage}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-card>
   `,
 };
 
@@ -346,30 +267,17 @@ export const Loading: Story = {
     loading: true,
   },
   render: (args) => `
-    <div style="max-width: 400px; padding: 2rem;">
-        <sh-stock-card
-          id="stock-card-loading"
-          name="${args.name}"
-          category="${args.category}"
-          last-update="${args.lastUpdate}"
-          percentage="${args.percentage}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-          ${args.loading ? 'loading' : ''}
-        ></sh-stock-card>
-      </div>
-    </div>
-
-    <script>
-      customElements.whenDefined('sh-stock-card').then(() => {
-        const card = document.getElementById('stock-card-loading');
-        if (card) {
-          card.iaCount = 0;
-        }
-      });
-    </script>
+    <sh-stock-card
+      name="${args.name}"
+      category="${args.category}"
+      last-update="${args.lastUpdate}"
+      percentage="${args.percentage}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+      ${args.loading ? 'loading' : ''}
+    ></sh-stock-card>
   `,
 };
 

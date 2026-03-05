@@ -73,38 +73,16 @@ export const Optimal: Story = {
     status: 'optimal',
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <div style="max-width: 400px;">
-        <sh-stock-item-card
-          name="${args.name}"
-          sku="${args.sku}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          location="${args.location}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-          ${args.loading ? 'loading' : ''}
-        ></sh-stock-item-card>
-      </div>
-    </div>
-
-    <script>
-      const card = document.querySelector('sh-stock-item-card');
-      card.addEventListener('sh-view-click', (e) => {
-        console.log('View clicked:', e.detail);
-        alert('Voir les détails: ' + e.detail.name);
-      });
-      card.addEventListener('sh-edit-click', (e) => {
-        console.log('Edit clicked:', e.detail);
-        alert('Éditer: ' + e.detail.name);
-      });
-      card.addEventListener('sh-delete-click', (e) => {
-        console.log('Delete clicked:', e.detail);
-        if (confirm('Supprimer ' + e.detail.name + ' ?')) {
-          console.log('Deleted!');
-        }
-      });
-    </script>
+    <sh-stock-item-card
+      name="${args.name}"
+      sku="${args.sku}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      location="${args.location}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+      ${args.loading ? 'loading' : ''}
+    ></sh-stock-item-card>
   `,
 };
 
@@ -121,19 +99,15 @@ export const LowStock: Story = {
     status: 'low',
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <div style="max-width: 400px;">
-        <sh-stock-item-card
-          name="${args.name}"
-          sku="${args.sku}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          location="${args.location}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-item-card>
-      </div>
-    </div>
+    <sh-stock-item-card
+      name="${args.name}"
+      sku="${args.sku}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      location="${args.location}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-item-card>
   `,
 };
 
@@ -150,19 +124,15 @@ export const CriticalStock: Story = {
     status: 'critical',
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <div style="max-width: 400px;">
-        <sh-stock-item-card
-          name="${args.name}"
-          sku="${args.sku}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          location="${args.location}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-item-card>
-      </div>
-    </div>
+    <sh-stock-item-card
+      name="${args.name}"
+      sku="${args.sku}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      location="${args.location}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-item-card>
   `,
 };
 
@@ -179,19 +149,15 @@ export const OutOfStock: Story = {
     status: 'out-of-stock',
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <div style="max-width: 400px;">
-        <sh-stock-item-card
-          name="${args.name}"
-          sku="${args.sku}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          location="${args.location}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-item-card>
-      </div>
-    </div>
+    <sh-stock-item-card
+      name="${args.name}"
+      sku="${args.sku}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      location="${args.location}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-item-card>
   `,
 };
 
@@ -208,19 +174,15 @@ export const Overstocked: Story = {
     status: 'overstocked',
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <div style="max-width: 400px;">
-        <sh-stock-item-card
-          name="${args.name}"
-          sku="${args.sku}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          location="${args.location}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-item-card>
-      </div>
-    </div>
+    <sh-stock-item-card
+      name="${args.name}"
+      sku="${args.sku}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      location="${args.location}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-item-card>
   `,
 };
 
@@ -235,17 +197,13 @@ export const Minimal: Story = {
     status: 'optimal',
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <div style="max-width: 400px;">
-        <sh-stock-item-card
-          name="${args.name}"
-          sku="${args.sku}"
-          quantity="${args.quantity}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-        ></sh-stock-item-card>
-      </div>
-    </div>
+    <sh-stock-item-card
+      name="${args.name}"
+      sku="${args.sku}"
+      quantity="${args.quantity}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+    ></sh-stock-item-card>
   `,
 };
 
@@ -263,20 +221,16 @@ export const Loading: Story = {
     loading: true,
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <div style="max-width: 400px;">
-        <sh-stock-item-card
-          name="${args.name}"
-          sku="${args.sku}"
-          quantity="${args.quantity}"
-          value="${args.value}"
-          location="${args.location}"
-          status="${args.status}"
-          data-theme="${args.theme}"
-          ${args.loading ? 'loading' : ''}
-        ></sh-stock-item-card>
-      </div>
-    </div>
+    <sh-stock-item-card
+      name="${args.name}"
+      sku="${args.sku}"
+      quantity="${args.quantity}"
+      value="${args.value}"
+      location="${args.location}"
+      status="${args.status}"
+      data-theme="${args.theme}"
+      ${args.loading ? 'loading' : ''}
+    ></sh-stock-item-card>
   `,
 };
 
@@ -288,10 +242,9 @@ export const AllStatuses: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; max-width: 100%;">
-        <sh-stock-item-card
-          name="Peinture Acrylique 500ml - Bleu Cobalt"
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; padding: 2rem;">
+      <sh-stock-item-card
+        name="Peinture Acrylique 500ml - Bleu Cobalt"
           sku="PNT-001"
           quantity="45"
           value="€675"
@@ -339,7 +292,6 @@ export const AllStatuses: Story = {
           status="overstocked"
           data-theme="${args.theme}"
         ></sh-stock-item-card>
-      </div>
     </div>
   `,
 };
@@ -352,9 +304,8 @@ export const InventoryGrid: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <h2 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; margin-bottom: 1.5rem; font-family: system-ui;">Inventaire - Matériel Créatif</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem; max-width: 100%;">
+    <h2 style="color: ${args.theme === 'dark' ? '#f1f5f9' : '#1e293b'}; margin: 2rem 2rem 1.5rem; font-family: system-ui;">Inventaire - Matériel Créatif</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem; padding: 0 2rem 2rem;">
         <sh-stock-item-card
           name="Peinture Acrylique 500ml - Bleu Cobalt"
           sku="PNT-001"
@@ -434,22 +385,7 @@ export const InventoryGrid: Story = {
           status="overstocked"
           data-theme="${args.theme}"
         ></sh-stock-item-card>
-      </div>
     </div>
-
-    <script>
-      document.querySelectorAll('sh-stock-item-card').forEach(card => {
-        card.addEventListener('sh-view-click', (e) => {
-          console.log('View:', e.detail);
-        });
-        card.addEventListener('sh-edit-click', (e) => {
-          console.log('Edit:', e.detail);
-        });
-        card.addEventListener('sh-delete-click', (e) => {
-          console.log('Delete:', e.detail);
-        });
-      });
-    </script>
   `,
 };
 

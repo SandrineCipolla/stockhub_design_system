@@ -105,27 +105,23 @@ export const Critical: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <div style="max-width: 400px;">
-        <sh-stock-prediction-card
-          stock-name="${args.stockName}"
-          stock-id="${args.stockId}"
-          risk-level="${args.riskLevel}"
-          days-until-rupture="${args.daysUntilRupture}"
-          date-of-rupture="${args.dateOfRupture}"
-          confidence="${args.confidence}"
-          daily-consumption-rate="${args.dailyConsumptionRate}"
-          current-quantity="${args.currentQuantity}"
-          days-until-rupture-pessimistic="${args.daysUntilRupturePessimistic}"
-          days-until-rupture-optimistic="${args.daysUntilRuptureOptimistic}"
-          recommended-reorder-date="${args.recommendedReorderDate}"
-          recommended-reorder-quantity="${args.recommendedReorderQuantity}"
-          ${args.showDetails ? 'show-details' : ''}
-          ${args.clickable ? 'clickable' : ''}
-          data-theme="${args.theme}"
-        ></sh-stock-prediction-card>
-      </div>
-    </div>
+    <sh-stock-prediction-card
+      stock-name="${args.stockName}"
+      stock-id="${args.stockId}"
+      risk-level="${args.riskLevel}"
+      days-until-rupture="${args.daysUntilRupture}"
+      date-of-rupture="${args.dateOfRupture}"
+      confidence="${args.confidence}"
+      daily-consumption-rate="${args.dailyConsumptionRate}"
+      current-quantity="${args.currentQuantity}"
+      days-until-rupture-pessimistic="${args.daysUntilRupturePessimistic}"
+      days-until-rupture-optimistic="${args.daysUntilRuptureOptimistic}"
+      recommended-reorder-date="${args.recommendedReorderDate}"
+      recommended-reorder-quantity="${args.recommendedReorderQuantity}"
+      ${args.showDetails ? 'show-details' : ''}
+      ${args.clickable ? 'clickable' : ''}
+      data-theme="${args.theme}"
+    ></sh-stock-prediction-card>
   `,
 };
 
@@ -148,27 +144,23 @@ export const High: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <div style="max-width: 400px;">
-        <sh-stock-prediction-card
-          stock-name="${args.stockName}"
-          stock-id="${args.stockId}"
-          risk-level="${args.riskLevel}"
-          days-until-rupture="${args.daysUntilRupture}"
-          date-of-rupture="${args.dateOfRupture}"
-          confidence="${args.confidence}"
-          daily-consumption-rate="${args.dailyConsumptionRate}"
-          current-quantity="${args.currentQuantity}"
-          days-until-rupture-pessimistic="${args.daysUntilRupturePessimistic}"
-          days-until-rupture-optimistic="${args.daysUntilRuptureOptimistic}"
-          recommended-reorder-date="${args.recommendedReorderDate}"
-          recommended-reorder-quantity="${args.recommendedReorderQuantity}"
-          ${args.showDetails ? 'show-details' : ''}
-          ${args.clickable ? 'clickable' : ''}
-          data-theme="${args.theme}"
-        ></sh-stock-prediction-card>
-      </div>
-    </div>
+    <sh-stock-prediction-card
+      stock-name="${args.stockName}"
+      stock-id="${args.stockId}"
+      risk-level="${args.riskLevel}"
+      days-until-rupture="${args.daysUntilRupture}"
+      date-of-rupture="${args.dateOfRupture}"
+      confidence="${args.confidence}"
+      daily-consumption-rate="${args.dailyConsumptionRate}"
+      current-quantity="${args.currentQuantity}"
+      days-until-rupture-pessimistic="${args.daysUntilRupturePessimistic}"
+      days-until-rupture-optimistic="${args.daysUntilRuptureOptimistic}"
+      recommended-reorder-date="${args.recommendedReorderDate}"
+      recommended-reorder-quantity="${args.recommendedReorderQuantity}"
+      ${args.showDetails ? 'show-details' : ''}
+      ${args.clickable ? 'clickable' : ''}
+      data-theme="${args.theme}"
+    ></sh-stock-prediction-card>
   `,
 };
 
@@ -191,27 +183,23 @@ export const Medium: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <div style="max-width: 400px;">
-        <sh-stock-prediction-card
-          stock-name="${args.stockName}"
-          stock-id="${args.stockId}"
-          risk-level="${args.riskLevel}"
-          days-until-rupture="${args.daysUntilRupture}"
-          date-of-rupture="${args.dateOfRupture}"
-          confidence="${args.confidence}"
-          daily-consumption-rate="${args.dailyConsumptionRate}"
-          current-quantity="${args.currentQuantity}"
-          days-until-rupture-pessimistic="${args.daysUntilRupturePessimistic}"
-          days-until-rupture-optimistic="${args.daysUntilRuptureOptimistic}"
-          recommended-reorder-date="${args.recommendedReorderDate}"
-          recommended-reorder-quantity="${args.recommendedReorderQuantity}"
-          ${args.showDetails ? 'show-details' : ''}
-          ${args.clickable ? 'clickable' : ''}
-          data-theme="${args.theme}"
-        ></sh-stock-prediction-card>
-      </div>
-    </div>
+    <sh-stock-prediction-card
+      stock-name="${args.stockName}"
+      stock-id="${args.stockId}"
+      risk-level="${args.riskLevel}"
+      days-until-rupture="${args.daysUntilRupture}"
+      date-of-rupture="${args.dateOfRupture}"
+      confidence="${args.confidence}"
+      daily-consumption-rate="${args.dailyConsumptionRate}"
+      current-quantity="${args.currentQuantity}"
+      days-until-rupture-pessimistic="${args.daysUntilRupturePessimistic}"
+      days-until-rupture-optimistic="${args.daysUntilRuptureOptimistic}"
+      recommended-reorder-date="${args.recommendedReorderDate}"
+      recommended-reorder-quantity="${args.recommendedReorderQuantity}"
+      ${args.showDetails ? 'show-details' : ''}
+      ${args.clickable ? 'clickable' : ''}
+      data-theme="${args.theme}"
+    ></sh-stock-prediction-card>
   `,
 };
 
@@ -234,27 +222,23 @@ export const Low: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <div style="max-width: 400px;">
-        <sh-stock-prediction-card
-          stock-name="${args.stockName}"
-          stock-id="${args.stockId}"
-          risk-level="${args.riskLevel}"
-          days-until-rupture="${args.daysUntilRupture}"
-          date-of-rupture="${args.dateOfRupture}"
-          confidence="${args.confidence}"
-          daily-consumption-rate="${args.dailyConsumptionRate}"
-          current-quantity="${args.currentQuantity}"
-          days-until-rupture-pessimistic="${args.daysUntilRupturePessimistic}"
-          days-until-rupture-optimistic="${args.daysUntilRuptureOptimistic}"
-          recommended-reorder-date="${args.recommendedReorderDate}"
-          recommended-reorder-quantity="${args.recommendedReorderQuantity}"
-          ${args.showDetails ? 'show-details' : ''}
-          ${args.clickable ? 'clickable' : ''}
-          data-theme="${args.theme}"
-        ></sh-stock-prediction-card>
-      </div>
-    </div>
+    <sh-stock-prediction-card
+      stock-name="${args.stockName}"
+      stock-id="${args.stockId}"
+      risk-level="${args.riskLevel}"
+      days-until-rupture="${args.daysUntilRupture}"
+      date-of-rupture="${args.dateOfRupture}"
+      confidence="${args.confidence}"
+      daily-consumption-rate="${args.dailyConsumptionRate}"
+      current-quantity="${args.currentQuantity}"
+      days-until-rupture-pessimistic="${args.daysUntilRupturePessimistic}"
+      days-until-rupture-optimistic="${args.daysUntilRuptureOptimistic}"
+      recommended-reorder-date="${args.recommendedReorderDate}"
+      recommended-reorder-quantity="${args.recommendedReorderQuantity}"
+      ${args.showDetails ? 'show-details' : ''}
+      ${args.clickable ? 'clickable' : ''}
+      data-theme="${args.theme}"
+    ></sh-stock-prediction-card>
   `,
 };
 
@@ -277,21 +261,17 @@ export const NoRuptureDetected: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <div style="max-width: 400px;">
-        <sh-stock-prediction-card
-          stock-name="${args.stockName}"
-          stock-id="${args.stockId}"
-          risk-level="${args.riskLevel}"
-          confidence="${args.confidence}"
-          daily-consumption-rate="${args.dailyConsumptionRate}"
-          current-quantity="${args.currentQuantity}"
-          ${args.showDetails ? 'show-details' : ''}
-          ${args.clickable ? 'clickable' : ''}
-          data-theme="${args.theme}"
-        ></sh-stock-prediction-card>
-      </div>
-    </div>
+    <sh-stock-prediction-card
+      stock-name="${args.stockName}"
+      stock-id="${args.stockId}"
+      risk-level="${args.riskLevel}"
+      confidence="${args.confidence}"
+      daily-consumption-rate="${args.dailyConsumptionRate}"
+      current-quantity="${args.currentQuantity}"
+      ${args.showDetails ? 'show-details' : ''}
+      ${args.clickable ? 'clickable' : ''}
+      data-theme="${args.theme}"
+    ></sh-stock-prediction-card>
   `,
 };
 
@@ -314,25 +294,21 @@ export const WithoutDetails: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <div style="max-width: 400px;">
-        <sh-stock-prediction-card
-          stock-name="${args.stockName}"
-          stock-id="${args.stockId}"
-          risk-level="${args.riskLevel}"
-          days-until-rupture="${args.daysUntilRupture}"
-          date-of-rupture="${args.dateOfRupture}"
-          confidence="${args.confidence}"
-          daily-consumption-rate="${args.dailyConsumptionRate}"
-          current-quantity="${args.currentQuantity}"
-          days-until-rupture-pessimistic="${args.daysUntilRupturePessimistic}"
-          days-until-rupture-optimistic="${args.daysUntilRuptureOptimistic}"
-          ${args.showDetails ? 'show-details' : ''}
-          ${args.clickable ? 'clickable' : ''}
-          data-theme="${args.theme}"
-        ></sh-stock-prediction-card>
-      </div>
-    </div>
+    <sh-stock-prediction-card
+      stock-name="${args.stockName}"
+      stock-id="${args.stockId}"
+      risk-level="${args.riskLevel}"
+      days-until-rupture="${args.daysUntilRupture}"
+      date-of-rupture="${args.dateOfRupture}"
+      confidence="${args.confidence}"
+      daily-consumption-rate="${args.dailyConsumptionRate}"
+      current-quantity="${args.currentQuantity}"
+      days-until-rupture-pessimistic="${args.daysUntilRupturePessimistic}"
+      days-until-rupture-optimistic="${args.daysUntilRuptureOptimistic}"
+      ${args.showDetails ? 'show-details' : ''}
+      ${args.clickable ? 'clickable' : ''}
+      data-theme="${args.theme}"
+    ></sh-stock-prediction-card>
   `,
 };
 
@@ -355,27 +331,23 @@ export const DarkMode: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <div style="max-width: 400px;">
-        <sh-stock-prediction-card
-          stock-name="${args.stockName}"
-          stock-id="${args.stockId}"
-          risk-level="${args.riskLevel}"
-          days-until-rupture="${args.daysUntilRupture}"
-          date-of-rupture="${args.dateOfRupture}"
-          confidence="${args.confidence}"
-          daily-consumption-rate="${args.dailyConsumptionRate}"
-          current-quantity="${args.currentQuantity}"
-          days-until-rupture-pessimistic="${args.daysUntilRupturePessimistic}"
-          days-until-rupture-optimistic="${args.daysUntilRuptureOptimistic}"
-          recommended-reorder-date="${args.recommendedReorderDate}"
-          recommended-reorder-quantity="${args.recommendedReorderQuantity}"
-          ${args.showDetails ? 'show-details' : ''}
-          ${args.clickable ? 'clickable' : ''}
-          data-theme="${args.theme}"
-        ></sh-stock-prediction-card>
-      </div>
-    </div>
+    <sh-stock-prediction-card
+      stock-name="${args.stockName}"
+      stock-id="${args.stockId}"
+      risk-level="${args.riskLevel}"
+      days-until-rupture="${args.daysUntilRupture}"
+      date-of-rupture="${args.dateOfRupture}"
+      confidence="${args.confidence}"
+      daily-consumption-rate="${args.dailyConsumptionRate}"
+      current-quantity="${args.currentQuantity}"
+      days-until-rupture-pessimistic="${args.daysUntilRupturePessimistic}"
+      days-until-rupture-optimistic="${args.daysUntilRuptureOptimistic}"
+      recommended-reorder-date="${args.recommendedReorderDate}"
+      recommended-reorder-quantity="${args.recommendedReorderQuantity}"
+      ${args.showDetails ? 'show-details' : ''}
+      ${args.clickable ? 'clickable' : ''}
+      data-theme="${args.theme}"
+    ></sh-stock-prediction-card>
   `,
 };
 
@@ -398,27 +370,23 @@ export const Clickable: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="padding: 2rem;">
-      <div style="max-width: 400px;">
-        <sh-stock-prediction-card
-          stock-name="${args.stockName}"
-          stock-id="${args.stockId}"
-          risk-level="${args.riskLevel}"
-          days-until-rupture="${args.daysUntilRupture}"
-          date-of-rupture="${args.dateOfRupture}"
-          confidence="${args.confidence}"
-          daily-consumption-rate="${args.dailyConsumptionRate}"
-          current-quantity="${args.currentQuantity}"
-          days-until-rupture-pessimistic="${args.daysUntilRupturePessimistic}"
-          days-until-rupture-optimistic="${args.daysUntilRuptureOptimistic}"
-          recommended-reorder-date="${args.recommendedReorderDate}"
-          recommended-reorder-quantity="${args.recommendedReorderQuantity}"
-          ${args.showDetails ? 'show-details' : ''}
-          ${args.clickable ? 'clickable' : ''}
-          data-theme="${args.theme}"
-        ></sh-stock-prediction-card>
-      </div>
-    </div>
+    <sh-stock-prediction-card
+      stock-name="${args.stockName}"
+      stock-id="${args.stockId}"
+      risk-level="${args.riskLevel}"
+      days-until-rupture="${args.daysUntilRupture}"
+      date-of-rupture="${args.dateOfRupture}"
+      confidence="${args.confidence}"
+      daily-consumption-rate="${args.dailyConsumptionRate}"
+      current-quantity="${args.currentQuantity}"
+      days-until-rupture-pessimistic="${args.daysUntilRupturePessimistic}"
+      days-until-rupture-optimistic="${args.daysUntilRuptureOptimistic}"
+      recommended-reorder-date="${args.recommendedReorderDate}"
+      recommended-reorder-quantity="${args.recommendedReorderQuantity}"
+      ${args.showDetails ? 'show-details' : ''}
+      ${args.clickable ? 'clickable' : ''}
+      data-theme="${args.theme}"
+    ></sh-stock-prediction-card>
     <script>
       document.querySelector('sh-stock-prediction-card').addEventListener('sh-stock-prediction-click', (e) => {
         console.log('Card clicked:', e.detail);

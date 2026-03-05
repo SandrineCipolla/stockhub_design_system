@@ -66,8 +66,6 @@
     "@rollup/plugin-typescript": "^11.0.0",
     "@storybook/addon-a11y": "^10.2.15",
     "@storybook/addon-links": "^10.2.15",
-    "@storybook/blocks": "^8.6.12",
-    "@storybook/test": "^8.6.12",
     "@storybook/test-runner": "^0.24.2",
     "@storybook/web-components": "^10.2.15",
     "@storybook/web-components-vite": "^10.2.15",

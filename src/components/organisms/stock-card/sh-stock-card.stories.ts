@@ -70,10 +70,13 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
+const singleCard = [(story: () => string) => `<div style="max-width: 400px; padding: 2rem;">${story()}</div>`];
+
 /**
  * Stock optimal - comme dans StockHub V2
  */
 export const Optimal: Story = {
+  decorators: singleCard,
   args: {
     name: 'Acrylique Bleu Cobalt',
     category: 'Peinture',
@@ -103,6 +106,7 @@ export const Optimal: Story = {
  * Stock faible avec alerte IA
  */
 export const LowWithIA: Story = {
+  decorators: singleCard,
   args: {
     name: 'Acrylique Rouge Vermillon',
     category: 'Peinture',
@@ -137,6 +141,7 @@ export const LowWithIA: Story = {
  * Stock critique
  */
 export const Critical: Story = {
+  decorators: singleCard,
   args: {
     name: 'Peinture Acrylique Jaune Cadmium',
     category: 'Peinture',
@@ -171,6 +176,7 @@ export const Critical: Story = {
  * Rupture de stock
  */
 export const OutOfStock: Story = {
+  decorators: singleCard,
   args: {
     name: 'Feutrine Rouge',
     category: 'Textile',
@@ -205,6 +211,7 @@ export const OutOfStock: Story = {
  * Surstock
  */
 export const Overstocked: Story = {
+  decorators: singleCard,
   args: {
     name: 'Pinceaux Synthétiques',
     category: 'Outils',
@@ -233,6 +240,7 @@ export const Overstocked: Story = {
  * Minimal (sans catégorie ni mise à jour)
  */
 export const Minimal: Story = {
+  decorators: singleCard,
   args: {
     name: 'Gomme Mie de Pain',
     percentage: '80',
@@ -256,6 +264,7 @@ export const Minimal: Story = {
  * État de chargement
  */
 export const Loading: Story = {
+  decorators: singleCard,
   args: {
     name: 'Acrylique Bleu Cobalt',
     category: 'Peinture',

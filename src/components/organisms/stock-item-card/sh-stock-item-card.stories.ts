@@ -59,11 +59,13 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
+const singleCard = [(story: () => string) => `<div style="max-width: 400px; padding: 2rem;">${story()}</div>`];
 
 /**
  * Carte de produit en stock optimal
  */
 export const Optimal: Story = {
+  decorators: singleCard,
   args: {
     name: 'Peinture Acrylique 500ml - Bleu Cobalt',
     sku: 'PNT-001',
@@ -90,6 +92,7 @@ export const Optimal: Story = {
  * Stock faible (warning)
  */
 export const LowStock: Story = {
+  decorators: singleCard,
   args: {
     name: 'Crayons Aquarelle (Boîte de 24)',
     sku: 'CRY-042',
@@ -115,6 +118,7 @@ export const LowStock: Story = {
  * Stock critique (danger)
  */
 export const CriticalStock: Story = {
+  decorators: singleCard,
   args: {
     name: 'Tissu Coton Bio - Blanc Écru (10m)',
     sku: 'TSU-088',
@@ -140,6 +144,7 @@ export const CriticalStock: Story = {
  * Rupture de stock
  */
 export const OutOfStock: Story = {
+  decorators: singleCard,
   args: {
     name: 'Papier Aquarelle 300g - Format A3',
     sku: 'PAP-156',
@@ -165,6 +170,7 @@ export const OutOfStock: Story = {
  * Surstock
  */
 export const Overstocked: Story = {
+  decorators: singleCard,
   args: {
     name: 'Pinceaux Synthétiques (Set de 5)',
     sku: 'PIN-201',
@@ -190,6 +196,7 @@ export const Overstocked: Story = {
  * Sans valeur ni emplacement (minimal)
  */
 export const Minimal: Story = {
+  decorators: singleCard,
   args: {
     name: 'Gomme Mie de Pain',
     sku: 'GOM-999',
@@ -211,6 +218,7 @@ export const Minimal: Story = {
  * État de chargement
  */
 export const Loading: Story = {
+  decorators: singleCard,
   args: {
     name: 'Laptop Dell XPS 15',
     sku: 'LAP-001',

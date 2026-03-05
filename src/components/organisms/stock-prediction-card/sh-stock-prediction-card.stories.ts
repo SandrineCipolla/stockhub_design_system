@@ -86,7 +86,10 @@ const getFutureDate = (days: number): string => {
   return date.toISOString();
 };
 
+const singleCard = [(story: () => string) => `<div style="max-width: 480px; padding: 2rem;">${story()}</div>`];
+
 export const Critical: Story = {
+  decorators: singleCard,
   args: {
     stockName: 'Café Arabica Bio',
     stockId: 'stock-001',
@@ -126,6 +129,7 @@ export const Critical: Story = {
 };
 
 export const High: Story = {
+  decorators: singleCard,
   args: {
     stockName: 'Thé Vert Matcha Premium',
     stockId: 'stock-002',
@@ -165,6 +169,7 @@ export const High: Story = {
 };
 
 export const Medium: Story = {
+  decorators: singleCard,
   args: {
     stockName: 'Sucre de Canne Bio',
     stockId: 'stock-003',
@@ -204,6 +209,7 @@ export const Medium: Story = {
 };
 
 export const Low: Story = {
+  decorators: singleCard,
   args: {
     stockName: 'Lait d\'Amande Vanille',
     stockId: 'stock-004',
@@ -243,6 +249,7 @@ export const Low: Story = {
 };
 
 export const NoRuptureDetected: Story = {
+  decorators: singleCard,
   args: {
     stockName: 'Chocolat Noir 70%',
     stockId: 'stock-005',
@@ -276,6 +283,7 @@ export const NoRuptureDetected: Story = {
 };
 
 export const WithoutDetails: Story = {
+  decorators: singleCard,
   args: {
     stockName: 'Miel de Lavande',
     stockId: 'stock-006',
@@ -313,6 +321,7 @@ export const WithoutDetails: Story = {
 };
 
 export const DarkMode: Story = {
+  decorators: singleCard,
   args: {
     stockName: 'Café Arabica Bio',
     stockId: 'stock-007',
@@ -352,6 +361,7 @@ export const DarkMode: Story = {
 };
 
 export const Clickable: Story = {
+  decorators: singleCard,
   args: {
     stockName: 'Café Arabica Bio',
     stockId: 'stock-008',

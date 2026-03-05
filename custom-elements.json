@@ -4,6 +4,114 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "src/components/atoms/badge/sh-badge.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Badge component for displaying labels, statuses, counters, and categories.",
+          "name": "ShBadge",
+          "cssParts": [
+            {
+              "description": "The badge container element",
+              "name": "badge"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Default slot for badge content (text, icons, or both)",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "'success' | 'warning' | 'danger' | 'info' | 'default'"
+              },
+              "default": "'default'",
+              "description": "Visual variant of the badge (color scheme)",
+              "attribute": "variant"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "pill",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Enable fully rounded corners (pill shape)",
+              "attribute": "pill"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "'success' | 'warning' | 'danger' | 'info' | 'default'"
+              },
+              "default": "'default'",
+              "description": "Visual variant of the badge (color scheme)",
+              "fieldName": "variant"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "fieldName": "size"
+            },
+            {
+              "name": "pill",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Enable fully rounded corners (pill shape)",
+              "fieldName": "pill"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-badge",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShBadge",
+          "declaration": {
+            "name": "ShBadge",
+            "module": "src/components/atoms/badge/sh-badge.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-badge",
+          "declaration": {
+            "name": "ShBadge",
+            "module": "src/components/atoms/badge/sh-badge.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/atoms/icon/sh-icon.ts",
       "declarations": [
         {
@@ -166,114 +274,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/atoms/badge/sh-badge.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Badge component for displaying labels, statuses, counters, and categories.",
-          "name": "ShBadge",
-          "cssParts": [
-            {
-              "description": "The badge container element",
-              "name": "badge"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Default slot for badge content (text, icons, or both)",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "'success' | 'warning' | 'danger' | 'info' | 'default'"
-              },
-              "default": "'default'",
-              "description": "Visual variant of the badge (color scheme)",
-              "attribute": "variant"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "pill",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Enable fully rounded corners (pill shape)",
-              "attribute": "pill"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "'success' | 'warning' | 'danger' | 'info' | 'default'"
-              },
-              "default": "'default'",
-              "description": "Visual variant of the badge (color scheme)",
-              "fieldName": "variant"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "fieldName": "size"
-            },
-            {
-              "name": "pill",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Enable fully rounded corners (pill shape)",
-              "fieldName": "pill"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-badge",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShBadge",
-          "declaration": {
-            "name": "ShBadge",
-            "module": "src/components/atoms/badge/sh-badge.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-badge",
-          "declaration": {
-            "name": "ShBadge",
-            "module": "src/components/atoms/badge/sh-badge.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/atoms/logo/sh-logo.ts",
       "declarations": [
         {
@@ -337,161 +337,6 @@
           "declaration": {
             "name": "ShLogo",
             "module": "src/components/atoms/logo/sh-logo.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/atoms/text/sh-text.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Text component for rendering headings and paragraphs with custom styling.",
-          "name": "ShText",
-          "members": [
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "'title' | 'paragraph'"
-              },
-              "default": "'paragraph'",
-              "description": "Type of text element",
-              "attribute": "type"
-            },
-            {
-              "kind": "field",
-              "name": "content",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Text content to display",
-              "attribute": "content"
-            },
-            {
-              "kind": "field",
-              "name": "tag",
-              "type": {
-                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
-              },
-              "default": "'h1'",
-              "description": "HTML tag to use when type is 'title'",
-              "attribute": "tag"
-            },
-            {
-              "kind": "field",
-              "name": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "'inherit'",
-              "description": "Text color (overrides theme colors)",
-              "attribute": "color"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "description": "Theme variant",
-              "attribute": "data-theme",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "renderWithTag",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "tag",
-                  "type": {
-                    "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'"
-                  }
-                },
-                {
-                  "name": "content",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "data-theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "description": "Theme variant",
-              "fieldName": "theme",
-              "attribute": "data-theme"
-            },
-            {
-              "name": "type",
-              "type": {
-                "text": "'title' | 'paragraph'"
-              },
-              "default": "'paragraph'",
-              "description": "Type of text element",
-              "fieldName": "type"
-            },
-            {
-              "name": "content",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Text content to display",
-              "fieldName": "content"
-            },
-            {
-              "name": "tag",
-              "type": {
-                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
-              },
-              "default": "'h1'",
-              "description": "HTML tag to use when type is 'title'",
-              "fieldName": "tag"
-            },
-            {
-              "name": "color",
-              "type": {
-                "text": "string"
-              },
-              "default": "'inherit'",
-              "description": "Text color (overrides theme colors)",
-              "fieldName": "color"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-text",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShText",
-          "declaration": {
-            "name": "ShText",
-            "module": "src/components/atoms/text/sh-text.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-text",
-          "declaration": {
-            "name": "ShText",
-            "module": "src/components/atoms/text/sh-text.ts"
           }
         }
       ]
@@ -824,6 +669,161 @@
           "declaration": {
             "name": "ShInput",
             "module": "src/components/atoms/input/sh-input.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/atoms/text/sh-text.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Text component for rendering headings and paragraphs with custom styling.",
+          "name": "ShText",
+          "members": [
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "'title' | 'paragraph'"
+              },
+              "default": "'paragraph'",
+              "description": "Type of text element",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "content",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Text content to display",
+              "attribute": "content"
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "type": {
+                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
+              },
+              "default": "'h1'",
+              "description": "HTML tag to use when type is 'title'",
+              "attribute": "tag"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "'inherit'",
+              "description": "Text color (overrides theme colors)",
+              "attribute": "color"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "description": "Theme variant",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "renderWithTag",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "tag",
+                  "type": {
+                    "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'"
+                  }
+                },
+                {
+                  "name": "content",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "description": "Theme variant",
+              "fieldName": "theme",
+              "attribute": "data-theme"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "'title' | 'paragraph'"
+              },
+              "default": "'paragraph'",
+              "description": "Type of text element",
+              "fieldName": "type"
+            },
+            {
+              "name": "content",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Text content to display",
+              "fieldName": "content"
+            },
+            {
+              "name": "tag",
+              "type": {
+                "text": "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
+              },
+              "default": "'h1'",
+              "description": "HTML tag to use when type is 'title'",
+              "fieldName": "tag"
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "'inherit'",
+              "description": "Text color (overrides theme colors)",
+              "fieldName": "color"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-text",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShText",
+          "declaration": {
+            "name": "ShText",
+            "module": "src/components/atoms/text/sh-text.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-text",
+          "declaration": {
+            "name": "ShText",
+            "module": "src/components/atoms/text/sh-text.ts"
           }
         }
       ]
@@ -1472,6 +1472,293 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/molecules/stat-card/sh-stat-card.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ShStatCard",
+          "slots": [
+            {
+              "description": "Contenu personnalisé (remplace la valeur par défaut)",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | number"
+              },
+              "default": "'0'",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "riskLevel",
+              "type": {
+                "text": "'default' | 'critical' | 'high' | 'medium' | 'low'"
+              },
+              "default": "'default'",
+              "attribute": "risk-level",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "selected",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeyDown",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-stat-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis au clic sur la carte"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "label"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string | number"
+              },
+              "default": "'0'",
+              "fieldName": "value"
+            },
+            {
+              "name": "risk-level",
+              "type": {
+                "text": "'default' | 'critical' | 'high' | 'medium' | 'low'"
+              },
+              "default": "'default'",
+              "fieldName": "riskLevel"
+            },
+            {
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "selected"
+            },
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "fieldName": "theme"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-stat-card",
+          "customElement": true,
+          "summary": "Carte statistique minimaliste pour filtrage interactif"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShStatCard",
+          "declaration": {
+            "name": "ShStatCard",
+            "module": "src/components/molecules/stat-card/sh-stat-card.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-stat-card",
+          "declaration": {
+            "name": "ShStatCard",
+            "module": "src/components/molecules/stat-card/sh-stat-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/molecules/quantity-input/sh-quantity-input.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Quantity input component with sync button for inventory management.",
+          "name": "ShQuantityInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Current quantity value",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "dirty",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates if value has changed",
+              "attribute": "dirty"
+            },
+            {
+              "kind": "field",
+              "name": "hideArrows",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide number input arrows",
+              "attribute": "hideArrows"
+            },
+            {
+              "kind": "method",
+              "name": "handleInputChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "CustomEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleSync",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "sync",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "description": "Fired when sync button is clicked with updated value",
+              "name": "sh-sync"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Current quantity value",
+              "fieldName": "value"
+            },
+            {
+              "name": "dirty",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates if value has changed",
+              "fieldName": "dirty"
+            },
+            {
+              "name": "hideArrows",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide number input arrows",
+              "fieldName": "hideArrows"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-quantity-input",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShQuantityInput",
+          "declaration": {
+            "name": "ShQuantityInput",
+            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-quantity-input",
+          "declaration": {
+            "name": "ShQuantityInput",
+            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/molecules/search-input/sh-search-input.ts",
       "declarations": [
         {
@@ -1664,387 +1951,6 @@
           "declaration": {
             "name": "ShSearchInput",
             "module": "src/components/molecules/search-input/sh-search-input.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/molecules/quantity-input/sh-quantity-input.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Quantity input component with sync button for inventory management.",
-          "name": "ShQuantityInput",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Current quantity value",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "dirty",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Indicates if value has changed",
-              "attribute": "dirty"
-            },
-            {
-              "kind": "field",
-              "name": "hideArrows",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hide number input arrows",
-              "attribute": "hideArrows"
-            },
-            {
-              "kind": "method",
-              "name": "handleInputChange",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "CustomEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleSync",
-              "privacy": "private"
-            }
-          ],
-          "events": [
-            {
-              "name": "sync",
-              "type": {
-                "text": "CustomEvent"
-              }
-            },
-            {
-              "description": "Fired when sync button is clicked with updated value",
-              "name": "sh-sync"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Current quantity value",
-              "fieldName": "value"
-            },
-            {
-              "name": "dirty",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Indicates if value has changed",
-              "fieldName": "dirty"
-            },
-            {
-              "name": "hideArrows",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Hide number input arrows",
-              "fieldName": "hideArrows"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-quantity-input",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShQuantityInput",
-          "declaration": {
-            "name": "ShQuantityInput",
-            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-quantity-input",
-          "declaration": {
-            "name": "ShQuantityInput",
-            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/molecules/stat-card/sh-stat-card.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "ShStatCard",
-          "slots": [
-            {
-              "description": "Contenu personnalisé (remplace la valeur par défaut)",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "label"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string | number"
-              },
-              "default": "'0'",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "riskLevel",
-              "type": {
-                "text": "'default' | 'critical' | 'high' | 'medium' | 'low'"
-              },
-              "default": "'default'",
-              "attribute": "risk-level",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "selected",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "selected",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "attribute": "data-theme",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "_handleClick",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleKeyDown",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "name": "sh-stat-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis au clic sur la carte"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "label"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string | number"
-              },
-              "default": "'0'",
-              "fieldName": "value"
-            },
-            {
-              "name": "risk-level",
-              "type": {
-                "text": "'default' | 'critical' | 'high' | 'medium' | 'low'"
-              },
-              "default": "'default'",
-              "fieldName": "riskLevel"
-            },
-            {
-              "name": "selected",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "selected"
-            },
-            {
-              "name": "data-theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "fieldName": "theme"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-stat-card",
-          "customElement": true,
-          "summary": "Carte statistique minimaliste pour filtrage interactif"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShStatCard",
-          "declaration": {
-            "name": "ShStatCard",
-            "module": "src/components/molecules/stat-card/sh-stat-card.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-stat-card",
-          "declaration": {
-            "name": "ShStatCard",
-            "module": "src/components/molecules/stat-card/sh-stat-card.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/molecules/status-badge/sh-status-badge.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Status badge component for displaying stock status with icons and animations.",
-          "name": "ShStatusBadge",
-          "members": [
-            {
-              "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
-              },
-              "default": "'optimal'",
-              "description": "Stock status type",
-              "attribute": "status"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Custom label override",
-              "attribute": "label"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "status",
-              "type": {
-                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
-              },
-              "default": "'optimal'",
-              "description": "Stock status type",
-              "fieldName": "status"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "fieldName": "size"
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Custom label override",
-              "fieldName": "label"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-status-badge",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShStatusBadge",
-          "declaration": {
-            "name": "ShStatusBadge",
-            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-status-badge",
-          "declaration": {
-            "name": "ShStatusBadge",
-            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
           }
         }
       ]
@@ -2329,48 +2235,151 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/organisms/page-header/sh-page-header.ts",
+      "path": "src/components/molecules/status-badge/sh-status-badge.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Status badge component for displaying stock status with icons and animations.",
+          "name": "ShStatusBadge",
+          "members": [
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
+              },
+              "default": "'optimal'",
+              "description": "Stock status type",
+              "attribute": "status"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Custom label override",
+              "attribute": "label"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "status",
+              "type": {
+                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
+              },
+              "default": "'optimal'",
+              "description": "Stock status type",
+              "fieldName": "status"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "fieldName": "size"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Custom label override",
+              "fieldName": "label"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-status-badge",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShStatusBadge",
+          "declaration": {
+            "name": "ShStatusBadge",
+            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-status-badge",
+          "declaration": {
+            "name": "ShStatusBadge",
+            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "ShPageHeader",
+          "name": "ShIaAlertBanner",
           "members": [
             {
               "kind": "field",
-              "name": "title",
+              "name": "count",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "count"
+            },
+            {
+              "kind": "field",
+              "name": "severity",
+              "type": {
+                "text": "'critical' | 'warning' | 'info'"
+              },
+              "default": "'critical'",
+              "attribute": "severity"
+            },
+            {
+              "kind": "field",
+              "name": "message",
               "type": {
                 "text": "string"
               },
-              "default": "''",
-              "attribute": "title"
+              "default": "'stocks nécessitent votre attention'",
+              "attribute": "message"
             },
             {
               "kind": "field",
-              "name": "subtitle",
+              "name": "alerts",
               "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "subtitle"
-            },
-            {
-              "kind": "field",
-              "name": "breadcrumb",
-              "type": {
-                "text": "BreadcrumbItem[]"
+                "text": "IaAlert[]"
               },
               "default": "[]",
-              "attribute": "breadcrumb"
+              "attribute": "alerts"
             },
             {
               "kind": "field",
-              "name": "actions",
+              "name": "expanded",
               "type": {
-                "text": "ActionButton[]"
+                "text": "boolean"
               },
-              "default": "[]",
-              "attribute": "actions"
+              "default": "true",
+              "attribute": "expanded"
             },
             {
               "kind": "field",
@@ -2384,32 +2393,18 @@
             },
             {
               "kind": "method",
-              "name": "_handleBreadcrumbClick",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "item",
-                  "type": {
-                    "text": "BreadcrumbItem"
-                  }
-                },
-                {
-                  "name": "index",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
+              "name": "_toggleExpanded",
+              "privacy": "private"
             },
             {
               "kind": "method",
-              "name": "_handleActionClick",
+              "name": "_handleItemClick",
               "privacy": "private",
               "parameters": [
                 {
-                  "name": "action",
+                  "name": "alert",
                   "type": {
-                    "text": "ActionButton"
+                    "text": "IaAlert"
                   }
                 }
               ]
@@ -2417,58 +2412,63 @@
           ],
           "events": [
             {
-              "name": "sh-breadcrumb-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis au clic sur un item du breadcrumb"
-            },
-            {
+              "name": "sh-ia-alert-toggle",
               "type": {
                 "text": "CustomEvent"
               }
             },
             {
-              "description": "Émis au clic sur le bouton d'action \"edit\"",
-              "name": "sh-action-edit"
+              "name": "sh-ia-alert-item-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis lors du clic sur un item"
             },
             {
-              "description": "Émis au clic sur le bouton d'action \"delete\"",
-              "name": "sh-action-delete"
+              "description": "Émis lors du clic sur le bandeau",
+              "name": "sh-ia-alert-click"
             }
           ],
           "attributes": [
             {
-              "name": "title",
+              "name": "count",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "count"
+            },
+            {
+              "name": "severity",
+              "type": {
+                "text": "'critical' | 'warning' | 'info'"
+              },
+              "default": "'critical'",
+              "fieldName": "severity"
+            },
+            {
+              "name": "message",
               "type": {
                 "text": "string"
               },
-              "default": "''",
-              "fieldName": "title"
+              "default": "'stocks nécessitent votre attention'",
+              "fieldName": "message"
             },
             {
-              "name": "subtitle",
+              "name": "alerts",
               "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "subtitle"
-            },
-            {
-              "name": "breadcrumb",
-              "type": {
-                "text": "BreadcrumbItem[]"
+                "text": "IaAlert[]"
               },
               "default": "[]",
-              "fieldName": "breadcrumb"
+              "fieldName": "alerts"
             },
             {
-              "name": "actions",
+              "name": "expanded",
               "type": {
-                "text": "ActionButton[]"
+                "text": "boolean"
               },
-              "default": "[]",
-              "fieldName": "actions"
+              "default": "true",
+              "fieldName": "expanded"
             },
             {
               "name": "data-theme",
@@ -2483,26 +2483,26 @@
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "sh-page-header",
+          "tagName": "sh-ia-alert-banner",
           "customElement": true,
-          "summary": "En-tête de page avec breadcrumb, titre et boutons d'action"
+          "summary": "Bandeau d'alertes IA pour les stocks nécessitant attention"
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "ShPageHeader",
+          "name": "ShIaAlertBanner",
           "declaration": {
-            "name": "ShPageHeader",
-            "module": "src/components/organisms/page-header/sh-page-header.ts"
+            "name": "ShIaAlertBanner",
+            "module": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "sh-page-header",
+          "name": "sh-ia-alert-banner",
           "declaration": {
-            "name": "ShPageHeader",
-            "module": "src/components/organisms/page-header/sh-page-header.ts"
+            "name": "ShIaAlertBanner",
+            "module": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts"
           }
         }
       ]
@@ -2771,186 +2771,6 @@
           "declaration": {
             "name": "ShStockCard",
             "module": "src/components/organisms/stock-card/sh-stock-card.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "ShIaAlertBanner",
-          "members": [
-            {
-              "kind": "field",
-              "name": "count",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "attribute": "count"
-            },
-            {
-              "kind": "field",
-              "name": "severity",
-              "type": {
-                "text": "'critical' | 'warning' | 'info'"
-              },
-              "default": "'critical'",
-              "attribute": "severity"
-            },
-            {
-              "kind": "field",
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "default": "'stocks nécessitent votre attention'",
-              "attribute": "message"
-            },
-            {
-              "kind": "field",
-              "name": "alerts",
-              "type": {
-                "text": "IaAlert[]"
-              },
-              "default": "[]",
-              "attribute": "alerts"
-            },
-            {
-              "kind": "field",
-              "name": "expanded",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "attribute": "expanded"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "attribute": "data-theme",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "_toggleExpanded",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleItemClick",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "alert",
-                  "type": {
-                    "text": "IaAlert"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "name": "sh-ia-alert-toggle",
-              "type": {
-                "text": "CustomEvent"
-              }
-            },
-            {
-              "name": "sh-ia-alert-item-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis lors du clic sur un item"
-            },
-            {
-              "description": "Émis lors du clic sur le bandeau",
-              "name": "sh-ia-alert-click"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "count",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "fieldName": "count"
-            },
-            {
-              "name": "severity",
-              "type": {
-                "text": "'critical' | 'warning' | 'info'"
-              },
-              "default": "'critical'",
-              "fieldName": "severity"
-            },
-            {
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "default": "'stocks nécessitent votre attention'",
-              "fieldName": "message"
-            },
-            {
-              "name": "alerts",
-              "type": {
-                "text": "IaAlert[]"
-              },
-              "default": "[]",
-              "fieldName": "alerts"
-            },
-            {
-              "name": "expanded",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "fieldName": "expanded"
-            },
-            {
-              "name": "data-theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "fieldName": "theme"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-ia-alert-banner",
-          "customElement": true,
-          "summary": "Bandeau d'alertes IA pour les stocks nécessitant attention"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShIaAlertBanner",
-          "declaration": {
-            "name": "ShIaAlertBanner",
-            "module": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-ia-alert-banner",
-          "declaration": {
-            "name": "ShIaAlertBanner",
-            "module": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts"
           }
         }
       ]
@@ -3548,6 +3368,186 @@
           "declaration": {
             "name": "ShStockPredictionCard",
             "module": "src/components/organisms/stock-prediction-card/sh-stock-prediction-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/organisms/page-header/sh-page-header.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ShPageHeader",
+          "members": [
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "subtitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "subtitle"
+            },
+            {
+              "kind": "field",
+              "name": "breadcrumb",
+              "type": {
+                "text": "BreadcrumbItem[]"
+              },
+              "default": "[]",
+              "attribute": "breadcrumb"
+            },
+            {
+              "kind": "field",
+              "name": "actions",
+              "type": {
+                "text": "ActionButton[]"
+              },
+              "default": "[]",
+              "attribute": "actions"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleBreadcrumbClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "item",
+                  "type": {
+                    "text": "BreadcrumbItem"
+                  }
+                },
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleActionClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "action",
+                  "type": {
+                    "text": "ActionButton"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-breadcrumb-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis au clic sur un item du breadcrumb"
+            },
+            {
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "description": "Émis au clic sur le bouton d'action \"edit\"",
+              "name": "sh-action-edit"
+            },
+            {
+              "description": "Émis au clic sur le bouton d'action \"delete\"",
+              "name": "sh-action-delete"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "title"
+            },
+            {
+              "name": "subtitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "subtitle"
+            },
+            {
+              "name": "breadcrumb",
+              "type": {
+                "text": "BreadcrumbItem[]"
+              },
+              "default": "[]",
+              "fieldName": "breadcrumb"
+            },
+            {
+              "name": "actions",
+              "type": {
+                "text": "ActionButton[]"
+              },
+              "default": "[]",
+              "fieldName": "actions"
+            },
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "fieldName": "theme"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-page-header",
+          "customElement": true,
+          "summary": "En-tête de page avec breadcrumb, titre et boutons d'action"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShPageHeader",
+          "declaration": {
+            "name": "ShPageHeader",
+            "module": "src/components/organisms/page-header/sh-page-header.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-page-header",
+          "declaration": {
+            "name": "ShPageHeader",
+            "module": "src/components/organisms/page-header/sh-page-header.ts"
           }
         }
       ]

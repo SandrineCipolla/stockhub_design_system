@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import './sh-page-header';
 import '../header/sh-header';
 
@@ -29,10 +29,6 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-const getBackground = (theme: string) => theme === 'dark'
-  ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)'
-  : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)';
-
 /**
  * Dashboard Header (comme dans StockHub V2)
  */
@@ -43,7 +39,7 @@ export const Dashboard: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; min-height: 100vh;">
+    <div style="min-height: 100vh;">
       <sh-page-header
         id="header-dashboard"
         title="${args.title}"
@@ -101,7 +97,7 @@ export const Simple: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; min-height: 400px;">
+    <div>
       <sh-page-header
         title="${args.title}"
         data-theme="${args.theme}"
@@ -120,7 +116,7 @@ export const WithBreadcrumb: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; min-height: 400px;">
+    <div>
       <sh-page-header
         id="header-breadcrumb"
         title="${args.title}"
@@ -155,7 +151,7 @@ export const SingleAction: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; min-height: 400px;">
+    <div>
       <sh-page-header
         id="header-single"
         title="${args.title}"
@@ -187,7 +183,7 @@ export const ResponsiveDemo: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; min-height: 400px;">
+    <div>
       <div style="max-width: 375px; margin: 0 auto; border: 2px solid ${args.theme === 'dark' ? '#444' : '#ccc'}; border-radius: 8px; overflow: hidden;">
         <sh-page-header
           id="header-responsive"
@@ -248,7 +244,7 @@ export const FullPageIntegration: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; min-height: 100vh;">
+    <div style="min-height: 100vh;">
       <!-- Header principal -->
       <sh-header
         id="main-header-full"
@@ -284,7 +280,6 @@ export const FullPageIntegration: Story = {
       (function() {
         const mainHeader = document.getElementById('main-header-full');
         const pageHeader = document.getElementById('header-full');
-        const pageContainer = mainHeader.closest('div');
 
         // Theme toggle handler
         document.addEventListener('theme-change', (e) => {
@@ -294,14 +289,6 @@ export const FullPageIntegration: Story = {
           // Update all components
           if (mainHeader) mainHeader.setAttribute('data-theme', newTheme);
           if (pageHeader) pageHeader.setAttribute('data-theme', newTheme);
-
-          // Update background
-          if (pageContainer) {
-            const bg = newTheme === 'dark'
-              ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)'
-              : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)';
-            pageContainer.style.background = bg;
-          }
         });
 
         // Page header setup
@@ -334,7 +321,7 @@ export const Playground: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; min-height: 100vh;">
+    <div style="min-height: 100vh;">
       <sh-page-header
         id="header-playground"
         title="${args.title}"

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import './sh-metric-card';
 
 const meta: Meta = {
@@ -65,11 +65,6 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-// Background helper
-const getBackground = (theme: string) => theme === 'dark'
-  ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)'
-  : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)';
-
 /**
  * Carte métrique par défaut avec icône TrendingUp
  */
@@ -81,16 +76,14 @@ export const Default: Story = {
     variant: 'default',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; max-width: 320px;">
-      <sh-metric-card
-        icon="${args.icon}"
-        label="${args.label}"
-        value="${args.value}"
-        variant="${args.variant}"
-        data-theme="${args.theme}"
-        ${args.clickable ? 'clickable' : ''}
-      ></sh-metric-card>
-    </div>
+    <sh-metric-card
+      icon="${args.icon}"
+      label="${args.label}"
+      value="${args.value}"
+      variant="${args.variant}"
+      data-theme="${args.theme}"
+      ${args.clickable ? 'clickable' : ''}
+    ></sh-metric-card>
   `,
 };
 
@@ -107,17 +100,15 @@ export const WithIncreaseTrend: Story = {
     trendValue: '+12',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; max-width: 320px;">
-      <sh-metric-card
-        icon="${args.icon}"
-        label="${args.label}"
-        value="${args.value}"
-        variant="${args.variant}"
-        trend="${args.trend}"
-        trend-value="${args.trendValue}"
-        data-theme="${args.theme}"
-      ></sh-metric-card>
-    </div>
+    <sh-metric-card
+      icon="${args.icon}"
+      label="${args.label}"
+      value="${args.value}"
+      variant="${args.variant}"
+      trend="${args.trend}"
+      trend-value="${args.trendValue}"
+      data-theme="${args.theme}"
+    ></sh-metric-card>
   `,
 };
 
@@ -134,17 +125,15 @@ export const WithDecreaseTrend: Story = {
     trendValue: '-2',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; max-width: 320px;">
-      <sh-metric-card
-        icon="${args.icon}"
-        label="${args.label}"
-        value="${args.value}"
-        variant="${args.variant}"
-        trend="${args.trend}"
-        trend-value="${args.trendValue}"
-        data-theme="${args.theme}"
-      ></sh-metric-card>
-    </div>
+    <sh-metric-card
+      icon="${args.icon}"
+      label="${args.label}"
+      value="${args.value}"
+      variant="${args.variant}"
+      trend="${args.trend}"
+      trend-value="${args.trendValue}"
+      data-theme="${args.theme}"
+    ></sh-metric-card>
   `,
 };
 
@@ -161,17 +150,15 @@ export const MonetaryValue: Story = {
     trendValue: '+15%',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; max-width: 320px;">
-      <sh-metric-card
-        icon="${args.icon}"
-        label="${args.label}"
-        value="${args.value}"
-        variant="${args.variant}"
-        trend="${args.trend}"
-        trend-value="${args.trendValue}"
-        data-theme="${args.theme}"
-      ></sh-metric-card>
-    </div>
+    <sh-metric-card
+      icon="${args.icon}"
+      label="${args.label}"
+      value="${args.value}"
+      variant="${args.variant}"
+      trend="${args.trend}"
+      trend-value="${args.trendValue}"
+      data-theme="${args.theme}"
+    ></sh-metric-card>
   `,
 };
 
@@ -187,23 +174,21 @@ export const Clickable: Story = {
     clickable: true,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; max-width: 320px;">
-      <sh-metric-card
-        icon="${args.icon}"
-        label="${args.label}"
-        value="${args.value}"
-        variant="${args.variant}"
-        data-theme="${args.theme}"
-        ${args.clickable ? 'clickable' : ''}
-      ></sh-metric-card>
+    <sh-metric-card
+      icon="${args.icon}"
+      label="${args.label}"
+      value="${args.value}"
+      variant="${args.variant}"
+      data-theme="${args.theme}"
+      ${args.clickable ? 'clickable' : ''}
+    ></sh-metric-card>
 
-      <script>
-        document.querySelector('sh-metric-card').addEventListener('sh-metric-click', (e) => {
-          console.log('Metric clicked:', e.detail);
-          alert('Carte métrique cliquée ! Voir la console pour les détails.');
-        });
-      </script>
-    </div>
+    <script>
+      document.querySelector('sh-metric-card').addEventListener('sh-metric-click', (e) => {
+        console.log('Metric clicked:', e.detail);
+        alert('Carte métrique cliquée ! Voir la console pour les détails.');
+      });
+    </script>
   `,
 };
 
@@ -215,8 +200,7 @@ export const AllVariants: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; padding: 2rem;">
         <div style="flex: 1 1 300px; max-width: 320px;">
           <sh-metric-card
             icon="Package"
@@ -274,7 +258,6 @@ export const AllVariants: Story = {
             data-theme="${args.theme}"
           ></sh-metric-card>
         </div>
-      </div>
     </div>
   `,
 };
@@ -287,8 +270,7 @@ export const DashboardExample: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 100vh; box-sizing: border-box;">
-      <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; padding: 2rem;">
         <!-- Total Produits -->
         <div style="flex: 1 1 300px; max-width: 320px;">
           <sh-metric-card
@@ -344,7 +326,6 @@ export const DashboardExample: Story = {
             clickable
           ></sh-metric-card>
         </div>
-      </div>
     </div>
 
     <script>

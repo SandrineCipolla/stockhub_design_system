@@ -1,5 +1,5 @@
-import type {Meta, StoryObj} from '@storybook/web-components';
-import {expect, userEvent} from '@storybook/test';
+import type {Meta, StoryObj} from '@storybook/web-components-vite';
+import {expect, userEvent} from 'storybook/test';
 import './sh-card.ts';
 import '../../atoms/icon/sh-icon.ts';
 import '../../atoms/badge/sh-badge.ts';
@@ -44,14 +44,12 @@ export const Basic: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px; display: flex; align-items: center; justify-content: center; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <sh-card style="width: 300px;" data-theme="${args.theme}">
-        <h3 style="margin: 0 0 0.5rem 0;">Card Title</h3>
-        <p style="margin: 0; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
-          This is a basic card with some content inside.
-        </p>
-      </sh-card>
-    </div>
+    <sh-card style="width: 300px;" data-theme="${args.theme}">
+      <h3 style="margin: 0 0 0.5rem 0;">Card Title</h3>
+      <p style="margin: 0; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
+        This is a basic card with some content inside.
+      </p>
+    </sh-card>
   `,
 };
 
@@ -61,28 +59,26 @@ export const WithSlots: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px; display: flex; align-items: center; justify-content: center; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <sh-card style="width: 350px;" data-theme="${args.theme}">
-        <div slot="header" style="padding-bottom: 0.75rem; border-bottom: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.1)' : '#e5e7eb'};">
-          <h3 style="margin: 0;">Card with Slots</h3>
-          <p style="margin: 0.25rem 0 0 0; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'}; font-size: 0.875rem;">
-            Subtitle or description
-          </p>
-        </div>
-
-        <p style="margin: 1rem 0;">
-          This card uses slots for header, content, and footer sections.
-          It helps organize content in a structured way.
+    <sh-card style="width: 350px;" data-theme="${args.theme}">
+      <div slot="header" style="padding-bottom: 0.75rem; border-bottom: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.1)' : '#e5e7eb'};">
+        <h3 style="margin: 0;">Card with Slots</h3>
+        <p style="margin: 0.25rem 0 0 0; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'}; font-size: 0.875rem;">
+          Subtitle or description
         </p>
+      </div>
 
-        <div slot="footer" style="padding-top: 0.75rem; border-top: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.1)' : '#e5e7eb'};">
-          <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
-            <sh-button variant="ghost" size="sm" data-theme="${args.theme}">Cancel</sh-button>
-            <sh-button variant="primary" size="sm" data-theme="${args.theme}">Save</sh-button>
-          </div>
+      <p style="margin: 1rem 0;">
+        This card uses slots for header, content, and footer sections.
+        It helps organize content in a structured way.
+      </p>
+
+      <div slot="footer" style="padding-top: 0.75rem; border-top: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.1)' : '#e5e7eb'};">
+        <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+          <sh-button variant="ghost" size="sm" data-theme="${args.theme}">Cancel</sh-button>
+          <sh-button variant="primary" size="sm" data-theme="${args.theme}">Save</sh-button>
         </div>
-      </sh-card>
-    </div>
+      </div>
+    </sh-card>
   `,
 };
 
@@ -92,22 +88,20 @@ export const HoverEffects: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-        <sh-card hover style="width: 200px;" data-theme="${args.theme}">
-          <h4 style="margin: 0 0 0.5rem 0;">With Hover</h4>
-          <p style="margin: 0; font-size: 0.875rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
-            Hover over this card to see the effect
-          </p>
-        </sh-card>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <sh-card hover style="width: 200px;" data-theme="${args.theme}">
+        <h4 style="margin: 0 0 0.5rem 0;">With Hover</h4>
+        <p style="margin: 0; font-size: 0.875rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
+          Hover over this card to see the effect
+        </p>
+      </sh-card>
 
-        <sh-card id="no-hover-card" style="width: 200px;" data-theme="${args.theme}">
-          <h4 style="margin: 0 0 0.5rem 0;">No Hover</h4>
-          <p style="margin: 0; font-size: 0.875rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
-            This card doesn't have hover effects
-          </p>
-        </sh-card>
-      </div>
+      <sh-card id="no-hover-card" style="width: 200px;" data-theme="${args.theme}">
+        <h4 style="margin: 0 0 0.5rem 0;">No Hover</h4>
+        <p style="margin: 0; font-size: 0.875rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
+          This card doesn't have hover effects
+        </p>
+      </sh-card>
     </div>
     <script>
       (function() {
@@ -126,21 +120,19 @@ export const Clickable: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px; display: flex; align-items: center; justify-content: center; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <sh-card
-        clickable
-        style="width: 250px;"
-        data-theme="${args.theme}"
-      >
-        <div style="text-align: center;">
-          <sh-icon name="Folder" size="xl" color="primary" data-theme="${args.theme}"></sh-icon>
-          <h3 style="margin: 0.5rem 0;">Click Me</h3>
-          <p style="margin: 0; font-size: 0.875rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
-            This card is interactive (click to see effect)
-          </p>
-        </div>
-      </sh-card>
-    </div>
+    <sh-card
+      clickable
+      style="width: 250px;"
+      data-theme="${args.theme}"
+    >
+      <div style="text-align: center;">
+        <sh-icon name="Folder" size="xl" color="primary" data-theme="${args.theme}"></sh-icon>
+        <h3 style="margin: 0.5rem 0;">Click Me</h3>
+        <p style="margin: 0; font-size: 0.875rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
+          This card is interactive (click to see effect)
+        </p>
+      </div>
+    </sh-card>
   `,
 };
 
@@ -150,30 +142,28 @@ export const DifferentPadding: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-start;">
-        <sh-card padding="none" style="width: 150px;" data-theme="${args.theme}">
-          <img src="https://via.placeholder.com/150" alt="Placeholder" style="width: 100%; display: block; border-radius: 16px 16px 0 0;">
-          <div style="padding: 0.75rem;">
-            <h4 style="margin: 0;">No Padding</h4>
-          </div>
-        </sh-card>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-start;">
+      <sh-card padding="none" style="width: 150px;" data-theme="${args.theme}">
+        <img src="https://picsum.photos/150/100" alt="Placeholder" style="width: 100%; display: block; border-radius: 16px 16px 0 0;">
+        <div style="padding: 0.75rem;">
+          <h4 style="margin: 0;">No Padding</h4>
+        </div>
+      </sh-card>
 
-        <sh-card padding="sm" style="width: 150px;" data-theme="${args.theme}">
-          <h4 style="margin: 0 0 0.5rem 0;">Small</h4>
-          <p style="margin: 0; font-size: 0.75rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">Padding: sm</p>
-        </sh-card>
+      <sh-card padding="sm" style="width: 150px;" data-theme="${args.theme}">
+        <h4 style="margin: 0 0 0.5rem 0;">Small</h4>
+        <p style="margin: 0; font-size: 0.75rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">Padding: sm</p>
+      </sh-card>
 
-        <sh-card padding="md" style="width: 150px;" data-theme="${args.theme}">
-          <h4 style="margin: 0 0 0.5rem 0;">Medium</h4>
-          <p style="margin: 0; font-size: 0.75rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">Padding: md</p>
-        </sh-card>
+      <sh-card padding="md" style="width: 150px;" data-theme="${args.theme}">
+        <h4 style="margin: 0 0 0.5rem 0;">Medium</h4>
+        <p style="margin: 0; font-size: 0.75rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">Padding: md</p>
+      </sh-card>
 
-        <sh-card padding="lg" style="width: 150px;" data-theme="${args.theme}">
-          <h4 style="margin: 0 0 0.5rem 0;">Large</h4>
-          <p style="margin: 0; font-size: 0.75rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">Padding: lg</p>
-        </sh-card>
-      </div>
+      <sh-card padding="lg" style="width: 150px;" data-theme="${args.theme}">
+        <h4 style="margin: 0 0 0.5rem 0;">Large</h4>
+        <p style="margin: 0; font-size: 0.75rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">Padding: lg</p>
+      </sh-card>
     </div>
   `,
 };
@@ -184,18 +174,16 @@ export const WithStockItemCard: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px; display: flex; align-items: center; justify-content: center; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <sh-stock-item-card
-        name="Peinture Acrylique Bleu"
-        sku="PNT-001"
-        quantity="45"
-        value="€675"
-        location="A-12-3"
-        status="optimal"
-        data-theme="${args.theme}"
-        style="width: 320px;"
-      ></sh-stock-item-card>
-    </div>
+    <sh-stock-item-card
+      name="Peinture Acrylique Bleu"
+      sku="PNT-001"
+      quantity="45"
+      value="€675"
+      location="A-12-3"
+      status="optimal"
+      data-theme="${args.theme}"
+      style="width: 320px;"
+    ></sh-stock-item-card>
   `,
 };
 
@@ -205,32 +193,30 @@ export const StatsCard: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-        <sh-card hover style="width: 200px;" data-theme="${args.theme}">
-          <div style="display: flex; align-items: center; gap: 1rem;">
-            <div style="padding: 0.75rem; background: rgba(139, 92, 246, 0.1); border-radius: 12px;">
-              <sh-icon name="Users" size="lg" color="primary" data-theme="${args.theme}"></sh-icon>
-            </div>
-            <div>
-              <div style="font-size: 0.75rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'}; text-transform: uppercase;">Users</div>
-              <div style="font-size: 1.5rem; font-weight: 700;">1,234</div>
-            </div>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <sh-card hover style="width: 200px;" data-theme="${args.theme}">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="padding: 0.75rem; background: rgba(139, 92, 246, 0.1); border-radius: 12px;">
+            <sh-icon name="Users" size="lg" color="primary" data-theme="${args.theme}"></sh-icon>
           </div>
-        </sh-card>
+          <div>
+            <div style="font-size: 0.75rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'}; text-transform: uppercase;">Users</div>
+            <div style="font-size: 1.5rem; font-weight: 700;">1,234</div>
+          </div>
+        </div>
+      </sh-card>
 
-        <sh-card hover style="width: 200px;" data-theme="${args.theme}">
-          <div style="display: flex; align-items: center; gap: 1rem;">
-            <div style="padding: 0.75rem; background: rgba(34, 197, 94, 0.1); border-radius: 12px;">
-              <sh-icon name="TrendingUp" size="lg" color="success" data-theme="${args.theme}"></sh-icon>
-            </div>
-            <div>
-              <div style="font-size: 0.75rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'}; text-transform: uppercase;">Revenue</div>
-              <div style="font-size: 1.5rem; font-weight: 700;">$12.5K</div>
-            </div>
+      <sh-card hover style="width: 200px;" data-theme="${args.theme}">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="padding: 0.75rem; background: rgba(34, 197, 94, 0.1); border-radius: 12px;">
+            <sh-icon name="TrendingUp" size="lg" color="success" data-theme="${args.theme}"></sh-icon>
           </div>
-        </sh-card>
-      </div>
+          <div>
+            <div style="font-size: 0.75rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'}; text-transform: uppercase;">Revenue</div>
+            <div style="font-size: 1.5rem; font-weight: 700;">$12.5K</div>
+          </div>
+        </div>
+      </sh-card>
     </div>
   `,
 };
@@ -241,72 +227,70 @@ export const AddStockForm: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 400px; display: flex; align-items: center; justify-content: center; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <sh-card style="width: 400px;" data-theme="${args.theme}">
-        <div slot="header">
-          <h2 style="margin: 0;">Ajouter un stock</h2>
-          <p style="margin: 0.5rem 0 0 0; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
-            Enregistrer un nouveau produit dans l'inventaire
-          </p>
+    <sh-card style="width: 400px;" data-theme="${args.theme}">
+      <div slot="header">
+        <h2 style="margin: 0;">Ajouter un stock</h2>
+        <p style="margin: 0.5rem 0 0 0; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
+          Enregistrer un nouveau produit dans l'inventaire
+        </p>
+      </div>
+
+      <form style="display: flex; flex-direction: column; gap: 1rem;">
+        <div>
+          <label style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; font-weight: 500;">
+            Nom du produit
+          </label>
+          <input
+            type="text"
+            placeholder="Ex: Peinture Acrylique Bleu"
+            style="width: 100%; padding: 0.5rem; border: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.2)' : '#d1d5db'}; border-radius: 6px; font-size: 0.875rem; background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.05)' : '#ffffff'}; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};"
+          >
         </div>
 
-        <form style="display: flex; flex-direction: column; gap: 1rem;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
           <div>
             <label style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; font-weight: 500;">
-              Nom du produit
+              Quantité
+            </label>
+            <input
+              type="number"
+              placeholder="0"
+              style="width: 100%; padding: 0.5rem; border: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.2)' : '#d1d5db'}; border-radius: 6px; font-size: 0.875rem; background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.05)' : '#ffffff'}; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};"
+            >
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; font-weight: 500;">
+              Prix unitaire
             </label>
             <input
               type="text"
-              placeholder="Ex: Peinture Acrylique Bleu"
+              placeholder="€0.00"
               style="width: 100%; padding: 0.5rem; border: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.2)' : '#d1d5db'}; border-radius: 6px; font-size: 0.875rem; background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.05)' : '#ffffff'}; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};"
             >
           </div>
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-            <div>
-              <label style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; font-weight: 500;">
-                Quantité
-              </label>
-              <input
-                type="number"
-                placeholder="0"
-                style="width: 100%; padding: 0.5rem; border: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.2)' : '#d1d5db'}; border-radius: 6px; font-size: 0.875rem; background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.05)' : '#ffffff'}; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};"
-              >
-            </div>
-            <div>
-              <label style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; font-weight: 500;">
-                Prix unitaire
-              </label>
-              <input
-                type="text"
-                placeholder="€0.00"
-                style="width: 100%; padding: 0.5rem; border: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.2)' : '#d1d5db'}; border-radius: 6px; font-size: 0.875rem; background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.05)' : '#ffffff'}; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};"
-              >
-            </div>
-          </div>
-
-          <div>
-            <label for="category-select" style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; font-weight: 500;">
-              Catégorie
-            </label>
-            <select
-              id="category-select"
-              style="width: 100%; padding: 0.5rem; border: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.2)' : '#d1d5db'}; border-radius: 6px; font-size: 0.875rem; background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.05)' : '#ffffff'}; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};"
-            >
-              <option>Peinture</option>
-              <option>Textile</option>
-              <option>Outils</option>
-              <option>Papeterie</option>
-            </select>
-          </div>
-        </form>
-
-        <div slot="footer" style="display: flex; gap: 0.5rem; justify-content: flex-end;">
-          <sh-button variant="ghost" size="sm" data-theme="${args.theme}">Annuler</sh-button>
-          <sh-button variant="primary" size="sm" iconBefore="Plus" data-theme="${args.theme}">Ajouter</sh-button>
         </div>
-      </sh-card>
-    </div>
+
+        <div>
+          <label for="category-select" style="display: block; margin-bottom: 0.25rem; font-size: 0.875rem; font-weight: 500;">
+            Catégorie
+          </label>
+          <select
+            id="category-select"
+            style="width: 100%; padding: 0.5rem; border: 1px solid ${args.theme === 'dark' ? 'rgba(255,255,255,0.2)' : '#d1d5db'}; border-radius: 6px; font-size: 0.875rem; background: ${args.theme === 'dark' ? 'rgba(255,255,255,0.05)' : '#ffffff'}; color: ${args.theme === 'dark' ? '#f8fafc' : '#1e293b'};"
+          >
+            <option>Peinture</option>
+            <option>Textile</option>
+            <option>Outils</option>
+            <option>Papeterie</option>
+          </select>
+        </div>
+      </form>
+
+      <div slot="footer" style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+        <sh-button variant="ghost" size="sm" data-theme="${args.theme}">Annuler</sh-button>
+        <sh-button variant="primary" size="sm" iconBefore="Plus" data-theme="${args.theme}">Ajouter</sh-button>
+      </div>
+    </sh-card>
   `,
 };
 
@@ -319,20 +303,18 @@ export const Playground: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${args.theme === 'dark' ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)' : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'}; padding: 2rem; min-height: 300px; display: flex; align-items: center; justify-content: center; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <sh-card
-        ?hover="${args.hover}"
-        ?clickable="${args.clickable}"
-        padding="${args.padding}"
-        style="width: 300px;"
-        data-theme="${args.theme}"
-      >
-        <h3 style="margin: 0 0 0.5rem 0;">Card Title</h3>
-        <p style="margin: 0; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
-          Configure the card using the controls below.
-        </p>
-      </sh-card>
-    </div>
+    <sh-card
+      ?hover="${args.hover}"
+      ?clickable="${args.clickable}"
+      padding="${args.padding}"
+      style="width: 300px;"
+      data-theme="${args.theme}"
+    >
+      <h3 style="margin: 0 0 0.5rem 0;">Card Title</h3>
+      <p style="margin: 0; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
+        Configure the card using the controls below.
+      </p>
+    </sh-card>
   `,
 };
 
@@ -352,7 +334,7 @@ export const InteractionTestClickable: Story = {
     }
   },
   render: (args) => `
-    <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 250px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; color: #ffffff;">
+    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 2rem;">
       <sh-card
         clickable
         style="width: 250px;"
@@ -434,7 +416,7 @@ export const InteractionTestKeyboard: Story = {
     }
   },
   render: (args) => `
-    <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 250px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; color: #ffffff;">
+    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 2rem;">
       <sh-card
         clickable
         style="width: 250px;"
@@ -516,7 +498,7 @@ export const InteractionTestNonClickable: Story = {
     }
   },
   render: (args) => `
-    <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 250px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; color: #ffffff;">
+    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 2rem;">
       <sh-card
         id="non-clickable-card"
         style="width: 250px;"
@@ -626,8 +608,8 @@ export const InteractionTestFocusNavigation: Story = {
     }
   },
   render: (args) => `
-    <div style="background: linear-gradient(to bottom right, #0f172a, #1e1b4b); padding: 2rem; min-height: 300px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; color: #ffffff;">
-      <button style="padding: 0.5rem 1rem; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.5); border-radius: 6px; color: #ffffff; cursor: pointer;">
+    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 2rem;">
+      <button style="padding: 0.5rem 1rem; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.5); border-radius: 6px; cursor: pointer;">
         Focus me first
       </button>
       <sh-card

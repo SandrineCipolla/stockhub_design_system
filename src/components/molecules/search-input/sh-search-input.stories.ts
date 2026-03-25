@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { expect, userEvent } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import { expect, userEvent } from 'storybook/test';
 import './sh-search-input';
 
 const meta: Meta = {
@@ -37,10 +37,6 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-const getBackground = (theme: string) => theme === 'dark'
-  ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)'
-  : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)';
-
 /**
  * Input de recherche simple
  */
@@ -49,12 +45,10 @@ export const Default: Story = {
     placeholder: 'Rechercher un produit...',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 300px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <sh-search-input
-        placeholder="${args.placeholder}"
-        data-theme="${args.theme}"
-      ></sh-search-input>
-    </div>
+    <sh-search-input
+      placeholder="${args.placeholder}"
+      data-theme="${args.theme}"
+    ></sh-search-input>
 
     <script>
       customElements.whenDefined('sh-search-input').then(() => {
@@ -81,14 +75,12 @@ export const WithClear: Story = {
     clearable: true,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 300px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <sh-search-input
-        id="search-clear"
-        placeholder="${args.placeholder}"
-        clearable
-        data-theme="${args.theme}"
-      ></sh-search-input>
-    </div>
+    <sh-search-input
+      id="search-clear"
+      placeholder="${args.placeholder}"
+      clearable
+      data-theme="${args.theme}"
+    ></sh-search-input>
 
     <script>
       customElements.whenDefined('sh-search-input').then(() => {
@@ -113,7 +105,7 @@ export const WithDebounce: Story = {
     clearable: true,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 300px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
+    <div style="padding: 2rem;">
       <div style="margin-bottom: 1rem;">
         <p style="margin: 0 0 0.5rem 0; font-size: 0.875rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
           L'événement <code>sh-search</code> se déclenche 300ms après avoir arrêté de taper
@@ -169,13 +161,11 @@ export const Disabled: Story = {
     disabled: true,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 300px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <sh-search-input
-        placeholder="${args.placeholder}"
-        disabled
-        data-theme="${args.theme}"
-      ></sh-search-input>
-    </div>
+    <sh-search-input
+      placeholder="${args.placeholder}"
+      disabled
+      data-theme="${args.theme}"
+    ></sh-search-input>
   `,
 };
 
@@ -189,19 +179,17 @@ export const StockHubStyle: Story = {
     debounce: 300,
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 400px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <div style="max-width: 500px;">
-        <sh-search-input
-          placeholder="${args.placeholder}"
-          clearable
-          debounce="300"
-          data-theme="${args.theme}"
-        ></sh-search-input>
+    <div style="padding: 2rem; max-width: 500px;">
+      <sh-search-input
+        placeholder="${args.placeholder}"
+        clearable
+        debounce="300"
+        data-theme="${args.theme}"
+      ></sh-search-input>
 
-        <h2 style="margin-top: 2rem; margin-bottom: 1rem;">Mes Stocks Récents (18)</h2>
-        <div style="font-size: 0.875rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
-          Résultats de recherche apparaîtraient ici...
-        </div>
+      <h2 style="margin-top: 2rem; margin-bottom: 1rem;">Mes Stocks Récents (18)</h2>
+      <div style="font-size: 0.875rem; color: ${args.theme === 'dark' ? '#9ca3af' : '#6b7280'};">
+        Résultats de recherche apparaîtraient ici...
       </div>
     </div>
   `,
@@ -219,15 +207,13 @@ export const Playground: Story = {
     theme: 'dark',
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 300px; color: ${args.theme === 'dark' ? '#ffffff' : '#1e293b'};">
-      <sh-search-input
-        placeholder="${args.placeholder}"
-        debounce="${args.debounce}"
-        ?clearable="${args.clearable}"
-        ?disabled="${args.disabled}"
-        data-theme="${args.theme}"
-      ></sh-search-input>
-    </div>
+    <sh-search-input
+      placeholder="${args.placeholder}"
+      debounce="${args.debounce}"
+      ?clearable="${args.clearable}"
+      ?disabled="${args.disabled}"
+      data-theme="${args.theme}"
+    ></sh-search-input>
   `,
 };
 
@@ -248,7 +234,7 @@ export const InteractionTest: Story = {
     }
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 250px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+    <div style="padding: 2rem; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
       <sh-search-input
         placeholder="${args.placeholder}"
         data-theme="${args.theme}"
@@ -336,7 +322,7 @@ export const InteractionTestClear: Story = {
     }
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 250px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+    <div style="padding: 2rem; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
       <sh-search-input
         placeholder="${args.placeholder}"
         clearable
@@ -425,7 +411,7 @@ export const InteractionTestDebounce: Story = {
     }
   },
   render: (args) => `
-    <div style="background: ${getBackground(args.theme)}; padding: 2rem; min-height: 250px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
+    <div style="padding: 2rem; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
       <sh-search-input
         placeholder="${args.placeholder}"
         debounce="300"

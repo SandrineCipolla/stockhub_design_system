@@ -85,7 +85,7 @@ export class ShButton extends LitElement {
    * Accessible label for screen readers (required for icon-only buttons)
    * @type {string}
    */
-  @property({ type: String }) ariaLabel: string | null = null;
+  @property({ type: String, attribute: 'aria-label' }) ariaLabel: string | null = null;
 
   static styles = css`
     :host {

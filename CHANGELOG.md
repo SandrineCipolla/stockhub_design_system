@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0](https://github.com/SandrineCipolla/stockhub_design_system/compare/v1.2.2...v1.3.0) (2026-04-02)
+
+
+### Features
+
+* add issue templates for bug reports, technical tasks, and user stories ([08d41f2](https://github.com/SandrineCipolla/stockhub_design_system/commit/08d41f23dc57d87c9670d8c334237da90a53470d))
+* add issue templates for bug reports, technical tasks, and user stories ([5944640](https://github.com/SandrineCipolla/stockhub_design_system/commit/59446408a9436f962ed0e53fea9eabc723de8047))
+* add issue templates for bug reports, technical tasks, and user stories ([928eef2](https://github.com/SandrineCipolla/stockhub_design_system/commit/928eef2a774275df415d328b4b105a68a97163a2))
+* **sh-stat-card:** add new molecule component for interactive filtering with selected state ([42feb02](https://github.com/SandrineCipolla/stockhub_design_system/commit/42feb0285450bfd6148215337645faeb0149e630))
+* **stock-prediction-card:** add new ML prediction card component with detailed metrics and interactive features ([ddb42d8](https://github.com/SandrineCipolla/stockhub_design_system/commit/ddb42d8cb2d72aac5141b328f8d774f25c6e4cd9))
+* **stock-prediction-card:** add new ML prediction card component with detailed metrics and interactive features ([9c72797](https://github.com/SandrineCipolla/stockhub_design_system/commit/9c72797cb0229a7b482bdfffd9efb4352b7efecf))
+* **stock-prediction-card:** add new ML prediction card component with detailed metrics and interactive features ([bb73edc](https://github.com/SandrineCipolla/stockhub_design_system/commit/bb73edc7cbac3a6849464ad2edbc1072805341c7))
+
+
+### Bug Fixes
+
+* **a11y:** map aria-label attribute to ariaLabel property in sh-button — closes [#28](https://github.com/SandrineCipolla/stockhub_design_system/issues/28) ([#29](https://github.com/SandrineCipolla/stockhub_design_system/issues/29)) ([64ffd63](https://github.com/SandrineCipolla/stockhub_design_system/commit/64ffd633b01e1d77de5fe85c3b6ea156f23af471))
+* **sh-stat-card:** improve hover effect and sizing for better UX ([#22](https://github.com/SandrineCipolla/stockhub_design_system/issues/22)) ([8f87e63](https://github.com/SandrineCipolla/stockhub_design_system/commit/8f87e6391693d63100c3fa38af39e8746ed68507))
+
 ## [Unreleased]
 
 ## [1.3.1] - 2025-01-16

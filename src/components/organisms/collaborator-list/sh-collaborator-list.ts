@@ -30,9 +30,20 @@ export interface CollaboratorItem {
 @customElement('sh-collaborator-list')
 export class ShCollaboratorList extends LitElement {
   /**
-   * Liste des collaborateurs (JSON stringifié ou propriété JS)
+   * Liste des collaborateurs — accepte un tableau JS ou un JSON stringifié en attribut
    */
-  @property({ type: Array }) collaborators: CollaboratorItem[] = [];
+  @property({
+    converter: {
+      fromAttribute: (value: string) => {
+        try {
+          return JSON.parse(value);
+        } catch {
+          return [];
+        }
+      },
+    },
+  })
+  collaborators: CollaboratorItem[] = [];
 
   /**
    * Rôle de l'utilisateur connecté — détermine les actions disponibles

@@ -30,7 +30,7 @@ export const AsOwner: Story = {
   args: { theme: 'dark' },
   render: (args) => `
     <sh-collaborator-list
-      .collaborators='${JSON.stringify(COLLABORATORS)}'
+      collaborators='${JSON.stringify(COLLABORATORS)}'
       viewer-role="OWNER"
       data-theme="${args.theme}"
       style="width: 420px;"
@@ -46,7 +46,7 @@ export const AsEditor: Story = {
         Vue EDITOR — peut gérer VIEWER et VIEWER_CONTRIBUTOR uniquement
       </p>
       <sh-collaborator-list
-        .collaborators='${JSON.stringify(COLLABORATORS)}'
+        collaborators='${JSON.stringify(COLLABORATORS)}'
         viewer-role="EDITOR"
         data-theme="${args.theme}"
         style="width: 420px;"
@@ -63,7 +63,7 @@ export const AsViewer: Story = {
         Vue VIEWER — lecture seule, aucune action disponible
       </p>
       <sh-collaborator-list
-        .collaborators='${JSON.stringify(COLLABORATORS)}'
+        collaborators='${JSON.stringify(COLLABORATORS)}'
         viewer-role="VIEWER"
         data-theme="${args.theme}"
         style="width: 420px;"
@@ -76,7 +76,7 @@ export const Empty: Story = {
   args: { theme: 'dark' },
   render: (args) => `
     <sh-collaborator-list
-      .collaborators='${JSON.stringify([])}'
+      collaborators='${JSON.stringify([])}'
       viewer-role="OWNER"
       data-theme="${args.theme}"
       style="width: 420px;"
@@ -89,7 +89,7 @@ export const LightMode: Story = {
   render: (args) => `
     <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px;">
       <sh-collaborator-list
-        .collaborators='${JSON.stringify(COLLABORATORS)}'
+        collaborators='${JSON.stringify(COLLABORATORS)}'
         viewer-role="OWNER"
         data-theme="${args.theme}"
         style="width: 420px;"
@@ -102,7 +102,7 @@ export const Playground: Story = {
   args: { viewerRole: 'OWNER', disabled: false, theme: 'dark' },
   render: (args) => `
     <sh-collaborator-list
-      .collaborators='${JSON.stringify(COLLABORATORS)}'
+      collaborators='${JSON.stringify(COLLABORATORS)}'
       viewer-role="${args.viewerRole}"
       ?disabled="${args.disabled}"
       data-theme="${args.theme}"

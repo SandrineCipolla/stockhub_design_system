@@ -10,7 +10,10 @@ const COLLABORATORS = [
 const meta: Meta = {
   title: 'Components/Organisms/CollaboratorList',
   component: 'sh-collaborator-list',
-  parameters: { layout: 'centered' },
+  parameters: {
+    layout: 'centered',
+    actions: { handles: ['collaborator-role-change', 'collaborator-remove'] },
+  },
   tags: ['autodocs'],
   argTypes: {
     viewerRole: {

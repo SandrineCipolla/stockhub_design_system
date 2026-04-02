@@ -4,7 +4,10 @@ import './sh-role-selector.ts';
 const meta: Meta = {
   title: 'Components/Molecules/RoleSelector',
   component: 'sh-role-selector',
-  parameters: { layout: 'centered' },
+  parameters: {
+    layout: 'centered',
+    actions: { handles: ['role-change'] },
+  },
   tags: ['autodocs'],
   argTypes: {
     value: {

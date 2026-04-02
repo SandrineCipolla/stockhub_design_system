@@ -4,7 +4,10 @@ import './sh-contribution-card.ts';
 const meta: Meta = {
   title: 'Components/Molecules/ContributionCard',
   component: 'sh-contribution-card',
-  parameters: { layout: 'centered' },
+  parameters: {
+    layout: 'centered',
+    actions: { handles: ['contribution-approve', 'contribution-reject'] },
+  },
   tags: ['autodocs'],
   argTypes: {
     itemLabel: { control: 'text', description: "Nom de l'item" },

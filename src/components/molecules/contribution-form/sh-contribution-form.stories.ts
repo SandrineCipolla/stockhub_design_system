@@ -4,7 +4,10 @@ import './sh-contribution-form.ts';
 const meta: Meta = {
   title: 'Components/Molecules/ContributionForm',
   component: 'sh-contribution-form',
-  parameters: { layout: 'centered' },
+  parameters: {
+    layout: 'centered',
+    actions: { handles: ['contribution-submit', 'contribution-cancel'] },
+  },
   tags: ['autodocs'],
   argTypes: {
     itemLabel: { control: 'text', description: "Nom de l'item" },

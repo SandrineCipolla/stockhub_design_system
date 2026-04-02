@@ -115,24 +115,6 @@ export const AllStatuses: Story = {
   `,
 };
 
-export const LightMode: Story = {
-  args: { theme: 'light' },
-  render: (args) => `
-    <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px;">
-      <sh-contribution-card
-        contribution-id="1"
-        item-label="Yaourts nature"
-        current-quantity="6"
-        suggested-quantity="2"
-        author-email="enfant@family.local"
-        created-at="2026-04-02T10:00:00Z"
-        status="PENDING"
-        data-theme="${args.theme}"
-        style="width: 320px;"
-      ></sh-contribution-card>
-    </div>
-  `,
-};
 
 export const Playground: Story = {
   args: {

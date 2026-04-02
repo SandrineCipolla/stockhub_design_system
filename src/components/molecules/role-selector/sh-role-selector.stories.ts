@@ -55,14 +55,6 @@ export const Disabled: Story = {
   `,
 };
 
-export const LightMode: Story = {
-  args: { theme: 'light' },
-  render: (args) => `
-    <div style="background: white; padding: 1rem; border-radius: 8px;">
-      <sh-role-selector value="EDITOR" data-theme="${args.theme}"></sh-role-selector>
-    </div>
-  `,
-};
 
 export const Playground: Story = {
   args: { value: 'VIEWER', exclude: '', disabled: false, theme: 'dark' },

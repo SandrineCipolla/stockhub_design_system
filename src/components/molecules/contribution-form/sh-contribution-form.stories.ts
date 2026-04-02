@@ -42,19 +42,6 @@ export const Disabled: Story = {
   `,
 };
 
-export const LightMode: Story = {
-  args: { theme: 'light' },
-  render: (args) => `
-    <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px;">
-      <sh-contribution-form
-        item-label="Huile d'olive"
-        current-quantity="2"
-        data-theme="${args.theme}"
-        style="width: 320px;"
-      ></sh-contribution-form>
-    </div>
-  `,
-};
 
 export const Playground: Story = {
   args: { itemLabel: 'Yaourts nature', currentQuantity: 6, disabled: false, theme: 'dark' },

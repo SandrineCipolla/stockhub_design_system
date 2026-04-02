@@ -51,17 +51,6 @@ export const AllSizes: Story = {
   `,
 };
 
-export const LightMode: Story = {
-  args: { theme: 'light' },
-  render: (args) => `
-    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; background: white; padding: 1rem; border-radius: 8px;">
-      <sh-role-badge role="OWNER" data-theme="${args.theme}"></sh-role-badge>
-      <sh-role-badge role="EDITOR" data-theme="${args.theme}"></sh-role-badge>
-      <sh-role-badge role="VIEWER" data-theme="${args.theme}"></sh-role-badge>
-      <sh-role-badge role="VIEWER_CONTRIBUTOR" data-theme="${args.theme}"></sh-role-badge>
-    </div>
-  `,
-};
 
 export const Playground: Story = {
   args: { role: 'OWNER', size: 'md', theme: 'dark' },

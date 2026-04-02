@@ -84,19 +84,6 @@ export const Empty: Story = {
   `,
 };
 
-export const LightMode: Story = {
-  args: { theme: 'light' },
-  render: (args) => `
-    <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px;">
-      <sh-collaborator-list
-        collaborators='${JSON.stringify(COLLABORATORS)}'
-        viewer-role="OWNER"
-        data-theme="${args.theme}"
-        style="width: 420px;"
-      ></sh-collaborator-list>
-    </div>
-  `,
-};
 
 export const Playground: Story = {
   args: { viewerRole: 'OWNER', disabled: false, theme: 'dark' },

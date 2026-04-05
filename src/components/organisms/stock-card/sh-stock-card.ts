@@ -301,6 +301,7 @@ export class ShStockCard extends LitElement {
     | 'overstocked' = 'optimal';
   @property({ type: Number }) iaCount = 0;
   @property({ type: Boolean }) loading = false;
+  @property({ type: Boolean, attribute: 'hide-details' }) hideDetails = false;
   @property({ type: String, reflect: true, attribute: 'data-theme' }) theme: 'light' | 'dark' =
     'dark';
 
@@ -369,18 +370,20 @@ export class ShStockCard extends LitElement {
 
         <!-- Actions -->
         <div class="actions">
-          <sh-button
-            class="details-btn"
-            variant="ghost"
-            size="sm"
-            icon-before="Eye"
-            @click="${this._handleDetails}"
-            ?disabled="${this.loading}"
-            .ariaLabel="Voir les détails de ${this.name}"
-            data-theme="${this.theme}"
-          >
-            Détails
-          </sh-button>
+          ${!this.hideDetails
+            ? html`<sh-button
+                class="details-btn"
+                variant="ghost"
+                size="sm"
+                icon-before="Eye"
+                @click="${this._handleDetails}"
+                ?disabled="${this.loading}"
+                .ariaLabel="Voir les détails de ${this.name}"
+                data-theme="${this.theme}"
+              >
+                Détails
+              </sh-button>`
+            : ''}
 
           <div class="icon-actions">
             <sh-button

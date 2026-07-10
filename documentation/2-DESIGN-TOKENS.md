@@ -619,7 +619,7 @@ Oui, tant que tu importes `design-tokens.css` dans ton application.
 
 ## 🔗 Voir aussi
 
-- **[DESIGN-TOKENS-AUDIT.md](./DESIGN-TOKENS-AUDIT.md)** : Audit complet de l'utilisation des tokens dans les composants (taux d'adoption : 86%)
+- **[DESIGN-TOKENS-AUDIT.md](./3-DESIGN-TOKENS-AUDIT.md)** : Audit complet de l'utilisation des tokens dans les composants (taux d'adoption : 86%)
 - **[INDEX.md](./INDEX.md)** : Navigation complète de la documentation
 
 ---

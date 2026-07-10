@@ -22,32 +22,33 @@ La cohérence des conventions de nommage (props, événements, fichiers) est vé
 1- [1-GETTING-STARTED.md](./1-GETTING-STARTED.md)  
    *Introduction, objectifs et philosophie du Design System.*
 
-2- [2-MIGRATION-PLAN.md](./planning/2-MIGRATION-PLAN.md)  
-   *Roadmap et stratégie de migration.*
-
-3- [3-COMPONENT-SPECIFICATIONS.md](./planning/3-COMPONENT-SPECIFICATIONS.md)  
-   *Spécifications techniques des composants.*
-
-4- [4-DESIGN-TOKENS.md](./4-DESIGN-TOKENS.md)  
+2- [2-DESIGN-TOKENS.md](./2-DESIGN-TOKENS.md)  
    *Système de design tokens et bonnes pratiques.*
 
-5- [5-REACT-INTEGRATION-GUIDE.md](./5-REACT-INTEGRATION-GUIDE.md)  
-   *Intégration des Web Components dans React.*
-
-6- [6-DESIGN-TOKENS-AUDIT.md](./6-DESIGN-TOKENS-AUDIT.md)  
+3- [3-DESIGN-TOKENS-AUDIT.md](./3-DESIGN-TOKENS-AUDIT.md)  
    *Audit de l’utilisation des tokens.*
 
-7- [7-INTERACTION_TESTS_TRACKING.md](../7-INTERACTION_TESTS_TRACKING.md)  
+4- [4-REACT-INTEGRATION-GUIDE.md](./4-REACT-INTEGRATION-GUIDE.md)  
+   *Intégration des Web Components dans React.*
+
+5- [5-COMPONENT-DOCUMENTATION.md](./5-COMPONENT-DOCUMENTATION.md)  
+   *Documentation détaillée de chaque composant.*
+
+6- [6-STORYBOOK-ORGANIZATION.md](./6-STORYBOOK-ORGANIZATION.md)  
+   *Organisation du menu Storybook.*
+
+7- [7-TROUBLESHOOTING.md](./7-TROUBLESHOOTING.md)  
+   *Problèmes connus et solutions.*
+
+8- [8-INTERACTION-TESTS-TRACKING.md](./8-INTERACTION-TESTS-TRACKING.md)  
    *Suivi des tests d’interaction.*
 
-8- [8-SPRINT-1-CHECKLIST.md](./planning/8-SPRINT-1-CHECKLIST.md)  
-   *Checklist opérationnelle du Sprint 1.*
+9- [9-ACCESSIBILITY-REPORT.md](./9-ACCESSIBILITY-REPORT.md)  
+   *Rapport d’accessibilité.*
 
-9- [CHANGELOG-HISTORIQUE-SESSIONS.md](./CHANGELOG-HISTORIQUE-SESSIONS.md)  
-   *Historique détaillé des sessions (archive, avant release-please). Pour l'historique des versions à jour, voir [CHANGELOG.md](../CHANGELOG.md).*
-
-10- [10-10-ACCESSIBILITY-REPORT.md](../10-10-ACCESSIBILITY-REPORT.md)  
-    *Rapport d’accessibilité.*
+**Plans & specs** (`./planning/`) : [MIGRATION-PLAN.md](./planning/MIGRATION-PLAN.md), [COMPONENT-SPECIFICATIONS.md](./planning/COMPONENT-SPECIFICATIONS.md), [SPRINT-1-CHECKLIST.md](./planning/SPRINT-1-CHECKLIST.md), [INTEGRATION-PLAN.md](./planning/INTEGRATION-PLAN.md).
+**Sessions de développement** (`./sessions/`) : comptes-rendus historiques, voir section dédiée plus bas.
+**Archive** (`./archive/`) : documents clos ou superseded — voir [DESIGN-SYSTEM-CORRECTIONS.md](./archive/DESIGN-SYSTEM-CORRECTIONS.md), [OPTIMIZATION-PLAN.md](./archive/OPTIMIZATION-PLAN.md), [CHANGELOG-HISTORIQUE-SESSIONS.md](./archive/CHANGELOG-HISTORIQUE-SESSIONS.md), [STOCK-PREDICTION-CARD-IMPLEMENTATION.md](./archive/STOCK-PREDICTION-CARD-IMPLEMENTATION.md), [STOCKHUB-V2-INTEGRATION.md](./archive/STOCKHUB-V2-INTEGRATION.md).
 
 ---
 
@@ -103,14 +104,14 @@ L'organisation du menu Storybook respecte exactement la hiérarchie des dossiers
 
 Retrouvez les résumés détaillés de toutes les sessions :
 
-- **[Session 1](./planning/SESSION-1-SUMMARY.md)** (16/10) - Fondations (3h)
-- **[Session 2](./planning/SESSION-2-SUMMARY.md)** (19/10) - Support Thème Global (2h)
-- **[Session 3](./planning/SESSION-3-SUMMARY.md)** (19/10) - Documentation Automatique (1h30)
-- **[Session 4](./planning/SESSION-4-SUMMARY.md)** (19/10) - Theme Toggle Global (2h)
-- **[Session 5](./planning/SESSION-5-SUMMARY.md)** (20/10) - Nouveaux Composants V2 (2h30)
-- **[Session 6](./planning/SESSION-6-SUMMARY.md)** (20/10) - Finalisation Phase 1 (1h30)
-- **[Session 7](./planning/SESSION-7-SUMMARY.md)** (21/10) - Refactoring Atomic Design (2h)
-- **[Session 8](./planning/SESSION-8-SUMMARY.md)** (21/10) - Complétion Composants V2 (2h)
+- **[Session 1](./sessions/SESSION-1-SUMMARY.md)** (16/10) - Fondations (3h)
+- **[Session 2](./sessions/SESSION-2-SUMMARY.md)** (19/10) - Support Thème Global (2h)
+- **[Session 3](./sessions/SESSION-3-SUMMARY.md)** (19/10) - Documentation Automatique (1h30)
+- **[Session 4](./sessions/SESSION-4-SUMMARY.md)** (19/10) - Theme Toggle Global (2h)
+- **[Session 5](./sessions/SESSION-5-SUMMARY.md)** (20/10) - Nouveaux Composants V2 (2h30)
+- **[Session 6](./sessions/SESSION-6-SUMMARY.md)** (20/10) - Finalisation Phase 1 (1h30)
+- **[Session 7](./sessions/SESSION-7-SUMMARY.md)** (21/10) - Refactoring Atomic Design (2h)
+- **[Session 8](./sessions/SESSION-8-SUMMARY.md)** (21/10) - Complétion Composants V2 (2h)
 
 ---
 
@@ -161,7 +162,7 @@ Checklist opérationnelle pour le Sprint 1 (Fondations).
 
 ### 🔧 Guides Techniques
 
-#### [DESIGN-TOKENS.md](./DESIGN-TOKENS.md)
+#### [DESIGN-TOKENS.md](./2-DESIGN-TOKENS.md)
 Documentation complète du système de Design Tokens.
 
 **Contenu** :
@@ -176,7 +177,7 @@ Documentation complète du système de Design Tokens.
 
 ---
 
-#### [REACT-INTEGRATION-GUIDE.md](./REACT-INTEGRATION-GUIDE.md)
+#### [REACT-INTEGRATION-GUIDE.md](./4-REACT-INTEGRATION-GUIDE.md)
 Guide complet d'intégration des Web Components dans React.
 
 **Contenu** :
@@ -194,7 +195,7 @@ Guide complet d'intégration des Web Components dans React.
 
 ### 📊 Audits & Rapports Techniques
 
-#### [DESIGN-TOKENS-AUDIT.md](./DESIGN-TOKENS-AUDIT.md)
+#### [DESIGN-TOKENS-AUDIT.md](./3-DESIGN-TOKENS-AUDIT.md)
 Audit complet de l'utilisation des Design Tokens dans tous les composants.
 
 **Contenu** :
@@ -209,7 +210,7 @@ Audit complet de l'utilisation des Design Tokens dans tous les composants.
 
 **Statut** : 📋 Améliorations optionnelles (priorité basse)
 
-#### [INTERACTION_TESTS_TRACKING.md](../INTERACTION_TESTS_TRACKING.md) ✨ NOUVEAU
+#### [8-INTERACTION-TESTS-TRACKING.md](./8-INTERACTION-TESTS-TRACKING.md) ✨ NOUVEAU
 Tracking complet de l'implémentation des tests d'interaction avec @storybook/test.
 
 **Contenu** :
@@ -237,10 +238,10 @@ Tracking complet de l'implémentation des tests d'interaction avec @storybook/te
 
 ### "Je vais développer un composant"
 1. Consulter [COMPONENT-SPECIFICATIONS.md](./planning/COMPONENT-SPECIFICATIONS.md)
-2. Suivre [SPRINT-X-CHECKLIST.md](./planning/SPRINT-1-CHECKLIST.md)
+2. Suivre [SPRINT-1-CHECKLIST.md](./planning/SPRINT-1-CHECKLIST.md)
 
 ### "Je dois intégrer dans StockHub V2"
-→ Lire [REACT-INTEGRATION-GUIDE.md](./REACT-INTEGRATION-GUIDE.md)
+→ Lire [REACT-INTEGRATION-GUIDE.md](./4-REACT-INTEGRATION-GUIDE.md)
 
 ### "Je veux démarrer le Sprint 1"
 → Ouvrir [SPRINT-1-CHECKLIST.md](./planning/SPRINT-1-CHECKLIST.md)
@@ -283,7 +284,7 @@ Tracking complet de l'implémentation des tests d'interaction avec @storybook/te
 ### 🔗 Voir aussi
 - **Historique des versions** → [CHANGELOG.md](../CHANGELOG.md)
 - **Problèmes d'intégration StockHub V2** → [DESIGN-SYSTEM-CORRECTIONS.md](./archive/DESIGN-SYSTEM-CORRECTIONS.md)
-- **Rapport d'accessibilité WCAG AA** → [10-ACCESSIBILITY-REPORT.md](../10-ACCESSIBILITY-REPORT.md)
+- **Rapport d'accessibilité WCAG AA** → [9-ACCESSIBILITY-REPORT.md](./9-ACCESSIBILITY-REPORT.md)
 
 ---
 

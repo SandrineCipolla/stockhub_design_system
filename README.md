@@ -635,7 +635,7 @@ npm run tokens:watch
 
 ### 📚 Documentation Complète
 
-Voir **[DESIGN-TOKENS.md](./documentation/DESIGN-TOKENS.md)** pour :
+Voir **[DESIGN-TOKENS.md](./documentation/2-DESIGN-TOKENS.md)** pour :
 - Pourquoi utiliser des Design Tokens ?
 - Architecture du système (tokens.json → CSS)
 - Workflow complet et bonnes pratiques
@@ -854,14 +854,14 @@ Pour une documentation détaillée du projet, consultez **[documentation/INDEX.m
 - **[Session 1-8](./documentation/INDEX.md#-sessions-de-développement)** - Résumés détaillés de toutes les sessions (~17h30)
 
 ### 🔧 Guides Techniques
-- **[DESIGN-TOKENS.md](./documentation/DESIGN-TOKENS.md)** - Système de Design Tokens (pourquoi, comment, bonnes pratiques)
-- **[REACT-INTEGRATION-GUIDE.md](./documentation/REACT-INTEGRATION-GUIDE.md)** - Intégration Web Components dans React
-- **[COMPONENT-DOCUMENTATION.md](./documentation/COMPONENT-DOCUMENTATION.md)** - Guide JSDoc et documentation automatique
+- **[DESIGN-TOKENS.md](./documentation/2-DESIGN-TOKENS.md)** - Système de Design Tokens (pourquoi, comment, bonnes pratiques)
+- **[REACT-INTEGRATION-GUIDE.md](./documentation/4-REACT-INTEGRATION-GUIDE.md)** - Intégration Web Components dans React
+- **[COMPONENT-DOCUMENTATION.md](./documentation/5-COMPONENT-DOCUMENTATION.md)** - Guide JSDoc et documentation automatique
 
 ### 🎯 Accès Rapide
 - **Je veux comprendre le plan global** → [MIGRATION-PLAN.md](./documentation/planning/MIGRATION-PLAN.md)
 - **Je vais développer un composant** → [COMPONENT-SPECIFICATIONS.md](./documentation/planning/COMPONENT-SPECIFICATIONS.md)
-- **Je dois intégrer dans StockHub V2** → [REACT-INTEGRATION-GUIDE.md](./documentation/REACT-INTEGRATION-GUIDE.md)
+- **Je dois intégrer dans StockHub V2** → [REACT-INTEGRATION-GUIDE.md](./documentation/4-REACT-INTEGRATION-GUIDE.md)
 - **Je veux voir l'historique des sessions** → [INDEX.md](./documentation/INDEX.md)
 
 ## 📈 Progression
@@ -879,23 +879,23 @@ Le projet a complété **8 sessions de développement** (~17h30) permettant la c
 ### 📝 Sessions Complétées
 
 **Phase 1 : Fondations (16-19 Oct)**
-- ✅ [Session 1](./documentation/planning/SESSION-1-SUMMARY.md) (16/10, 3h) - Setup initial, 5 composants de base
-- ✅ [Session 2](./documentation/planning/SESSION-2-SUMMARY.md) (19/10, 2h) - Système de thème global
-- ✅ [Session 3](./documentation/planning/SESSION-3-SUMMARY.md) (19/10, 1h30) - Documentation automatique
-- ✅ [Session 4](./documentation/planning/SESSION-4-SUMMARY.md) (19/10, 2h) - Theme toggle global
+- ✅ [Session 1](./documentation/sessions/SESSION-1-SUMMARY.md) (16/10, 3h) - Setup initial, 5 composants de base
+- ✅ [Session 2](./documentation/sessions/SESSION-2-SUMMARY.md) (19/10, 2h) - Système de thème global
+- ✅ [Session 3](./documentation/sessions/SESSION-3-SUMMARY.md) (19/10, 1h30) - Documentation automatique
+- ✅ [Session 4](./documentation/sessions/SESSION-4-SUMMARY.md) (19/10, 2h) - Theme toggle global
 
 **Phase 2 : Composants StockHub V2 (20-21 Oct)**
-- ✅ [Session 5](./documentation/planning/SESSION-5-SUMMARY.md) (20/10, 2h30) - metric-card, stock-item-card, status-badge V2
-- ✅ [Session 6](./documentation/planning/SESSION-6-SUMMARY.md) (20/10, 1h30) - Finalisation Phase 1
-- ✅ [Session 7](./documentation/planning/SESSION-7-SUMMARY.md) (21/10, 2h) - Refactoring Atomic Design, nouveaux organisms
-- ✅ [Session 8](./documentation/planning/SESSION-8-SUMMARY.md) (21/10, 2h) - page-header, footer, search-input
+- ✅ [Session 5](./documentation/sessions/SESSION-5-SUMMARY.md) (20/10, 2h30) - metric-card, stock-item-card, status-badge V2
+- ✅ [Session 6](./documentation/sessions/SESSION-6-SUMMARY.md) (20/10, 1h30) - Finalisation Phase 1
+- ✅ [Session 7](./documentation/sessions/SESSION-7-SUMMARY.md) (21/10, 2h) - Refactoring Atomic Design, nouveaux organisms
+- ✅ [Session 8](./documentation/sessions/SESSION-8-SUMMARY.md) (21/10, 2h) - page-header, footer, search-input
 
 ### 📚 Documentation Détaillée
 - **Historique complet des versions** → [CHANGELOG.md](./CHANGELOG.md)
 - **Index de la documentation** → [documentation/INDEX.md](./documentation/INDEX.md)
 - **Corrections d'intégration** → [DESIGN-SYSTEM-CORRECTIONS.md](./documentation/archive/DESIGN-SYSTEM-CORRECTIONS.md) *(archivé — 100% résolu)*
-- **Rapport accessibilité** → [10-ACCESSIBILITY-REPORT.md](./10-ACCESSIBILITY-REPORT.md)
-- **Audit Design Tokens** → [documentation/DESIGN-TOKENS-AUDIT.md](./documentation/DESIGN-TOKENS-AUDIT.md)
+- **Rapport accessibilité** → [9-ACCESSIBILITY-REPORT.md](./documentation/9-ACCESSIBILITY-REPORT.md)
+- **Audit Design Tokens** → [documentation/3-DESIGN-TOKENS-AUDIT.md](./documentation/3-DESIGN-TOKENS-AUDIT.md)
 
 ## 📁 Structure du Projet
 
@@ -904,13 +904,13 @@ La documentation est organisée selon les **standards de l'industrie open-source
 ### Fichiers à la Racine
 - **README.md** : Point d'entrée principal (affiché sur GitHub/npm)
 - **CHANGELOG.md** : Historique des versions (convention [Keep a Changelog](https://keepachangelog.com/))
-- **10-ACCESSIBILITY-REPORT.md** : Certification WCAG AA (badge de qualité)
 
 ### Dossier documentation/
 - **INDEX.md** : Navigation complète de la documentation
-- **Guides techniques** : Intégration React, JSDoc, etc.
-- **planning/** : Résumés des 8 sessions de développement (~17h30)
-- **Stratégie** : Plans de migration, spécifications composants
+- **1 à 9** : Guides techniques et rapports actifs (getting started, tokens, intégration React, composants, Storybook, troubleshooting, tests, accessibilité)
+- **planning/** : Plans de migration et spécifications encore consultés comme référence
+- **sessions/** : Comptes-rendus historiques des 8 sessions de développement (~17h30)
+- **archive/** : Documents clos ou superseded (corrections résolues, anciens changelogs, rapports d'implémentation terminés)
 
 ### Rationale
 Cette organisation offre :

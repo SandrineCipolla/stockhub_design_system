@@ -25,9 +25,9 @@
 - ⏭️ **Non testés** : 1 (sh-badge)
 
 ### 🔗 Voir aussi
-- **Historique des versions** → [CHANGELOG.md](./CHANGELOG.md)
-- **Sessions de développement** → [documentation/INDEX.md](./documentation/INDEX.md#-sessions-de-développement)
-- **Rapport d'accessibilité WCAG AA** → [10-ACCESSIBILITY-REPORT.md](./10-ACCESSIBILITY-REPORT.md)
+- **Historique des versions** → [CHANGELOG.md](../../CHANGELOG.md)
+- **Sessions de développement** → [documentation/INDEX.md](../INDEX.md#-sessions-de-développement)
+- **Rapport d'accessibilité WCAG AA** → [10-ACCESSIBILITY-REPORT.md](../9-ACCESSIBILITY-REPORT.md)
 
 ---
 

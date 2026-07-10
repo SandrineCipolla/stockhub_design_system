@@ -13,23 +13,23 @@ Ce guide vous aide à démarrer avec le projet de migration StockHub V2 → Desi
 
 **Lire d'abord** :
 1. [README principal](../README.md) - Vue d'ensemble du Design System
-2. [Documentation Index](./README.md) - Navigation dans la documentation
+2. [Documentation Index](./INDEX.md) - Navigation dans la documentation
 3. [Plan de Migration](./planning/MIGRATION-PLAN.md) - Comprendre la stratégie globale
-4. [Organisation Storybook](./STORYBOOK-ORGANIZATION.md) - Structure du menu et navigation
+4. [Organisation Storybook](./6-STORYBOOK-ORGANIZATION.md) - Structure du menu et navigation
 
 ### 2. Vous allez développer ?
 
 **Suivre ces étapes** :
 1. Lire [MIGRATION-PLAN.md](./planning/MIGRATION-PLAN.md) - Comprendre le contexte
 2. Consulter [COMPONENT-SPECIFICATIONS.md](./planning/COMPONENT-SPECIFICATIONS.md) - API des composants
-3. Comprendre [STORYBOOK-ORGANIZATION.md](./STORYBOOK-ORGANIZATION.md) - Nomenclature des stories
+3. Comprendre [STORYBOOK-ORGANIZATION.md](./6-STORYBOOK-ORGANIZATION.md) - Nomenclature des stories
 4. Ouvrir [SPRINT-1-CHECKLIST.md](./planning/SPRINT-1-CHECKLIST.md) - Guide opérationnel
 5. Commencer à coder !
 
 ### 3. Vous intégrez dans React ?
 
 **Lire** :
-- [REACT-INTEGRATION-GUIDE.md](./REACT-INTEGRATION-GUIDE.md) - Guide complet d'intégration
+- [REACT-INTEGRATION-GUIDE.md](./4-REACT-INTEGRATION-GUIDE.md) - Guide complet d'intégration
 
 ---
 
@@ -47,7 +47,7 @@ Le menu Storybook est organisé pour respecter exactement la structure des dossi
 
 **Démarrer Storybook** : `npm run storybook`
 
-**Voir les détails** : [STORYBOOK-ORGANIZATION.md](./STORYBOOK-ORGANIZATION.md)
+**Voir les détails** : [STORYBOOK-ORGANIZATION.md](./6-STORYBOOK-ORGANIZATION.md)
 
 ---
 
@@ -207,11 +207,11 @@ npm run storybook
 ## 🔗 Liens Rapides
 
 **Documentation** :
-- [Index Documentation](./README.md)
+- [Index Documentation](./INDEX.md)
 - [Plan Migration](./planning/MIGRATION-PLAN.md)
 - [Spécifications](./planning/COMPONENT-SPECIFICATIONS.md)
 - [Sprint 1](./planning/SPRINT-1-CHECKLIST.md)
-- [React Guide](./REACT-INTEGRATION-GUIDE.md)
+- [React Guide](./4-REACT-INTEGRATION-GUIDE.md)
 
 **Repos** :
 - [Design System](https://github.com/SandrineCipolla/stockhub_design_system)

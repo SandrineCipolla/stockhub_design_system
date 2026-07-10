@@ -15,8 +15,8 @@ const STATUS_CONFIG: Record<ContributionStatus, { label: string; icon: string; c
  *
  * @element sh-contribution-card
  *
- * @fires contribution-approve - Émis au clic "Approuver". `detail: { contributionId: string }`
- * @fires contribution-reject  - Émis au clic "Rejeter".  `detail: { contributionId: string }`
+ * @fires sh-contribution-approve - Émis au clic "Approuver". `detail: { contributionId: string }`
+ * @fires sh-contribution-reject  - Émis au clic "Rejeter".  `detail: { contributionId: string }`
  *
  * @example
  * ```html
@@ -247,7 +247,7 @@ export class ShContributionCard extends LitElement {
 
   private handleApprove() {
     this.dispatchEvent(
-      new CustomEvent('contribution-approve', {
+      new CustomEvent('sh-contribution-approve', {
         detail: { contributionId: this.contributionId },
         bubbles: true,
         composed: true,
@@ -257,7 +257,7 @@ export class ShContributionCard extends LitElement {
 
   private handleReject() {
     this.dispatchEvent(
-      new CustomEvent('contribution-reject', {
+      new CustomEvent('sh-contribution-reject', {
         detail: { contributionId: this.contributionId },
         bubbles: true,
         composed: true,

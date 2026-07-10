@@ -49,6 +49,10 @@ Au passage : le label `technique` référencé par le template d'issue `.github/
 
 - **#41** — Migration ESLint 9 flat config, `npm run lint` fonctionne de nouveau (0 erreur, 70 warnings pré-existants inchangés). Détail et alternatives pesées : [ADR 0001](documentation/adr/0001-migration-eslint-flat-config.md).
 
+### En cours — PR ouverte, pas encore mergée
+
+- **#42** — Renommage des 7 événements custom avec préfixe `sh-` (branche `fix/42-event-naming-conventions`). **Breaking change confirmé** : `stockHub_V2_front` (pinné `v1.3.3`) consomme déjà les anciens noms dans 4 fichiers — issue de suivi ouverte : [stockHub_V2_front#192](https://github.com/SandrineCipolla/stockHub_V2_front/issues/192). Détail : [ADR 0002](documentation/adr/0002-renommage-evenements-prefixe-sh.md).
+
 ---
 
 ## Où en est le projet

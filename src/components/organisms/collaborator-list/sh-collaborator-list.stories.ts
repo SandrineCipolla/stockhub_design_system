@@ -128,11 +128,11 @@ export const InteractiveDemo: Story = {
         }
 
         if (list) {
-          list.addEventListener('collaborator-role-change', (e) => {
-            addEntry('collaborator-role-change', e.detail, '#60a5fa');
+          list.addEventListener('sh-collaborator-role-change', (e) => {
+            addEntry('sh-collaborator-role-change', e.detail, '#60a5fa');
           });
-          list.addEventListener('collaborator-remove', (e) => {
-            addEntry('collaborator-remove', e.detail, '#f87171');
+          list.addEventListener('sh-collaborator-remove', (e) => {
+            addEntry('sh-collaborator-remove', e.detail, '#f87171');
           });
         }
       });

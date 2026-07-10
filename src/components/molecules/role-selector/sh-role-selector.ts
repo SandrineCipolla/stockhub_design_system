@@ -14,7 +14,7 @@ const ROLE_OPTIONS: { value: StockRole; label: string }[] = [
  *
  * @element sh-role-selector
  *
- * @fires role-change - Émis quand le rôle change. `detail: { role: StockRole }`
+ * @fires sh-role-change - Émis quand le rôle change. `detail: { role: StockRole }`
  *
  * @example
  * ```html
@@ -92,7 +92,7 @@ export class ShRoleSelector extends LitElement {
     const select = e.target as HTMLSelectElement;
     this.value = select.value as StockRole;
     this.dispatchEvent(
-      new CustomEvent('role-change', {
+      new CustomEvent('sh-role-change', {
         detail: { role: this.value },
         bubbles: true,
         composed: true,

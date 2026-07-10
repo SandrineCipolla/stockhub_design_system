@@ -6,7 +6,7 @@ const meta: Meta = {
   component: 'sh-role-selector',
   parameters: {
     layout: 'centered',
-    actions: { handles: ['role-change'] },
+    actions: { handles: ['sh-role-change'] },
   },
   tags: ['autodocs'],
   argTypes: {

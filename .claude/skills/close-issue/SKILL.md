@@ -10,6 +10,28 @@ ce que ça change pour un consommateur du Design System, si c'est encore
 pertinent dans six mois. Ce skill route la documentation vers le bon
 endroit **avant** d'exécuter `gh issue close` — jamais après, jamais sans.
 
+## 0. Avant même de committer le fix — attention à `closes #N`
+
+GitHub ferme automatiquement une issue dès qu'un commit contenant
+`closes #N` (ou `fixes`/`resolves #N`) atterrit sur la branche par défaut.
+Si le fix mérite un ADR (voir qualification ci-dessous), écrire `closes #N`
+dans le commit de correction court-circuite ce skill : l'issue se ferme au
+push, avant que la doc existe.
+
+- Le changement va probablement qualifier pour un ADR ou une mise à jour
+  README (config/outillage structurant, comportement consommateur) →
+  utiliser `refs #N` dans le message de commit du fix, jamais `closes`.
+  Fermer explicitement via `gh issue close` à l'étape 3, une fois la doc
+  écrite.
+- Le changement est un correctif trivial (la seule doc nécessaire est la
+  ligne dans `ETAT-DU-PROJET.md`, faisable avant le commit) → `closes #N`
+  reste très bien, pas besoin de s'en priver.
+
+Si l'issue s'est déjà auto-fermée avant que tu aies pu documenter
+(l'oubli est fait), ne le traite pas comme un échec silencieux : écris la
+doc quand même, puis ajoute-la en commentaire sur l'issue déjà fermée
+(`gh issue comment`) plutôt que de sauter l'étape.
+
 ## 1. Qualifie le changement
 
 Avant de choisir où documenter, détermine ce que l'issue a réellement changé :
@@ -102,9 +124,16 @@ jamais le contenu de l'ADR ou du README dans le Vault, un renvoi suffit
 ## 3. Ferme l'issue
 
 Une fois la documentation pertinente écrite (et seulement à ce moment) :
+vérifie d'abord si elle n'est pas déjà fermée (`closes #N` auto-close au
+push, voir étape 0) — si oui, ajoute la doc en commentaire au lieu de
+refermer :
 
 ```bash
+gh issue view [numéro] --json state -q '.state'
+# OPEN → fermer avec le résumé :
 gh issue close [numéro] --comment "Résolu par [commit ou PR]. [Une phrase de résumé + lien vers l'ADR/doc si applicable]."
+# CLOSED → juste documenter en commentaire :
+gh issue comment [numéro] --body "[Une phrase de résumé + lien vers l'ADR/doc]"
 ```
 
 ## Règle de proportionnalité

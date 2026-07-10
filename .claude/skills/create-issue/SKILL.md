@@ -1,3 +1,8 @@
+---
+name: create-issue
+description: Crée une issue GitHub au format User Story strict du projet StockHub V2. Se déclenche sur des demandes comme "crée une issue pour...", "nouvelle user story", "ajoute une issue GitHub" — pour toute nouvelle fonctionnalité.
+---
+
 # Créer une Issue GitHub — User Story
 
 Crée une issue GitHub en respectant **strictement** le format User Story du projet.

@@ -1,3 +1,8 @@
+---
+name: create-bug
+description: Crée une issue GitHub de type bug report au format strict du projet StockHub V2. Se déclenche sur des demandes comme "signale un bug", "crée un bug report", "il y a un problème avec...".
+---
+
 # Créer une Issue GitHub — Bug Report
 
 Crée une issue GitHub de type bug en respectant strictement le format du projet.

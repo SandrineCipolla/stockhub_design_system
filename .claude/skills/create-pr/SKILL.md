@@ -1,3 +1,8 @@
+---
+name: create-pr
+description: Crée une Pull Request GitHub au format du projet StockHub V2, liée à une issue. Se déclenche sur des demandes comme "crée une PR", "ouvre une pull request", "je veux merger cette branche".
+---
+
 # Créer une Pull Request
 
 Crée une PR GitHub en respectant le format du projet StockHub V2.

@@ -29,15 +29,21 @@ Préparation du point encadrant "Design System (prisme de la gouvernance)" (sema
 
 Numérotation unique 1-9 pour les guides/rapports actifs, séparation `sessions/` (comptes-rendus historiques) vs `planning/` (plans encore consultés) vs `archive/` (documents clos). Détail dans `documentation/INDEX.md`.
 
-### Constat gouvernance — doc désynchronisée entre repos
+### Constat gouvernance — doc désynchronisée entre repos (résolu)
 
-Le wiki GitHub du repo Front (`stockHub_V2_front.wiki`) a une page `Design-System-Guide.md` qui **duplique manuellement** le catalogue de composants, tokens et CI/CD du DS. Elle est déjà périmée : version affichée v1.3.2 (actuelle : v1.4.0), aucune mention des 5 composants ajoutés par la PR #37 (RoleBadge, RoleSelector, CollaboratorList, ContributionForm, ContributionCard). Pas de mécanisme de sync — angle concret pour le rendez-vous gouvernance (voir plus bas).
+Le wiki GitHub du repo Front (`stockHub_V2_front.wiki`) avait une page `Design-System-Guide.md` qui **dupliquait manuellement** le catalogue de composants, tokens et CI/CD du DS. Elle était déjà périmée : version affichée v1.3.2 (actuelle : v1.4.0), aucune mention des 5 composants ajoutés par la PR #37 (RoleBadge, RoleSelector, CollaboratorList, ContributionForm, ContributionCard). **Corrigé le 10 juillet 2026** : page remplacée par des liens vers les sources vivantes du DS (README, ce fichier, Storybook, CHANGELOG) — élimine le risque de dérive plutôt que d'automatiser une synchro.
 
-### Tâches de fond flaguées (non traitées, chips visibles dans la session)
+### Issues créées suite au nettoyage
 
-- Migration `.eslintrc.json` → `eslint.config.js` (ESLint 9 ne trouve plus la config, `npm run lint` échoue entièrement)
-- 7 événements custom non conformes aux conventions de nommage sur les composants de la PR #37 (`npm run audit:conventions` échoue)
-- Reformatage Prettier global de `src/` (53 fichiers jamais passés par la config Prettier actuelle — à faire dans un commit dédié, hors scope du nettoyage doc)
+Trois anomalies trouvées en marge du nettoyage (pas de rapport avec les doublons de doc), transformées en issues GitHub et ajoutées au [Project #3](https://github.com/users/SandrineCipolla/projects/3) :
+
+| # | Titre | Labels |
+|---|---|---|
+| [#41](https://github.com/SandrineCipolla/stockhub_design_system/issues/41) | `npm run lint` échoue — config ESLint non migrée vers le format flat (v9) | bug, design-system, P1 |
+| [#42](https://github.com/SandrineCipolla/stockhub_design_system/issues/42) | `npm run audit:conventions` échoue — 7 événements custom non conformes (composants issue #35) | bug, design-system, P1 |
+| [#43](https://github.com/SandrineCipolla/stockhub_design_system/issues/43) | Reformater `src/` avec Prettier (jamais appliqué depuis un moment) | technique, design-system, P2 |
+
+Au passage : le label `technique` référencé par le template d'issue `.github/ISSUE_TEMPLATE/tache_technique.yml` n'existait pas dans le repo — créé pour que le template soit utilisable.
 
 ---
 
@@ -57,8 +63,8 @@ Le wiki GitHub du repo Front (`stockHub_V2_front.wiki`) a une page `Design-Syste
 
 - **Accessibilité** : 100% WCAG 2.1 AA, badge Lighthouse auto-mis à jour à chaque push `master`
 - **Tests** : 44 tests d'interaction Playwright/Storybook (9 composants couverts) — **0% de tests unitaires** (issues #15, #16 ouvertes)
-- **Lint** : cassé actuellement (config ESLint non migrée vers le format flat v9)
-- **Conventions** : audit automatisé en CI, 7 violations actuelles sur les composants les plus récents
+- **Lint** : cassé actuellement (config ESLint non migrée vers le format flat v9) — issue #41
+- **Conventions** : audit automatisé en CI, 7 violations actuelles sur les composants les plus récents — issue #42
 
 ### CI/CD
 
@@ -70,7 +76,10 @@ Build · tests d'interaction · Chromatic (visual regression, preview par PR) ·
 
 | # | Titre | Priorité |
 |---|---|---|
+| #41 | `npm run lint` échoue (config ESLint non migrée) | P1 |
+| #42 | `npm run audit:conventions` échoue (7 événements non conformes) | P1 |
 | #39 | Supprimer les `title` natifs sur les boutons `sh-header` | P2 |
+| #43 | Reformater `src/` avec Prettier | P2 |
 | #34 | Corriger `button-name` sur les boutons internes de `sh-button` (Shadow DOM) | — |
 | #33 | Corriger `label-content-name-mismatch` sur le bouton notifications `sh-header` | — |
 | #27 | Corriger le contraste du bouton ghost en light mode (WCAG AA) | — |
@@ -86,10 +95,10 @@ Build · tests d'interaction · Chromatic (visual regression, preview par PR) ·
 
 ## Pour la prochaine session — par où commencer
 
-1. **Trancher `fix/design-tokens-cleanup`** : reprendre le travail ou supprimer la branche.
-2. **#39** — déjà identifiée comme prochaine action côté produit (retirer les `title` natifs sur `sh-header`).
-3. **Débloquer la CI locale** : migrer la config ESLint (chip flaguée), corriger les 7 événements non conformes (chip flaguée).
-4. **Gouvernance doc inter-repos** : décider d'un mécanisme pour éviter que le wiki Front reparte en dérive (voir angles ci-dessous).
+1. **#41 et #42 (P1)** — débloquer la CI locale : migrer la config ESLint, corriger les 7 événements non conformes.
+2. **Trancher `fix/design-tokens-cleanup`** : reprendre le travail ou supprimer la branche.
+3. **#39** — déjà identifiée comme prochaine action côté produit (retirer les `title` natifs sur `sh-header`).
+4. **#43** — reformatage Prettier global, quand un créneau se libère (peu urgent, P2).
 
 ---
 

@@ -47,6 +47,7 @@ La cohérence des conventions de nommage (props, événements, fichiers) est vé
    *Rapport d’accessibilité.*
 
 **Plans & specs** (`./planning/`) : [MIGRATION-PLAN.md](./planning/MIGRATION-PLAN.md), [COMPONENT-SPECIFICATIONS.md](./planning/COMPONENT-SPECIFICATIONS.md), [SPRINT-1-CHECKLIST.md](./planning/SPRINT-1-CHECKLIST.md), [INTEGRATION-PLAN.md](./planning/INTEGRATION-PLAN.md).
+**Décisions d'architecture** (`./adr/`) : un ADR par décision structurante (outillage, choix technique avec alternatives pesées) — voir [0001-migration-eslint-flat-config.md](./adr/0001-migration-eslint-flat-config.md).
 **Sessions de développement** (`./sessions/`) : comptes-rendus historiques, voir section dédiée plus bas.
 **Archive** (`./archive/`) : documents clos ou superseded — voir [DESIGN-SYSTEM-CORRECTIONS.md](./archive/DESIGN-SYSTEM-CORRECTIONS.md), [OPTIMIZATION-PLAN.md](./archive/OPTIMIZATION-PLAN.md), [CHANGELOG-HISTORIQUE-SESSIONS.md](./archive/CHANGELOG-HISTORIQUE-SESSIONS.md), [STOCK-PREDICTION-CARD-IMPLEMENTATION.md](./archive/STOCK-PREDICTION-CARD-IMPLEMENTATION.md), [STOCKHUB-V2-INTEGRATION.md](./archive/STOCKHUB-V2-INTEGRATION.md).
 

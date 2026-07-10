@@ -45,6 +45,10 @@ Trois anomalies trouvées en marge du nettoyage (pas de rapport avec les doublon
 
 Au passage : le label `technique` référencé par le template d'issue `.github/ISSUE_TEMPLATE/tache_technique.yml` n'existait pas dans le repo — créé pour que le template soit utilisable.
 
+### Fait le 10 juillet 2026
+
+- **#41** — Migration ESLint 9 flat config, `npm run lint` fonctionne de nouveau (0 erreur, 70 warnings pré-existants inchangés). Détail et alternatives pesées : [ADR 0001](documentation/adr/0001-migration-eslint-flat-config.md).
+
 ---
 
 ## Où en est le projet
@@ -63,7 +67,7 @@ Au passage : le label `technique` référencé par le template d'issue `.github/
 
 - **Accessibilité** : 100% WCAG 2.1 AA, badge Lighthouse auto-mis à jour à chaque push `master`
 - **Tests** : 44 tests d'interaction Playwright/Storybook (9 composants couverts) — **0% de tests unitaires** (issues #15, #16 ouvertes)
-- **Lint** : cassé actuellement (config ESLint non migrée vers le format flat v9) — issue #41
+- **Lint** : fonctionne à nouveau depuis le 10 juillet 2026 (0 erreur, 70 warnings pré-existants) — voir [ADR 0001](documentation/adr/0001-migration-eslint-flat-config.md)
 - **Conventions** : audit automatisé en CI, 7 violations actuelles sur les composants les plus récents — issue #42
 
 ### CI/CD
@@ -76,7 +80,6 @@ Build · tests d'interaction · Chromatic (visual regression, preview par PR) ·
 
 | # | Titre | Priorité |
 |---|---|---|
-| #41 | `npm run lint` échoue (config ESLint non migrée) | P1 |
 | #42 | `npm run audit:conventions` échoue (7 événements non conformes) | P1 |
 | #39 | Supprimer les `title` natifs sur les boutons `sh-header` | P2 |
 | #43 | Reformater `src/` avec Prettier | P2 |
@@ -95,7 +98,7 @@ Build · tests d'interaction · Chromatic (visual regression, preview par PR) ·
 
 ## Pour la prochaine session — par où commencer
 
-1. **#41 et #42 (P1)** — débloquer la CI locale : migrer la config ESLint, corriger les 7 événements non conformes.
+1. **#42 (P1)** — corriger les 7 événements non conformes aux conventions (`#41` traité, lint débloqué).
 2. **Trancher `fix/design-tokens-cleanup`** : reprendre le travail ou supprimer la branche.
 3. **#39** — déjà identifiée comme prochaine action côté produit (retirer les `title` natifs sur `sh-header`).
 4. **#43** — reformatage Prettier global, quand un créneau se libère (peu urgent, P2).

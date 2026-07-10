@@ -39,7 +39,7 @@
     "audit-accessibility": "node audit-all-accessibility.cjs",
     "audit-accessibility:quick": "node audit-quick.cjs",
     "audit-single": "npx lighthouse http://localhost:6006/iframe.html?id=organisms-stock-item-card--optimal --output html --output-path ./storybook-static/lighthouse-single.html --chrome-flags=\"--headless\"",
-    "lint": "eslint src --ext .ts,.tsx",
+    "lint": "eslint src",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "audit:conventions": "node audit-conventions.cjs"
   },
@@ -61,6 +61,7 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^5.0.1",
     "@custom-elements-manifest/analyzer": "^0.10.10",
+    "@eslint/js": "^9.38.0",
     "@rollup/plugin-commonjs": "^25.0.0",
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-typescript": "^11.0.0",
@@ -83,6 +84,7 @@
     "vite": "^6.4.0",
     "husky": "^8.0.0",
     "eslint-plugin-storybook": "10.2.15",
+    "globals": "^14.0.0",
     "@storybook/addon-docs": "^10.2.15"
   },
   "dependencies": {

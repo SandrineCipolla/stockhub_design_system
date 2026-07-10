@@ -893,7 +893,7 @@ Le projet a complété **8 sessions de développement** (~17h30) permettant la c
 ### 📚 Documentation Détaillée
 - **Historique complet des versions** → [CHANGELOG.md](./CHANGELOG.md)
 - **Index de la documentation** → [documentation/INDEX.md](./documentation/INDEX.md)
-- **Corrections d'intégration** → [DESIGN-SYSTEM-CORRECTIONS.md](./DESIGN-SYSTEM-CORRECTIONS.md)
+- **Corrections d'intégration** → [DESIGN-SYSTEM-CORRECTIONS.md](./documentation/archive/DESIGN-SYSTEM-CORRECTIONS.md) *(archivé — 100% résolu)*
 - **Rapport accessibilité** → [10-ACCESSIBILITY-REPORT.md](./10-ACCESSIBILITY-REPORT.md)
 - **Audit Design Tokens** → [documentation/DESIGN-TOKENS-AUDIT.md](./documentation/DESIGN-TOKENS-AUDIT.md)
 
@@ -905,7 +905,6 @@ La documentation est organisée selon les **standards de l'industrie open-source
 - **README.md** : Point d'entrée principal (affiché sur GitHub/npm)
 - **CHANGELOG.md** : Historique des versions (convention [Keep a Changelog](https://keepachangelog.com/))
 - **10-ACCESSIBILITY-REPORT.md** : Certification WCAG AA (badge de qualité)
-- **DESIGN-SYSTEM-CORRECTIONS.md** : Suivi des corrections et améliorations
 
 ### Dossier documentation/
 - **INDEX.md** : Navigation complète de la documentation

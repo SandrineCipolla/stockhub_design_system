@@ -22,7 +22,7 @@ Le Design System StockHub a été audité pour l'accessibilité et a atteint une
 
 ### 🔗 Voir aussi
 - **Rapport détaillé** → [GitHub Pages](https://SandrineCipolla.github.io/stockhub_design_system/)
-- **Corrections détaillées** → [DESIGN-SYSTEM-CORRECTIONS.md](./DESIGN-SYSTEM-CORRECTIONS.md#-accessibilité)
+- **Corrections détaillées** → [DESIGN-SYSTEM-CORRECTIONS.md](./documentation/archive/DESIGN-SYSTEM-CORRECTIONS.md#-accessibilité)
 - **Historique des versions** → [CHANGELOG.md](./CHANGELOG.md#unreleased)
 - **Sessions de développement** → [documentation/INDEX.md](./documentation/INDEX.md#-sessions-de-développement)
 
@@ -265,7 +265,7 @@ La conformité est maintenue automatiquement via `.github/workflows/ci.yml` :
 
 ### Documentation Interne
 - [CHANGELOG.md](./CHANGELOG.md) - Détails des corrections
-- [DESIGN-SYSTEM-CORRECTIONS.md](./DESIGN-SYSTEM-CORRECTIONS.md) - Historique complet
+- [DESIGN-SYSTEM-CORRECTIONS.md](./documentation/archive/DESIGN-SYSTEM-CORRECTIONS.md) - Historique complet
 
 ---
 

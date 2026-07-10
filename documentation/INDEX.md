@@ -43,8 +43,8 @@ La cohérence des conventions de nommage (props, événements, fichiers) est vé
 8- [8-SPRINT-1-CHECKLIST.md](./planning/8-SPRINT-1-CHECKLIST.md)  
    *Checklist opérationnelle du Sprint 1.*
 
-9- [9-CHANGELOG.md](../9-CHANGELOG.md)  
-   *Historique des versions.*
+9- [CHANGELOG-HISTORIQUE-SESSIONS.md](./CHANGELOG-HISTORIQUE-SESSIONS.md)  
+   *Historique détaillé des sessions (archive, avant release-please). Pour l'historique des versions à jour, voir [CHANGELOG.md](../CHANGELOG.md).*
 
 10- [10-10-ACCESSIBILITY-REPORT.md](../10-10-ACCESSIBILITY-REPORT.md)  
     *Rapport d’accessibilité.*
@@ -282,7 +282,7 @@ Tracking complet de l'implémentation des tests d'interaction avec @storybook/te
 
 ### 🔗 Voir aussi
 - **Historique des versions** → [CHANGELOG.md](../CHANGELOG.md)
-- **Problèmes d'intégration StockHub V2** → [DESIGN-SYSTEM-CORRECTIONS.md](../DESIGN-SYSTEM-CORRECTIONS.md)
+- **Problèmes d'intégration StockHub V2** → [DESIGN-SYSTEM-CORRECTIONS.md](./archive/DESIGN-SYSTEM-CORRECTIONS.md)
 - **Rapport d'accessibilité WCAG AA** → [10-ACCESSIBILITY-REPORT.md](../10-ACCESSIBILITY-REPORT.md)
 
 ---

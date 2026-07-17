@@ -27,7 +27,7 @@
     "test-storybook": "test-storybook",
     "test-storybook:ci": "test-storybook --url http://localhost:6006",
     "storybook": "npm run analyze && storybook dev -p 6006",
-    "build-storybook": "npm run analyze && storybook build",
+    "build-storybook": "npm run analyze && storybook build --stats-json",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build:lib",
     "tokens:generate": "tsx src/tokens/generate-css.ts",

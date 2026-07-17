@@ -16,8 +16,8 @@ export interface CollaboratorItem {
  *
  * @element sh-collaborator-list
  *
- * @fires collaborator-role-change - Émis quand un rôle est modifié. `detail: { collaboratorId: number, role: StockRole }`
- * @fires collaborator-remove - Émis quand un collaborateur est retiré. `detail: { collaboratorId: number }`
+ * @fires sh-collaborator-role-change - Émis quand un rôle est modifié. `detail: { collaboratorId: number, role: StockRole }`
+ * @fires sh-collaborator-remove - Émis quand un collaborateur est retiré. `detail: { collaboratorId: number }`
  *
  * @example
  * ```html
@@ -178,7 +178,7 @@ export class ShCollaboratorList extends LitElement {
 
   private handleRoleChange(collaboratorId: number, e: CustomEvent) {
     this.dispatchEvent(
-      new CustomEvent('collaborator-role-change', {
+      new CustomEvent('sh-collaborator-role-change', {
         detail: { collaboratorId, role: e.detail.role },
         bubbles: true,
         composed: true,
@@ -188,7 +188,7 @@ export class ShCollaboratorList extends LitElement {
 
   private handleRemove(collaboratorId: number) {
     this.dispatchEvent(
-      new CustomEvent('collaborator-remove', {
+      new CustomEvent('sh-collaborator-remove', {
         detail: { collaboratorId },
         bubbles: true,
         composed: true,
@@ -224,7 +224,7 @@ export class ShCollaboratorList extends LitElement {
                         value="${c.role}"
                         exclude="${this.getExcludedRoles()}"
                         ?disabled="${this.disabled}"
-                        @role-change="${(e: CustomEvent) => this.handleRoleChange(c.id, e)}"
+                        @sh-role-change="${(e: CustomEvent) => this.handleRoleChange(c.id, e)}"
                       ></sh-role-selector>
                     `
                   : html`<sh-role-badge role="${c.role}"></sh-role-badge>`}

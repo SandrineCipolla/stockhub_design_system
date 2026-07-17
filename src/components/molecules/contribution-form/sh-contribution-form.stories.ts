@@ -81,8 +81,8 @@ export const InteractiveDemo: Story = {
         }
 
         if (form) {
-          form.addEventListener('contribution-submit', (e) => addEntry('contribution-submit', e.detail, '#8b5cf6'));
-          form.addEventListener('contribution-cancel', () => addEntry('contribution-cancel', null, '#94a3b8'));
+          form.addEventListener('sh-contribution-submit', (e) => addEntry('sh-contribution-submit', e.detail, '#8b5cf6'));
+          form.addEventListener('sh-contribution-cancel', () => addEntry('sh-contribution-cancel', null, '#94a3b8'));
         }
       });
     </script>

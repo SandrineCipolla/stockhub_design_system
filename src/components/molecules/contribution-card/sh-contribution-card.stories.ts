@@ -159,8 +159,8 @@ export const InteractiveDemo: Story = {
         }
 
         if (card) {
-          card.addEventListener('contribution-approve', (e) => addEntry('contribution-approve', e.detail, '#4ade80'));
-          card.addEventListener('contribution-reject', (e) => addEntry('contribution-reject', e.detail, '#f87171'));
+          card.addEventListener('sh-contribution-approve', (e) => addEntry('sh-contribution-approve', e.detail, '#4ade80'));
+          card.addEventListener('sh-contribution-reject', (e) => addEntry('sh-contribution-reject', e.detail, '#f87171'));
         }
       });
     </script>

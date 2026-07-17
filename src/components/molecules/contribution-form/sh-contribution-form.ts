@@ -6,8 +6,8 @@ import { customElement, property, state } from 'lit/decorators.js';
  *
  * @element sh-contribution-form
  *
- * @fires contribution-submit - Émis à la soumission. `detail: { suggestedQuantity: number }`
- * @fires contribution-cancel - Émis à l'annulation.
+ * @fires sh-contribution-submit - Émis à la soumission. `detail: { suggestedQuantity: number }`
+ * @fires sh-contribution-cancel - Émis à l'annulation.
  *
  * @example
  * ```html
@@ -184,7 +184,7 @@ export class ShContributionForm extends LitElement {
       return;
     }
     this.dispatchEvent(
-      new CustomEvent('contribution-submit', {
+      new CustomEvent('sh-contribution-submit', {
         detail: { suggestedQuantity: this.suggestedQuantity },
         bubbles: true,
         composed: true,
@@ -193,7 +193,7 @@ export class ShContributionForm extends LitElement {
   }
 
   private handleCancel() {
-    this.dispatchEvent(new CustomEvent('contribution-cancel', { bubbles: true, composed: true }));
+    this.dispatchEvent(new CustomEvent('sh-contribution-cancel', { bubbles: true, composed: true }));
   }
 
   render() {

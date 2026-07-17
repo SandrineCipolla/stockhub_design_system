@@ -12,10 +12,10 @@
 
 Ce Design System a été créé pour **StockHub V2**, une application de gestion de stock avec intelligence artificielle.
 
-Le projet contient **18 composants Web Components réutilisables** couvrant tous les besoins de l'application :
-- **Composants de base (atoms)** : badges, icônes Lucide, inputs, logo, texte
-- **Composants composés (molecules)** : buttons, cards, metric-card, search, status-badge, quantity-input, stat-card
-- **Composants complexes (organisms)** : header, footer, page-header, ia-alert-banner, stock-card, stock-item-card, stock-prediction-card
+Le projet contient **24 composants Web Components réutilisables** couvrant tous les besoins de l'application :
+- **Composants de base (atoms)** : badges, badge de rôle, icônes Lucide, inputs, logo, texte
+- **Composants composés (molecules)** : buttons, cards, metric-card, search, status-badge, quantity-input, stat-card, sélecteur de rôle, carte et formulaire de contribution
+- **Composants complexes (organisms)** : header, footer, page-header, ia-alert-banner, stock-card, stock-item-card, stock-prediction-card, liste de collaborateurs
 
 Développé selon la **méthodologie Atomic Design** avec une approche progressive et itérative. Le projet évolue continuellement en fonction des besoins de StockHub V2.
 
@@ -44,33 +44,39 @@ Développé selon la **méthodologie Atomic Design** avec une approche progressi
 ```
 src/
 ├── components/
-│   ├── atoms/                    # Composants de base (5)
+│   ├── atoms/                    # Composants de base (6)
 │   │   ├── badge/               # sh-badge
 │   │   ├── icon/                # sh-icon (Lucide)
 │   │   ├── input/               # sh-input
 │   │   ├── logo/                # sh-logo
+│   │   ├── role-badge/          # sh-role-badge
 │   │   └── text/                # sh-text
-│   ├── molecules/                # Combinaisons d'atoms (7)
+│   ├── molecules/                # Combinaisons d'atoms (10)
 │   │   ├── button/              # sh-button (ghost, loading, icons)
 │   │   ├── card/                # sh-card (base)
+│   │   ├── contribution-card/   # sh-contribution-card
+│   │   ├── contribution-form/   # sh-contribution-form
 │   │   ├── metric-card/         # sh-metric-card
 │   │   ├── quantity-input/      # sh-quantity-input
+│   │   ├── role-selector/       # sh-role-selector
 │   │   ├── search-input/        # sh-search-input
-│   │   ├── stat-card/           # sh-stat-card ✨ NEW
+│   │   ├── stat-card/           # sh-stat-card
 │   │   └── status-badge/        # sh-status-badge
-│   └── organisms/                # Composants complexes (7)
-│       ├── footer/              # sh-footer ✨ NEW
+│   └── organisms/                # Composants complexes (8)
+│       ├── collaborator-list/   # sh-collaborator-list
+│       ├── footer/              # sh-footer
 │       ├── header/              # sh-header
-│       ├── ia-alert-banner/     # sh-ia-alert-banner ✨ NEW
+│       ├── ia-alert-banner/     # sh-ia-alert-banner
+│       ├── page-header/         # sh-page-header
 │       ├── stock-card/          # sh-stock-card
 │       ├── stock-item-card/     # sh-stock-item-card
-│       └── stock-prediction-card/ # sh-stock-prediction-card ✨ NEW
+│       └── stock-prediction-card/ # sh-stock-prediction-card
 ├── tokens/                       # Design tokens (colors, spacing, etc.)
 ├── icons/                        # DEPRECATED: Remplacé par Lucide
 └── styles/                       # Global styles et CSS utilities
 ```
 
-**Total : 18 composants Web Components**
+**Total : 24 composants Web Components**
 
 ### Convention de Nommage
 Tous les composants utilisent le préfixe `sh-` (StockHub) :
@@ -194,6 +200,18 @@ Composant texte typographique.
 Logo StockHub avec variants.
 ```html
 <sh-logo style="--logo-size: 150px;"></sh-logo>
+```
+
+#### `<sh-role-badge>`
+Badge affichant le rôle d'un collaborateur sur un stock partagé.
+
+**Props** :
+- `role`: `"OWNER"` | `"EDITOR"` | `"VIEWER"` | `"VIEWER_CONTRIBUTOR"` (défaut : `"VIEWER"`)
+- `size`: `"sm"` | `"md"` | `"lg"` (défaut : `"md"`)
+
+```html
+<sh-role-badge role="OWNER"></sh-role-badge>
+<sh-role-badge role="VIEWER_CONTRIBUTOR" size="sm"></sh-role-badge>
 ```
 
 ### Molecules (Combinaisons)
@@ -387,6 +405,69 @@ Input numérique avec boutons +/-.
 ></sh-quantity-input>
 ```
 
+#### `<sh-role-selector>`
+Dropdown pour sélectionner le rôle d'un collaborateur.
+
+**Props** :
+- `value`: `"OWNER"` | `"EDITOR"` | `"VIEWER"` | `"VIEWER_CONTRIBUTOR"` (défaut : `"VIEWER"`)
+- `exclude`: string - Rôles à exclure de la liste, séparés par virgule (ex: `"OWNER"` pour un EDITOR qui ne peut pas attribuer OWNER)
+- `disabled`: boolean
+
+**Événements** :
+- `sh-role-change` - Émis au changement. `detail: { role: StockRole }`
+
+```html
+<sh-role-selector value="EDITOR"></sh-role-selector>
+<sh-role-selector value="VIEWER" exclude="OWNER"></sh-role-selector>
+```
+
+#### `<sh-contribution-card>`
+Carte affichant une contribution en attente (suggestion de quantité), avec actions approuver/rejeter.
+
+**Props** :
+- `contribution-id`: string
+- `item-label`: string - Nom de l'item concerné
+- `current-quantity`: number
+- `suggested-quantity`: number
+- `author-email`: string
+- `created-at`: string - Date ISO (optionnel)
+- `status`: `"PENDING"` | `"APPROVED"` | `"REJECTED"` (défaut : `"PENDING"`)
+- `disabled`: boolean - Désactive les actions (ex: pendant le traitement)
+
+**Événements** :
+- `sh-contribution-approve` - Émis au clic "Approuver". `detail: { contributionId: string }`
+- `sh-contribution-reject` - Émis au clic "Rejeter". `detail: { contributionId: string }`
+
+```html
+<sh-contribution-card
+  contribution-id="42"
+  item-label="Lait"
+  current-quantity="3"
+  suggested-quantity="1"
+  author-email="enfant@family.local"
+  status="PENDING"
+></sh-contribution-card>
+```
+
+#### `<sh-contribution-form>`
+Formulaire de soumission d'une contribution de quantité par un `VIEWER_CONTRIBUTOR`.
+
+**Props** :
+- `item-label`: string
+- `current-quantity`: number - Affiché en lecture seule
+- `disabled`: boolean
+
+**Événements** :
+- `sh-contribution-submit` - Émis à la soumission. `detail: { suggestedQuantity: number }`
+- `sh-contribution-cancel` - Émis à l'annulation.
+
+```html
+<sh-contribution-form
+  item-label="Lait"
+  current-quantity="3"
+></sh-contribution-form>
+```
+
 ### Organisms (Complexes)
 
 #### `<sh-stock-prediction-card>` 🆕 NOUVEAU
@@ -464,6 +545,25 @@ Carte de prédiction ML pour afficher les ruptures de stock prévues avec analys
 Header de l'application.
 ```html
 <sh-header userName="Sandrine" isLoggedIn></sh-header>
+```
+
+#### `<sh-collaborator-list>`
+Liste des collaborateurs d'un stock avec actions modifier le rôle / retirer, selon le rôle de l'utilisateur connecté.
+
+**Props** :
+- `collaborators`: `CollaboratorItem[]` - Accepte un tableau JS ou un JSON stringifié en attribut (`{ id: number, userEmail: string, role: StockRole }[]`)
+- `viewer-role`: `"OWNER"` | `"EDITOR"` | `"VIEWER"` | `"VIEWER_CONTRIBUTOR"` - Rôle de l'utilisateur connecté, détermine les actions disponibles
+- `disabled`: boolean - Désactive toutes les actions
+
+**Événements** :
+- `sh-collaborator-role-change` - Émis quand un rôle est modifié. `detail: { collaboratorId: number, role: StockRole }`
+- `sh-collaborator-remove` - Émis quand un collaborateur est retiré. `detail: { collaboratorId: number }`
+
+```html
+<sh-collaborator-list
+  collaborators='[{"id":1,"userEmail":"alice@example.com","role":"EDITOR"}]'
+  viewer-role="OWNER"
+></sh-collaborator-list>
 ```
 
 ## 📖 Storybook

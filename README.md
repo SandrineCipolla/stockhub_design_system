@@ -255,60 +255,6 @@ Carte métrique pour afficher des KPIs avec icône, valeur et tendance.
 ></sh-metric-card>
 ```
 
-#### `<sh-stock-item-card>` 🆕 NOUVEAU
-Carte de produit pour l'inventaire familial avec statut, métriques et actions.
-
-**Props** :
-- `name`: string - Nom du produit
-- `sku`: string - Code SKU du produit
-- `quantity`: string | number - Quantité en stock
-- `value`: string - Valeur totale (optionnel)
-- `location`: string - Emplacement (optionnel, ex: "Atelier - Étagère 3")
-- `status`: `"optimal"` | `"low"` | `"critical"` | `"out-of-stock"` | `"overstocked"`
-- `loading`: boolean - État de chargement
-- `theme`: `"light"` | `"dark"`
-
-**Événements** :
-- `sh-view-click` - Émis au clic sur "Voir"
-- `sh-edit-click` - Émis au clic sur "Éditer"
-- `sh-delete-click` - Émis au clic sur "Supprimer"
-
-```html
-<!-- Produit en stock optimal -->
-<sh-stock-item-card
-  name="Peinture Acrylique 500ml - Bleu Cobalt"
-  sku="PNT-001"
-  quantity="45"
-  value="€675"
-  location="Atelier - Étagère 3"
-  status="optimal"
-></sh-stock-item-card>
-
-<!-- Stock faible -->
-<sh-stock-item-card
-  name="Crayons Aquarelle (Boîte de 24)"
-  sku="CRY-042"
-  quantity="8"
-  value="€240"
-  location="Bureau - Tiroir 2"
-  status="low"
-></sh-stock-item-card>
-
-<!-- Écouter les événements -->
-<script>
-  const card = document.querySelector('sh-stock-item-card');
-  card.addEventListener('sh-view-click', (e) => {
-    console.log('View:', e.detail); // { name, sku, status }
-  });
-  card.addEventListener('sh-edit-click', (e) => {
-    console.log('Edit:', e.detail);
-  });
-  card.addEventListener('sh-delete-click', (e) => {
-    console.log('Delete:', e.detail);
-  });
-</script>
-```
-
 #### `<sh-button>` ⚡ AMÉLIORÉ
 Bouton avec variants, états, et support d'icônes.
 
@@ -545,6 +491,161 @@ Carte de prédiction ML pour afficher les ruptures de stock prévues avec analys
 Header de l'application.
 ```html
 <sh-header userName="Sandrine" isLoggedIn></sh-header>
+```
+
+#### `<sh-footer>`
+Footer de l'application avec copyright dynamique et liens légaux.
+
+**Props** :
+- `app-name`: string (défaut : `"STOCK HUB"`)
+- `year`: string (défaut : année courante)
+- `theme`: `"light"` | `"dark"`
+
+**Événements** :
+- `sh-footer-link-click` - Émis au clic sur un lien. `detail: { link: string }`
+
+```html
+<sh-footer
+  app-name="STOCK HUB"
+  year="2025"
+></sh-footer>
+```
+
+#### `<sh-page-header>`
+En-tête de page avec fil d'Ariane (breadcrumb), titre, sous-titre et boutons d'action.
+
+**Props** :
+- `title`: string
+- `subtitle`: string
+- `breadcrumb`: `BreadcrumbItem[]` - `{ label: string, href?: string }[]`
+- `actions`: `ActionButton[]` - `{ label: string, icon?: string, variant?: "primary" | "secondary" | "ghost", handler: string, ariaLabel?: string }[]`
+- `theme`: `"light"` | `"dark"`
+
+**Événements** :
+- `sh-breadcrumb-click` - Émis au clic sur un item du breadcrumb. `detail: { item: BreadcrumbItem, index: number }`
+- `sh-action-{handler}` - Émis au clic sur un bouton d'action (nom dynamique basé sur `action.handler`, ex: `sh-action-edit`). `detail: { action: ActionButton }`
+
+```html
+<sh-page-header
+  title="Tableau de Bord"
+  subtitle="Bienvenue dans votre espace de gestion de stocks intelligent"
+></sh-page-header>
+```
+
+#### `<sh-ia-alert-banner>`
+Bandeau d'alertes IA pour les stocks nécessitant attention, avec liste déroulante des alertes détaillées.
+
+**Props** :
+- `count`: number - Nombre d'alertes
+- `severity`: `"critical"` | `"warning"` | `"info"` (défaut : `"critical"`)
+- `message`: string (défaut : `"stocks nécessitent votre attention"`)
+- `alerts`: `IaAlert[]` - `{ product: string, message: string, severity: "critical" | "warning" | "info" }[]`
+- `expanded`: boolean (défaut : `true`) - Affiche la liste des alertes
+- `theme`: `"light"` | `"dark"`
+
+**Événements** :
+- `sh-ia-alert-toggle` - Émis au clic sur le bouton collapse/expand. `detail: { expanded: boolean }`
+- `sh-ia-alert-item-click` - Émis au clic sur un item de la liste. `detail: IaAlert`
+
+```html
+<sh-ia-alert-banner
+  count="5"
+  severity="critical"
+></sh-ia-alert-banner>
+```
+
+#### `<sh-stock-card>`
+Carte de stock pour le dashboard avec statut, métriques et actions.
+
+**Props** :
+- `name`: string - Nom du stock
+- `category`: string
+- `last-update`: string - Date de dernière mise à jour (ex: "il y a 3h")
+- `percentage`: string | number - Pourcentage de stock (défaut : `"0"`)
+- `quantity`: string - Quantité affichée en sous-label
+- `value`: string - Valeur totale
+- `status`: `"optimal"` | `"low"` | `"critical"` | `"out-of-stock"` | `"overstocked"` (défaut : `"optimal"`)
+- `ia-count`: number - Nombre de suggestions IA (affiche un badge si > 0)
+- `loading`: boolean - Désactive les actions
+- `hide-details`: boolean - Masque le bouton "Détails"
+- `theme`: `"light"` | `"dark"`
+
+**Slots** :
+- `default` - Contenu personnalisé additionnel
+
+**Événements** :
+- `sh-session-click` - Émis au clic sur "Enregistrer session". `detail: { name, status }`
+- `sh-details-click` - Émis au clic sur "Détails". `detail: { name, category, status }`
+- `sh-edit-click` - Émis au clic sur éditer. `detail: { name, status }`
+- `sh-delete-click` - Émis au clic sur supprimer. `detail: { name, status }`
+
+```html
+<sh-stock-card
+  name="Acrylique Bleu Cobalt"
+  category="Peinture"
+  lastUpdate="il y a 3h"
+  percentage="65"
+  quantity="1 tube"
+  value="€12"
+  status="optimal"
+></sh-stock-card>
+```
+
+#### `<sh-stock-item-card>`
+Carte de produit pour l'inventaire familial avec statut, métriques et actions.
+
+**Props** :
+- `name`: string - Nom du produit
+- `sku`: string - Code SKU du produit
+- `quantity`: string | number - Quantité en stock
+- `value`: string - Valeur totale (optionnel)
+- `location`: string - Emplacement (optionnel, ex: "Atelier - Étagère 3")
+- `status`: `"optimal"` | `"low"` | `"critical"` | `"out-of-stock"` | `"overstocked"`
+- `loading`: boolean - État de chargement
+- `theme`: `"light"` | `"dark"`
+
+**Slots** :
+- `default` - Contenu personnalisé additionnel
+
+**Événements** :
+- `sh-view-click` - Émis au clic sur "Voir"
+- `sh-edit-click` - Émis au clic sur "Éditer"
+- `sh-delete-click` - Émis au clic sur "Supprimer"
+
+```html
+<!-- Produit en stock optimal -->
+<sh-stock-item-card
+  name="Peinture Acrylique 500ml - Bleu Cobalt"
+  sku="PNT-001"
+  quantity="45"
+  value="€675"
+  location="Atelier - Étagère 3"
+  status="optimal"
+></sh-stock-item-card>
+
+<!-- Stock faible -->
+<sh-stock-item-card
+  name="Crayons Aquarelle (Boîte de 24)"
+  sku="CRY-042"
+  quantity="8"
+  value="€240"
+  location="Bureau - Tiroir 2"
+  status="low"
+></sh-stock-item-card>
+
+<!-- Écouter les événements -->
+<script>
+  const card = document.querySelector('sh-stock-item-card');
+  card.addEventListener('sh-view-click', (e) => {
+    console.log('View:', e.detail); // { name, sku, status }
+  });
+  card.addEventListener('sh-edit-click', (e) => {
+    console.log('Edit:', e.detail);
+  });
+  card.addEventListener('sh-delete-click', (e) => {
+    console.log('Delete:', e.detail);
+  });
+</script>
 ```
 
 #### `<sh-collaborator-list>`

@@ -3,7 +3,7 @@
 **Date de rédaction** : 10 juillet 2026
 **Dernière activité** : 10 juillet 2026
 **Branche active** : `master`
-**Version publiée** : v1.4.0
+**Version publiée** : v2.0.0 (breaking change — renommage d'événements custom, voir #42)
 
 ---
 
@@ -48,10 +48,8 @@ Au passage : le label `technique` référencé par le template d'issue `.github/
 ### Fait le 10 juillet 2026
 
 - **#41** — Migration ESLint 9 flat config, `npm run lint` fonctionne de nouveau (0 erreur, 70 warnings pré-existants inchangés). Détail et alternatives pesées : [ADR 0001](documentation/adr/0001-migration-eslint-flat-config.md).
-
-### En cours — PR ouverte, pas encore mergée
-
-- **#42** — Renommage des 7 événements custom avec préfixe `sh-` (branche `fix/42-event-naming-conventions`). **Breaking change confirmé** : `stockHub_V2_front` (pinné `v1.3.3`) consomme déjà les anciens noms dans 4 fichiers — issue de suivi ouverte : [stockHub_V2_front#192](https://github.com/SandrineCipolla/stockHub_V2_front/issues/192). Détail : [ADR 0002](documentation/adr/0002-renommage-evenements-prefixe-sh.md).
+- **#42** — Renommage des 7 événements custom avec préfixe `sh-` (PR [#44](https://github.com/SandrineCipolla/stockhub_design_system/pull/44), mergée). **Breaking change** publié en v2.0.0 : `stockHub_V2_front` (pinné `v1.3.3`) consomme encore les anciens noms dans 4 fichiers — coordination en cours via [stockHub_V2_front#192](https://github.com/SandrineCipolla/stockHub_V2_front/issues/192), **ne pas installer v2.0.0 côté Front avant que cette issue soit traitée**. Détail : [ADR 0002](documentation/adr/0002-renommage-evenements-prefixe-sh.md).
+- **#45** — Job CI `chromatic` cassé depuis un moment (`preview-stats.json` manquant pour TurboSnap) réparé en ajoutant `--stats-json` à `build-storybook` (PR [#46](https://github.com/SandrineCipolla/stockhub_design_system/pull/46), mergée). 35 changements visuels accumulés pendant la panne, revus et acceptés comme nouvelles baselines Chromatic.
 
 ---
 
@@ -72,7 +70,8 @@ Au passage : le label `technique` référencé par le template d'issue `.github/
 - **Accessibilité** : 100% WCAG 2.1 AA, badge Lighthouse auto-mis à jour à chaque push `master`
 - **Tests** : 44 tests d'interaction Playwright/Storybook (9 composants couverts) — **0% de tests unitaires** (issues #15, #16 ouvertes)
 - **Lint** : fonctionne à nouveau depuis le 10 juillet 2026 (0 erreur, 70 warnings pré-existants) — voir [ADR 0001](documentation/adr/0001-migration-eslint-flat-config.md)
-- **Conventions** : audit automatisé en CI, 7 violations actuelles sur les composants les plus récents — issue #42
+- **Conventions** : audit automatisé en CI, 0 violation depuis le 10 juillet 2026 (était 7)
+- **Chromatic** : job CI de nouveau fonctionnel depuis le 10 juillet 2026 (était cassé, voir #45)
 
 ### CI/CD
 
@@ -84,7 +83,6 @@ Build · tests d'interaction · Chromatic (visual regression, preview par PR) ·
 
 | # | Titre | Priorité |
 |---|---|---|
-| #42 | `npm run audit:conventions` échoue (7 événements non conformes) | P1 |
 | #39 | Supprimer les `title` natifs sur les boutons `sh-header` | P2 |
 | #43 | Reformater `src/` avec Prettier | P2 |
 | #34 | Corriger `button-name` sur les boutons internes de `sh-button` (Shadow DOM) | — |
@@ -102,7 +100,7 @@ Build · tests d'interaction · Chromatic (visual regression, preview par PR) ·
 
 ## Pour la prochaine session — par où commencer
 
-1. **#42 (P1)** — corriger les 7 événements non conformes aux conventions (`#41` traité, lint débloqué).
+1. **Coordination Front** — suivre [stockHub_V2_front#192](https://github.com/SandrineCipolla/stockHub_V2_front/issues/192) : ne pas installer `@stockhub/design-system@2.0.0` côté Front avant que les 4 fichiers consommant les anciens noms d'événements soient mis à jour.
 2. **Trancher `fix/design-tokens-cleanup`** : reprendre le travail ou supprimer la branche.
 3. **#39** — déjà identifiée comme prochaine action côté produit (retirer les `title` natifs sur `sh-header`).
 4. **#43** — reformatage Prettier global, quand un créneau se libère (peu urgent, P2).

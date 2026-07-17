@@ -50,20 +50,21 @@ Au passage : le label `technique` référencé par le template d'issue `.github/
 - **#41** — Migration ESLint 9 flat config, `npm run lint` fonctionne de nouveau (0 erreur, 70 warnings pré-existants inchangés). Détail et alternatives pesées : [ADR 0001](documentation/adr/0001-migration-eslint-flat-config.md).
 - **#42** — Renommage des 7 événements custom avec préfixe `sh-` (PR [#44](https://github.com/SandrineCipolla/stockhub_design_system/pull/44), mergée). **Breaking change** publié en v2.0.0 : `stockHub_V2_front` (pinné `v1.3.3`) consomme encore les anciens noms dans 4 fichiers — coordination en cours via [stockHub_V2_front#192](https://github.com/SandrineCipolla/stockHub_V2_front/issues/192), **ne pas installer v2.0.0 côté Front avant que cette issue soit traitée**. Détail : [ADR 0002](documentation/adr/0002-renommage-evenements-prefixe-sh.md).
 - **#45** — Job CI `chromatic` cassé depuis un moment (`preview-stats.json` manquant pour TurboSnap) réparé en ajoutant `--stats-json` à `build-storybook` (PR [#46](https://github.com/SandrineCipolla/stockhub_design_system/pull/46), mergée). 35 changements visuels accumulés pendant la panne, revus et acceptés comme nouvelles baselines Chromatic.
+- **#48** — 10 composants jamais documentés dans le README (5 de la PR #37 + 5 organisms plus anciens, dont `sh-stock-item-card` repositionné depuis Molecules vers Organisms) (PR [#49](https://github.com/SandrineCipolla/stockhub_design_system/pull/49), mergée). Props/événements vérifiés contre le code source. Trouvaille au passage : JSDoc de `sh-ia-alert-banner.ts` incohérent avec son propre code (`@fires sh-ia-alert-click` vs `sh-ia-alert-toggle` réellement émis) — flaggé séparément, pas encore corrigé.
 
 ---
 
 ## Où en est le projet
 
-### Composants — 18 Web Components
+### Composants — 24 Web Components
 
 | Niveau | Composants |
 |---|---|
-| Atoms (5) | `sh-badge` · `sh-icon` · `sh-input` · `sh-logo` · `sh-text` |
-| Molecules (7) | `sh-button` · `sh-card` · `sh-metric-card` · `sh-quantity-input` · `sh-search-input` · `sh-stat-card` · `sh-status-badge` |
-| Organisms (6) | `sh-header` · `sh-footer` · `sh-page-header` · `sh-ia-alert-banner` · `sh-stock-card` · `sh-stock-prediction-card` |
+| Atoms (6) | `sh-badge` · `sh-icon` · `sh-input` · `sh-logo` · `sh-role-badge` · `sh-text` |
+| Molecules (10) | `sh-button` · `sh-card` · `sh-contribution-card` · `sh-contribution-form` · `sh-metric-card` · `sh-quantity-input` · `sh-role-selector` · `sh-search-input` · `sh-stat-card` · `sh-status-badge` |
+| Organisms (8) | `sh-collaborator-list` · `sh-footer` · `sh-header` · `sh-ia-alert-banner` · `sh-page-header` · `sh-stock-card` · `sh-stock-item-card` · `sh-stock-prediction-card` |
 
-*(+ RoleBadge, RoleSelector, CollaboratorList, ContributionForm, ContributionCard — issue #35, PR #37)*
+Tous documentés dans le README depuis le 10 juillet 2026 (voir #48).
 
 ### Qualité
 
@@ -85,6 +86,7 @@ Build · tests d'interaction · Chromatic (visual regression, preview par PR) ·
 |---|---|---|
 | #39 | Supprimer les `title` natifs sur les boutons `sh-header` | P2 |
 | #43 | Reformater `src/` avec Prettier | P2 |
+| #50 | Documentation riche des composants via pages MDX Storybook (guidelines, do's/don'ts, a11y) | P3 |
 | #34 | Corriger `button-name` sur les boutons internes de `sh-button` (Shadow DOM) | — |
 | #33 | Corriger `label-content-name-mismatch` sur le bouton notifications `sh-header` | — |
 | #27 | Corriger le contraste du bouton ghost en light mode (WCAG AA) | — |

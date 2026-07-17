@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0](https://github.com/SandrineCipolla/stockhub_design_system/compare/v1.4.0...v2.0.0) (2026-07-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* les 7 noms d'evenements custom ci-dessus changent, sans periode de transition. Le Front (stockHub_V2_front) les consomme deja via le tag v1.3.3 (ContributionFormModal.tsx, CollaboratorsModal.tsx, PendingContributionsSection.tsx, web-components.d.ts). Issue de suivi ouverte cote Front : stockHub_V2_front#192.
+
+### Features
+
+* **stock-card:** add hide-details prop to hide the details button ([109174e](https://github.com/SandrineCipolla/stockhub_design_system/commit/109174e87122ab733b9c3634749f4c0e89b4f4ce))
+
+
+### Bug Fixes
+
+* **lint:** migrer vers eslint.config.js (flat config) - closes [#41](https://github.com/SandrineCipolla/stockhub_design_system/issues/41) ([b00f7ef](https://github.com/SandrineCipolla/stockhub_design_system/commit/b00f7ef495b99742b2877f1b1193361c4524deaa))
+* renommer les evenements custom non conformes avec le prefixe sh- - refs [#42](https://github.com/SandrineCipolla/stockhub_design_system/issues/42) ([f8ad573](https://github.com/SandrineCipolla/stockhub_design_system/commit/f8ad573168b48feb5b2441d0f7af9b9c75232ea3))
+
 ## [1.4.0](https://github.com/SandrineCipolla/stockhub_design_system/compare/v1.3.0...v1.4.0) (2026-04-02)
 
 

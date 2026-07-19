@@ -1,7 +1,7 @@
 # StockHub Design System — État du projet
 
 **Date de rédaction** : 10 juillet 2026
-**Dernière activité** : 10 juillet 2026
+**Dernière activité** : 19 juillet 2026
 **Branche active** : `master`
 **Version publiée** : v2.0.0 (breaking change — renommage d'événements custom, voir #42)
 
@@ -50,7 +50,12 @@ Au passage : le label `technique` référencé par le template d'issue `.github/
 - **#41** — Migration ESLint 9 flat config, `npm run lint` fonctionne de nouveau (0 erreur, 70 warnings pré-existants inchangés). Détail et alternatives pesées : [ADR 0001](documentation/adr/0001-migration-eslint-flat-config.md).
 - **#42** — Renommage des 7 événements custom avec préfixe `sh-` (PR [#44](https://github.com/SandrineCipolla/stockhub_design_system/pull/44), mergée). **Breaking change** publié en v2.0.0 : `stockHub_V2_front` (pinné `v1.3.3`) consomme encore les anciens noms dans 4 fichiers — coordination en cours via [stockHub_V2_front#192](https://github.com/SandrineCipolla/stockHub_V2_front/issues/192), **ne pas installer v2.0.0 côté Front avant que cette issue soit traitée**. Détail : [ADR 0002](documentation/adr/0002-renommage-evenements-prefixe-sh.md).
 - **#45** — Job CI `chromatic` cassé depuis un moment (`preview-stats.json` manquant pour TurboSnap) réparé en ajoutant `--stats-json` à `build-storybook` (PR [#46](https://github.com/SandrineCipolla/stockhub_design_system/pull/46), mergée). 35 changements visuels accumulés pendant la panne, revus et acceptés comme nouvelles baselines Chromatic.
-- **#48** — 10 composants jamais documentés dans le README (5 de la PR #37 + 5 organisms plus anciens, dont `sh-stock-item-card` repositionné depuis Molecules vers Organisms) (PR [#49](https://github.com/SandrineCipolla/stockhub_design_system/pull/49), mergée). Props/événements vérifiés contre le code source. Trouvaille au passage : JSDoc de `sh-ia-alert-banner.ts` incohérent avec son propre code (`@fires sh-ia-alert-click` vs `sh-ia-alert-toggle` réellement émis) — flaggé séparément, pas encore corrigé.
+- **#48** — 10 composants jamais documentés dans le README (5 de la PR #37 + 5 organisms plus anciens, dont `sh-stock-item-card` repositionné depuis Molecules vers Organisms) (PR [#49](https://github.com/SandrineCipolla/stockhub_design_system/pull/49), mergée). Props/événements vérifiés contre le code source. Trouvaille au passage : JSDoc de `sh-ia-alert-banner.ts` incohérent avec son propre code (`@fires sh-ia-alert-click` vs `sh-ia-alert-toggle` réellement émis) — voir #51.
+
+### En cours — PR ouvertes, pas encore mergées (19 juillet 2026)
+
+- **#51** — JSDoc `sh-ia-alert-banner` incohérent avec le code réel (branche `fix/51-jsdoc-ia-alert-banner`), agent lancé en tâche de fond, vérifie aussi d'autres écarts JSDoc/code similaires ailleurs dans le repo.
+- **#52** — Mise en place de Dependabot (21 vulnérabilités npm actuelles, 1 low/11 moderate/9 high) (branche `chore/52-dependabot-setup`), agent lancé en tâche de fond, corrige les vulnérabilités fixables sans breaking change via `npm audit fix`.
 
 ---
 
@@ -87,6 +92,8 @@ Build · tests d'interaction · Chromatic (visual regression, preview par PR) ·
 | #39 | Supprimer les `title` natifs sur les boutons `sh-header` | P2 |
 | #43 | Reformater `src/` avec Prettier | P2 |
 | #50 | Documentation riche des composants via pages MDX Storybook (guidelines, do's/don'ts, a11y) | P3 |
+| #51 | JSDoc `sh-ia-alert-banner` incohérent avec le code réel — *PR en cours* | — |
+| #52 | Mettre en place Dependabot (21 vulnérabilités npm) — *PR en cours* | P1 |
 | #34 | Corriger `button-name` sur les boutons internes de `sh-button` (Shadow DOM) | — |
 | #33 | Corriger `label-content-name-mismatch` sur le bouton notifications `sh-header` | — |
 | #27 | Corriger le contraste du bouton ghost en light mode (WCAG AA) | — |

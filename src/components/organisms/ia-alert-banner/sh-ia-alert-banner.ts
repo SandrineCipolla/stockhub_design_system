@@ -22,7 +22,7 @@ export interface IaAlert {
  *
  * Utilisé dans StockHub V2 pour afficher les suggestions IA.
  *
- * @fires sh-ia-alert-click - Émis lors du clic sur le bandeau
+ * @fires sh-ia-alert-toggle - Émis lors du clic sur le bandeau
  * @fires sh-ia-alert-item-click - Émis lors du clic sur un item
  *
  * @example

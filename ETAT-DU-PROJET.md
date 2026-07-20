@@ -1,9 +1,9 @@
 # StockHub Design System — État du projet
 
 **Date de rédaction** : 10 juillet 2026
-**Dernière activité** : 19 juillet 2026
+**Dernière activité** : 20 juillet 2026
 **Branche active** : `master`
-**Version publiée** : v2.0.0 (breaking change — renommage d'événements custom, voir #42)
+**Version publiée** : v2.0.2 (v2.0.0 = breaking change renommage d'événements custom, voir #42)
 
 ---
 
@@ -52,10 +52,13 @@ Au passage : le label `technique` référencé par le template d'issue `.github/
 - **#45** — Job CI `chromatic` cassé depuis un moment (`preview-stats.json` manquant pour TurboSnap) réparé en ajoutant `--stats-json` à `build-storybook` (PR [#46](https://github.com/SandrineCipolla/stockhub_design_system/pull/46), mergée). 35 changements visuels accumulés pendant la panne, revus et acceptés comme nouvelles baselines Chromatic.
 - **#48** — 10 composants jamais documentés dans le README (5 de la PR #37 + 5 organisms plus anciens, dont `sh-stock-item-card` repositionné depuis Molecules vers Organisms) (PR [#49](https://github.com/SandrineCipolla/stockhub_design_system/pull/49), mergée). Props/événements vérifiés contre le code source. Trouvaille au passage : JSDoc de `sh-ia-alert-banner.ts` incohérent avec son propre code (`@fires sh-ia-alert-click` vs `sh-ia-alert-toggle` réellement émis) — voir #51.
 
-### En cours — PR ouvertes, pas encore mergées (19 juillet 2026)
+### Fait le 19-20 juillet 2026
 
-- **#51** — JSDoc `sh-ia-alert-banner` incohérent avec le code réel (branche `fix/51-jsdoc-ia-alert-banner`), agent lancé en tâche de fond, vérifie aussi d'autres écarts JSDoc/code similaires ailleurs dans le repo.
-- **#52** — Mise en place de Dependabot (21 vulnérabilités npm actuelles, 1 low/11 moderate/9 high) (branche `chore/52-dependabot-setup`), agent lancé en tâche de fond, corrige les vulnérabilités fixables sans breaking change via `npm audit fix`.
+- **#51** — JSDoc `sh-ia-alert-banner` incohérent avec le code réel corrigé (PR [#53](https://github.com/SandrineCipolla/stockhub_design_system/pull/53), mergée). Trouvaille au passage : `sh-quantity-input.ts` dispatchait `sync` sans préfixe `sh-` alors que son propre JSDoc documentait déjà `sh-sync` — code corrigé pour respecter la convention plutôt que la doc affaiblie.
+- **#52** — Dependabot mis en place (PR [#54](https://github.com/SandrineCipolla/stockhub_design_system/pull/54), mergée). 16/21 vulnérabilités npm corrigées (les 9 *high* incluses) via `npm audit fix`. 5 *moderate* restantes sur `uuid` (transitive, dev-only) — pas forcées, jugées non critiques.
+- **Vague de bumps Dependabot** (56, 59, 61, 62, 63, 66, 68, 70/71, 72, 73) passée en revue une par une et mergée. 3 bumps majeurs fermés avec `@dependabot ignore this major version` car réellement bloquants (`typescript-eslint` ne supporte ni TS7 ni ESLint 10 ; `@storybook/builder-vite` ne supporte pas Vite 8) — suivi dans [#64](https://github.com/SandrineCipolla/stockhub_design_system/issues/64) (Vite 8) et [#65](https://github.com/SandrineCipolla/stockhub_design_system/issues/65) (ESLint 10). `lit` 2.8→3.3.3 mergé après vérification (aucune API dépréciée utilisée dans le repo).
+- **`husky` 8→9** : mergé, mais `npx husky install` (utilisé dans `ci.yml`) affiche `DEPRECATED` — husky 9 a retiré cette commande au profit de `npx husky` seul. Pas bloquant aujourd'hui, à corriger à l'occasion.
+- Version publiée : v2.0.2 (release-please, PR #67).
 
 ---
 
@@ -92,8 +95,8 @@ Build · tests d'interaction · Chromatic (visual regression, preview par PR) ·
 | #39 | Supprimer les `title` natifs sur les boutons `sh-header` | P2 |
 | #43 | Reformater `src/` avec Prettier | P2 |
 | #50 | Documentation riche des composants via pages MDX Storybook (guidelines, do's/don'ts, a11y) | P3 |
-| #51 | JSDoc `sh-ia-alert-banner` incohérent avec le code réel — *PR en cours* | — |
-| #52 | Mettre en place Dependabot (21 vulnérabilités npm) — *PR en cours* | P1 |
+| #64 | Migrer vers Vite 8 (config rollupOptions + vérification bundle) | P3 |
+| #65 | Migrer vers ESLint 10 (coordonner avec @eslint/js et typescript-eslint) | P3 |
 | #34 | Corriger `button-name` sur les boutons internes de `sh-button` (Shadow DOM) | — |
 | #33 | Corriger `label-content-name-mismatch` sur le bouton notifications `sh-header` | — |
 | #27 | Corriger le contraste du bouton ghost en light mode (WCAG AA) | — |
@@ -109,10 +112,11 @@ Build · tests d'interaction · Chromatic (visual regression, preview par PR) ·
 
 ## Pour la prochaine session — par où commencer
 
-1. **Coordination Front** — suivre [stockHub_V2_front#192](https://github.com/SandrineCipolla/stockHub_V2_front/issues/192) : ne pas installer `@stockhub/design-system@2.0.0` côté Front avant que les 4 fichiers consommant les anciens noms d'événements soient mis à jour.
+1. **Coordination Front** — suivre [stockHub_V2_front#192](https://github.com/SandrineCipolla/stockHub_V2_front/issues/192) : ne pas installer une version du DS postérieure à `v1.3.3` côté Front avant que les 4 fichiers consommant les anciens noms d'événements soient mis à jour.
 2. **Trancher `fix/design-tokens-cleanup`** : reprendre le travail ou supprimer la branche.
 3. **#39** — déjà identifiée comme prochaine action côté produit (retirer les `title` natifs sur `sh-header`).
 4. **#43** — reformatage Prettier global, quand un créneau se libère (peu urgent, P2).
+5. **`ci.yml`** — remplacer `npx husky install` par `npx husky` (husky 9 a supprimé la sous-commande `install`, juste un warning de dépréciation pour l'instant).
 
 ---
 

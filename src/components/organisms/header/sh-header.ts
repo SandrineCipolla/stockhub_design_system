@@ -257,7 +257,7 @@ export class ShHeader extends LitElement {
                             <!-- User Section -->
                             <div class="user-section">
                                 ${this.isLoggedIn ? html`
-                                    <span class="user-name" aria-label="Utilisateur connecté" title="${this.userName}">
+                                    <span class="user-name" aria-label="Utilisateur connecté">
                                         ${this.userName}
                                     </span>
 

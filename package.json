@@ -74,7 +74,7 @@
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "@typescript-eslint/parser": "^8.46.2",
     "chokidar-cli": "^3.0.0",
-    "chromatic": "^13.3.2",
+    "chromatic": "^18.0.1",
     "eslint": "^9.38.0",
     "prettier": "^3.6.2",
     "rollup": "^4.0.0",

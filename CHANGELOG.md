@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.3](https://github.com/SandrineCipolla/stockhub_design_system/compare/v2.0.2...v2.0.3) (2026-07-20)
+
+
+### Bug Fixes
+
+* resynchroniser le lockfile (metadonnees libc) ([0f113bf](https://github.com/SandrineCipolla/stockhub_design_system/commit/0f113bffa2064ef73d6c77a72e8d9a26b94504ea))
+* resynchroniser le lockfile (metadonnees libc) ([4f5a5cc](https://github.com/SandrineCipolla/stockhub_design_system/commit/4f5a5cccbcca37345d15ad4e48e5b1a1e4058036))
+* **sh-header:** supprimer le title natif redondant sur .user-name ([44b2f81](https://github.com/SandrineCipolla/stockhub_design_system/commit/44b2f81a4fd2d1803ad51f532651eaf47664740a))
+* **sh-header:** supprimer le title natif redondant sur .user-name ([0e7ae95](https://github.com/SandrineCipolla/stockhub_design_system/commit/0e7ae95433ed48d3753796d1be8a562c395d5f30)), closes [#76](https://github.com/SandrineCipolla/stockhub_design_system/issues/76)
+* **sh-header:** supprimer les attributs title natifs ([aa0dc4f](https://github.com/SandrineCipolla/stockhub_design_system/commit/aa0dc4fea8f0c8ed459656898dae77bc87d4a2b9))
+* **sh-header:** supprimer les attributs title natifs - closes [#39](https://github.com/SandrineCipolla/stockhub_design_system/issues/39) ([b3bfa07](https://github.com/SandrineCipolla/stockhub_design_system/commit/b3bfa079120ab2c1a567fe52c491a16184cabed9))
+
 ## [2.0.2](https://github.com/SandrineCipolla/stockhub_design_system/compare/v2.0.1...v2.0.2) (2026-07-20)
 
 

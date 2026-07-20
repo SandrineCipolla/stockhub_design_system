@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.2](https://github.com/SandrineCipolla/stockhub_design_system/compare/v2.0.1...v2.0.2) (2026-07-20)
+
+
+### Bug Fixes
+
+* corriger l'entree peerDependencies manquante dans le lockfile (lit 3.3.3) ([66f2c5d](https://github.com/SandrineCipolla/stockhub_design_system/commit/66f2c5da8d3b5105420b9142eeb5180572eb5c87))
+
 ## [2.0.1](https://github.com/SandrineCipolla/stockhub_design_system/compare/v2.0.0...v2.0.1) (2026-07-20)
 
 

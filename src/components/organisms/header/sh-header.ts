@@ -236,7 +236,6 @@ export class ShHeader extends LitElement {
                                 class="notification-btn"
                                 @click="${this._handleNotificationClick}"
                                 aria-label="Notifications (${this.notificationCount} non lues)"
-                                title="Notifications"
                             >
                                 <sh-icon name="Bell" size="md"></sh-icon>
                                 ${this.notificationCount > 0 ? html`
@@ -253,7 +252,6 @@ export class ShHeader extends LitElement {
                                 icon-before="${this.theme === 'dark' ? 'Sun' : 'Moon'}"
                                 @click="${this._handleThemeToggle}"
                                 .ariaLabel="Changer vers le thème ${this.theme === 'dark' ? 'clair' : 'sombre'}"
-                                title="Changer de thème"
                             ></sh-button>
 
                             <!-- User Section -->
@@ -269,7 +267,6 @@ export class ShHeader extends LitElement {
                                         icon-before="LogOut"
                                         @click="${this._handleLogoutClick}"
                                         .ariaLabel="Se déconnecter de l'application StockHub"
-                                        title="Se déconnecter"
                                     >
                                         <span class="logout-text-desktop">Logout</span>
                                     </sh-button>
@@ -280,7 +277,6 @@ export class ShHeader extends LitElement {
                                         icon-before="LogIn"
                                         @click="${this._handleLoginClick}"
                                         .ariaLabel="Se connecter à StockHub"
-                                        title="Se connecter"
                                     >
                                         <span class="logout-text-desktop">Login</span>
                                     </sh-button>

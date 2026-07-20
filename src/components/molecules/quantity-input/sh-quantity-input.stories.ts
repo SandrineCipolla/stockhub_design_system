@@ -224,7 +224,7 @@ export const InteractionTest: Story = {
             // 9. Écouter l'événement sync
             let syncEventFired = false;
             let syncEventValue = '';
-            quantityInput.addEventListener('sync', ((e: CustomEvent) => {
+            quantityInput.addEventListener('sh-sync', ((e: CustomEvent) => {
                 syncEventFired = true;
                 syncEventValue = e.detail;
             }) as EventListener);
@@ -366,7 +366,7 @@ export const InteractionTestDirtyState: Story = {
 
             // Écouter l'événement sync
             let syncEventFired = false;
-            quantityInput.addEventListener('sync', (() => {
+            quantityInput.addEventListener('sh-sync', (() => {
                 syncEventFired = true;
             }) as EventListener);
 

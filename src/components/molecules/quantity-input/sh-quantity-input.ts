@@ -107,7 +107,7 @@ export class ShQuantityInput extends LitElement {
   }
 
   private handleSync() {
-    this.dispatchEvent(new CustomEvent('sync', { detail: this.value }));
+    this.dispatchEvent(new CustomEvent('sh-sync', { detail: this.value }));
     this.dirty = false;
   }
 }

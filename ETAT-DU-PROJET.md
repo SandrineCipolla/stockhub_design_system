@@ -3,7 +3,7 @@
 **Date de rédaction** : 10 juillet 2026
 **Dernière activité** : 20 juillet 2026
 **Branche active** : `master`
-**Version publiée** : v2.0.2 (v2.0.0 = breaking change renommage d'événements custom, voir #42)
+**Version publiée** : v2.0.2 (PR de release #79 → v2.0.3 en attente de merge) — v2.0.0 = breaking change renommage d'événements custom, voir #42
 
 ---
 
@@ -59,6 +59,8 @@ Au passage : le label `technique` référencé par le template d'issue `.github/
 - **Vague de bumps Dependabot** (56, 59, 61, 62, 63, 66, 68, 70/71, 72, 73) passée en revue une par une et mergée. 3 bumps majeurs fermés avec `@dependabot ignore this major version` car réellement bloquants (`typescript-eslint` ne supporte ni TS7 ni ESLint 10 ; `@storybook/builder-vite` ne supporte pas Vite 8) — suivi dans [#64](https://github.com/SandrineCipolla/stockhub_design_system/issues/64) (Vite 8) et [#65](https://github.com/SandrineCipolla/stockhub_design_system/issues/65) (ESLint 10). `lit` 2.8→3.3.3 mergé après vérification (aucune API dépréciée utilisée dans le repo).
 - **`husky` 8→9** : mergé, mais `npx husky install` (utilisé dans `ci.yml`) affiche `DEPRECATED` — husky 9 a retiré cette commande au profit de `npx husky` seul. Pas bloquant aujourd'hui, à corriger à l'occasion.
 - Version publiée : v2.0.2 (release-please, PR #67).
+- **#39** — `title` natifs retirés sur les boutons notifications/thème/connexion de `sh-header` (PR [#75](https://github.com/SandrineCipolla/stockhub_design_system/pull/75), mergée), + le `title` du nom d'utilisateur du même header, même souci (PR [#77](https://github.com/SandrineCipolla/stockhub_design_system/pull/77), mergée). Vérifié manuellement dans Storybook : aria-label toujours fonctionnels, 0 violation d'accessibilité détectée par l'addon a11y.
+- **Trouvaille en marge de #39** : les boutons Login/Logout de `sh-header` n'ont jamais eu de vrai `aria-label` fonctionnel — `.ariaLabel="chaîne statique"` sans `${}` n'est pas reconnu comme binding de propriété par Lit-html (qui n'active les préfixes `.`/`@`/`?` qu'en présence d'une interpolation). Bug pré-existant, aggravé sur mobile (texte visible masqué en CSS) → [#78](https://github.com/SandrineCipolla/stockhub_design_system/issues/78), pas encore corrigé.
 
 ---
 
@@ -92,7 +94,7 @@ Build · tests d'interaction · Chromatic (visual regression, preview par PR) ·
 
 | # | Titre | Priorité |
 |---|---|---|
-| #39 | Supprimer les `title` natifs sur les boutons `sh-header` | P2 |
+| #78 | `aria-label` jamais appliqué sur les boutons Login/Logout de `sh-header` (binding Lit statique cassé) | P1/majeur |
 | #43 | Reformater `src/` avec Prettier | P2 |
 | #50 | Documentation riche des composants via pages MDX Storybook (guidelines, do's/don'ts, a11y) | P3 |
 | #64 | Migrer vers Vite 8 (config rollupOptions + vérification bundle) | P3 |
@@ -112,9 +114,9 @@ Build · tests d'interaction · Chromatic (visual regression, preview par PR) ·
 
 ## Pour la prochaine session — par où commencer
 
-1. **Coordination Front** — suivre [stockHub_V2_front#192](https://github.com/SandrineCipolla/stockHub_V2_front/issues/192) : ne pas installer une version du DS postérieure à `v1.3.3` côté Front avant que les 4 fichiers consommant les anciens noms d'événements soient mis à jour.
-2. **Trancher `fix/design-tokens-cleanup`** : reprendre le travail ou supprimer la branche.
-3. **#39** — déjà identifiée comme prochaine action côté produit (retirer les `title` natifs sur `sh-header`).
+1. **#78 (P1/majeur)** — corriger l'`aria-label` cassé sur les boutons Login/Logout de `sh-header` (forcer une interpolation `${}` dans le binding `.ariaLabel`, ou utiliser l'attribut standard `aria-label`).
+2. **Coordination Front** — suivre [stockHub_V2_front#192](https://github.com/SandrineCipolla/stockHub_V2_front/issues/192) : ne pas installer une version du DS postérieure à `v1.3.3` côté Front avant que les 4 fichiers consommant les anciens noms d'événements soient mis à jour.
+3. **Trancher `fix/design-tokens-cleanup`** : reprendre le travail ou supprimer la branche.
 4. **#43** — reformatage Prettier global, quand un créneau se libère (peu urgent, P2).
 5. **`ci.yml`** — remplacer `npx husky install` par `npx husky` (husky 9 a supprimé la sous-commande `install`, juste un warning de dépréciation pour l'instant).
 

@@ -85,8 +85,9 @@ jobs:
   chromatic:
     needs: build
     if: |
-      github.event_name == 'pull_request' ||
-      (github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/v2'))
+      github.actor != 'dependabot[bot]' &&
+      (github.event_name == 'pull_request' ||
+      (github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/v2')))
     runs-on: ubuntu-latest
     concurrency:
       group: chromatic-${{ github.ref }}

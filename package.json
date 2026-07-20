@@ -70,7 +70,7 @@
     "@storybook/test-runner": "^0.24.2",
     "@storybook/web-components": "^10.2.15",
     "@storybook/web-components-vite": "^10.2.15",
-    "@types/node": "^24.0.3",
+    "@types/node": "^26.1.1",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "@typescript-eslint/parser": "^8.46.2",
     "chokidar-cli": "^3.0.0",

@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1](https://github.com/SandrineCipolla/stockhub_design_system/compare/v2.0.0...v2.0.1) (2026-07-20)
+
+
+### Bug Fixes
+
+* **ci:** générer preview-stats.json pour TurboSnap Chromatic ([0ada8f4](https://github.com/SandrineCipolla/stockhub_design_system/commit/0ada8f44a30f97541a726a175f0e5d94ff06ef23))
+* **ci:** generer preview-stats.json pour TurboSnap Chromatic - refs [#45](https://github.com/SandrineCipolla/stockhub_design_system/issues/45) ([48b4029](https://github.com/SandrineCipolla/stockhub_design_system/commit/48b4029577ad897c839afc5eeba438ee16341c61))
+* corriger le JSDoc [@fires](https://github.com/fires) incoherent avec le code reel ([6945dd6](https://github.com/SandrineCipolla/stockhub_design_system/commit/6945dd67b3e73e39326d97f7ce7d0fd016e7f396))
+* corriger le JSDoc [@fires](https://github.com/fires) incoherent avec le code reel ([50f1ccf](https://github.com/SandrineCipolla/stockhub_design_system/commit/50f1ccfd7f86a103fb5e764b556f89007b5dba49)), closes [#51](https://github.com/SandrineCipolla/stockhub_design_system/issues/51)
+
 ## [2.0.0](https://github.com/SandrineCipolla/stockhub_design_system/compare/v1.4.0...v2.0.0) (2026-07-17)
 
 

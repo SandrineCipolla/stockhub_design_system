@@ -3,7 +3,7 @@
 **Date de rédaction** : 10 juillet 2026
 **Dernière activité** : 20 juillet 2026
 **Branche active** : `master`
-**Version publiée** : v2.0.2 (PR de release #79 → v2.0.3 en attente de merge) — v2.0.0 = breaking change renommage d'événements custom, voir #42
+**Version publiée** : v2.0.3 — v2.0.0 = breaking change renommage d'événements custom, voir #42
 
 ---
 

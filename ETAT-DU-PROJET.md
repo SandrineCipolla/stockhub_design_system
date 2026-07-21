@@ -61,6 +61,7 @@ Au passage : le label `technique` référencé par le template d'issue `.github/
 - Version publiée : v2.0.2 (release-please, PR #67).
 - **#39** — `title` natifs retirés sur les boutons notifications/thème/connexion de `sh-header` (PR [#75](https://github.com/SandrineCipolla/stockhub_design_system/pull/75), mergée), + le `title` du nom d'utilisateur du même header, même souci (PR [#77](https://github.com/SandrineCipolla/stockhub_design_system/pull/77), mergée). Vérifié manuellement dans Storybook : aria-label toujours fonctionnels, 0 violation d'accessibilité détectée par l'addon a11y.
 - **Trouvaille en marge de #39** : les boutons Login/Logout de `sh-header` n'ont jamais eu de vrai `aria-label` fonctionnel — `.ariaLabel="chaîne statique"` sans `${}` n'est pas reconnu comme binding de propriété par Lit-html (qui n'active les préfixes `.`/`@`/`?` qu'en présence d'une interpolation). Bug pré-existant, aggravé sur mobile (texte visible masqué en CSS) → [#78](https://github.com/SandrineCipolla/stockhub_design_system/issues/78), pas encore corrigé.
+- **Coordination Front (stockHub_V2_front#192)** — PR [#193](https://github.com/SandrineCipolla/stockHub_V2_front/pull/193) ouverte côté Front : bump `@stockhub/design-system` `v1.3.3` → `v2.0.3`, 4 fichiers adaptés aux nouveaux noms d'événements. Vérifié en conditions réelles (backend staging Render.com, données réelles) : changement de rôle collaborateur testé bout-en-bout dans l'UI, événement `sh-collaborator-role-change` reçu, appel API réussi. 556 tests unitaires + build Front passants. Pas encore mergée.
 
 ---
 
@@ -114,8 +115,8 @@ Build · tests d'interaction · Chromatic (visual regression, preview par PR) ·
 
 ## Pour la prochaine session — par où commencer
 
-1. **#78 (P1/majeur)** — corriger l'`aria-label` cassé sur les boutons Login/Logout de `sh-header` (forcer une interpolation `${}` dans le binding `.ariaLabel`, ou utiliser l'attribut standard `aria-label`).
-2. **Coordination Front** — suivre [stockHub_V2_front#192](https://github.com/SandrineCipolla/stockHub_V2_front/issues/192) : ne pas installer une version du DS postérieure à `v1.3.3` côté Front avant que les 4 fichiers consommant les anciens noms d'événements soient mis à jour.
+1. **Merger [stockHub_V2_front#193](https://github.com/SandrineCipolla/stockHub_V2_front/pull/193)** — upgrade DS v2.0.3 côté Front, déjà vérifié (build, tests, test manuel réel), en attente de relecture.
+2. **#78 (P1/majeur)** — corriger l'`aria-label` cassé sur les boutons Login/Logout de `sh-header` (forcer une interpolation `${}` dans le binding `.ariaLabel`, ou utiliser l'attribut standard `aria-label`).
 3. **Trancher `fix/design-tokens-cleanup`** : reprendre le travail ou supprimer la branche.
 4. **#43** — reformatage Prettier global, quand un créneau se libère (peu urgent, P2).
 5. **`ci.yml`** — remplacer `npx husky install` par `npx husky` (husky 9 a supprimé la sous-commande `install`, juste un warning de dépréciation pour l'instant).

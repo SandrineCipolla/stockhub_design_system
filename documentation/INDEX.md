@@ -1,9 +1,12 @@
 # Documentation - StockHub Design System
 
-**Version** : 2.0
-**Date** : 29 Octobre 2025
+**Version** : 2.0.3
+**Date** : 23 Juillet 2026 (nettoyage du présent index — contenu ci-dessous en partie hérité d'octobre 2025, voir note ci-dessous)
 
 Bienvenue dans la documentation du Design System StockHub.
+
+> [!IMPORTANT]
+> **État du projet à jour** → [`ETAT-DU-PROJET.md`](../ETAT-DU-PROJET.md) (racine du repo). C'est la source vivante pour le backlog, les sessions en cours et les décisions récentes — cet index reste la table des matières de la documentation structurelle (guides, specs, ADR), pas un journal d'activité.
 
 ---
 
@@ -47,8 +50,8 @@ La cohérence des conventions de nommage (props, événements, fichiers) est vé
    *Rapport d’accessibilité.*
 
 **Plans & specs** (`./planning/`) : [MIGRATION-PLAN.md](./planning/MIGRATION-PLAN.md), [COMPONENT-SPECIFICATIONS.md](./planning/COMPONENT-SPECIFICATIONS.md), [SPRINT-1-CHECKLIST.md](./planning/SPRINT-1-CHECKLIST.md), [INTEGRATION-PLAN.md](./planning/INTEGRATION-PLAN.md).
-**Décisions d'architecture** (`./adr/`) : un ADR par décision structurante (outillage, choix technique avec alternatives pesées) — voir [0001-migration-eslint-flat-config.md](./adr/0001-migration-eslint-flat-config.md).
-**Sessions de développement** (`./sessions/`) : comptes-rendus historiques, voir section dédiée plus bas.
+**Décisions d'architecture** (`./adr/`) : un ADR par décision structurante (outillage, choix technique avec alternatives pesées) — [0001-migration-eslint-flat-config.md](./adr/0001-migration-eslint-flat-config.md), [0002-renommage-evenements-prefixe-sh.md](./adr/0002-renommage-evenements-prefixe-sh.md).
+**Sessions de développement** (`./sessions/`) : comptes-rendus historiques figés (sessions 1 à 8, 16-21 octobre 2025), voir section dédiée plus bas. Le suivi d'activité depuis a migré vers [`ETAT-DU-PROJET.md`](../ETAT-DU-PROJET.md) — pas de session 9+ rédigée séparément.
 **Archive** (`./archive/`) : documents clos ou superseded — voir [DESIGN-SYSTEM-CORRECTIONS.md](./archive/DESIGN-SYSTEM-CORRECTIONS.md), [OPTIMIZATION-PLAN.md](./archive/OPTIMIZATION-PLAN.md), [CHANGELOG-HISTORIQUE-SESSIONS.md](./archive/CHANGELOG-HISTORIQUE-SESSIONS.md), [STOCK-PREDICTION-CARD-IMPLEMENTATION.md](./archive/STOCK-PREDICTION-CARD-IMPLEMENTATION.md), [STOCKHUB-V2-INTEGRATION.md](./archive/STOCKHUB-V2-INTEGRATION.md).
 
 ---
@@ -71,27 +74,36 @@ L'organisation du menu Storybook respecte exactement la hiérarchie des dossiers
 🎨 Icons
 
 📦 Components
-   ├── 🔹 Atoms (5)
+   ├── 🔹 Atoms (6)
    │   ├── Badge
    │   ├── Icon
    │   ├── Input
    │   ├── Logo
+   │   ├── RoleBadge
    │   └── Text
-   ├── 🔸 Molecules (6)
+   ├── 🔸 Molecules (10)
    │   ├── Button
    │   ├── Card
-   │   ├── MetricCard ✨
+   │   ├── ContributionCard
+   │   ├── ContributionForm
+   │   ├── MetricCard
    │   ├── QuantityInput
-   │   ├── SearchInput ✨
+   │   ├── RoleSelector
+   │   ├── SearchInput
+   │   ├── StatCard
    │   └── StatusBadge
-   └── 🔷 Organisms (5)
-       ├── Footer ✨
+   └── 🔷 Organisms (8)
+       ├── CollaboratorList
+       ├── Footer
        ├── Header
-       ├── IaAlertBanner ✨
-       ├── PageHeader ✨
+       ├── IaAlertBanner
+       ├── PageHeader
        ├── StockCard
-       └── StockItemCard
+       ├── StockItemCard
+       └── StockPredictionCard
 ```
+
+*(24 composants au total — détail à jour dans [`ETAT-DU-PROJET.md`](../ETAT-DU-PROJET.md#où-en-est-le-projet))*
 
 #### Nomenclature des Titres
 - **Atomes** : `Components/Atoms/[NomComposant]`
@@ -211,7 +223,7 @@ Audit complet de l'utilisation des Design Tokens dans tous les composants.
 
 **Statut** : 📋 Améliorations optionnelles (priorité basse)
 
-#### [8-INTERACTION-TESTS-TRACKING.md](./8-INTERACTION-TESTS-TRACKING.md) ✨ NOUVEAU
+#### [8-INTERACTION-TESTS-TRACKING.md](./8-INTERACTION-TESTS-TRACKING.md)
 Tracking complet de l'implémentation des tests d'interaction avec @storybook/test.
 
 **Contenu** :
@@ -251,36 +263,24 @@ Tracking complet de l'implémentation des tests d'interaction avec @storybook/te
 
 ## 📊 Résumé du Projet
 
-### Composants Créés (16 total)
+### Composants (24 total — décompte à jour, voir [`ETAT-DU-PROJET.md`](../ETAT-DU-PROJET.md#où-en-est-le-projet) pour le détail par composant)
 
-| Composant | Type | Statut | Session |
-|-----------|------|--------|---------|
-| sh-badge | Atom | ✅ Créé | 1 |
-| sh-icon | Atom | ✅ Créé | 1 |
-| sh-input | Atom | ✅ Créé | 1 |
-| sh-logo | Atom | ✅ Créé | 1 |
-| sh-text | Atom | ✅ Créé | 1 |
-| sh-button | Molecule | ✅ Créé | 1 |
-| sh-card | Molecule | ✅ Créé | 1 |
-| sh-metric-card | Molecule | ✅ Créé | 5 |
-| sh-quantity-input | Molecule | ✅ Créé | 1 |
-| sh-search-input | Molecule | ✅ Créé | 7 |
-| sh-status-badge | Molecule | ✅ Créé | 5 |
-| sh-footer | Organism | ✅ Créé | 7 |
-| sh-header | Organism | ✅ Créé | 1 |
-| sh-ia-alert-banner | Organism | ✅ Créé | 7 |
-| sh-page-header | Organism | ✅ Créé | 8 |
-| sh-stock-card | Organism | ✅ Créé | 7 |
-| sh-stock-item-card | Organism | ✅ Créé | 5 |
+| Niveau | Composants |
+|---|---|
+| **Atoms (6)** | `sh-badge` · `sh-icon` · `sh-input` · `sh-logo` · `sh-role-badge` · `sh-text` |
+| **Molecules (10)** | `sh-button` · `sh-card` · `sh-contribution-card` · `sh-contribution-form` · `sh-metric-card` · `sh-quantity-input` · `sh-role-selector` · `sh-search-input` · `sh-stat-card` · `sh-status-badge` |
+| **Organisms (8)** | `sh-collaborator-list` · `sh-footer` · `sh-header` · `sh-ia-alert-banner` · `sh-page-header` · `sh-stock-card` · `sh-stock-item-card` · `sh-stock-prediction-card` |
 
-### Progression
+Les 16 premiers composants (sessions 1-8, ci-dessous) forment le socle initial ; les 8 restants (`sh-role-badge`, `sh-role-selector`, `sh-contribution-card`, `sh-contribution-form`, `sh-collaborator-list`, `sh-stat-card`, `sh-stock-prediction-card`, et l'ajout de la préversion StockHub V2) sont venus après, sans compte-rendu de session dédié — voir historique Git et `ETAT-DU-PROJET.md`.
+
+### Progression (historique figé, sessions 1-8 — 16-21 octobre 2025)
 
 - **Sessions 1-2** : Fondations (5h30) - Setup, tokens, composants de base
 - **Sessions 3-4** : Thème & Nouveaux composants (4h30) - Système de thème, metric-card, stock-item-card
 - **Sessions 5-6** : Documentation & Finalisation (3h30) - Docs automatique, préparation intégration
 - **Sessions 7-8** : StockHub V2 Components (4h) - Refactoring, nouveaux composants V2
 
-**Total réalisé** : ~17h30
+**Total réalisé (sessions 1-8)** : ~17h30. Activité postérieure (dette technique, breaking change v2.0.0, nouveaux composants, accessibilité) suivie dans [`ETAT-DU-PROJET.md`](../ETAT-DU-PROJET.md), pas ici.
 
 ### 🔗 Voir aussi
 - **Historique des versions** → [CHANGELOG.md](../CHANGELOG.md)
@@ -292,10 +292,10 @@ Tracking complet de l'implémentation des tests d'interaction avec @storybook/te
 ## 🛠️ Outils & Technologies
 
 **Design System**
-- Lit Element (Web Components)
+- Lit Element 3.3.3 (Web Components)
 - TypeScript 5.8.3
-- Storybook 8.6.12
-- Rollup (build)
+- Storybook 10.2.15
+- Vite 6.4 (build)
 
 **StockHub V2**
 - React 19.1.0
@@ -351,25 +351,13 @@ Pour toute question ou problème :
 
 ---
 
-## 📝 Notes de Version
+## 📝 Repère de versions
 
-### v2.0 (29 Octobre 2025)
-- ✅ **16 composants Web Components** créés et documentés
-- ✅ **8 sessions** de développement complétées (~17h30)
-- ✅ Système de thème global (dark/light) avec toggle Storybook
-- ✅ Migration complète vers Lucide icons (1000+ icônes)
-- ✅ Documentation automatique (JSDoc + Custom Elements Manifest)
-- ✅ Composants StockHub V2 : metric-card, stock-card, stock-item-card, page-header, footer, ia-alert-banner
-- ✅ Support accessibilité WCAG AA complet
-- ✅ Déploiement Chromatic automatique
+Historique détaillé volontairement non dupliqué ici — voir [CHANGELOG.md](../CHANGELOG.md) (auto-généré, release-please) et [ETAT-DU-PROJET.md](../ETAT-DU-PROJET.md) (état courant). Juste les jalons pour se repérer :
 
-### v1.0 (16 Octobre 2025)
-- Documentation initiale
-- Plan de migration complet
-- Spécifications composants
-- Guide d'intégration React
+v1.0 (16 octobre 2025, doc initiale) → v2.0 (29 octobre 2025, 16 composants, socle initial) → v2.0.0 (10 juillet 2026, **breaking change** renommage d'événements `sh-`, voir [ADR 0002](./adr/0002-renommage-evenements-prefixe-sh.md)) → v2.0.3 (version publiée actuelle, 24 composants).
 
 ---
 
 **Maintenu par** : Sandrine Cipolla
-**Dernière mise à jour** : 29 Octobre 2025
+**Dernière mise à jour** : 23 Juillet 2026

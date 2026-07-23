@@ -1,9 +1,9 @@
 # StockHub Design System — État du projet
 
 **Date de rédaction** : 10 juillet 2026
-**Dernière activité** : 20 juillet 2026
+**Dernière activité** : 23 juillet 2026
 **Branche active** : `master`
-**Version publiée** : v2.0.3 — v2.0.0 = breaking change renommage d'événements custom, voir #42
+**Version publiée** : v2.0.3 — v2.0.0 = breaking change renommage d'événements custom, voir #42 (patch #78/#83 mergé, pas encore publié via release-please)
 
 ---
 
@@ -63,6 +63,12 @@ Au passage : le label `technique` référencé par le template d'issue `.github/
 - **Trouvaille en marge de #39** : les boutons Login/Logout de `sh-header` n'ont jamais eu de vrai `aria-label` fonctionnel — `.ariaLabel="chaîne statique"` sans `${}` n'est pas reconnu comme binding de propriété par Lit-html (qui n'active les préfixes `.`/`@`/`?` qu'en présence d'une interpolation). Bug pré-existant, aggravé sur mobile (texte visible masqué en CSS) → [#78](https://github.com/SandrineCipolla/stockhub_design_system/issues/78), pas encore corrigé.
 - **Coordination Front (stockHub_V2_front#192) — ✅ close le 21 juillet 2026.** PR [#193](https://github.com/SandrineCipolla/stockHub_V2_front/pull/193) mergée : bump `@stockhub/design-system` `v1.3.3` → `v2.0.3`, 4 fichiers adaptés aux nouveaux noms d'événements. Vérifié en conditions réelles (backend staging Render.com, données réelles) : changement de rôle collaborateur testé bout-en-bout dans l'UI, événement `sh-collaborator-role-change` reçu, appel API réussi. 556 tests unitaires + build Front passants. Mergée avec 3 autres PR Front en attente depuis mi-juin : [#191](https://github.com/SandrineCipolla/stockHub_V2_front/pull/191) (fix auth reconnexion, vérifiée en simulant le bug réel — verrou `interaction.status` périmé nettoyé avec succès), [#185](https://github.com/SandrineCipolla/stockHub_V2_front/pull/185) (bump js-yaml), [#187](https://github.com/SandrineCipolla/stockHub_V2_front/pull/187) (release-please 1.15.0, mergée en dernier). Build final sur `main` vérifié après coup, tout passe. **Le Front est maintenant sur la dernière version du DS.**
 
+### Fait le 23 juillet 2026
+
+- **#78 (P1/majeur) — ✅ réglé** (PR [#82](https://github.com/SandrineCipolla/stockhub_design_system/pull/82), mergée). `aria-label` cassé sur les boutons Login/Logout de `sh-header` : `.ariaLabel="chaîne statique"` n'est jamais reconnu comme binding de propriété par lit-html (les préfixes `.`/`@`/`?` ne s'activent qu'en présence d'une interpolation `${}`, contrairement au bouton theme-toggle du même composant qui fonctionnait déjà pour cette raison). Remplacé par l'attribut standard `aria-label="..."` sur les deux boutons — `sh-button` déclare déjà `ariaLabel` avec `attribute: 'aria-label'`, donc l'attribut est correctement reflété en propriété et propagé au `<button>` interne du Shadow DOM. Vérifié en conditions réelles dans Storybook (états `isLoggedIn=true`/`false`), pas seulement en lecture de code. Diff volontairement scopé aux 2 lignes concernées — la dette Prettier pré-existante sur ce fichier (#43) n'a pas été traitée au passage.
+- **Chore sans issue dédiée — ✅ mergé** (PR [#83](https://github.com/SandrineCipolla/stockhub_design_system/pull/83)). `custom-elements.json` régénéré via `npm run analyze` (était périmé, `sh-role-badge` et d'autres composants absents du manifest bien que présents dans `src/`). Config `.claude/` locale versionnée au passage (agents `code-reviewer`/`test-writer`, `launch.json` preview Storybook) — jusque-là non trackée alors qu'utile à quiconque travaille sur ce repo avec Claude Code.
+- **Nettoyage doc sans issue dédiée** (PR [#86](https://github.com/SandrineCipolla/stockhub_design_system/pull/86)). `documentation/INDEX.md` était périmé depuis octobre 2025 (16 composants, sessions 1-8 seulement, aucun renvoi vers ce fichier). Mis à jour : renvoi explicite vers `ETAT-DU-PROJET.md` en tête de fichier, comptage composants et arborescence Storybook 16→24, sessions 1-8 marquées comme historique figé, section "Notes de Version" dupliquée remplacée par un repère de jalons + renvoi vers `CHANGELOG.md`, versions outillage corrigées (Storybook 10.2.15, Vite au lieu de Rollup, Lit 3.3.3), lien ajouté vers ADR 0002.
+
 ---
 
 ## Où en est le projet
@@ -95,7 +101,6 @@ Build · tests d'interaction · Chromatic (visual regression, preview par PR) ·
 
 | # | Titre | Priorité |
 |---|---|---|
-| #78 | `aria-label` jamais appliqué sur les boutons Login/Logout de `sh-header` (binding Lit statique cassé) | P1/majeur |
 | #43 | Reformater `src/` avec Prettier | P2 |
 | #50 | Documentation riche des composants via pages MDX Storybook (guidelines, do's/don'ts, a11y) | P3 |
 | #64 | Migrer vers Vite 8 (config rollupOptions + vérification bundle) | P3 |
@@ -115,10 +120,10 @@ Build · tests d'interaction · Chromatic (visual regression, preview par PR) ·
 
 ## Pour la prochaine session — par où commencer
 
-1. **#78 (P1/majeur)** — corriger l'`aria-label` cassé sur les boutons Login/Logout de `sh-header` (forcer une interpolation `${}` dans le binding `.ariaLabel`, ou utiliser l'attribut standard `aria-label`).
-2. **Trancher `fix/design-tokens-cleanup`** : reprendre le travail ou supprimer la branche.
-3. **#43** — reformatage Prettier global, quand un créneau se libère (peu urgent, P2).
-4. **`ci.yml`** — remplacer `npx husky install` par `npx husky` (husky 9 a supprimé la sous-commande `install`, juste un warning de dépréciation pour l'instant).
+1. **Trancher `fix/design-tokens-cleanup`** : reprendre le travail ou supprimer la branche.
+2. **#43** — reformatage Prettier global, quand un créneau se libère (peu urgent, P2).
+3. **`ci.yml`** — remplacer `npx husky install` par `npx husky` (husky 9 a supprimé la sous-commande `install`, juste un warning de dépréciation pour l'instant).
+4. Plus aucun P1 ouvert sur ce repo après #78 — sinon reprendre le backlog P2/P3 ci-dessus (#15/#16 tests unitaires en priorité, 0% de couverture actuellement).
 
 ---
 

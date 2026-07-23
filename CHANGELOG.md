@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.4](https://github.com/SandrineCipolla/stockhub_design_system/compare/v2.0.3...v2.0.4) (2026-07-23)
+
+
+### Bug Fixes
+
+* corriger aria-label casse sur boutons Login/Logout de sh-header ([#82](https://github.com/SandrineCipolla/stockhub_design_system/issues/82)) ([eb508e4](https://github.com/SandrineCipolla/stockhub_design_system/commit/eb508e4bc09fbfae5d1edc2173175cc434b677c1))
+
 ## [2.0.3](https://github.com/SandrineCipolla/stockhub_design_system/compare/v2.0.2...v2.0.3) (2026-07-20)
 
 

@@ -606,6 +606,152 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/atoms/role-badge/sh-role-badge.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Badge affichant le rôle d'un collaborateur sur un stock.",
+          "name": "ShRoleBadge",
+          "members": [
+            {
+              "kind": "field",
+              "name": "role",
+              "type": {
+                "text": "'OWNER' | 'EDITOR' | 'VIEWER' | 'VIEWER_CONTRIBUTOR'"
+              },
+              "default": "'VIEWER'",
+              "description": "Rôle à afficher",
+              "attribute": "role"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Taille du badge",
+              "attribute": "size"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "role",
+              "type": {
+                "text": "'OWNER' | 'EDITOR' | 'VIEWER' | 'VIEWER_CONTRIBUTOR'"
+              },
+              "default": "'VIEWER'",
+              "description": "Rôle à afficher",
+              "fieldName": "role"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Taille du badge",
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-role-badge",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShRoleBadge",
+          "declaration": {
+            "name": "ShRoleBadge",
+            "module": "src/components/atoms/role-badge/sh-role-badge.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-role-badge",
+          "declaration": {
+            "name": "ShRoleBadge",
+            "module": "src/components/atoms/role-badge/sh-role-badge.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/atoms/logo/sh-logo.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Logo component displaying the StockHub brand with icon and text.",
+          "name": "ShLogo",
+          "cssProperties": [
+            {
+              "description": "Controls the size of the logo icon (default: 40px)",
+              "name": "--logo-icon-size"
+            },
+            {
+              "description": "Controls the size of the logo text (default: 20px)",
+              "name": "--logo-text-size"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Logo size variant",
+              "attribute": "size",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Logo size variant",
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-logo",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShLogo",
+          "declaration": {
+            "name": "ShLogo",
+            "module": "src/components/atoms/logo/sh-logo.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-logo",
+          "declaration": {
+            "name": "ShLogo",
+            "module": "src/components/atoms/logo/sh-logo.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/atoms/text/sh-text.ts",
       "declarations": [
         {
@@ -761,75 +907,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/atoms/logo/sh-logo.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Logo component displaying the StockHub brand with icon and text.",
-          "name": "ShLogo",
-          "cssProperties": [
-            {
-              "description": "Controls the size of the logo icon (default: 40px)",
-              "name": "--logo-icon-size"
-            },
-            {
-              "description": "Controls the size of the logo text (default: 20px)",
-              "name": "--logo-text-size"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Logo size variant",
-              "attribute": "size",
-              "reflects": true
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Logo size variant",
-              "fieldName": "size"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-logo",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShLogo",
-          "declaration": {
-            "name": "ShLogo",
-            "module": "src/components/atoms/logo/sh-logo.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-logo",
-          "declaration": {
-            "name": "ShLogo",
-            "module": "src/components/atoms/logo/sh-logo.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/molecules/button/sh-button.ts",
       "declarations": [
         {
@@ -939,7 +1016,7 @@
               },
               "default": "null",
               "description": "Accessible label for screen readers (required for icon-only buttons)",
-              "attribute": "ariaLabel"
+              "attribute": "aria-label"
             },
             {
               "kind": "method",
@@ -1050,7 +1127,7 @@
               "fieldName": "iconOnly"
             },
             {
-              "name": "ariaLabel",
+              "name": "aria-label",
               "type": {
                 "text": "string"
               },
@@ -1219,6 +1296,359 @@
           "declaration": {
             "name": "ShCard",
             "module": "src/components/molecules/card/sh-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/molecules/quantity-input/sh-quantity-input.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Quantity input component with sync button for inventory management.",
+          "name": "ShQuantityInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Current quantity value",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "dirty",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates if value has changed",
+              "attribute": "dirty"
+            },
+            {
+              "kind": "field",
+              "name": "hideArrows",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide number input arrows",
+              "attribute": "hideArrows"
+            },
+            {
+              "kind": "method",
+              "name": "handleInputChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "CustomEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleSync",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-sync",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when sync button is clicked with updated value"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Current quantity value",
+              "fieldName": "value"
+            },
+            {
+              "name": "dirty",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates if value has changed",
+              "fieldName": "dirty"
+            },
+            {
+              "name": "hideArrows",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Hide number input arrows",
+              "fieldName": "hideArrows"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-quantity-input",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShQuantityInput",
+          "declaration": {
+            "name": "ShQuantityInput",
+            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-quantity-input",
+          "declaration": {
+            "name": "ShQuantityInput",
+            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/molecules/contribution-card/sh-contribution-card.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Carte affichant une contribution en attente, avec actions approuver/rejeter.",
+          "name": "ShContributionCard",
+          "members": [
+            {
+              "kind": "field",
+              "name": "contributionId",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Identifiant de la contribution",
+              "attribute": "contribution-id"
+            },
+            {
+              "kind": "field",
+              "name": "itemLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Nom de l'item concerné",
+              "attribute": "item-label"
+            },
+            {
+              "kind": "field",
+              "name": "currentQuantity",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Quantité actuelle",
+              "attribute": "current-quantity"
+            },
+            {
+              "kind": "field",
+              "name": "suggestedQuantity",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Quantité suggérée par le contributeur",
+              "attribute": "suggested-quantity"
+            },
+            {
+              "kind": "field",
+              "name": "authorEmail",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Email du contributeur",
+              "attribute": "author-email"
+            },
+            {
+              "kind": "field",
+              "name": "createdAt",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Date de création (ISO string)",
+              "attribute": "created-at"
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "ContributionStatus"
+              },
+              "default": "'PENDING'",
+              "description": "Statut de la contribution",
+              "attribute": "status"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Désactive les actions (ex: pendant le traitement)",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "method",
+              "name": "formatDate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "iso",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleApprove",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleReject",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-contribution-approve",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis au clic \"Approuver\". `detail: { contributionId: string }`"
+            },
+            {
+              "name": "sh-contribution-reject",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis au clic \"Rejeter\".  `detail: { contributionId: string }`"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "contribution-id",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Identifiant de la contribution",
+              "fieldName": "contributionId"
+            },
+            {
+              "name": "item-label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Nom de l'item concerné",
+              "fieldName": "itemLabel"
+            },
+            {
+              "name": "current-quantity",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Quantité actuelle",
+              "fieldName": "currentQuantity"
+            },
+            {
+              "name": "suggested-quantity",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Quantité suggérée par le contributeur",
+              "fieldName": "suggestedQuantity"
+            },
+            {
+              "name": "author-email",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Email du contributeur",
+              "fieldName": "authorEmail"
+            },
+            {
+              "name": "created-at",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Date de création (ISO string)",
+              "fieldName": "createdAt"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "ContributionStatus"
+              },
+              "default": "'PENDING'",
+              "description": "Statut de la contribution",
+              "fieldName": "status"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Désactive les actions (ex: pendant le traitement)",
+              "fieldName": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-contribution-card",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShContributionCard",
+          "declaration": {
+            "name": "ShContributionCard",
+            "module": "src/components/molecules/contribution-card/sh-contribution-card.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-contribution-card",
+          "declaration": {
+            "name": "ShContributionCard",
+            "module": "src/components/molecules/contribution-card/sh-contribution-card.ts"
           }
         }
       ]
@@ -1472,72 +1902,407 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/molecules/quantity-input/sh-quantity-input.ts",
+      "path": "src/components/molecules/contribution-form/sh-contribution-form.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Quantity input component with sync button for inventory management.",
-          "name": "ShQuantityInput",
+          "description": "Formulaire de soumission d'une contribution de quantité par un VIEWER_CONTRIBUTOR.",
+          "name": "ShContributionForm",
           "members": [
             {
               "kind": "field",
-              "name": "value",
+              "name": "itemLabel",
               "type": {
                 "text": "string"
               },
               "default": "''",
-              "description": "Current quantity value",
-              "attribute": "value"
+              "description": "Nom de l'item concerné",
+              "attribute": "item-label"
             },
             {
               "kind": "field",
-              "name": "dirty",
+              "name": "currentQuantity",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Quantité actuelle (lecture seule)",
+              "attribute": "current-quantity"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Indicates if value has changed",
-              "attribute": "dirty"
+              "description": "Désactive le formulaire (ex: pendant l'envoi)",
+              "attribute": "disabled"
             },
             {
               "kind": "field",
-              "name": "hideArrows",
+              "name": "suggestedQuantity",
               "type": {
-                "text": "boolean"
+                "text": "number"
               },
-              "default": "false",
-              "description": "Hide number input arrows",
-              "attribute": "hideArrows"
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "''"
             },
             {
               "kind": "method",
-              "name": "handleInputChange",
+              "name": "handleInput",
               "privacy": "private",
               "parameters": [
                 {
                   "name": "e",
                   "type": {
-                    "text": "CustomEvent"
+                    "text": "Event"
                   }
                 }
               ]
             },
             {
               "kind": "method",
-              "name": "handleSync",
+              "name": "handleSubmit",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleCancel",
               "privacy": "private"
             }
           ],
           "events": [
             {
-              "name": "sync",
+              "name": "sh-contribution-submit",
               "type": {
                 "text": "CustomEvent"
-              }
+              },
+              "description": "Émis à la soumission. `detail: { suggestedQuantity: number }`"
             },
             {
-              "description": "Fired when sync button is clicked with updated value",
-              "name": "sh-sync"
+              "name": "sh-contribution-cancel",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis à l'annulation."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "item-label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Nom de l'item concerné",
+              "fieldName": "itemLabel"
+            },
+            {
+              "name": "current-quantity",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Quantité actuelle (lecture seule)",
+              "fieldName": "currentQuantity"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Désactive le formulaire (ex: pendant l'envoi)",
+              "fieldName": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-contribution-form",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShContributionForm",
+          "declaration": {
+            "name": "ShContributionForm",
+            "module": "src/components/molecules/contribution-form/sh-contribution-form.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-contribution-form",
+          "declaration": {
+            "name": "ShContributionForm",
+            "module": "src/components/molecules/contribution-form/sh-contribution-form.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/molecules/role-selector/sh-role-selector.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Dropdown pour sélectionner le rôle d'un collaborateur.",
+          "name": "ShRoleSelector",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "StockRole"
+              },
+              "default": "'VIEWER'",
+              "description": "Rôle actuellement sélectionné",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "exclude",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Rôles à exclure de la liste (séparés par virgule)\r\nUtile pour EDITOR qui ne peut pas attribuer OWNER",
+              "attribute": "exclude"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Désactive le sélecteur",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "availableRoles",
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "handleChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-role-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis quand le rôle change. `detail: { role: StockRole }`"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "StockRole"
+              },
+              "default": "'VIEWER'",
+              "description": "Rôle actuellement sélectionné",
+              "fieldName": "value"
+            },
+            {
+              "name": "exclude",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Rôles à exclure de la liste (séparés par virgule)\r\nUtile pour EDITOR qui ne peut pas attribuer OWNER",
+              "fieldName": "exclude"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Désactive le sélecteur",
+              "fieldName": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-role-selector",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShRoleSelector",
+          "declaration": {
+            "name": "ShRoleSelector",
+            "module": "src/components/molecules/role-selector/sh-role-selector.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-role-selector",
+          "declaration": {
+            "name": "ShRoleSelector",
+            "module": "src/components/molecules/role-selector/sh-role-selector.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/molecules/search-input/sh-search-input.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ShSearchInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Rechercher...'",
+              "attribute": "placeholder"
+            },
+            {
+              "kind": "field",
+              "name": "debounce",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "debounce"
+            },
+            {
+              "kind": "field",
+              "name": "clearable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "clearable"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_debounceTimer",
+              "type": {
+                "text": "number | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "_handleInput",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_emitSearch",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleClear",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-search-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis à chaque changement de valeur"
+            },
+            {
+              "name": "sh-search",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis lors de la recherche (avec debounce si activé)"
+            },
+            {
+              "name": "sh-search-clear",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis lors du clic sur clear (si clearable)"
             }
           ],
           "attributes": [
@@ -1547,145 +2312,73 @@
                 "text": "string"
               },
               "default": "''",
-              "description": "Current quantity value",
               "fieldName": "value"
             },
             {
-              "name": "dirty",
+              "name": "placeholder",
               "type": {
-                "text": "boolean"
+                "text": "string"
               },
-              "default": "false",
-              "description": "Indicates if value has changed",
-              "fieldName": "dirty"
+              "default": "'Rechercher...'",
+              "fieldName": "placeholder"
             },
             {
-              "name": "hideArrows",
+              "name": "debounce",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "debounce"
+            },
+            {
+              "name": "clearable",
               "type": {
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Hide number input arrows",
-              "fieldName": "hideArrows"
+              "fieldName": "clearable"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "fieldName": "theme"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "sh-quantity-input",
-          "customElement": true
+          "tagName": "sh-search-input",
+          "customElement": true,
+          "summary": "Input de recherche avec icône pour la recherche de produits"
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "ShQuantityInput",
+          "name": "ShSearchInput",
           "declaration": {
-            "name": "ShQuantityInput",
-            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
+            "name": "ShSearchInput",
+            "module": "src/components/molecules/search-input/sh-search-input.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "sh-quantity-input",
+          "name": "sh-search-input",
           "declaration": {
-            "name": "ShQuantityInput",
-            "module": "src/components/molecules/quantity-input/sh-quantity-input.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/molecules/status-badge/sh-status-badge.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Status badge component for displaying stock status with icons and animations.",
-          "name": "ShStatusBadge",
-          "members": [
-            {
-              "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
-              },
-              "default": "'optimal'",
-              "description": "Stock status type",
-              "attribute": "status"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "attribute": "size"
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Custom label override",
-              "attribute": "label"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "status",
-              "type": {
-                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
-              },
-              "default": "'optimal'",
-              "description": "Stock status type",
-              "fieldName": "status"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the badge",
-              "fieldName": "size"
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Custom label override",
-              "fieldName": "label"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-status-badge",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShStatusBadge",
-          "declaration": {
-            "name": "ShStatusBadge",
-            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-status-badge",
-          "declaration": {
-            "name": "ShStatusBadge",
-            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
+            "name": "ShSearchInput",
+            "module": "src/components/molecules/search-input/sh-search-input.ts"
           }
         }
       ]
@@ -1853,112 +2546,279 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/organisms/footer/sh-footer.ts",
+      "path": "src/components/organisms/collaborator-list/sh-collaborator-list.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "",
-          "name": "ShFooter",
+          "description": "Liste des collaborateurs d'un stock avec actions modifier/retirer.",
+          "name": "ShCollaboratorList",
           "members": [
             {
               "kind": "field",
-              "name": "appName",
+              "name": "collaborators",
               "type": {
-                "text": "string"
+                "text": "CollaboratorItem[]"
               },
-              "default": "'STOCK HUB'",
-              "attribute": "app-name"
+              "default": "[]",
+              "description": "Liste des collaborateurs — accepte un tableau JS ou un JSON stringifié en attribut",
+              "attribute": "collaborators"
             },
             {
               "kind": "field",
-              "name": "year",
-              "attribute": "year"
+              "name": "viewerRole",
+              "type": {
+                "text": "StockRole"
+              },
+              "default": "'VIEWER'",
+              "description": "Rôle de l'utilisateur connecté — détermine les actions disponibles",
+              "attribute": "viewer-role"
             },
             {
               "kind": "field",
-              "name": "theme",
+              "name": "disabled",
               "type": {
-                "text": "'light' | 'dark'"
+                "text": "boolean"
               },
-              "default": "'dark'",
-              "attribute": "data-theme",
-              "reflects": true
+              "default": "false",
+              "description": "Désactive toutes les actions",
+              "attribute": "disabled"
             },
             {
               "kind": "method",
-              "name": "_handleLinkClick",
+              "name": "getInitials",
               "privacy": "private",
               "parameters": [
                 {
-                  "name": "linkName",
+                  "name": "email",
                   "type": {
                     "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "canActOn",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "targetRole",
+                  "type": {
+                    "text": "StockRole"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleRoleChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "collaboratorId",
+                  "type": {
+                    "text": "number"
                   }
                 },
                 {
                   "name": "e",
                   "type": {
-                    "text": "Event"
+                    "text": "CustomEvent"
                   }
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "handleRemove",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "collaboratorId",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getExcludedRoles",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
             }
           ],
           "events": [
             {
-              "name": "sh-footer-link-click",
+              "name": "sh-collaborator-role-change",
               "type": {
                 "text": "CustomEvent"
               },
-              "description": "Émis lors du clic sur un lien"
+              "description": "Émis quand un rôle est modifié. `detail: { collaboratorId: number, role: StockRole }`"
+            },
+            {
+              "name": "sh-collaborator-remove",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis quand un collaborateur est retiré. `detail: { collaboratorId: number }`"
             }
           ],
           "attributes": [
             {
-              "name": "app-name",
+              "name": "collaborators",
               "type": {
-                "text": "string"
+                "text": "CollaboratorItem[]"
               },
-              "default": "'STOCK HUB'",
-              "fieldName": "appName"
+              "default": "[]",
+              "description": "Liste des collaborateurs — accepte un tableau JS ou un JSON stringifié en attribut",
+              "fieldName": "collaborators"
             },
             {
-              "name": "year",
-              "fieldName": "year"
+              "name": "viewer-role",
+              "type": {
+                "text": "StockRole"
+              },
+              "default": "'VIEWER'",
+              "description": "Rôle de l'utilisateur connecté — détermine les actions disponibles",
+              "fieldName": "viewerRole"
             },
             {
-              "name": "data-theme",
+              "name": "disabled",
               "type": {
-                "text": "'light' | 'dark'"
+                "text": "boolean"
               },
-              "default": "'dark'",
-              "fieldName": "theme"
+              "default": "false",
+              "description": "Désactive toutes les actions",
+              "fieldName": "disabled"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "sh-footer",
-          "customElement": true,
-          "summary": "Footer de l'application avec copyright et liens légaux"
+          "tagName": "sh-collaborator-list",
+          "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "ShFooter",
+          "name": "ShCollaboratorList",
           "declaration": {
-            "name": "ShFooter",
-            "module": "src/components/organisms/footer/sh-footer.ts"
+            "name": "ShCollaboratorList",
+            "module": "src/components/organisms/collaborator-list/sh-collaborator-list.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "sh-footer",
+          "name": "sh-collaborator-list",
           "declaration": {
-            "name": "ShFooter",
-            "module": "src/components/organisms/footer/sh-footer.ts"
+            "name": "ShCollaboratorList",
+            "module": "src/components/organisms/collaborator-list/sh-collaborator-list.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/molecules/status-badge/sh-status-badge.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Status badge component for displaying stock status with icons and animations.",
+          "name": "ShStatusBadge",
+          "members": [
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
+              },
+              "default": "'optimal'",
+              "description": "Stock status type",
+              "attribute": "status"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Custom label override",
+              "attribute": "label"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "status",
+              "type": {
+                "text": "'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked'"
+              },
+              "default": "'optimal'",
+              "description": "Stock status type",
+              "fieldName": "status"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the badge",
+              "fieldName": "size"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Custom label override",
+              "fieldName": "label"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-status-badge",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShStatusBadge",
+          "declaration": {
+            "name": "ShStatusBadge",
+            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-status-badge",
+          "declaration": {
+            "name": "ShStatusBadge",
+            "module": "src/components/molecules/status-badge/sh-status-badge.ts"
           }
         }
       ]
@@ -2125,6 +2985,295 @@
           "declaration": {
             "name": "ShHeader",
             "module": "src/components/organisms/header/sh-header.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/organisms/footer/sh-footer.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ShFooter",
+          "members": [
+            {
+              "kind": "field",
+              "name": "appName",
+              "type": {
+                "text": "string"
+              },
+              "default": "'STOCK HUB'",
+              "attribute": "app-name"
+            },
+            {
+              "kind": "field",
+              "name": "year",
+              "attribute": "year"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleLinkClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "linkName",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-footer-link-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis lors du clic sur un lien"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "app-name",
+              "type": {
+                "text": "string"
+              },
+              "default": "'STOCK HUB'",
+              "fieldName": "appName"
+            },
+            {
+              "name": "year",
+              "fieldName": "year"
+            },
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "fieldName": "theme"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-footer",
+          "customElement": true,
+          "summary": "Footer de l'application avec copyright et liens légaux"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShFooter",
+          "declaration": {
+            "name": "ShFooter",
+            "module": "src/components/organisms/footer/sh-footer.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-footer",
+          "declaration": {
+            "name": "ShFooter",
+            "module": "src/components/organisms/footer/sh-footer.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ShIaAlertBanner",
+          "members": [
+            {
+              "kind": "field",
+              "name": "count",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "count"
+            },
+            {
+              "kind": "field",
+              "name": "severity",
+              "type": {
+                "text": "'critical' | 'warning' | 'info'"
+              },
+              "default": "'critical'",
+              "attribute": "severity"
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "'stocks nécessitent votre attention'",
+              "attribute": "message"
+            },
+            {
+              "kind": "field",
+              "name": "alerts",
+              "type": {
+                "text": "IaAlert[]"
+              },
+              "default": "[]",
+              "attribute": "alerts"
+            },
+            {
+              "kind": "field",
+              "name": "expanded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "expanded"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "attribute": "data-theme",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_toggleExpanded",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleItemClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "alert",
+                  "type": {
+                    "text": "IaAlert"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "sh-ia-alert-toggle",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis lors du clic sur le bandeau"
+            },
+            {
+              "name": "sh-ia-alert-item-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Émis lors du clic sur un item"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "count",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "count"
+            },
+            {
+              "name": "severity",
+              "type": {
+                "text": "'critical' | 'warning' | 'info'"
+              },
+              "default": "'critical'",
+              "fieldName": "severity"
+            },
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "'stocks nécessitent votre attention'",
+              "fieldName": "message"
+            },
+            {
+              "name": "alerts",
+              "type": {
+                "text": "IaAlert[]"
+              },
+              "default": "[]",
+              "fieldName": "alerts"
+            },
+            {
+              "name": "expanded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "expanded"
+            },
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "'light' | 'dark'"
+              },
+              "default": "'dark'",
+              "fieldName": "theme"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "sh-ia-alert-banner",
+          "customElement": true,
+          "summary": "Bandeau d'alertes IA pour les stocks nécessitant attention"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ShIaAlertBanner",
+          "declaration": {
+            "name": "ShIaAlertBanner",
+            "module": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "sh-ia-alert-banner",
+          "declaration": {
+            "name": "ShIaAlertBanner",
+            "module": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts"
           }
         }
       ]
@@ -2311,186 +3460,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "ShIaAlertBanner",
-          "members": [
-            {
-              "kind": "field",
-              "name": "count",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "attribute": "count"
-            },
-            {
-              "kind": "field",
-              "name": "severity",
-              "type": {
-                "text": "'critical' | 'warning' | 'info'"
-              },
-              "default": "'critical'",
-              "attribute": "severity"
-            },
-            {
-              "kind": "field",
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "default": "'stocks nécessitent votre attention'",
-              "attribute": "message"
-            },
-            {
-              "kind": "field",
-              "name": "alerts",
-              "type": {
-                "text": "IaAlert[]"
-              },
-              "default": "[]",
-              "attribute": "alerts"
-            },
-            {
-              "kind": "field",
-              "name": "expanded",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "attribute": "expanded"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "attribute": "data-theme",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "_toggleExpanded",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleItemClick",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "alert",
-                  "type": {
-                    "text": "IaAlert"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "name": "sh-ia-alert-toggle",
-              "type": {
-                "text": "CustomEvent"
-              }
-            },
-            {
-              "name": "sh-ia-alert-item-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis lors du clic sur un item"
-            },
-            {
-              "description": "Émis lors du clic sur le bandeau",
-              "name": "sh-ia-alert-click"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "count",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "fieldName": "count"
-            },
-            {
-              "name": "severity",
-              "type": {
-                "text": "'critical' | 'warning' | 'info'"
-              },
-              "default": "'critical'",
-              "fieldName": "severity"
-            },
-            {
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "default": "'stocks nécessitent votre attention'",
-              "fieldName": "message"
-            },
-            {
-              "name": "alerts",
-              "type": {
-                "text": "IaAlert[]"
-              },
-              "default": "[]",
-              "fieldName": "alerts"
-            },
-            {
-              "name": "expanded",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "fieldName": "expanded"
-            },
-            {
-              "name": "data-theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "fieldName": "theme"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-ia-alert-banner",
-          "customElement": true,
-          "summary": "Bandeau d'alertes IA pour les stocks nécessitant attention"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShIaAlertBanner",
-          "declaration": {
-            "name": "ShIaAlertBanner",
-            "module": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-ia-alert-banner",
-          "declaration": {
-            "name": "ShIaAlertBanner",
-            "module": "src/components/organisms/ia-alert-banner/sh-ia-alert-banner.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/organisms/stock-card/sh-stock-card.ts",
       "declarations": [
         {
@@ -2585,6 +3554,15 @@
               },
               "default": "false",
               "attribute": "loading"
+            },
+            {
+              "kind": "field",
+              "name": "hideDetails",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hide-details"
             },
             {
               "kind": "field",
@@ -2719,6 +3697,14 @@
               },
               "default": "false",
               "fieldName": "loading"
+            },
+            {
+              "name": "hide-details",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hideDetails"
             },
             {
               "name": "data-theme",
@@ -3350,204 +4336,6 @@
           "declaration": {
             "name": "ShStockPredictionCard",
             "module": "src/components/organisms/stock-prediction-card/sh-stock-prediction-card.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/molecules/search-input/sh-search-input.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "ShSearchInput",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Rechercher...'",
-              "attribute": "placeholder"
-            },
-            {
-              "kind": "field",
-              "name": "debounce",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "attribute": "debounce"
-            },
-            {
-              "kind": "field",
-              "name": "clearable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "clearable"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "disabled"
-            },
-            {
-              "kind": "field",
-              "name": "theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "attribute": "data-theme",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "_debounceTimer",
-              "type": {
-                "text": "number | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "method",
-              "name": "_handleInput",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_emitSearch",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleClear",
-              "privacy": "private"
-            }
-          ],
-          "events": [
-            {
-              "name": "sh-search-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis à chaque changement de valeur"
-            },
-            {
-              "name": "sh-search",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis lors de la recherche (avec debounce si activé)"
-            },
-            {
-              "name": "sh-search-clear",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Émis lors du clic sur clear (si clearable)"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "value"
-            },
-            {
-              "name": "placeholder",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Rechercher...'",
-              "fieldName": "placeholder"
-            },
-            {
-              "name": "debounce",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "fieldName": "debounce"
-            },
-            {
-              "name": "clearable",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "clearable"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "data-theme",
-              "type": {
-                "text": "'light' | 'dark'"
-              },
-              "default": "'dark'",
-              "fieldName": "theme"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "sh-search-input",
-          "customElement": true,
-          "summary": "Input de recherche avec icône pour la recherche de produits"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ShSearchInput",
-          "declaration": {
-            "name": "ShSearchInput",
-            "module": "src/components/molecules/search-input/sh-search-input.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "sh-search-input",
-          "declaration": {
-            "name": "ShSearchInput",
-            "module": "src/components/molecules/search-input/sh-search-input.ts"
           }
         }
       ]

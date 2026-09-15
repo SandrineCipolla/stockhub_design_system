@@ -6,7 +6,7 @@
 
 > Design System réutilisable (web + mobile) basé sur Web Components (Lit Element)
 
-📚 **[Documentation complète du projet](https://github.com/SandrineCipolla/stockHub_V2_front/wiki)** — Architecture, guides techniques, métriques
+📚 **[Documentation complète du projet](https://github.com/SandrineCipolla/stockHub_V2_front/wiki)** : architecture, guides techniques, métriques
 
 ## 📋 Contexte
 
@@ -89,9 +89,14 @@ Tous les composants utilisent le préfixe `sh-` (StockHub) :
 ## 📦 Installation & Usage
 
 ### Installation
+
+Le package n'est pas publié sur le registre npm public. Installation depuis GitHub :
+
 ```bash
-npm install @stockhub/design-system
+npm install github:SandrineCipolla/stockhub_design_system#v2.0.3
 ```
+
+Remplacer le tag par la version voulue. Publication sur npm : voir l'issue de suivi si elle existe encore, pas encore faite à ce jour.
 
 ### Utilisation en React
 ```tsx
@@ -1067,10 +1072,12 @@ Pour une documentation détaillée du projet, consultez **[documentation/INDEX.m
 
 ## 📈 Progression
 
-Le projet a complété **8 sessions de développement** (~17h30) permettant la création de **16 composants Web Components** prêts pour la production.
+> Section historique : décrit l'état du projet à la fin de la Session 8 (octobre 2025), 16 composants à ce moment-là. Le projet a continué depuis via des issues GitHub plutôt que des sessions numérotées : 24 composants aujourd'hui (voir "Composants Disponibles" plus haut), état courant complet dans [`ETAT-DU-PROJET.md`](./ETAT-DU-PROJET.md).
 
-### 🎯 Métriques Clés
-- ✅ **16 composants** : 5 atoms, 6 molecules, 5 organisms
+Les 8 sessions de développement (~17h30) ont permis la création des 16 premiers composants Web Components.
+
+### 🎯 Métriques de fin de Session 8
+- ✅ **16 composants** (à ce stade) : 5 atoms, 6 molecules, 5 organisms
 - ✅ **100% WCAG AA** : Accessibilité complète validée
 - ✅ **Lucide icons** : Migration complète (1000+ icônes disponibles)
 - ✅ **Thème global** : Support dark/light avec toggle Storybook
@@ -1094,7 +1101,7 @@ Le projet a complété **8 sessions de développement** (~17h30) permettant la c
 ### 📚 Documentation Détaillée
 - **Historique complet des versions** → [CHANGELOG.md](./CHANGELOG.md)
 - **Index de la documentation** → [documentation/INDEX.md](./documentation/INDEX.md)
-- **Corrections d'intégration** → [DESIGN-SYSTEM-CORRECTIONS.md](./documentation/archive/DESIGN-SYSTEM-CORRECTIONS.md) *(archivé — 100% résolu)*
+- **Corrections d'intégration** → [DESIGN-SYSTEM-CORRECTIONS.md](./documentation/archive/DESIGN-SYSTEM-CORRECTIONS.md) *(archivé, 100% résolu)*
 - **Rapport accessibilité** → [9-ACCESSIBILITY-REPORT.md](./documentation/9-ACCESSIBILITY-REPORT.md)
 - **Audit Design Tokens** → [documentation/3-DESIGN-TOKENS-AUDIT.md](./documentation/3-DESIGN-TOKENS-AUDIT.md)
 

@@ -136,7 +136,7 @@ function App() {
 
 ## 🎨 Composants Disponibles
 
-**24 composants** Web Components organisés selon l'Atomic Design. Props, événements, slots et exemples interactifs pour chacun : [Storybook](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/) — pas dupliqué ici, l'API de chaque composant y est générée automatiquement depuis le code (JSDoc + Custom Elements Manifest), donc toujours à jour.
+Composants Web Components organisés selon l'Atomic Design. Props, événements, slots et exemples interactifs pour chacun : [Storybook](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/) — pas dupliqué ici, l'API de chaque composant y est générée automatiquement depuis le code (JSDoc + Custom Elements Manifest), donc toujours à jour.
 
 ### Atoms — composants de base
 

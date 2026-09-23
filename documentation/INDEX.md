@@ -53,6 +53,7 @@ La cohérence des conventions de nommage (props, événements, fichiers) est vé
 **Décisions d'architecture** (`./adr/`) : un ADR par décision structurante (outillage, choix technique avec alternatives pesées) — [0001-migration-eslint-flat-config.md](./adr/0001-migration-eslint-flat-config.md), [0002-renommage-evenements-prefixe-sh.md](./adr/0002-renommage-evenements-prefixe-sh.md).
 **Sessions de développement** (`./sessions/`) : comptes-rendus historiques figés (sessions 1 à 8, 16-21 octobre 2025), voir section dédiée plus bas. Le suivi d'activité depuis a migré vers [`ETAT-DU-PROJET.md`](../ETAT-DU-PROJET.md) — pas de session 9+ rédigée séparément.
 **Archive** (`./archive/`) : documents clos ou superseded — voir [DESIGN-SYSTEM-CORRECTIONS.md](./archive/DESIGN-SYSTEM-CORRECTIONS.md), [OPTIMIZATION-PLAN.md](./archive/OPTIMIZATION-PLAN.md), [CHANGELOG-HISTORIQUE-SESSIONS.md](./archive/CHANGELOG-HISTORIQUE-SESSIONS.md), [STOCK-PREDICTION-CARD-IMPLEMENTATION.md](./archive/STOCK-PREDICTION-CARD-IMPLEMENTATION.md), [STOCKHUB-V2-INTEGRATION.md](./archive/STOCKHUB-V2-INTEGRATION.md).
+**Guide de rédaction** : [guide-redaction.md](./guide-redaction.md) — style et conventions pour toute documentation et ADR de ce repo.
 
 ---
 

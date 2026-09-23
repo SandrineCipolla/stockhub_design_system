@@ -910,7 +910,7 @@ npm run storybook
 # Naviguez vers les stories "InteractionTest*" de chaque composant
 ```
 
-**Documentation détaillée** : Voir [INTERACTION_TESTS_TRACKING.md](./INTERACTION_TESTS_TRACKING.md) pour :
+**Documentation détaillée** : Voir [8-INTERACTION-TESTS-TRACKING.md](./documentation/8-INTERACTION-TESTS-TRACKING.md) pour :
 - Problèmes rencontrés et solutions
 - Patterns et bonnes pratiques Shadow DOM
 - Changelog complet
@@ -1245,4 +1245,4 @@ feature branch → push → Build + Tests + Audit conventions
 - **Badge automatique** : Le score d'accessibilité se met à jour automatiquement
 - **Pause optimisée** : 1 seconde entre chaque audit (au lieu de 2)
 
-Pour plus de détails et de bonnes pratiques, voir [documentation/GETTING-STARTED.md](./documentation/GETTING-STARTED.md).
+Pour plus de détails et de bonnes pratiques, voir [documentation/1-GETTING-STARTED.md](./documentation/1-GETTING-STARTED.md).

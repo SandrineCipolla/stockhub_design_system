@@ -1,4 +1,4 @@
-# 0002. Renommer 7 événements custom non conformes avec le préfixe `sh-`
+# ADR-002 - Renommer 7 événements custom non conformes avec le préfixe `sh-`
 
 **Statut** : Acceptée
 **Date** : 10 juillet 2026

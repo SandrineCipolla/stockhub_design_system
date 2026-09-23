@@ -142,40 +142,40 @@ Composants Web Components organisés selon l'Atomic Design. Props, événements,
 
 | Composant | Rôle |
 |---|---|
-| `sh-badge` | Badge coloré pour statuts et labels |
-| `sh-icon` | Icône depuis la bibliothèque Lucide (1000+ icônes) |
-| `sh-input` | Champ de saisie avec validation et états |
-| `sh-logo` | Logo StockHub avec variants |
-| `sh-role-badge` | Badge affichant le rôle d'un collaborateur sur un stock partagé |
-| `sh-text` | Composant texte typographique |
+| [`sh-badge`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-atoms-badge--docs) | Badge coloré pour statuts et labels |
+| [`sh-icon`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/story/components-atoms-icon--default) | Icône depuis la bibliothèque Lucide (1000+ icônes) |
+| [`sh-input`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-atoms-input--docs) | Champ de saisie avec validation et états |
+| [`sh-logo`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-atoms-logo--docs) | Logo StockHub avec variants |
+| [`sh-role-badge`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-atoms-rolebadge--docs) | Badge affichant le rôle d'un collaborateur sur un stock partagé |
+| [`sh-text`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-atoms-text--docs) | Composant texte typographique |
 
 ### Molecules — combinaisons
 
 | Composant | Rôle |
 |---|---|
-| `sh-button` | Bouton avec variants, états, et support d'icônes |
-| `sh-card` | Conteneur de contenu avec effets glassmorphism |
-| `sh-contribution-card` | Carte affichant une contribution en attente, avec actions approuver/rejeter |
-| `sh-contribution-form` | Formulaire de soumission d'une contribution de quantité par un `VIEWER_CONTRIBUTOR` |
-| `sh-metric-card` | Carte métrique pour afficher des KPIs avec icône, valeur et tendance |
-| `sh-quantity-input` | Input numérique avec boutons +/- |
-| `sh-role-selector` | Dropdown pour sélectionner le rôle d'un collaborateur |
-| `sh-search-input` | Input de recherche avec icône pour la recherche de produits |
-| `sh-stat-card` | Carte statistique minimaliste pour filtrage interactif |
-| `sh-status-badge` | Badge spécialisé pour statuts de stock, avec animation pulse pour états critiques |
+| [`sh-button`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-molecules-button--docs) | Bouton avec variants, états, et support d'icônes |
+| [`sh-card`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-molecules-card--docs) | Conteneur de contenu avec effets glassmorphism |
+| [`sh-contribution-card`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-molecules-contributioncard--docs) | Carte affichant une contribution en attente, avec actions approuver/rejeter |
+| [`sh-contribution-form`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-molecules-contributionform--docs) | Formulaire de soumission d'une contribution de quantité par un `VIEWER_CONTRIBUTOR` |
+| [`sh-metric-card`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-molecules-metriccard--docs) | Carte métrique pour afficher des KPIs avec icône, valeur et tendance |
+| [`sh-quantity-input`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-molecules-quantityinput--docs) | Input numérique avec boutons +/- |
+| [`sh-role-selector`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-molecules-roleselector--docs) | Dropdown pour sélectionner le rôle d'un collaborateur |
+| [`sh-search-input`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-molecules-searchinput--docs) | Input de recherche avec icône pour la recherche de produits |
+| [`sh-stat-card`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-molecules-statcard--docs) | Carte statistique minimaliste pour filtrage interactif |
+| [`sh-status-badge`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-molecules-statusbadge--docs) | Badge spécialisé pour statuts de stock, avec animation pulse pour états critiques |
 
 ### Organisms — composants complexes
 
 | Composant | Rôle |
 |---|---|
-| `sh-collaborator-list` | Liste des collaborateurs d'un stock, actions selon le rôle de l'utilisateur connecté |
-| `sh-footer` | Footer de l'application avec copyright dynamique et liens légaux |
-| `sh-header` | Header de l'application |
-| `sh-ia-alert-banner` | Bandeau d'alertes IA pour les stocks nécessitant attention |
-| `sh-page-header` | En-tête de page avec fil d'Ariane, titre, sous-titre et boutons d'action |
-| `sh-stock-card` | Carte de stock pour le dashboard avec statut, métriques et actions |
-| `sh-stock-item-card` | Carte de produit pour l'inventaire familial avec statut, métriques et actions |
-| `sh-stock-prediction-card` | Carte de prédiction ML pour les ruptures de stock prévues |
+| [`sh-collaborator-list`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-organisms-collaboratorlist--docs) | Liste des collaborateurs d'un stock, actions selon le rôle de l'utilisateur connecté |
+| [`sh-footer`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-organisms-footer--docs) | Footer de l'application avec copyright dynamique et liens légaux |
+| [`sh-header`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-organisms-header--docs) | Header de l'application |
+| [`sh-ia-alert-banner`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-organisms-iaalertbanner--docs) | Bandeau d'alertes IA pour les stocks nécessitant attention |
+| [`sh-page-header`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-organisms-pageheader--docs) | En-tête de page avec fil d'Ariane, titre, sous-titre et boutons d'action |
+| [`sh-stock-card`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-organisms-stockcard--docs) | Carte de stock pour le dashboard avec statut, métriques et actions |
+| [`sh-stock-item-card`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-organisms-stockitemcard--docs) | Carte de produit pour l'inventaire familial avec statut, métriques et actions |
+| [`sh-stock-prediction-card`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-organisms-stockpredictioncard--docs) | Carte de prédiction ML pour les ruptures de stock prévues |
 
 
 ## 📖 Storybook

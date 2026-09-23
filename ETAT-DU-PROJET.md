@@ -47,8 +47,8 @@ Au passage : le label `technique` référencé par le template d'issue `.github/
 
 ### Fait le 10 juillet 2026
 
-- **#41** — Migration ESLint 9 flat config, `npm run lint` fonctionne de nouveau (0 erreur, 70 warnings pré-existants inchangés). Détail et alternatives pesées : [ADR 0001](documentation/adr/0001-migration-eslint-flat-config.md).
-- **#42** — Renommage des 7 événements custom avec préfixe `sh-` (PR [#44](https://github.com/SandrineCipolla/stockhub_design_system/pull/44), mergée). **Breaking change** publié en v2.0.0 : `stockHub_V2_front` (pinné `v1.3.3`) consomme encore les anciens noms dans 4 fichiers — coordination en cours via [stockHub_V2_front#192](https://github.com/SandrineCipolla/stockHub_V2_front/issues/192), **ne pas installer v2.0.0 côté Front avant que cette issue soit traitée**. Détail : [ADR 0002](documentation/adr/0002-renommage-evenements-prefixe-sh.md).
+- **#41** — Migration ESLint 9 flat config, `npm run lint` fonctionne de nouveau (0 erreur, 70 warnings pré-existants inchangés). Détail et alternatives pesées : [ADR-001](documentation/adr/ADR-001-migration-eslint-flat-config.md).
+- **#42** — Renommage des 7 événements custom avec préfixe `sh-` (PR [#44](https://github.com/SandrineCipolla/stockhub_design_system/pull/44), mergée). **Breaking change** publié en v2.0.0 : `stockHub_V2_front` (pinné `v1.3.3`) consomme encore les anciens noms dans 4 fichiers — coordination en cours via [stockHub_V2_front#192](https://github.com/SandrineCipolla/stockHub_V2_front/issues/192), **ne pas installer v2.0.0 côté Front avant que cette issue soit traitée**. Détail : [ADR-002](documentation/adr/ADR-002-renommage-evenements-prefixe-sh.md).
 - **#45** — Job CI `chromatic` cassé depuis un moment (`preview-stats.json` manquant pour TurboSnap) réparé en ajoutant `--stats-json` à `build-storybook` (PR [#46](https://github.com/SandrineCipolla/stockhub_design_system/pull/46), mergée). 35 changements visuels accumulés pendant la panne, revus et acceptés comme nouvelles baselines Chromatic.
 - **#48** — 10 composants jamais documentés dans le README (5 de la PR #37 + 5 organisms plus anciens, dont `sh-stock-item-card` repositionné depuis Molecules vers Organisms) (PR [#49](https://github.com/SandrineCipolla/stockhub_design_system/pull/49), mergée). Props/événements vérifiés contre le code source. Trouvaille au passage : JSDoc de `sh-ia-alert-banner.ts` incohérent avec son propre code (`@fires sh-ia-alert-click` vs `sh-ia-alert-toggle` réellement émis) — voir #51.
 
@@ -87,7 +87,7 @@ Tous documentés dans le README depuis le 10 juillet 2026 (voir #48).
 
 - **Accessibilité** : 100% WCAG 2.1 AA, badge Lighthouse auto-mis à jour à chaque push `master`
 - **Tests** : 44 tests d'interaction Playwright/Storybook (9 composants couverts) — **0% de tests unitaires** (issues #15, #16 ouvertes)
-- **Lint** : fonctionne à nouveau depuis le 10 juillet 2026 (0 erreur, 70 warnings pré-existants) — voir [ADR 0001](documentation/adr/0001-migration-eslint-flat-config.md)
+- **Lint** : fonctionne à nouveau depuis le 10 juillet 2026 (0 erreur, 70 warnings pré-existants) — voir [ADR-001](documentation/adr/ADR-001-migration-eslint-flat-config.md)
 - **Conventions** : audit automatisé en CI, 0 violation depuis le 10 juillet 2026 (était 7)
 - **Chromatic** : job CI de nouveau fonctionnel depuis le 10 juillet 2026 (était cassé, voir #45)
 

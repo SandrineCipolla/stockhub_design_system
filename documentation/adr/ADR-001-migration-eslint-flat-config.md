@@ -1,4 +1,4 @@
-# 0001. Migrer vers eslint.config.js (flat config)
+# ADR-001 - Migrer vers eslint.config.js (flat config)
 
 **Statut** : Acceptée
 **Date** : 10 juillet 2026

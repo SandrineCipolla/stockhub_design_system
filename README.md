@@ -578,7 +578,7 @@ Pour une documentation détaillée du projet, consultez **[documentation/INDEX.m
 
 ## 📈 Progression
 
-> Section historique : décrit l'état du projet à la fin de la Session 8 (octobre 2025), 16 composants à ce moment-là. Le projet a continué depuis via des issues GitHub plutôt que des sessions numérotées : 24 composants aujourd'hui (voir "Composants Disponibles" plus haut), état courant complet dans [`ETAT-DU-PROJET.md`](./ETAT-DU-PROJET.md).
+> Section historique : décrit l'état du projet à la fin de la Session 8 (octobre 2025), 16 composants à ce moment-là. Le projet a continué depuis via des issues GitHub plutôt que des sessions numérotées : 24 composants aujourd'hui (voir "Composants Disponibles" plus haut), état courant complet dans [`ETAT_DU_PROJET.md`](./ETAT_DU_PROJET.md).
 
 Les 8 sessions de développement (~17h30) ont permis la création des 16 premiers composants Web Components.
 

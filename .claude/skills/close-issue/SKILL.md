@@ -24,7 +24,7 @@ push, avant que la doc existe.
   Fermer explicitement via `gh issue close` à l'étape 3, une fois la doc
   écrite.
 - Le changement est un correctif trivial (la seule doc nécessaire est la
-  ligne dans `ETAT-DU-PROJET.md`, faisable avant le commit) → `closes #N`
+  ligne dans `ETAT_DU_PROJET.md`, faisable avant le commit) → `closes #N`
   reste très bien, pas besoin de s'en priver.
 
 Si l'issue s'est déjà auto-fermée avant que tu aies pu documenter
@@ -96,10 +96,10 @@ section concernée du README (catalogue de composants) et/ou le guide
 C'est la même règle que pour toute nouvelle feature — voir `AGENTS.md`
 ("mettre à jour README.md, ajouter une story Storybook").
 
-### Toujours → ETAT-DU-PROJET.md
+### Toujours → ETAT_DU_PROJET.md
 
 Que l'issue soit un ADR, un changement consommateur, ou un simple
-correctif : retire-la du backlog dans `ETAT-DU-PROJET.md` et ajoute une
+correctif : retire-la du backlog dans `ETAT_DU_PROJET.md` et ajoute une
 ligne dans une section "fait" avec la date. C'est le seul geste
 obligatoire dans tous les cas, y compris les issues triviales.
 
@@ -143,4 +143,4 @@ inutile qu'un `gh issue close` sec pour une migration d'outillage
 structurante. La question à te poser : **si quelqu'un relit ce repo dans
 six mois, qu'est-ce qui lui manquerait pour comprendre ce choix ?** Si la
 réponse est "rien, le code et le commit suffisent", ne crée pas de doc en
-plus de la mise à jour d'`ETAT-DU-PROJET.md`.
+plus de la mise à jour d'`ETAT_DU_PROJET.md`.

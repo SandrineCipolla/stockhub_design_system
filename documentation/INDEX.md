@@ -6,7 +6,7 @@
 Bienvenue dans la documentation du Design System StockHub.
 
 > [!IMPORTANT]
-> **État du projet à jour** → [`ETAT-DU-PROJET.md`](../ETAT-DU-PROJET.md) (racine du repo). C'est la source vivante pour le backlog, les sessions en cours et les décisions récentes — cet index reste la table des matières de la documentation structurelle (guides, specs, ADR), pas un journal d'activité.
+> **État du projet à jour** → [`ETAT_DU_PROJET.md`](../ETAT_DU_PROJET.md) (racine du repo). C'est la source vivante pour le backlog, les sessions en cours et les décisions récentes — cet index reste la table des matières de la documentation structurelle (guides, specs, ADR), pas un journal d'activité.
 
 ---
 
@@ -51,7 +51,7 @@ La cohérence des conventions de nommage (props, événements, fichiers) est vé
 
 **Plans & specs** (`./planning/`) : [MIGRATION-PLAN.md](./planning/MIGRATION-PLAN.md), [COMPONENT-SPECIFICATIONS.md](./planning/COMPONENT-SPECIFICATIONS.md), [SPRINT-1-CHECKLIST.md](./planning/SPRINT-1-CHECKLIST.md), [INTEGRATION-PLAN.md](./planning/INTEGRATION-PLAN.md).
 **Décisions d'architecture** (`./adr/`) : un ADR par décision structurante (outillage, choix technique avec alternatives pesées) — [ADR-001-migration-eslint-flat-config.md](./adr/ADR-001-migration-eslint-flat-config.md), [ADR-002-renommage-evenements-prefixe-sh.md](./adr/ADR-002-renommage-evenements-prefixe-sh.md).
-**Sessions de développement** (`./sessions/`) : comptes-rendus historiques figés (sessions 1 à 8, 16-21 octobre 2025), voir section dédiée plus bas. Le suivi d'activité depuis a migré vers [`ETAT-DU-PROJET.md`](../ETAT-DU-PROJET.md) — pas de session 9+ rédigée séparément.
+**Sessions de développement** (`./sessions/`) : comptes-rendus historiques figés (sessions 1 à 8, 16-21 octobre 2025), voir section dédiée plus bas. Le suivi d'activité depuis a migré vers [`ETAT_DU_PROJET.md`](../ETAT_DU_PROJET.md) — pas de session 9+ rédigée séparément.
 **Archive** (`./archive/`) : documents clos ou superseded — voir [DESIGN-SYSTEM-CORRECTIONS.md](./archive/DESIGN-SYSTEM-CORRECTIONS.md), [OPTIMIZATION-PLAN.md](./archive/OPTIMIZATION-PLAN.md), [CHANGELOG-HISTORIQUE-SESSIONS.md](./archive/CHANGELOG-HISTORIQUE-SESSIONS.md), [STOCK-PREDICTION-CARD-IMPLEMENTATION.md](./archive/STOCK-PREDICTION-CARD-IMPLEMENTATION.md), [STOCKHUB-V2-INTEGRATION.md](./archive/STOCKHUB-V2-INTEGRATION.md).
 **Guide de rédaction** : [guide-redaction.md](./guide-redaction.md) — style et conventions pour toute documentation et ADR de ce repo.
 
@@ -104,7 +104,7 @@ L'organisation du menu Storybook respecte exactement la hiérarchie des dossiers
        └── StockPredictionCard
 ```
 
-*(24 composants au total — détail à jour dans [`ETAT-DU-PROJET.md`](../ETAT-DU-PROJET.md#où-en-est-le-projet))*
+*(24 composants au total — détail à jour dans [`ETAT_DU_PROJET.md`](../ETAT_DU_PROJET.md#où-en-est-le-projet))*
 
 #### Nomenclature des Titres
 - **Atomes** : `Components/Atoms/[NomComposant]`
@@ -264,7 +264,7 @@ Tracking complet de l'implémentation des tests d'interaction avec @storybook/te
 
 ## 📊 Résumé du Projet
 
-### Composants (24 total — décompte à jour, voir [`ETAT-DU-PROJET.md`](../ETAT-DU-PROJET.md#où-en-est-le-projet) pour le détail par composant)
+### Composants (24 total — décompte à jour, voir [`ETAT_DU_PROJET.md`](../ETAT_DU_PROJET.md#où-en-est-le-projet) pour le détail par composant)
 
 | Niveau | Composants |
 |---|---|
@@ -272,7 +272,7 @@ Tracking complet de l'implémentation des tests d'interaction avec @storybook/te
 | **Molecules (10)** | `sh-button` · `sh-card` · `sh-contribution-card` · `sh-contribution-form` · `sh-metric-card` · `sh-quantity-input` · `sh-role-selector` · `sh-search-input` · `sh-stat-card` · `sh-status-badge` |
 | **Organisms (8)** | `sh-collaborator-list` · `sh-footer` · `sh-header` · `sh-ia-alert-banner` · `sh-page-header` · `sh-stock-card` · `sh-stock-item-card` · `sh-stock-prediction-card` |
 
-Les 16 premiers composants (sessions 1-8, ci-dessous) forment le socle initial ; les 8 restants (`sh-role-badge`, `sh-role-selector`, `sh-contribution-card`, `sh-contribution-form`, `sh-collaborator-list`, `sh-stat-card`, `sh-stock-prediction-card`, et l'ajout de la préversion StockHub V2) sont venus après, sans compte-rendu de session dédié — voir historique Git et `ETAT-DU-PROJET.md`.
+Les 16 premiers composants (sessions 1-8, ci-dessous) forment le socle initial ; les 8 restants (`sh-role-badge`, `sh-role-selector`, `sh-contribution-card`, `sh-contribution-form`, `sh-collaborator-list`, `sh-stat-card`, `sh-stock-prediction-card`, et l'ajout de la préversion StockHub V2) sont venus après, sans compte-rendu de session dédié — voir historique Git et `ETAT_DU_PROJET.md`.
 
 ### Progression (historique figé, sessions 1-8 — 16-21 octobre 2025)
 
@@ -281,7 +281,7 @@ Les 16 premiers composants (sessions 1-8, ci-dessous) forment le socle initial ;
 - **Sessions 5-6** : Documentation & Finalisation (3h30) - Docs automatique, préparation intégration
 - **Sessions 7-8** : StockHub V2 Components (4h) - Refactoring, nouveaux composants V2
 
-**Total réalisé (sessions 1-8)** : ~17h30. Activité postérieure (dette technique, breaking change v2.0.0, nouveaux composants, accessibilité) suivie dans [`ETAT-DU-PROJET.md`](../ETAT-DU-PROJET.md), pas ici.
+**Total réalisé (sessions 1-8)** : ~17h30. Activité postérieure (dette technique, breaking change v2.0.0, nouveaux composants, accessibilité) suivie dans [`ETAT_DU_PROJET.md`](../ETAT_DU_PROJET.md), pas ici.
 
 ### 🔗 Voir aussi
 - **Historique des versions** → [CHANGELOG.md](../CHANGELOG.md)
@@ -354,7 +354,7 @@ Pour toute question ou problème :
 
 ## 📝 Repère de versions
 
-Historique détaillé volontairement non dupliqué ici — voir [CHANGELOG.md](../CHANGELOG.md) (auto-généré, release-please) et [ETAT-DU-PROJET.md](../ETAT-DU-PROJET.md) (état courant). Juste les jalons pour se repérer :
+Historique détaillé volontairement non dupliqué ici — voir [CHANGELOG.md](../CHANGELOG.md) (auto-généré, release-please) et [ETAT_DU_PROJET.md](../ETAT_DU_PROJET.md) (état courant). Juste les jalons pour se repérer :
 
 v1.0 (16 octobre 2025, doc initiale) → v2.0 (29 octobre 2025, 16 composants, socle initial) → v2.0.0 (10 juillet 2026, **breaking change** renommage d'événements `sh-`, voir [ADR-002](./adr/ADR-002-renommage-evenements-prefixe-sh.md)) → v2.0.3 (version publiée actuelle, 24 composants).
 

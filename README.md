@@ -394,7 +394,7 @@ npm publish
 
 **100% des composants interactifs ont des tests d'interaction complets** avec `@storybook/test` :
 
-- **9 composants testés** (44 tests au total)
+- **Tests à jour** : onglet Interactions du [Storybook](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/), ou `npm run test-storybook` en local (Storybook lancé)
 - **Tous les événements custom** vérifiés avec leurs payloads
 - **États et comportements** : loading, disabled, error, validation, keyboard navigation
 - **Shadow DOM** : gestion simple et imbriquée (ex: sh-stock-card → sh-button → button natif)

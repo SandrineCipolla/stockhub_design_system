@@ -86,7 +86,7 @@ Tous documentés dans le README depuis le 10 juillet 2026 (voir #48).
 ### Qualité
 
 - **Accessibilité** : 100% WCAG 2.1 AA, badge Lighthouse auto-mis à jour à chaque push `master`
-- **Tests** : 44 tests d'interaction Playwright/Storybook (9 composants couverts) — **0% de tests unitaires** (issues #15, #16 ouvertes)
+- **Tests** : tests d'interaction Playwright/Storybook, liste à jour dans le [Storybook](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/) — **0% de tests unitaires** (issues #15, #16 ouvertes)
 - **Lint** : fonctionne à nouveau depuis le 10 juillet 2026 (0 erreur, 70 warnings pré-existants) — voir [ADR-001](documentation/adr/ADR-001-migration-eslint-flat-config.md)
 - **Conventions** : audit automatisé en CI, 0 violation depuis le 10 juillet 2026 (était 7)
 - **Chromatic** : job CI de nouveau fonctionnel depuis le 10 juillet 2026 (était cassé, voir #45)

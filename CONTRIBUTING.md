@@ -24,7 +24,7 @@ Automatiques via **Release Please** (semver) sur push `master`.
 
 ### Pull requests
 
-- Titre : `type(scope): #numero description` — le numéro de ticket juste après `type(scope):`, avant la description, même principe que les branches (`type/numero-description`)
+- Titre : `type(scope): #numero description`, numéro de ticket juste après `type(scope):`, avant la description, même principe que les branches (`type/numero-description`)
 - Body : composants modifiés, test plan, `Closes #numero`
 - Vérifier que le CI passe avant de merger
 

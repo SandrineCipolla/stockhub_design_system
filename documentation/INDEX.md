@@ -228,7 +228,7 @@ Audit complet de l'utilisation des Design Tokens dans tous les composants.
 Tracking complet de l'implémentation des tests d'interaction avec @storybook/test.
 
 **Contenu** :
-- 100% des composants interactifs testés (9/9 composants, 44 tests)
+- 100% des composants interactifs testés (liste à jour dans le Storybook)
 - Tous les événements custom testés avec leurs payloads
 - Documentation des 4 problèmes rencontrés et solutions
 - Patterns et bonnes pratiques pour Shadow DOM

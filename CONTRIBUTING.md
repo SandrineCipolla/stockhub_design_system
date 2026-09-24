@@ -16,6 +16,9 @@ type(scope): message
 
 Types : `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`.
 
+- Inclure `(closes #numero)` si le commit clôt une issue
+- Pas de mention d'outils ou d'IA dans le message
+
 **Exemples** : `feat(atoms): add sh-badge component`, `fix(molecules): correct sh-button disabled state`.
 
 ### Releases
@@ -26,6 +29,8 @@ Automatiques via **Release Please** (semver) sur push `master`.
 
 - Titre : `type(scope): #numero description`, numéro de ticket juste après `type(scope):`, avant la description, même principe que les branches (`type/numero-description`)
 - Body : composants modifiés, test plan, `Closes #numero`
+- Sections du template sans objet : les supprimer, ne pas écrire « Sans objet »
+- Aucune mention d'outil ou d'IA (signature, lien de session, « Generated with ») dans les titres, bodies et commentaires de PR et d'issues, même règle que pour les commits
 - Vérifier que le CI passe avant de merger
 
 ### Revues de PR (Code & Doc Reviews)
@@ -66,6 +71,25 @@ npm run audit-accessibility  # Lighthouse, avant merge sur master
 
 Toujours relire cette section avant `gh issue create`, ne pas improviser le format.
 
+### Labels obligatoires
+
+| Label    | Valeur                                                    |
+| -------- | --------------------------------------------------------- |
+| Scope    | `design-system` (toujours sur ce repo)                    |
+| Type     | `bug`, `feature`, `documentation`, `technique`, `a11y`... |
+| Priorité | `P1` (haute) à `P4` (très basse)                          |
+
+Sans ces labels, les issues n'apparaissent pas correctement dans le GitHub Project board.
+
+### Titre d'une issue
+
+Une phrase courte qui décrit le résultat attendu ou le problème observé, compréhensible sans ouvrir l'issue.
+
+- Pas de préfixe manuel (`[US-XXX]`, `[BUG]`, `[TECH]`) : GitHub numérote déjà l'issue
+- Pas de préfixe `type(scope):` : ce format sert aux commits et aux PR, le type d'une issue passe par son label
+
+**Exemples** : `Ajouter un état désactivé à sh-select`, `Le focus de sh-button est invisible en mode sombre`
+
 ### Format User Story (toute nouvelle fonctionnalité)
 
 ```
@@ -84,6 +108,8 @@ Alors :
 - [ ] Critère 2
 ```
 
+Une section **Contexte** facultative peut suivre les critères d'acceptation : le constat qui motive l'issue, sans solution technique.
+
 **Interdit dans le body d'une issue** : détails d'implémentation, étapes techniques, commandes, TODO techniques. Ça va dans la PR.
 
 | Information | Où |
@@ -94,8 +120,8 @@ Alors :
 
 ```bash
 gh issue create \
-  --title "[US-XXX] Titre court orienté utilisateur" \
-  --label "user-story" \
+  --title "Phrase courte orientée résultat" \
+  --label "design-system,feature,P2" \
   --body "**En tant que** ...
 **Je souhaite** ...
 **Afin de** ...

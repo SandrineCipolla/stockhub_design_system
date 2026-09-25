@@ -1,26 +1,6 @@
 # Guide d'Intégration React
 
-**Version** : 1.1
-**Date** : 16 Octobre 2025
-**Dernière mise à jour** : Session 1 - Migration Lucide
-
-Ce guide explique comment utiliser les Web Components du Design System StockHub dans une application React.
-
-## 🆕 Nouveautés Version 1.1
-
-### Migration vers Lucide Icons
-- ✅ **Icônes Lucide** : Le Design System utilise désormais Lucide (1000+ icônes)
-- ✅ **Compatibilité totale** avec StockHub V2 (qui utilise lucide-react)
-- ✅ **Même API** : Utilisez les mêmes noms d'icônes en PascalCase
-
-### Nouveaux Composants
-- ✅ **`sh-badge`** : Badge coloré pour statuts et labels
-- ✅ **`sh-card`** : Conteneur de contenu avec effets glassmorphism
-- ✅ **`sh-status-badge`** : Badge spécialisé pour statuts de stock avec indicateur animé
-
-### Composants Améliorés
-- ✅ **`sh-button`** : Variant ghost, état loading, support iconBefore/iconAfter
-- ✅ **`sh-icon`** : Migration complète vers Lucide
+Ce guide explique comment utiliser les Web Components du Design System StockHub dans une application React. Historique des versions : [CHANGELOG.md](../CHANGELOG.md). API exacte de chaque composant (propriétés, événements) : Storybook et les commentaires `@property` / `@fires` du code source.
 
 ---
 
@@ -128,18 +108,15 @@ declare namespace JSX {
     };
 
     'sh-stock-card': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-      stock: any;  // Utiliser le type StockItem approprié
-      index?: number;
-      isUpdating?: boolean;
-      isDeleting?: boolean;
-      aiSuggestions?: string[];
-    };
-
-    'sh-stock-grid': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-      items: any[];
-      loading?: boolean;
-      emptyMessage?: string;
-      columns?: 1 | 2 | 3 | 4 | 'auto';
+      name?: string;
+      category?: string;
+      'last-update'?: string;
+      percentage?: string | number;
+      quantity?: string;
+      value?: string;
+      status?: 'optimal' | 'low' | 'critical' | 'out-of-stock' | 'overstocked';
+      'hide-details'?: boolean;
+      'data-theme'?: 'light' | 'dark';
     };
   }
 }
@@ -244,63 +221,46 @@ function CardWithSlots() {
 
 ### Custom Events
 
-Les Web Components utilisent des Custom Events. Voici comment les gérer en React :
+Les Web Components émettent des Custom Events préfixés `sh-`. Liste par composant : commentaires `@fires` du code source. Exemple avec `sh-stock-card`, qui émet `sh-details-click`, `sh-edit-click`, `sh-delete-click` et `sh-session-click`.
+
+Le `detail` de ces événements contient les propriétés affichées (`name`, `status`), pas l'identifiant métier du stock. Le composant React garde l'identifiant et le passe lui-même au handler.
+
+Avec React 19, une prop `on` suivie du nom exact de l'événement s'abonne à l'événement sur l'élément custom :
+
+```tsx
+function StockCard({ stock, onEdit, onDelete }: StockCardProps) {
+  return (
+    <sh-stock-card
+      name={stock.label}
+      category={stock.category}
+      quantity={String(stock.quantity)}
+      status={stock.status}
+      onsh-edit-click={() => onEdit(stock.id)}
+      onsh-delete-click={() => onDelete(stock.id)}
+    />
+  );
+}
+```
+
+Exemple réel : `src/components/dashboard/StockCardWrapper.tsx` du repo frontend.
+
+Avant React 19, ou pour écouter un événement sur un ancêtre (les événements ont `bubbles` et `composed`), passer par `addEventListener` :
 
 ```tsx
 import { useRef, useEffect } from 'react';
 
-function StockDashboard() {
+function StockCard({ stock, onEdit }: StockCardProps) {
   const cardRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const card = cardRef.current;
     if (!card) return;
+    const handleEdit = () => onEdit(stock.id);
+    card.addEventListener('sh-edit-click', handleEdit);
+    return () => card.removeEventListener('sh-edit-click', handleEdit);
+  }, [stock.id, onEdit]);
 
-    // Écouter les événements custom
-    const handleView = (e: Event) => {
-      const customEvent = e as CustomEvent<{ id: string }>;
-      console.log('View stock:', customEvent.detail.id);
-    };
-
-    const handleEdit = (e: Event) => {
-      const customEvent = e as CustomEvent<{ id: string }>;
-      console.log('Edit stock:', customEvent.detail.id);
-    };
-
-    const handleDelete = (e: Event) => {
-      const customEvent = e as CustomEvent<{ id: string }>;
-      console.log('Delete stock:', customEvent.detail.id);
-    };
-
-    card.addEventListener('sh-stock-view', handleView);
-    card.addEventListener('sh-stock-edit', handleEdit);
-    card.addEventListener('sh-stock-delete', handleDelete);
-
-    // Cleanup
-    return () => {
-      card.removeEventListener('sh-stock-view', handleView);
-      card.removeEventListener('sh-stock-edit', handleEdit);
-      card.removeEventListener('sh-stock-delete', handleDelete);
-    };
-  }, []);
-
-  const stockData = {
-    id: '123',
-    name: 'Article Test',
-    category: 'Peinture',
-    quantity: 50,
-    unit: 'L',
-    value: 450,
-    lastUpdate: new Date().toISOString(),
-    status: 'in-stock'
-  };
-
-  return (
-    <sh-stock-card
-      ref={cardRef}
-      stock={JSON.stringify(stockData)}>
-    </sh-stock-card>
-  );
+  return <sh-stock-card ref={cardRef} name={stock.label} status={stock.status} />;
 }
 ```
 
@@ -338,18 +298,18 @@ Utilisation :
 import { useRef } from 'react';
 import { useWebComponentEvent } from './hooks/useWebComponentEvent';
 
-function MyComponent() {
+function MyComponent({ stock }: { stock: Stock }) {
   const cardRef = useRef<HTMLElement>(null);
 
-  useWebComponentEvent(cardRef, 'sh-stock-view', ({ id }) => {
-    console.log('View:', id);
+  useWebComponentEvent(cardRef, 'sh-details-click', () => {
+    console.log('Détails du stock', stock.id);
   });
 
-  useWebComponentEvent(cardRef, 'sh-stock-edit', ({ id }) => {
-    console.log('Edit:', id);
+  useWebComponentEvent(cardRef, 'sh-edit-click', () => {
+    console.log('Édition du stock', stock.id);
   });
 
-  return <sh-stock-card ref={cardRef} stock={stockData}></sh-stock-card>;
+  return <sh-stock-card ref={cardRef} name={stock.label} status={stock.status} />;
 }
 ```
 
@@ -403,76 +363,7 @@ import './custom-tokens.css';
 
 ### Wrapper React Component
 
-Créer des wrappers React pour une meilleure ergonomie :
-
-```typescript
-// src/components/StockCard.tsx
-import React, { useRef } from 'react';
-import { useWebComponentEvent } from '../hooks/useWebComponentEvent';
-
-interface StockCardProps {
-  stock: StockItem;
-  index?: number;
-  isUpdating?: boolean;
-  isDeleting?: boolean;
-  aiSuggestions?: string[];
-  onView?: (id: string) => void;
-  onEdit?: (id: string) => void;
-  onDelete?: (id: string) => void;
-  onRecordUsage?: (id: string, amount: number) => void;
-}
-
-export function StockCard({
-  stock,
-  index,
-  isUpdating,
-  isDeleting,
-  aiSuggestions,
-  onView,
-  onEdit,
-  onDelete,
-  onRecordUsage
-}: StockCardProps) {
-  const ref = useRef<HTMLElement>(null);
-
-  useWebComponentEvent(ref, 'sh-stock-view', ({ id }) => onView?.(id));
-  useWebComponentEvent(ref, 'sh-stock-edit', ({ id }) => onEdit?.(id));
-  useWebComponentEvent(ref, 'sh-stock-delete', ({ id }) => onDelete?.(id));
-  useWebComponentEvent(ref, 'sh-stock-record-usage', ({ id, amount }) =>
-    onRecordUsage?.(id, amount)
-  );
-
-  return (
-    <sh-stock-card
-      ref={ref}
-      stock={JSON.stringify(stock)}
-      index={index}
-      isUpdating={isUpdating}
-      isDeleting={isDeleting}
-      aiSuggestions={aiSuggestions ? JSON.stringify(aiSuggestions) : undefined}>
-    </sh-stock-card>
-  );
-}
-```
-
-Utilisation simplifiée :
-
-```tsx
-function Dashboard() {
-  const handleView = (id: string) => {
-    console.log('View:', id);
-  };
-
-  return (
-    <StockCard
-      stock={stockData}
-      onView={handleView}
-      onEdit={handleEdit}
-      onDelete={handleDelete}
-    />
-  );
-}
-```
+Un wrapper React par composant du Design System garde le typage côté application et traduit les événements `sh-*` en callbacks qui reçoivent l'identifiant métier. Le frontend StockHub applique ce modèle : voir `src/components/dashboard/StockCardWrapper.tsx` et `docs/V2/DESIGN-SYSTEM-WRAPPERS.md` dans le repo frontend, plutôt qu'un exemple recopié ici.
 
 ### Formulaires Contrôlés
 
@@ -524,37 +415,27 @@ function MyForm() {
 
 ### 1. Passage de Props Complexes
 
-**Problème** : Les attributs HTML ne supportent que les strings.
+**Problème** : un attribut HTML ne transporte que des chaînes.
 
-**Solution** : Utiliser JSON.stringify() pour objets/arrays
-
-```tsx
-// ❌ Ne fonctionne pas
-<sh-stock-card stock={stockObject}></sh-stock-card>
-
-// ✅ Fonctionne
-<sh-stock-card stock={JSON.stringify(stockObject)}></sh-stock-card>
-```
-
-Ou créer un setter via ref :
+**Solution** : pour une propriété objet ou tableau, affecter la propriété JavaScript via une ref. `sh-collaborator-list` accepte aussi un JSON stringifié en attribut, grâce à un convertisseur déclaré dans le composant.
 
 ```tsx
-const cardRef = useRef<any>(null);
+const listRef = useRef<HTMLElement & { collaborators: CollaboratorItem[] }>(null);
 
 useEffect(() => {
-  if (cardRef.current) {
-    cardRef.current.stock = stockObject;  // Setter direct
+  if (listRef.current) {
+    listRef.current.collaborators = collaborators;
   }
-}, [stockObject]);
+}, [collaborators]);
 
-<sh-stock-card ref={cardRef}></sh-stock-card>
+<sh-collaborator-list ref={listRef}></sh-collaborator-list>
 ```
 
 ### 2. Événements Synthétiques React
 
-**Problème** : React ne capture pas automatiquement les Custom Events.
+**Problème** : avant React 19, React ne s'abonne pas aux Custom Events.
 
-**Solution** : Utiliser addEventListener directement (voir exemples ci-dessus).
+**Solution** : avec React 19, prop `on` suivie du nom exact de l'événement (`onsh-edit-click`). Sinon, `addEventListener` via une ref. Exemples dans [Custom Events](#custom-events).
 
 ### 3. Refs avec TypeScript
 
@@ -595,51 +476,28 @@ useEffect(() => {
 
 ## 📊 Exemples Complets
 
-### Dashboard avec Stock Grid
+### Dashboard avec des cartes de stock
 
 ```tsx
-import { useState, useRef } from 'react';
-import { useWebComponentEvent } from './hooks/useWebComponentEvent';
+import { useNavigate } from 'react-router-dom';
 
-function StockDashboard() {
-  const [stocks, setStocks] = useState<StockItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const gridRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    // Fetch stocks
-    fetchStocks().then(data => {
-      setStocks(data);
-      setLoading(false);
-    });
-  }, []);
-
-  useWebComponentEvent(gridRef, 'sh-stock-view', ({ id }) => {
-    navigate(`/stock/${id}`);
-  });
-
-  useWebComponentEvent(gridRef, 'sh-stock-edit', ({ id }) => {
-    navigate(`/stock/${id}/edit`);
-  });
-
-  useWebComponentEvent(gridRef, 'sh-stock-delete', async ({ id }) => {
-    if (confirm('Delete this item?')) {
-      await deleteStock(id);
-      setStocks(stocks.filter(s => s.id !== id));
-    }
-  });
+function StockDashboard({ stocks, onDelete }: { stocks: Stock[]; onDelete: (id: number) => void }) {
+  const navigate = useNavigate();
 
   return (
     <div className="dashboard">
-      <h1>Stock Management</h1>
-
-      <sh-stock-grid
-        ref={gridRef}
-        items={JSON.stringify(stocks)}
-        loading={loading}
-        columns="auto"
-        emptyMessage="No items in stock">
-      </sh-stock-grid>
+      {stocks.map(stock => (
+        <sh-stock-card
+          key={stock.id}
+          name={stock.label}
+          category={stock.category}
+          quantity={String(stock.quantity)}
+          status={stock.status}
+          onsh-details-click={() => navigate(`/stocks/${stock.id}`)}
+          onsh-edit-click={() => navigate(`/stocks/${stock.id}/edit`)}
+          onsh-delete-click={() => onDelete(stock.id)}
+        />
+      ))}
     </div>
   );
 }

@@ -22,15 +22,17 @@ projet :
 **GitHub Project** : https://github.com/users/SandrineCipolla/projects/3,
 à mettre à jour après chaque modification importante.
 
-**Contexte veille/RNCP7** : benchmark produit, plan de veille et
-benchmark technique (choix d'un fournisseur d'auth) documentés dans le
-Second Brain : `C:\Users\sandr\SecondBrain\SecondBrainSandrine\01-Projets\stockhub-veille.md`.
-Référentiel de certification (EADL, Ingétis) :
+**Contexte veille/RNCP7** (notes personnelles hors dépôt, lisibles
+seulement sur le poste de Sandrine) : benchmark produit, plan de veille et
+benchmark technique (choix d'un fournisseur d'auth) dans
+`C:\Users\sandr\SecondBrain\SecondBrainSandrine\01-Projets\stockhub-veille.md`.
+Référentiel de certification (Expert en Architecture et Développement
+Logiciel, INGETIS) :
 `C:\Users\sandr\SecondBrain\SecondBrainSandrine\03-Ressources\Cours\referentiel-eadl-ingetis.md`.
 
 **Intégration Frontend → Design System** : dépendance NPM via GitHub
 (`@stockhub/design-system`). Détail des imports/usage : voir README.md et
-`documentation/REACT-INTEGRATION-GUIDE.md`.
+[`documentation/4-REACT-INTEGRATION-GUIDE.md`](./documentation/4-REACT-INTEGRATION-GUIDE.md).
 
 ## Avant de committer, toujours exécuter
 

@@ -2,8 +2,6 @@
 
 [🔗 Rapport Lighthouse (accessibilité)](https://SandrineCipolla.github.io/stockhub_design_system/)
 
-![Accessibilité Lighthouse](https://img.shields.io/badge/accessibility-100%2F100-brightgreen?logo=lighthouse)
-
 > Design System réutilisable (web + mobile) basé sur Web Components (Lit Element)
 
 📚 **[Documentation complète du projet](https://github.com/SandrineCipolla/stockHub_V2_front/wiki)** : architecture, guides techniques, métriques
@@ -12,7 +10,7 @@
 
 Ce Design System a été créé pour **StockHub V2**, une application de gestion de stock avec intelligence artificielle.
 
-Le projet contient **24 composants Web Components réutilisables** couvrant tous les besoins de l'application :
+Les composants Web Components réutilisables sont répartis en trois niveaux (liste à jour : `src/components/` et le Storybook) :
 - **Composants de base (atoms)** : badges, badge de rôle, icônes Lucide, inputs, logo, texte
 - **Composants composés (molecules)** : buttons, cards, metric-card, search, status-badge, quantity-input, stat-card, sélecteur de rôle, carte et formulaire de contribution
 - **Composants complexes (organisms)** : header, footer, page-header, ia-alert-banner, stock-card, stock-item-card, stock-prediction-card, liste de collaborateurs
@@ -76,8 +74,6 @@ src/
 └── styles/                       # Global styles et CSS utilities
 ```
 
-**Total : 24 composants Web Components**
-
 ### Convention de Nommage
 Tous les composants utilisent le préfixe `sh-` (StockHub) :
 - `<sh-button>`
@@ -93,10 +89,10 @@ Tous les composants utilisent le préfixe `sh-` (StockHub) :
 Le package n'est pas publié sur le registre npm public. Installation depuis GitHub :
 
 ```bash
-npm install github:SandrineCipolla/stockhub_design_system#v2.0.3
+npm install github:SandrineCipolla/stockhub_design_system#vX.Y.Z
 ```
 
-Remplacer le tag par la version voulue. Publication sur npm : voir l'issue de suivi si elle existe encore, pas encore faite à ce jour.
+Remplacer `vX.Y.Z` par un tag des [releases](https://github.com/SandrineCipolla/stockhub_design_system/releases). Publication sur npm : voir l'issue de suivi si elle existe encore, pas encore faite à ce jour.
 
 ### Utilisation en React
 ```tsx
@@ -578,7 +574,7 @@ Pour une documentation détaillée du projet, consultez **[documentation/INDEX.m
 
 ## 📈 Progression
 
-> Section historique : décrit l'état du projet à la fin de la Session 8 (octobre 2025), 16 composants à ce moment-là. Le projet a continué depuis via des issues GitHub plutôt que des sessions numérotées : 24 composants aujourd'hui (voir "Composants Disponibles" plus haut), état courant complet dans [`ETAT_DU_PROJET.md`](./ETAT_DU_PROJET.md).
+> Section historique : décrit l'état du projet à la fin de la Session 8 (octobre 2025), 16 composants à ce moment-là. Le projet a continué depuis via des issues GitHub plutôt que des sessions numérotées (liste actuelle : "Composants Disponibles" plus haut), état courant complet dans [`ETAT_DU_PROJET.md`](./ETAT_DU_PROJET.md).
 
 Les 8 sessions de développement (~17h30) ont permis la création des 16 premiers composants Web Components.
 

@@ -1,10 +1,27 @@
 # Guide de rédaction
 
-Règles d'écriture pour la documentation du projet (ADR, README, CONTRIBUTING, sessions, etc.). Un seul endroit pour ces règles : tout document ou skill qui rédige de la documentation y renvoie plutôt que de les recopier.
+Règles d'écriture pour la documentation du projet (ADR, README, CONTRIBUTING, sessions, etc.). Tout document ou skill qui rédige de la documentation y renvoie plutôt que de recopier ces règles. Les sections entre marqueurs `commun` sont identiques dans les trois repos StockHub, le workflow `docs-check` le vérifie.
+
+<!-- commun:debut guide-redaction v1 -->
+<!-- Bloc commun aux trois repos StockHub : le modifier à l'identique dans les trois, en incrémentant la version. Vérifié par check-docs. -->
 
 ## Principes
 
 Rester court pour réduire le temps de relecture. Écrire simplement, préférer la formulation la plus ordinaire. Dire ce qui est, pas ce qui n'est pas. Énoncer chaque idée une seule fois. Supprimer tout mot dont le retrait ne change rien. Préférer le concret à ce qui impressionne : nommer le fichier, le nombre, le mécanisme. La structure suit le contenu. Le texte doit être compréhensible par une personne qui découvre le sujet. Ajouter un commentaire uniquement s'il apporte ce que le code ne peut pas montrer.
+
+## Ne pas répéter entre documents
+
+Une information vit à un seul endroit. Un autre document qui en a besoin y renvoie par un lien qui fonctionne (vers le fichier, la section, ou le code concerné), il ne la recopie pas. Si l'information change, elle ne doit être corrigée qu'à un seul endroit.
+
+Cas particulier des ADR : le code qui existe encore dans le dépôt n'est pas recopié dans une ADR, il est référencé par son chemin. Un extrait n'est conservé que s'il est pédagogique ou hypothétique, c'est-à-dire s'il ne correspond à aucun fichier réel.
+
+Quand deux documents couvrent le même sujet, vérifier le contenu réel avant de choisir quoi garder, pas seulement le titre :
+
+- Contenu strictement identique : garder l'ADR quand une ADR existe pour ce sujet, elle est la source de la décision. Sinon garder le document le plus complet et faire pointer l'autre vers lui.
+- Contenu différent mais même sujet : chacun garde ce qui lui est propre. Une ADR justifie une décision avec ses alternatives, un guide documente la pratique courante. Vérifier qu'aucun exemple de code ou paragraphe entier n'est recopié entre les deux.
+- Contenu périmé ou devenu secondaire : évaluer l'archivage plutôt que la suppression sans y avoir pensé.
+
+Si un fichier référencé est déplacé ou renommé, mettre à jour le lien dans tous les documents qui y renvoient.
 
 ## Règles fixes
 
@@ -28,6 +45,8 @@ Chaque entrée illustre une catégorie à reconnaître. Ne garder un terme signa
 
 S'applique à toute documentation rédigée pour ce projet : ADR, README, CONTRIBUTING, sessions de développement, commentaires de PR. Ne s'applique pas au code lui-même (noms de variables, commentaires techniques) sauf pour les commentaires en prose longue.
 
+<!-- commun:fin guide-redaction -->
+
 ## Vérification automatique
 
-Le workflow `.github/workflows/docs-check.yml` vérifie à chaque pull request les liens de la documentation, y compris vers le frontend et le backend, et les règles fixes ci-dessus sur les fichiers modifiés. Le script est celui du frontend, décrit dans la section « Vérification automatique » de son [guide de rédaction](https://github.com/SandrineCipolla/stockHub_V2_front/blob/main/docs/technical/guide-redaction.md). Configuration propre à ce repo : `.docs-check.json`.
+Le workflow `.github/workflows/docs-check.yml` vérifie à chaque pull request les liens de la documentation, y compris vers le frontend et le backend, les blocs communs aux trois repos, et les règles fixes ci-dessus sur les fichiers modifiés. Le script est celui du frontend, décrit dans la section « Vérification automatique » de son [guide de rédaction](https://github.com/SandrineCipolla/stockHub_V2_front/blob/main/docs/technical/guide-redaction.md). Configuration propre à ce repo : `.docs-check.json`.

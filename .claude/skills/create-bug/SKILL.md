@@ -1,34 +1,36 @@
 ---
 name: create-bug
-description: Crée une issue GitHub de type bug report au format strict du projet StockHub V2. Se déclenche sur des demandes comme "signale un bug", "crée un bug report", "il y a un problème avec...".
+description: Crée une issue GitHub de bug au format du projet StockHub. Se déclenche sur des demandes comme « signale un bug », « crée un bug report », « il y a un problème avec… ».
 ---
 
-# Créer une Issue GitHub — Bug Report
+<!-- commun:debut skill-create-bug v1 -->
+<!-- Bloc commun aux trois repos StockHub : le modifier à l'identique dans les trois, en incrémentant la version. Vérifié par check-docs. -->
 
-Crée une issue GitHub de type bug en respectant strictement le format du projet.
+# Créer une issue de bug
 
-## Instructions
+Les règles de titre et de labels sont dans la section « Gestion des issues GitHub » du `CONTRIBUTING.md` de ce repo.
 
-1. Demande-moi les informations manquantes si elles ne sont pas fournies :
-   - **Description** : que se passe-t-il ?
+## Étapes
+
+1. Demander les informations manquantes :
+   - **Description** : ce qui se passe
    - **Étapes pour reproduire**
-   - **Comportement attendu** vs **comportement actuel**
-   - **Sévérité** : Bloquant / Majeur / Mineur / Cosmétique
-   - **Module** : Frontend / Backend / Design System
-
-2. Exécute :
+   - **Comportement attendu** et **comportement actuel**
+   - **Priorité** : `P0` à `P4`, selon les critères du CONTRIBUTING
+2. Créer l'issue avec le label de scope de ce repo (voir plus bas) et l'ajouter au GitHub Project :
 
 ```bash
 gh issue create \
-  --title "[BUG] [description courte du problème]" \
-  --label "bug" \
+  --title "[problème observé en une phrase, sans préfixe]" \
+  --label "[scope],bug,[priorité]" \
+  --project "StockHub V2" \
   --body "## Description
-[description du bug]
+[ce qui se passe]
 
 ## Étapes pour reproduire
-1. [étape 1]
-2. [étape 2]
-3. Observer...
+1. [étape]
+2. [étape]
+3. Observer [résultat]
 
 ## Comportement attendu
 [ce qui devrait se passer]
@@ -36,15 +38,21 @@ gh issue create \
 ## Comportement actuel
 [ce qui se passe réellement]
 
-## Sévérité
-[Bloquant / Majeur / Mineur / Cosmétique]
-
 ## Contexte
-[navigateur, OS, logs console si pertinent]"
+[environnement, navigateur, logs si pertinent]"
 ```
+
+3. Donner le lien de l'issue.
 
 ## Règles
 
-- ❌ Pas de solution technique dans le body (ça va dans la PR)
-- ✅ Se concentrer sur les faits observables
-- ✅ Les étapes de reproduction doivent être vérifiables
+- Des faits observables et des étapes vérifiables, pas de solution technique : elle va dans la PR
+- Titre sans préfixe (`[BUG]`) : le type passe par le label
+- Aucune mention d'outil ou d'IA dans le titre ou le body
+
+<!-- commun:fin skill-create-bug -->
+
+## Dans ce repo
+
+- Label de scope : `design-system`
+- Branche principale : `master`

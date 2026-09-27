@@ -1,0 +1,10 @@
+{
+  "guide": "documentation/guide-redaction.md",
+  "baseline": "documentation/docs-links-baseline.json",
+  "styleExclude": [
+    "documentation/archive/",
+    "documentation/sessions/",
+    "documentation/planning/",
+    "CHANGELOG.md"
+  ]
+}

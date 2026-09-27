@@ -39,3 +39,5 @@ jobs:
         run: node "$RUNNER_TEMP/siblings/stockHub_V2_front/scripts/check-docs.mjs"
         env:
           DOCS_SIBLINGS_DIR: ${{ runner.temp }}/siblings
+          # Explicite : le repo a aussi une branche main sans ancêtre commun avec master
+          DOCS_BASE_REF: origin/master

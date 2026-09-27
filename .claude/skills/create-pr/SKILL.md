@@ -1,61 +1,46 @@
 ---
 name: create-pr
-description: Crée une Pull Request GitHub au format du projet StockHub V2, liée à une issue. Se déclenche sur des demandes comme "crée une PR", "ouvre une pull request", "je veux merger cette branche".
+description: Crée une pull request GitHub au format du projet StockHub, liée à une issue. Se déclenche sur des demandes comme « crée une PR », « ouvre une pull request ».
 ---
 
-# Créer une Pull Request
+<!-- commun:debut skill-create-pr v1 -->
+<!-- Bloc commun aux trois repos StockHub : le modifier à l'identique dans les trois, en incrémentant la version. Vérifié par check-docs. -->
 
-Crée une PR GitHub en respectant le format du projet StockHub V2.
+# Créer une pull request
 
-## Instructions
+Les règles de titre et de body sont dans la section « Pull requests » du `CONTRIBUTING.md` de ce repo. La structure du body est celle du template de PR du repo (`.github/pull_request_template.md` ou `.github/PULL_REQUEST_TEMPLATE.md`) : le lire, ne pas en recopier une version de mémoire.
 
-1. Récupère les informations nécessaires :
+## Étapes
+
+1. Récupérer le contexte, avec la branche principale de ce repo (voir plus bas) :
 
 ```bash
-# Branche courante
 git branch --show-current
-
-# Commits depuis main
-git log main..HEAD --oneline
-
-# Fichiers modifiés
-git diff main --name-only
+git log <branche-principale>..HEAD --oneline
+git diff <branche-principale> --name-only
 ```
 
-2. Demande-moi si nécessaire :
-   - **Numéro de l'issue** liée (obligatoire)
-   - **Type** : feature / bug / refactor / docs / config
-   - Y a-t-il des changements UI ? (pour les screenshots)
-
-3. Crée la PR :
+2. Demander le numéro de l'issue liée s'il ne se déduit pas du nom de la branche (`type/numero-description`).
+3. Remplir le template de PR : sections sans objet supprimées, cases cochées seulement pour ce qui a réellement été vérifié.
+4. Créer la PR :
 
 ```bash
 gh pr create \
-  --title "[type]: #[numero] [description courte]" \
-  --body "## 🔗 Issue liée
-Closes #[numéro]
-
-## 📋 Description
-[Ce que fait cette PR en 2-3 lignes]
-
-## 🔧 Détails d'implémentation
-[Composants modifiés, choix techniques, compromis éventuels]
-[Déduit automatiquement des fichiers modifiés et des commits]
-
-## ✅ Checklist
-- [ ] \`npm run ci:check\` passant
-- [ ] Couverture de tests maintenue
-- [ ] Accessibilité vérifiée si changement UI
-- [ ] GitHub Project mis à jour
-
-## 📸 Screenshots
-[Ajouter si changement UI]" \
+  --title "type(scope): #numero description" \
+  --body "[template rempli]" \
   --assignee "@me"
 ```
 
 ## Règles
 
-- ✅ Toujours lier à une issue avec `Closes #`
-- ✅ Le titre suit les Conventional Commits (`feat:`, `fix:`, `refactor:`, etc.), numéro de ticket juste après le type, avant la description (voir [CONTRIBUTING.md](../../../CONTRIBUTING.md))
-- ✅ Les détails techniques vont ici, PAS dans l'issue
-- ❌ Ne pas merger sans que la checklist soit complète
+- Toujours lier l'issue avec `Closes #numero`
+- Les détails techniques vont dans la PR, pas dans l'issue
+- Ne pas écrire « Sans objet » : supprimer la section
+- Aucune mention d'outil ou d'IA (signature, lien de session, « Generated with ») dans le titre ou le body
+
+<!-- commun:fin skill-create-pr -->
+
+## Dans ce repo
+
+- Label de scope : `design-system`
+- Branche principale : `master`

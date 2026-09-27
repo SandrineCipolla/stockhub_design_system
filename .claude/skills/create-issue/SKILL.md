@@ -1,55 +1,44 @@
 ---
 name: create-issue
-description: Crée une issue GitHub au format User Story strict du projet StockHub V2. Se déclenche sur des demandes comme "crée une issue pour...", "nouvelle user story", "ajoute une issue GitHub" — pour toute nouvelle fonctionnalité.
+description: Crée une issue GitHub au format User Story du projet StockHub, pour une nouvelle fonctionnalité ou une amélioration. Se déclenche sur des demandes comme « crée une issue pour… », « nouvelle user story », « ajoute une issue GitHub ».
 ---
 
-# Créer une Issue GitHub — User Story
+<!-- commun:debut skill-create-issue v1 -->
+<!-- Bloc commun aux trois repos StockHub : le modifier à l'identique dans les trois, en incrémentant la version. Vérifié par check-docs. -->
 
-Crée une issue GitHub en respectant **strictement** le format User Story du projet.
+# Créer une issue au format User Story
 
-## Instructions
+Les règles (labels, titre, format User Story, ce qui est interdit dans le body) sont dans la section « Gestion des issues GitHub » du `CONTRIBUTING.md` de ce repo. Les relire avant de rédiger, ne pas les improviser.
 
-1. Demande-moi les informations manquantes si elles ne sont pas fournies :
-   - **Persona** : qui est l'utilisateur ? (ex: utilisateur connecté, admin famille)
-   - **Action souhaitée** : que veut-il faire ?
-   - **Bénéfice** : pourquoi / quelle valeur ?
-   - **Priorité** : Très haute / Haute / Moyenne / Basse / Très basse
-   - **Module** : Frontend / Backend / Design System / Transverse
+## Étapes
 
-2. Génère le body **uniquement** avec ce format, sans rien ajouter d'autre :
-
-```
-**En tant que** [persona]
-**Je souhaite** [action souhaitée]
-**Afin de** [bénéfice attendu]
-
----
-
-**Critères d'acceptation**
-
-Étant donné que [contexte initial]
-Lorsque [action déclenchée]
-Alors :
-- [ ] Critère 1
-- [ ] Critère 2
-- [ ] Critère 3
-```
-
-3. Exécute la commande suivante :
+1. Demander les informations manquantes :
+   - **Persona** : qui est l'utilisateur (ex : utilisateur connecté, admin famille)
+   - **Action souhaitée** et **bénéfice attendu**
+   - **Type** : `feature`, `improvement`, `tech` ou `documentation`
+   - **Priorité** : `P0` à `P4`, selon les critères du CONTRIBUTING
+2. Rédiger le body au format User Story du CONTRIBUTING, avec au plus 5 critères d'acceptation qui décrivent un comportement visible. Section **Contexte** facultative à la fin : le constat, sans solution technique.
+3. Créer l'issue avec le label de scope de ce repo (voir plus bas) et l'ajouter au GitHub Project :
 
 ```bash
 gh issue create \
-  --title "[US-XXX] [titre court orienté utilisateur]" \
-  --label "user-story" \
-  --body "[body généré ci-dessus]"
+  --title "[phrase courte orientée résultat, sans préfixe]" \
+  --label "[scope],[type],[priorité]" \
+  --project "StockHub V2" \
+  --body "[body]"
 ```
 
-## Règles ABSOLUES
+4. Donner le lien de l'issue et rappeler de remplir les champs Module et Estimation sur le board.
 
-- ❌ Pas de détails d'implémentation (composants, fichiers, code)
-- ❌ Pas d'étapes techniques de développement
-- ❌ Pas de commandes à exécuter
-- ❌ Pas de TODO techniques
-- ✅ Maximum 5 critères d'acceptation
-- ✅ Le titre doit être compréhensible par un non-développeur
-- ✅ Les critères d'acceptation décrivent un comportement visible, pas du code
+## Règles
+
+- Pas de détails d'implémentation, d'étapes techniques, de commandes ni de TODO dans le body : ça va dans la PR
+- Titre compréhensible par une personne non technique, sans préfixe (`[US-XXX]`, `feat:`)
+- Aucune mention d'outil ou d'IA dans le titre ou le body
+
+<!-- commun:fin skill-create-issue -->
+
+## Dans ce repo
+
+- Label de scope : `design-system`
+- Branche principale : `master`

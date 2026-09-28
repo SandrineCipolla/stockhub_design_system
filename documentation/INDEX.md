@@ -48,6 +48,9 @@ La cohérence des conventions de nommage (props, événements, fichiers) est vé
 9- [9-ACCESSIBILITY-REPORT.md](./9-ACCESSIBILITY-REPORT.md)  
    *Rapport d’accessibilité.*
 
+10- [10-GUIDE-DEVELOPPEMENT.md](./10-GUIDE-DEVELOPPEMENT.md)  
+   *Créer un composant, thèmes, tests, CI/CD.*
+
 **Plans & specs** (`./planning/`) : [MIGRATION-PLAN.md](./planning/MIGRATION-PLAN.md), [COMPONENT-SPECIFICATIONS.md](./planning/COMPONENT-SPECIFICATIONS.md), [SPRINT-1-CHECKLIST.md](./planning/SPRINT-1-CHECKLIST.md), [INTEGRATION-PLAN.md](./planning/INTEGRATION-PLAN.md).
 **Décisions d'architecture** (`./adr/`) : un ADR par décision structurante (outillage, choix technique avec alternatives pesées), [ADR-001-migration-eslint-flat-config.md](./adr/ADR-001-migration-eslint-flat-config.md), [ADR-002-renommage-evenements-prefixe-sh.md](./adr/ADR-002-renommage-evenements-prefixe-sh.md).
 **Sessions de développement** (`./sessions/`) : comptes-rendus historiques figés (sessions 1 à 8, 16-21 octobre 2025), voir section dédiée plus bas. Le suivi d'activité a ensuite migré vers [`ETAT_DU_PROJET.md`](../ETAT_DU_PROJET.md), le journal de juillet 2026 est archivé dans [`sessions/2026-07-JOURNAL.md`](./sessions/2026-07-JOURNAL.md).

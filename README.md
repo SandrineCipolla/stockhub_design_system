@@ -1,128 +1,31 @@
 # StockHub Design System
 
-[🔗 Rapport Lighthouse (accessibilité)](https://SandrineCipolla.github.io/stockhub_design_system/)
+> Web Components (Lit) réutilisables de StockHub V2, documentés dans Storybook
 
-> Design System réutilisable (web + mobile) basé sur Web Components (Lit Element)
+[Storybook](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/), [Rapport Lighthouse (accessibilité)](https://SandrineCipolla.github.io/stockhub_design_system/), [CHANGELOG](CHANGELOG.md), [État du projet](ETAT_DU_PROJET.md), [Documentation](documentation/INDEX.md)
 
-📚 **[Documentation complète du projet](https://github.com/SandrineCipolla/stockHub_V2_front/wiki)** : architecture, guides techniques, métriques
+Ce Design System fournit les composants d'interface de [StockHub V2](https://github.com/SandrineCipolla/stockHub_V2_front), une application de gestion de stocks avec prédictions. Les composants sont des Web Components Lit, organisés selon l'Atomic Design et préfixés `sh-`. Ils sont indépendants de React et s'utilisent dans n'importe quelle page HTML.
 
-## 📋 Contexte
+## Installation
 
-Ce Design System a été créé pour **StockHub V2**, une application de gestion de stock avec intelligence artificielle.
-
-Les composants Web Components réutilisables sont répartis en trois niveaux (liste à jour : `src/components/` et le Storybook) :
-- **Composants de base (atoms)** : badges, badge de rôle, icônes Lucide, inputs, logo, texte
-- **Composants composés (molecules)** : buttons, cards, metric-card, search, status-badge, quantity-input, stat-card, sélecteur de rôle, carte et formulaire de contribution
-- **Composants complexes (organisms)** : header, footer, page-header, ia-alert-banner, stock-card, stock-item-card, stock-prediction-card, liste de collaborateurs
-
-Développé selon la **méthodologie Atomic Design** avec une approche progressive et itérative. Le projet évolue continuellement en fonction des besoins de StockHub V2.
-
-> **📚 Documentation complète** : Voir l'historique des sessions, la stratégie et le planning → [documentation/INDEX.md](./documentation/INDEX.md)
-
-## 🎯 Vision & Objectifs
-
-### Objectifs Principaux
-- Créer des composants UI réutilisables pour web **et mobile**
-- Éviter toute duplication de code entre projets
-- Valider le design visuellement avant implémentation
-- Maintenir une qualité de code élevée (coverage ≥ 93%, Lighthouse ≥ 98)
-- **Compatibilité totale avec StockHub V2** (React + lucide-react)
-
-### Technologies
-- **Lit Element** : Framework léger (5KB) pour Web Components
-- **TypeScript** : Type safety strict mode
-- **Storybook** : Documentation interactive et prototypage
-- **Design Tokens** : Système de tokens centralisé pour cohérence visuelle
-- **Lucide Icons** : Bibliothèque d'icônes (1000+ icônes, compatible StockHub V2)
-
-## 🏗️ Architecture
-
-### Structure Atomic Design
-
-```
-src/
-├── components/
-│   ├── atoms/                    # Composants de base (6)
-│   │   ├── badge/               # sh-badge
-│   │   ├── icon/                # sh-icon (Lucide)
-│   │   ├── input/               # sh-input
-│   │   ├── logo/                # sh-logo
-│   │   ├── role-badge/          # sh-role-badge
-│   │   └── text/                # sh-text
-│   ├── molecules/                # Combinaisons d'atoms (10)
-│   │   ├── button/              # sh-button (ghost, loading, icons)
-│   │   ├── card/                # sh-card (base)
-│   │   ├── contribution-card/   # sh-contribution-card
-│   │   ├── contribution-form/   # sh-contribution-form
-│   │   ├── metric-card/         # sh-metric-card
-│   │   ├── quantity-input/      # sh-quantity-input
-│   │   ├── role-selector/       # sh-role-selector
-│   │   ├── search-input/        # sh-search-input
-│   │   ├── stat-card/           # sh-stat-card
-│   │   └── status-badge/        # sh-status-badge
-│   └── organisms/                # Composants complexes (8)
-│       ├── collaborator-list/   # sh-collaborator-list
-│       ├── footer/              # sh-footer
-│       ├── header/              # sh-header
-│       ├── ia-alert-banner/     # sh-ia-alert-banner
-│       ├── page-header/         # sh-page-header
-│       ├── stock-card/          # sh-stock-card
-│       ├── stock-item-card/     # sh-stock-item-card
-│       └── stock-prediction-card/ # sh-stock-prediction-card
-├── tokens/                       # Design tokens (colors, spacing, etc.)
-├── icons/                        # DEPRECATED: Remplacé par Lucide
-└── styles/                       # Global styles et CSS utilities
-```
-
-### Convention de Nommage
-Tous les composants utilisent le préfixe `sh-` (StockHub) :
-- `<sh-button>`
-- `<sh-input>`
-- `<sh-icon>`
-- `<sh-badge>`
-- `<sh-card>`
-
-## 📦 Installation & Usage
-
-### Installation
-
-Le package n'est pas publié sur le registre npm public. Installation depuis GitHub :
+Le package n'est pas publié sur le registre npm. Il s'installe depuis GitHub, par tag :
 
 ```bash
 npm install github:SandrineCipolla/stockhub_design_system#vX.Y.Z
 ```
 
-Remplacer `vX.Y.Z` par un tag des [releases](https://github.com/SandrineCipolla/stockhub_design_system/releases). Publication sur npm : voir l'issue de suivi si elle existe encore, pas encore faite à ce jour.
+`vX.Y.Z` est un tag des [releases](https://github.com/SandrineCipolla/stockhub_design_system/releases), créé par Release Please.
 
-### Utilisation en React
-```tsx
-import '@stockhub/design-system/dist/index.js';
+## Utilisation
 
-function App() {
-  return (
-    <>
-      <sh-button variant="primary" size="lg" iconBefore="Plus">
-        Add Item
-      </sh-button>
+**Dans React (StockHub V2)** : les composants sont utilisés à travers des wrappers React, voir le [guide du frontend](https://github.com/SandrineCipolla/stockHub_V2_front/blob/main/docs/2-WEB-COMPONENTS-GUIDE.md) et [documentation/4-REACT-INTEGRATION-GUIDE.md](documentation/4-REACT-INTEGRATION-GUIDE.md).
 
-      <sh-card hover clickable padding="md">
-        <h3>Product Card</h3>
-        <p>Description...</p>
-      </sh-card>
+**Dans une page HTML** :
 
-      <sh-badge variant="success" size="md">In Stock</sh-badge>
-    </>
-  );
-}
-```
-
-### Utilisation Directe (HTML)
 ```html
 <script type="module" src="./dist/index.js"></script>
 
-<sh-button variant="primary" size="lg" iconBefore="Plus">
-  Add Item
-</sh-button>
+<sh-button variant="primary" size="lg" iconBefore="Plus">Add Item</sh-button>
 
 <sh-card hover clickable>
   <h3 slot="header">Card Title</h3>
@@ -130,11 +33,11 @@ function App() {
 </sh-card>
 ```
 
-## 🎨 Composants Disponibles
+## Composants Disponibles
 
-Composants Web Components organisés selon l'Atomic Design. Props, événements, slots et exemples interactifs pour chacun : [Storybook](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/) — pas dupliqué ici, l'API de chaque composant y est générée automatiquement depuis le code (JSDoc + Custom Elements Manifest), donc toujours à jour.
+Props, événements, slots et exemples interactifs de chaque composant : [Storybook](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/). L'API y est générée depuis le code (JSDoc et Custom Elements Manifest).
 
-### Atoms — composants de base
+### Atoms : composants de base
 
 | Composant | Rôle |
 |---|---|
@@ -145,7 +48,7 @@ Composants Web Components organisés selon l'Atomic Design. Props, événements,
 | [`sh-role-badge`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-atoms-rolebadge--docs) | Badge affichant le rôle d'un collaborateur sur un stock partagé |
 | [`sh-text`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-atoms-text--docs) | Composant texte typographique |
 
-### Molecules — combinaisons
+### Molecules : combinaisons
 
 | Composant | Rôle |
 |---|---|
@@ -160,7 +63,7 @@ Composants Web Components organisés selon l'Atomic Design. Props, événements,
 | [`sh-stat-card`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-molecules-statcard--docs) | Carte statistique minimaliste pour filtrage interactif |
 | [`sh-status-badge`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-molecules-statusbadge--docs) | Badge spécialisé pour statuts de stock, avec animation pulse pour états critiques |
 
-### Organisms — composants complexes
+### Organisms : composants complexes
 
 | Composant | Rôle |
 |---|---|
@@ -173,578 +76,18 @@ Composants Web Components organisés selon l'Atomic Design. Props, événements,
 | [`sh-stock-item-card`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-organisms-stockitemcard--docs) | Carte de produit pour l'inventaire familial avec statut, métriques et actions |
 | [`sh-stock-prediction-card`](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/?path=/docs/components-organisms-stockpredictioncard--docs) | Carte de prédiction ML pour les ruptures de stock prévues |
 
+## Développement
 
-## 📖 Storybook
-
-### 🌐 Accès en ligne
-
-#### GitHub Pages (Rapport Lighthouse uniquement)
-
-Seul le rapport Lighthouse est publié sur GitHub Pages à chaque push sur `master` :
-
-- **Rapport Lighthouse** : [Voir le rapport](https://SandrineCipolla.github.io/stockhub_design_system/)
-- **Storybook** : hébergé sur Chromatic ([voir ici](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/))
-
-#### Chromatic (Visual Testing)
-
-Le Storybook est également déployé sur Chromatic pour les tests visuels :
-
-- **Voir le Storybook en ligne** : https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/
-- **Dashboard Chromatic** : https://www.chromatic.com/builds?appId=68f5fbe10f495706cb168751
-- **Preview de PR** : Chaque Pull Request génère automatiquement une URL de preview
-- **Visual Testing** : Détection automatique des changements visuels entre versions
-
-> **Note :** Les Pull Requests provenant de forks **ne génèrent pas d'URL de preview Chromatic**.
-> Ceci est dû à une limitation de GitHub Actions : les secrets du repository (comme `CHROMATIC_PROJECT_TOKEN`) ne sont pas exposés aux workflows déclenchés par des forks, pour des raisons de sécurité.
-
-Pour plus d'informations, consultez [`.github/CHROMATIC_SETUP.md`](.github/CHROMATIC_SETUP.md)
-
-### Lancer Storybook Localement
 ```bash
-npm run storybook
-```
-Accès : `http://localhost:6006`
-
-### Build Storybook
-```bash
-npm run build-storybook
-```
-Génère un build statique dans `storybook-static/`
-
-## 🛠️ Développement
-
-### Setup Projet
-```bash
-# Installation dépendances
 npm install
-
-# Lancer Storybook en développement
-npm run storybook
-
-# Build composants pour production
-npm run build:lib
-
-# Générer Design Tokens
-npm run tokens:generate
-
-# Watch mode pour tokens
-npm run tokens:watch
+npm run storybook        # Storybook sur http://localhost:6006
+npm run build:lib        # build de la bibliothèque
+npm run build-storybook  # Storybook statique dans storybook-static/
+npm run tokens:generate  # design-tokens.css depuis src/tokens/tokens.json
+npm run lint
+npm run audit:conventions
 ```
 
-### Structure d'un Composant
-
-Chaque composant suit cette structure :
-```
-components/atoms/badge/
-├── sh-badge.ts              # Composant Lit
-├── sh-badge.stories.ts      # Storybook stories
-└── README.md                # Documentation (optionnel)
-```
-
-### Créer un Nouveau Composant
-
-1. **Créer le fichier TypeScript**
-```typescript
-// src/components/atoms/badge/sh-badge.ts
-import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-
-@customElement('sh-badge')
-export class ShBadge extends LitElement {
-  @property() variant: 'success' | 'warning' | 'danger' = 'success';
-
-  static styles = css`
-    :host {
-      display: inline-block;
-    }
-  `;
-
-  render() {
-    return html`
-      <span class="badge ${this.variant}">
-        <slot></slot>
-      </span>
-    `;
-  }
-}
-```
-
-2. **Créer les Stories (IMPORTANT: Utiliser template strings simples)**
-```typescript
-// src/components/atoms/badge/sh-badge.stories.ts
-import type { Meta, StoryObj } from '@storybook/web-components';
-// NE PAS IMPORTER html de Lit !
-import './sh-badge';
-
-const meta: Meta = {
-  title: 'Components/Atoms/Badge',
-  component: 'sh-badge',
-};
-
-export default meta;
-type Story = StoryObj;
-
-// ✅ BON: Template string simple
-export const Success: Story = {
-  render: () => `<sh-badge variant="success">Success</sh-badge>`,
-};
-
-// ❌ MAUVAIS: html tagged template de Lit
-// export const Success: Story = {
-//   render: () => html`<sh-badge variant="success">Success</sh-badge>`,
-// };
-```
-
-3. **Exporter dans `index.ts`**
-```typescript
-export * from './components/atoms/badge/sh-badge';
-```
-
-## 🎨 Design Tokens
-
-Le Design System utilise un **système de Design Tokens centralisé** pour garantir la cohérence visuelle et faciliter la maintenance.
-
-### Principe
-
-Les tokens sont définis dans `src/tokens/tokens.json` (source unique) et automatiquement convertis en CSS variables.
-
-```typescript
-// Dans tokens.json (source)
-{ "color": { "primary": { "500": { "value": "#8b5cf6" } } } }
-
-// ↓ Génère automatiquement
-
-// Dans design-tokens.css
-:root { --color-primary-500: #8b5cf6; }
-
-// ↓ Utilisable dans tous les composants
-
-static styles = css`
-  button { background: var(--color-primary-500); }
-`;
-```
-
-### Tokens Disponibles
-
-- **150+ variables CSS** : Couleurs, spacing, typography, border-radius, shadows
-- **6 palettes** : primary, success, warning, danger, neutral, info (9 nuances chacune)
-- **Support thème** : Dark (défaut) + Light avec tokens sémantiques
-- **Type-safe** : Autocomplétion TypeScript
-
-### Scripts
-
-```bash
-# Générer design-tokens.css depuis tokens.json
-npm run tokens:generate
-
-# Régénérer automatiquement au changement
-npm run tokens:watch
-```
-
-### 📚 Documentation Complète
-
-Voir **[DESIGN-TOKENS.md](./documentation/2-DESIGN-TOKENS.md)** pour :
-- Pourquoi utiliser des Design Tokens ?
-- Architecture du système (tokens.json → CSS)
-- Workflow complet et bonnes pratiques
-- Liste exhaustive des tokens disponibles
-
-## 🚀 Build & Distribution
-
-### Build pour Production
-```bash
-# Build bibliothèque NPM
-npm run build:lib
-
-# Build Storybook statique
-npm run build-storybook
-
-# Build tout
-npm run build:all
-```
-
-### Publication NPM (Optionnel)
-
-Le package est **prêt pour publication** sur npm avec configuration restricted.
-
-**Utilisation actuelle** : Installation via git repository dans StockHub V2
-```bash
-# Dans StockHub V2 package.json
-"@stockhub/design-system": "git+https://github.com/SandrineCipolla/stockhub_design_system.git"
-```
-
-**Publication future (si nécessaire)** :
-```bash
-# Préparer release
-npm version patch|minor|major
-
-# Publier sur npm (nécessite npm organization)
-npm publish
-```
-
-> **Note** : La configuration `"access": "restricted"` dans package.json nécessite un compte npm organization payant. Pour publication publique gratuite, changer en `"access": "public"`.
-
-## 🧪 Tests
-
-### Tests d'Interaction Storybook ✅
-
-**100% des composants interactifs ont des tests d'interaction complets** avec `@storybook/test` :
-
-- **Tests à jour** : onglet Interactions du [Storybook](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/), ou `npm run test-storybook` en local (Storybook lancé)
-- **Tous les événements custom** vérifiés avec leurs payloads
-- **États et comportements** : loading, disabled, error, validation, keyboard navigation
-- **Shadow DOM** : gestion simple et imbriquée (ex: sh-stock-card → sh-button → button natif)
-
-**Composants testés** :
-1. `sh-button` - Click, hover, disabled
-2. `sh-quantity-input` - Sync event, dirty state
-3. `sh-search-input` - Search events, clear, debounce
-4. `sh-input` - Validation (email, required), focus/blur
-5. `sh-card` - Click, keyboard (Enter/Space/Tab), focus
-6. `sh-header` - Notification, theme toggle, login/logout
-7. `sh-ia-alert-banner` - Toggle, item click, collapsed state
-8. `sh-stock-card` - 4 boutons d'action, loading, badge IA
-9. `sh-stock-item-card` - 3 boutons d'action, optional fields
-
-**Lancer les tests** :
-```bash
-npm run storybook
-# Naviguez vers les stories "InteractionTest*" de chaque composant
-```
-
-**Documentation détaillée** : Voir [8-INTERACTION-TESTS-TRACKING.md](./documentation/8-INTERACTION-TESTS-TRACKING.md) pour :
-- Problèmes rencontrés et solutions
-- Patterns et bonnes pratiques Shadow DOM
-- Changelog complet
-
-### Tests Unitaires
-
-**Note** : Tests unitaires à implémenter selon stratégie (coverage objectif : ≥ 93%)
-
-```bash
-npm run test
-```
-
-## 🌙 Thèmes
-
-Le Design System supporte les thèmes dark/light via CSS custom properties avec synchronisation globale dans Storybook.
-
-### Système de Thème Global (Storybook)
-
-Le thème est géré de manière centralisée via un **decorator global** dans `.storybook/preview.ts` :
-
-**Fonctionnalités** :
-- 🎨 **Toggle global** : Bouton dans la toolbar Storybook (icône pinceau)
-- 🔄 **Synchronisation automatique** : Le thème s'applique à tous les composants via `data-theme`
-- 🎭 **Backgrounds adaptatifs** : Dégradés dynamiques selon le thème sélectionné
-- ✨ **CSS Variables** : Injection automatique des variables de couleur selon le thème
-
-**Configuration** (`.storybook/preview.ts`) :
-```typescript
-globalTypes: {
-  theme: {
-    defaultValue: "dark",
-    toolbar: {
-      title: "Theme",
-      icon: "paintbrush",
-      items: [
-        { value: "light", icon: "sun", title: "Light" },
-        { value: "dark", icon: "moon", title: "Dark" },
-      ],
-    },
-  },
-}
-```
-
-**Le decorator applique automatiquement** :
-1. Synchronise `context.args.theme` avec le toggle global
-2. Applique `data-theme` à tous les composants `sh-*`
-3. Injecte les CSS variables globales selon le thème
-4. Applique un background dégradé adaptatif
-
-### Utilisation dans les Stories
-
-Toutes les stories utilisent maintenant `args.theme` pour tester les deux thèmes :
-
-```typescript
-export const MyStory: Story = {
-  args: {
-    theme: 'dark',  // Valeur par défaut
-  },
-  render: (args) => `
-    <div style="background: ${args.theme === 'dark'
-      ? 'linear-gradient(to bottom right, #0f172a, #1e1b4b)'
-      : 'linear-gradient(to bottom right, #f8fafc, #f0ebff)'};
-      padding: 2rem;">
-      <sh-button variant="primary" data-theme="${args.theme}">
-        Button
-      </sh-button>
-    </div>
-  `,
-};
-```
-
-### Utilisation dans les Composants
-
-Les composants supportent le thème via l'attribut `data-theme` :
-
-```typescript
-// Dans un composant Lit
-@property({ type: String, reflect: true, attribute: 'data-theme' })
-theme: 'light' | 'dark' = 'dark';
-
-static styles = css`
-  :host {
-    --text-color: #1e293b;  /* Light */
-  }
-
-  :host([data-theme="dark"]) {
-    --text-color: #f1f5f9;  /* Dark */
-  }
-
-  p {
-    color: var(--text-color);
-  }
-`;
-```
-
-### Configuration Dark Mode par Défaut
-```bash
-npm run setup:dark
-```
-
-### Utilisation Manuelle
-```html
-<html data-theme="dark">
-  <sh-button data-theme="dark">Dark Button</sh-button>
-  <sh-text data-theme="dark" content="Dark text"></sh-text>
-</html>
-```
-
-### Composants avec Support Thème Complet
-
-- ✅ `sh-text` - Couleurs adaptatives selon le thème
-- ✅ `sh-icon` - Couleurs héritées du parent
-- ✅ `sh-button` - Tous les variants supportent les deux thèmes
-- ✅ `sh-badge` - Couleurs adaptatives
-- ✅ `sh-input` - Bordures et backgrounds adaptatifs
-- ✅ `sh-status-badge` - Support complet du thème
-- ✅ `sh-quantity-input` - Input et bouton sync adaptés au thème
-
-## 🔗 Liens Utiles
-
-### Documentation
-- [Storybook Docs](https://storybook.js.org/docs/web-components)
-- [Lit Element](https://lit.dev/)
-- [Lucide Icons](https://lucide.dev/icons/)
-- [Web Components MDN](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
-
-### Stratégie & Planning
-Consulter la documentation complète dans le repo StockHubV2 :
-```
-StockHubV2/Front_End/stockHub_V2_front/documentation/planning/
-├── STORYBOOK-ARCHITECTURE-STRATEGY.md    # Stratégie complète
-├── planning_ameliorations_v2.md          # Planning global
-└── SESSION-1-SUMMARY.md                  # Résumé Session 1
-```
-
-## 📚 Documentation Avancée
-
-Pour une documentation détaillée du projet, consultez **[documentation/INDEX.md](./documentation/INDEX.md)** qui contient :
-
-### 📋 Planning & Stratégie
-- **[MIGRATION-PLAN.md](./documentation/planning/MIGRATION-PLAN.md)** - Plan complet de migration
-- **[COMPONENT-SPECIFICATIONS.md](./documentation/planning/COMPONENT-SPECIFICATIONS.md)** - Spécifications techniques
-- **[SPRINT-1-CHECKLIST.md](./documentation/planning/SPRINT-1-CHECKLIST.md)** - Checklist opérationnelle
-- **[INTEGRATION-PLAN.md](./documentation/planning/INTEGRATION-PLAN.md)** - Plan d'intégration StockHub V2
-
-### 📝 Sessions de Développement (8 sessions)
-- **[Session 1-8](./documentation/INDEX.md#-sessions-de-développement)** - Résumés détaillés de toutes les sessions (~17h30)
-
-### 🔧 Guides Techniques
-- **[DESIGN-TOKENS.md](./documentation/2-DESIGN-TOKENS.md)** - Système de Design Tokens (pourquoi, comment, bonnes pratiques)
-- **[REACT-INTEGRATION-GUIDE.md](./documentation/4-REACT-INTEGRATION-GUIDE.md)** - Intégration Web Components dans React
-- **[COMPONENT-DOCUMENTATION.md](./documentation/5-COMPONENT-DOCUMENTATION.md)** - Guide JSDoc et documentation automatique
-
-### 🎯 Accès Rapide
-- **Je veux comprendre le plan global** → [MIGRATION-PLAN.md](./documentation/planning/MIGRATION-PLAN.md)
-- **Je vais développer un composant** → [COMPONENT-SPECIFICATIONS.md](./documentation/planning/COMPONENT-SPECIFICATIONS.md)
-- **Je dois intégrer dans StockHub V2** → [REACT-INTEGRATION-GUIDE.md](./documentation/4-REACT-INTEGRATION-GUIDE.md)
-- **Je veux voir l'historique des sessions** → [INDEX.md](./documentation/INDEX.md)
-
-## 📈 Progression
-
-> Section historique : décrit l'état du projet à la fin de la Session 8 (octobre 2025), 16 composants à ce moment-là. Le projet a continué depuis via des issues GitHub plutôt que des sessions numérotées (liste actuelle : "Composants Disponibles" plus haut), état courant complet dans [`ETAT_DU_PROJET.md`](./ETAT_DU_PROJET.md).
-
-Les 8 sessions de développement (~17h30) ont permis la création des 16 premiers composants Web Components.
-
-### 🎯 Métriques de fin de Session 8
-- ✅ **16 composants** (à ce stade) : 5 atoms, 6 molecules, 5 organisms
-- ✅ **100% WCAG AA** : Accessibilité complète validée
-- ✅ **Lucide icons** : Migration complète (1000+ icônes disponibles)
-- ✅ **Thème global** : Support dark/light avec toggle Storybook
-- ✅ **Documentation automatique** : JSDoc + Custom Elements Manifest
-- ✅ **CI/CD Chromatic** : Déploiement et visual testing automatique
-
-### 📝 Sessions Complétées
-
-**Phase 1 : Fondations (16-19 Oct)**
-- ✅ [Session 1](./documentation/sessions/SESSION-1-SUMMARY.md) (16/10, 3h) - Setup initial, 5 composants de base
-- ✅ [Session 2](./documentation/sessions/SESSION-2-SUMMARY.md) (19/10, 2h) - Système de thème global
-- ✅ [Session 3](./documentation/sessions/SESSION-3-SUMMARY.md) (19/10, 1h30) - Documentation automatique
-- ✅ [Session 4](./documentation/sessions/SESSION-4-SUMMARY.md) (19/10, 2h) - Theme toggle global
-
-**Phase 2 : Composants StockHub V2 (20-21 Oct)**
-- ✅ [Session 5](./documentation/sessions/SESSION-5-SUMMARY.md) (20/10, 2h30) - metric-card, stock-item-card, status-badge V2
-- ✅ [Session 6](./documentation/sessions/SESSION-6-SUMMARY.md) (20/10, 1h30) - Finalisation Phase 1
-- ✅ [Session 7](./documentation/sessions/SESSION-7-SUMMARY.md) (21/10, 2h) - Refactoring Atomic Design, nouveaux organisms
-- ✅ [Session 8](./documentation/sessions/SESSION-8-SUMMARY.md) (21/10, 2h) - page-header, footer, search-input
-
-### 📚 Documentation Détaillée
-- **Historique complet des versions** → [CHANGELOG.md](./CHANGELOG.md)
-- **Index de la documentation** → [documentation/INDEX.md](./documentation/INDEX.md)
-- **Corrections d'intégration** → [DESIGN-SYSTEM-CORRECTIONS.md](./documentation/archive/DESIGN-SYSTEM-CORRECTIONS.md) *(archivé, 100% résolu)*
-- **Rapport accessibilité** → [9-ACCESSIBILITY-REPORT.md](./documentation/9-ACCESSIBILITY-REPORT.md)
-- **Audit Design Tokens** → [documentation/3-DESIGN-TOKENS-AUDIT.md](./documentation/3-DESIGN-TOKENS-AUDIT.md)
-
-## 📁 Structure du Projet
-
-La documentation est organisée selon les **standards de l'industrie open-source** :
-
-### Fichiers à la Racine
-- **README.md** : Point d'entrée principal (affiché sur GitHub/npm)
-- **CHANGELOG.md** : Historique des versions (convention [Keep a Changelog](https://keepachangelog.com/))
-
-### Dossier documentation/
-- **INDEX.md** : Navigation complète de la documentation
-- **1 à 9** : Guides techniques et rapports actifs (getting started, tokens, intégration React, composants, Storybook, troubleshooting, tests, accessibilité)
-- **planning/** : Plans de migration et spécifications encore consultés comme référence
-- **sessions/** : Comptes-rendus historiques des 8 sessions de développement (~17h30)
-- **archive/** : Documents clos ou superseded (corrections résolues, anciens changelogs, rapports d'implémentation terminés)
-
-### Rationale
-Cette organisation offre :
-- ✅ **Visibilité maximale** des fichiers critiques (README, CHANGELOG)
-- ✅ **Certification qualité** visible (accessibilité WCAG AA)
-- ✅ **Navigation structurée** pour documentation détaillée
-- ✅ **Adoption facilitée** pour nouveaux développeurs et contributeurs
-
-## 📝 Contribution
-
-### Guidelines
-1. Suivre l'architecture Atomic Design
-2. Nommer les composants avec préfixe `sh-`
-3. Créer une story pour chaque composant
-4. **Utiliser template strings simples** (pas `html` de Lit) dans stories
-5. **Icônes**: Utiliser Lucide en PascalCase (ex: `"Package"`, `"TrendingUp"`)
-6. Utiliser les design tokens (pas de valeurs en dur)
-7. Documenter les props TypeScript
-8. Maintenir backward compatibility
-
-### Commits
-Suivre le format :
-```
-feat(atoms): add sh-badge component
-fix(molecules): correct sh-button disabled state
-docs(readme): update installation instructions
-refactor(icons): migrate to lucide icons system
-```
-
-## 🎯 Leçons Apprises
-
-### Session 1 - Setup Initial
-
-1. **Storybook + Web Components**: Template strings simples > `html` tagged templates de Lit
-2. **CSS Variables**: Toujours vérifier noms générés vs noms utilisés
-3. **Event Handlers**: Ne pas utiliser inline TypeScript dans template strings
-4. **Documentation**: Tenir CHECKLIST à jour en temps réel = gain de temps
-5. **Debugging**: Examiner composants qui fonctionnent (sh-input) = solution rapide
-6. **Compatibilité StockHub V2**: Utiliser Lucide (vanilla) pour aligner avec lucide-react
-7. **Nommage des icônes**: Lucide utilise PascalCase (Package, TrendingUp) vs kebab-case
-
-### Session 3 - Nouveaux Composants
-
-1. **Design Tokens Consistency**: Toujours utiliser les tokens définis dans `design-tokens.css`
-   - ❌ Erreur : Utiliser `--radius-lg` (raccourci mental)
-   - ✅ Correct : Utiliser `--border-radius-lg` (nom complet du token)
-   - **Solution** : Consulter `design-tokens.css` régulièrement ou utiliser l'autocomplétion IDE
-
-2. **TypeScript Strict Mode**: Ne jamais laisser d'imports/variables inutilisés
-   - Erreur `TS6133`: Import `IconName` et `state` déclarés mais jamais utilisés
-   - **Solution** : Vérifier avec `npx tsc --noEmit` avant de commiter
-   - **Bonne pratique** : Lucide ne nécessite pas de types stricts, utiliser `string` pour les noms d'icônes
-
-3. **État CSS vs État JS**: Privilégier CSS `:hover` plutôt que gérer un state JS
-   - ❌ Erreur : Créer une variable `@state() private _isHovered` pour gérer le hover
-   - ✅ Correct : Utiliser directement `:host([clickable]) .metric-card:hover` en CSS
-   - **Raison** : Meilleure performance, moins de code, natif au navigateur
-
-4. **Contexte d'utilisation**: Adapter les exemples au cas d'usage réel
-   - Inventaire familial ≠ Entrepôt commercial
-   - Exemples réalistes (peinture, crayons) > Exemples génériques (laptops)
-   - Emplacements familiaux ("Atelier - Étagère 3") > Codes alphanumériques ("A-12-3")
-   - **Impact** : Meilleure compréhension pour les utilisateurs finaux
-
-5. **Localisation des Composants**: Cohérence avec le projet parent
-   - Labels en anglais dans StockHub V2 → Labels en anglais dans Design System
-   - **Solution** : Toujours vérifier la cohérence avec le projet parent
-
-## 🔄 CI/CD
-
-Le projet utilise **un workflow GitHub Actions optimisé** (`.github/workflows/ci.yml`) pour assurer la qualité et le déploiement automatique.
-
-### Jobs du Workflow CI
-
-#### Job 1 : Build (Toujours)
-- Build Storybook une seule fois
-- Partage l'artifact avec les autres jobs (optimisation)
-- Évite les builds redondants
-
-#### Job 2 : Tests d'Interaction (Toujours)
-- **Déclenché sur** : Toutes les branches et PR
-- Tests Playwright + Storybook automatiques
-- Gratuit et illimité
-
-#### Job 3 : Chromatic (Conditionnel)
-- **Déclenché sur** : PR et push `master`/`v2` uniquement
-- Visual regression testing
-- Économise les quotas sur les features
-
-#### Job 4 : Audit Conventions (Toujours)
-- Vérifie les conventions de nommage des composants
-- S'exécute en parallèle des autres jobs
-
-#### Job 5 : Lighthouse Audit (Master uniquement) 🆕
-- **Déclenché sur** : Push `master` uniquement
-- Audite **tous les composants individuellement** (24+ stories)
-- Génère un rapport HTML consolidé avec score moyen
-- Met à jour automatiquement le badge d'accessibilité dans README
-- Réutilise le build de l'artifact (optimisation)
-
-#### Job 6 : Deploy GitHub Pages (Master uniquement) 🆕
-- **Dépend de** : Lighthouse Audit
-- Déploie le rapport Lighthouse sur GitHub Pages
-- Accessible publiquement : https://SandrineCipolla.github.io/stockhub_design_system/
-
-### Workflow typique
-
-```
-feature branch → push → Build + Tests + Audit conventions
-       ↓
-    Ouvre PR → Build + Tests + Chromatic + Audit conventions
-       ↓
-  Merge master → Build + Tests + Chromatic + Audit conventions
-                   ↓
-              Lighthouse Audit (tous les composants)
-                   ↓
-              Update badge + Deploy GitHub Pages
-```
-
-### Optimisations
-
-- **Build unique** : Storybook n'est build qu'une seule fois, même sur master
-- **Audit complet** : Tous les variants de composants sont audités individuellement
-- **Badge automatique** : Le score d'accessibilité se met à jour automatiquement
-- **Pause optimisée** : 1 seconde entre chaque audit (au lieu de 2)
-
-Pour plus de détails et de bonnes pratiques, voir [documentation/1-GETTING-STARTED.md](./documentation/1-GETTING-STARTED.md).
+- Créer un composant, thèmes, tests, CI/CD : [documentation/10-GUIDE-DEVELOPPEMENT.md](documentation/10-GUIDE-DEVELOPPEMENT.md)
+- Design tokens : [documentation/2-DESIGN-TOKENS.md](documentation/2-DESIGN-TOKENS.md)
+- Contribuer (branches, commits, PR, issues) : [CONTRIBUTING.md](CONTRIBUTING.md)

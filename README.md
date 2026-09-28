@@ -1,5 +1,7 @@
 # StockHub Design System
 
+[![Accessibilité Lighthouse](https://img.shields.io/badge/accessibility-100%2F100-brightgreen?logo=lighthouse)](https://SandrineCipolla.github.io/stockhub_design_system/)
+
 > Web Components (Lit) réutilisables de StockHub V2, documentés dans Storybook
 
 [Storybook](https://68f5fbe10f495706cb168751-nufqfdjaoc.chromatic.com/), [Rapport Lighthouse (accessibilité)](https://SandrineCipolla.github.io/stockhub_design_system/), [CHANGELOG](CHANGELOG.md), [État du projet](ETAT_DU_PROJET.md), [Documentation](documentation/INDEX.md)

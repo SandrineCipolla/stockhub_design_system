@@ -210,6 +210,7 @@ Le projet utilise **un workflow GitHub Actions optimisé** (`.github/workflows/c
 - **Déclenché sur** : Push `master` uniquement
 - Audite **tous les composants individuellement**
 - Génère un rapport HTML consolidé avec score moyen
+- Met à jour le badge d'accessibilité du README avec ce score (commit automatique sur `master`)
 - Réutilise le build de l'artifact (optimisation)
 
 #### Job 6 : Deploy GitHub Pages (Master uniquement)
@@ -228,7 +229,7 @@ feature branch → push → Build + Tests + Audit conventions
                    ↓
               Lighthouse Audit (tous les composants)
                    ↓
-              Deploy GitHub Pages
+              Update badge + Deploy GitHub Pages
 ```
 
 ### Optimisations

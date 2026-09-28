@@ -1,7 +1,5 @@
 # Design Tokens - StockHub Design System
 
-**Version** : 2.0
-**Date** : 29 Octobre 2025
 **Auteur** : Sandrine Cipolla
 
 ---

@@ -200,7 +200,7 @@ Alors :
 
 **Avant une feature** : vérifier le GitHub Project, créer une branche depuis `master`, `npm install`.
 
-**Version de npm** : npm 11 minimum pour toute modification des dépendances (Node 24, ou `npm install -g npm@11`). npm 10 retire du `package-lock.json` les métadonnées `libc` qu'écrivent npm 11 et Dependabot, et la vérification du lockfile en CI échoue.
+**Version de npm** : npm 11 minimum pour toute modification des dépendances (Node 22 avec `npm install -g npm@11`). npm 10 retire du `package-lock.json` les métadonnées `libc` qu'écrivent npm 11 et Dependabot, et la vérification du lockfile en CI échoue.
 
 **Pendant** : `npm run storybook` en dev, `npm run audit-accessibility:quick` régulièrement, respecter les design tokens (jamais de couleurs ou tailles en dur).
 
